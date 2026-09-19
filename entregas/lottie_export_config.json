@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "VEYA Avatar Lottie Export Configuration",
+  "version": "1.0.0",
+  "target": {
+    "framework": "Android Jetpack Compose",
+    "library": "com.airbnb.android:lottie-compose:6.4.0",
+    "package": "personal.veya.ui.components.avatar",
+    "resourcePath": "app/src/main/res/raw"
+  },
+  "assetNaming": {
+    "pattern": "veya_avatar_{state}_{mood}.json",
+    "allowedStates": ["idle", "listening", "thinking", "speaking", "muted"],
+    "allowedMoods": ["sereno", "cercano", "concentrado", "animado", "empatico", "espera"],
+    "sampleResource": "R.raw.veya_avatar_idle_sereno"
+  },
+  "canvas": {
+    "width": 500,
+    "height": 500,
+    "fps": 60,
+    "durationFrames": 120,
+    "durationSeconds": 2.0,
+    "defaultDpSize": 260
+  },
+  "breathingCycle": {
+    "frequencyHz": 1.8,
+    "description": "Ciclo de respiración sinusoidal armónica estilo Pixar/Disney con deformación squash & stretch",
+    "scaleX": {
+      "min": 97,
+      "max": 103
+    },
+    "scaleY": {
+      "min": 98,
+      "max": 102
+    },
+    "verticalFloatAmplitudePx": 6,
+    "haloOpacity": {
+      "min": 35,
+      "max": 55
+    }
+  },
+  "bodymovinLayers": [
+    {
+      "index": 1,
+      "name": "Eye_Specularity_Glints",
+      "type": "ShapeLayer",
+      "description": "Destellos especulares en ojos estilo Disney/Pixar (doble punto de luz en cristal)"
+    },
+    {
+      "index": 2,
+      "name": "Eyes_Pixar_Obsidian",
+      "type": "ShapeLayer",
+      "description": "Pupilas profundas de vidrio obsidian (#0B1522)"
+    },
+    {
+      "index": 3,
+      "name": "Smile_Aperture",
+      "type": "ShapeLayer",
+      "description": "Curva bezier bucal / apertura resonante con trazo redondeado"
+    },
+    {
+      "index": 4,
+      "name": "Body_Breathing_Orb",
+      "type": "ShapeLayer",
+      "description": "Orbe 3D principal con gradiente de dispersión subsuperficial (SSS) y rim light"
+    },
+    {
+      "index": 5,
+      "name": "Atmospheric_Glow_Halo",
+      "type": "ShapeLayer",
+      "description": "Halo volumétrico difuso posterior que respira en contrafase lumínica"
+    }
+  ],
+  "statesMapping": {
+    "idle": {
+      "scaleMultiplier": 1.0,
+      "voiceAmplitudeReactive": false,
+      "iterations": "LottieConstants.IterateForever",
+      "speed": 1.0
+    },
+    "listening": {
+      "scaleMultiplier": 1.04,
+      "voiceAmplitudeReactive": false,
+      "iterations": "LottieConstants.IterateForever",
+      "speed": 1.15
+    },
+    "thinking": {
+      "scaleMultiplier": 0.98,
+      "voiceAmplitudeReactive": false,
+      "iterations": "LottieConstants.IterateForever",
+      "speed": 0.85
+    },
+    "speaking": {
+      "scaleMultiplier": 1.15,
+      "voiceAmplitudeReactive": true,
+      "iterations": "LottieConstants.IterateForever",
+      "speed": 1.4
+    },
+    "muted": {
+      "scaleMultiplier": 0.94,
+      "voiceAmplitudeReactive": false,
+      "iterations": "1",
+      "speed": 0.5
+    }
+  },
+  "moodPalettes": {
+    "sereno": {
+      "coreColorHex": "#155E95",
+      "sssColorHex": "#38BDF8",
+      "rimColorHex": "#BAE6FD",
+      "glowColorHex": "#38BDF8"
+    },
+    "cercano": {
+      "coreColorHex": "#7654A7",
+      "sssColorHex": "#C084FC",
+      "rimColorHex": "#E9D5FF",
+      "glowColorHex": "#C084FC"
+    },
+    "concentrado": {
+      "coreColorHex": "#006A67",
+      "sssColorHex": "#2DD4BF",
+      "rimColorHex": "#99F6E4",
+      "glowColorHex": "#2DD4BF"
+    },
+    "animado": {
+      "coreColorHex": "#D97706",
+      "sssColorHex": "#FBBF24",
+      "rimColorHex": "#FDE68A",
+      "glowColorHex": "#FBBF24"
+    },
+    "empatico": {
+      "coreColorHex": "#DB2777",
+      "sssColorHex": "#F472B6",
+      "rimColorHex": "#FBCFE8",
+      "glowColorHex": "#F472B6"
+    },
+    "espera": {
+      "coreColorHex": "#475569",
+      "sssColorHex": "#94A3B8",
+      "rimColorHex": "#CBD5E1",
+      "glowColorHex": "#94A3B8"
+    }
+  },
+  "dynamicPropertiesKeyPaths": [
+    {
+      "keyPath": ["Atmospheric_Glow_Halo", "Glow_Shape", "Aura_Gradient"],
+      "property": "ColorFilter",
+      "androidType": "SimpleColorFilter"
+    },
+    {
+      "keyPath": ["Body_Breathing_Orb", "Main_Sphere", "Rim_Light_Stroke"],
+      "property": "Color",
+      "androidType": "Int (ARGB)"
+    },
+    {
+      "keyPath": ["Smile_Aperture", "Smile_Shape", "Stroke"],
+      "property": "Color",
+      "androidType": "Int (ARGB)"
+    }
+  ]
+}

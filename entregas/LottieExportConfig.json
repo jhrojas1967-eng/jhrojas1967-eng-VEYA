@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "LottieExportConfig",
+  "title": "VEYA Avatar Lottie-Compose Export Configuration",
+  "version": "1.0.0",
+  "generator": {
+    "module": "AvatarLaboratory",
+    "exporter": "lottieExporter.ts",
+    "specificationVersion": "Bodymovin 5.5.2"
+  },
+  "androidTarget": {
+    "framework": "Android Jetpack Compose",
+    "library": "com.airbnb.android:lottie-compose",
+    "recommendedVersion": "6.4.0",
+    "resourceDirectory": "app/src/main/res/raw",
+    "namingConvention": "veya_avatar_{state}_{mood}.json",
+    "sampleResourceUsage": "val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.veya_avatar_idle_sereno))"
+  },
+  "composition": {
+    "frameRate": 60,
+    "width": 500,
+    "height": 500,
+    "inPointFrame": 0,
+    "outPointFrame": 120,
+    "durationSeconds": 2.0,
+    "recommendedDpDisplaySize": 260,
+    "globalAnchorPoint": {
+      "x": 250.0,
+      "y": 250.0,
+      "z": 0.0,
+      "description": "Centro geométrico del lienzo 500x500"
+    }
+  },
+  "animationDynamics": {
+    "breathingFrequencyHz": 1.8,
+    "cycleFrames": 120,
+    "loopBehavior": "LottieConstants.IterateForever",
+    "squashAndStretch": {
+      "scaleX": { "minPercent": 97.0, "maxPercent": 103.0 },
+      "scaleY": { "minPercent": 98.0, "maxPercent": 102.0 },
+      "verticalFloatDeltaPx": 6.0
+    },
+    "voiceReactivity": {
+      "rmsScalar": "amplitude",
+      "squashScaleMultiplier": 0.12,
+      "speakingSpeedMultiplier": 0.4
+    }
+  },
+  "layers": [
+    {
+      "index": 1,
+      "name": "Eye_Specularity_Glints",
+      "type": "ShapeLayer (ty: 4)",
+      "description": "Destellos especulares en ojos estilo Disney/Pixar (doble punto de luz en cristal)",
+      "renderOrder": "Primer plano (Frontal superior)",
+      "anchorPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "coordinateSpace": "Local relative to layer position"
+      },
+      "position": {
+        "x": 250.0,
+        "y": 240.0,
+        "z": 0.0,
+        "description": "Alineado con el centro ocular"
+      },
+      "shapes": [
+        {
+          "name": "Left_Eye_Glint",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": -56.0, "y": -18.0 },
+          "size": { "width": 14.0, "height": 12.0 },
+          "fill": { "color": [1.0, 1.0, 1.0, 1.0], "opacity": 95 }
+        },
+        {
+          "name": "Right_Eye_Glint",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": 44.0, "y": -18.0 },
+          "size": { "width": 14.0, "height": 12.0 },
+          "fill": { "color": [1.0, 1.0, 1.0, 1.0], "opacity": 95 }
+        }
+      ],
+      "transformKeys": {
+        "opacity": 100,
+        "rotation": 0,
+        "scaleSquashY": "Modulado por estado emocional (100% idle, 115% listening, 85% thinking)"
+      }
+    },
+    {
+      "index": 2,
+      "name": "Eyes_Pixar_Obsidian",
+      "type": "ShapeLayer (ty: 4)",
+      "description": "Pupilas profundas de vidrio obsidian con brillo y mirada lúcida",
+      "renderOrder": "Capa facial media",
+      "anchorPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "coordinateSpace": "Local relative to layer position"
+      },
+      "position": {
+        "x": 250.0,
+        "y": 240.0,
+        "z": 0.0
+      },
+      "shapes": [
+        {
+          "name": "Left_Eye",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": -50.0, "y": -12.0 },
+          "size": { "width": 32.0, "height": 42.0 },
+          "fill": { "hex": "#0B1522", "normalizedRgb": [0.043, 0.082, 0.133, 1.0] }
+        },
+        {
+          "name": "Right_Eye",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": 50.0, "y": -12.0 },
+          "size": { "width": 32.0, "height": 42.0 },
+          "fill": { "hex": "#0B1522", "normalizedRgb": [0.043, 0.082, 0.133, 1.0] }
+        }
+      ],
+      "transformKeys": {
+        "scaleSquashY": "Sincronizado con Eye_Specularity_Glints"
+      }
+    },
+    {
+      "index": 3,
+      "name": "Smile_Aperture",
+      "type": "ShapeLayer (ty: 4)",
+      "description": "Expresión bucal cálida / apertura resonante con trazo Bézier redondeado",
+      "renderOrder": "Capa facial inferior",
+      "anchorPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "coordinateSpace": "Local relative to mouth position"
+      },
+      "position": {
+        "x": 250.0,
+        "y": 290.0,
+        "z": 0.0
+      },
+      "shapes": [
+        {
+          "name": "Smile_Shape",
+          "shapeType": "Path (Bézier)",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": 0.0, "y": 0.0 },
+          "bezierVertices": {
+            "v": [[-28.0, -6.0], [0.0, 10.0], [28.0, -6.0]],
+            "inTangents": [[0.0, 0.0], [0.0, 12.0], [0.0, 0.0]],
+            "outTangents": [[0.0, 12.0], [0.0, 0.0], [0.0, 0.0]],
+            "closed": false
+          },
+          "stroke": {
+            "width": 6.0,
+            "lineCap": "Round (2)",
+            "lineJoin": "Round (2)",
+            "colorKeyPath": "Smile_Aperture -> Smile_Shape -> Stroke"
+          }
+        }
+      ],
+      "transformKeys": {
+        "scaleY": "Apertura fonética amplificada por RMS acústico en SPEAKING (140% a 200%)"
+      }
+    },
+    {
+      "index": 4,
+      "name": "Body_Breathing_Orb",
+      "type": "ShapeLayer (ty: 4)",
+      "description": "Orbe 3D principal con dispersión subsuperficial (SSS), gradiente radial y rim light translúcido",
+      "renderOrder": "Cuerpo volumétrico central",
+      "anchorPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "coordinateSpace": "Centro del orbe"
+      },
+      "position": {
+        "animated": true,
+        "keyFrames": [
+          { "frame": 0, "x": 250.0, "y": 250.0, "z": 0.0 },
+          { "frame": 60, "x": 250.0, "y": 244.0, "z": 0.0 },
+          { "frame": 120, "x": 250.0, "y": 250.0, "z": 0.0 }
+        ],
+        "description": "Flotación armónica vertical de 6px en contrafase a la respiración"
+      },
+      "shapes": [
+        {
+          "name": "Main_Sphere",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": 0.0, "y": 0.0 },
+          "size": { "width": 260.0, "height": 260.0 },
+          "radialGradientSSS": {
+            "type": "Radial (2)",
+            "startPoint": { "x": -70.0, "y": -80.0 },
+            "endPoint": { "x": 130.0, "y": 140.0 },
+            "stops": [
+              { "offset": 0.0, "color": "#FFFFFF", "desc": "Keylight especular" },
+              { "offset": 0.35, "color": "colors.sss", "desc": "Dispersión subsuperficial translúcida" },
+              { "offset": 1.0, "color": "colors.core", "desc": "Sombra volumétrica de contacto" }
+            ]
+          },
+          "rimLightStroke": {
+            "width": 5.0,
+            "opacity": 60,
+            "colorKeyPath": "Body_Breathing_Orb -> Main_Sphere -> Rim_Light_Stroke"
+          }
+        }
+      ],
+      "transformKeys": {
+        "scale": {
+          "animated": true,
+          "frame0": [97.0, 102.0, 100.0],
+          "frame60": [103.0, 98.0, 100.0],
+          "frame120": [97.0, 102.0, 100.0]
+        }
+      }
+    },
+    {
+      "index": 5,
+      "name": "Atmospheric_Glow_Halo",
+      "type": "ShapeLayer (ty: 4)",
+      "description": "Halo volumétrico difuso posterior que respira en contrafase lumínica",
+      "renderOrder": "Fondo atmosférico",
+      "anchorPoint": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "coordinateSpace": "Centro del halo"
+      },
+      "position": {
+        "x": 250.0,
+        "y": 250.0,
+        "z": 0.0
+      },
+      "shapes": [
+        {
+          "name": "Glow_Shape",
+          "shapeType": "Ellipse",
+          "anchorPoint": { "x": 0.0, "y": 0.0 },
+          "position": { "x": 0.0, "y": 0.0 },
+          "size": { "width": 380.0, "height": 380.0 },
+          "radialGradientAura": {
+            "type": "Radial (2)",
+            "startPoint": { "x": 0.0, "y": 0.0 },
+            "endPoint": { "x": 190.0, "y": 190.0 },
+            "stops": [
+              { "offset": 0.0, "color": "colors.glow", "opacity": 0.65 },
+              { "offset": 1.0, "color": "transparent", "opacity": 0.0 }
+            ]
+          }
+        }
+      ],
+      "transformKeys": {
+        "opacity": {
+          "animated": true,
+          "frame0": 35,
+          "frame60": 55,
+          "frame120": 35
+        },
+        "scale": {
+          "animated": true,
+          "frame0": [100.0, 100.0, 100.0],
+          "frame60": [115.0, 115.0, 100.0],
+          "frame120": [100.0, 100.0, 100.0]
+        }
+      }
+    }
+  ],
+  "androidDynamicPropertyKeyPaths": [
+    {
+      "target": "Atmospheric_Glow_Halo -> Glow_Shape -> Aura_Gradient",
+      "lottieProperty": "LottieProperty.COLOR_FILTER",
+      "keyPath": ["Atmospheric_Glow_Halo", "Glow_Shape", "Aura_Gradient"],
+      "purpose": "Permite modular el color del halo según el estado de ánimo (Mood) en tiempo de ejecución"
+    },
+    {
+      "target": "Body_Breathing_Orb -> Main_Sphere -> Rim_Light_Stroke",
+      "lottieProperty": "LottieProperty.STROKE_COLOR",
+      "keyPath": ["Body_Breathing_Orb", "Main_Sphere", "Rim_Light_Stroke"],
+      "purpose": "Tinta el bisel translúcido de luz perimetral"
+    },
+    {
+      "target": "Smile_Aperture -> Smile_Shape -> Stroke",
+      "lottieProperty": "LottieProperty.STROKE_COLOR",
+      "keyPath": ["Smile_Aperture", "Smile_Shape", "Stroke"],
+      "purpose": "Alinea la sonrisa con el color del espectro emocional activo"
+    }
+  ],
+  "statesConfig": {
+    "idle": { "speed": 1.0, "iterations": "LottieConstants.IterateForever", "scale": 1.0 },
+    "listening": { "speed": 1.15, "iterations": "LottieConstants.IterateForever", "scale": 1.04 },
+    "thinking": { "speed": 0.85, "iterations": "LottieConstants.IterateForever", "scale": 0.98 },
+    "speaking": { "speed": 1.4, "iterations": "LottieConstants.IterateForever", "scale": 1.15, "voiceReactive": true },
+    "muted": { "speed": 0.0, "iterations": 1, "scale": 0.94, "isPlaying": false }
+  }
+}

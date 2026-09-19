@@ -1,0 +1,8 @@
+{
+  "name": "VEYA - PERSONAL",
+  "description": "Design System, tokens Material 3, avatar reactivo y mockups Compose para VEYA Asistente Personal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
