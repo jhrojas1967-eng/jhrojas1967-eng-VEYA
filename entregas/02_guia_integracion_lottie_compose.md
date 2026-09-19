@@ -99,19 +99,15 @@ enum class AvatarMood {
 }
 
 /**
- * Resuelve el identificador de recurso R.raw según estado y mood
+ * Resuelve el identificador de recurso R.raw según el estado del avatar.
+ * Todos los estados IDLE mapean a R.raw.veya_avatar_idle_sereno, ya que el espectro
+ * emocional (Mood) se aplica en tiempo de ejecución mediante KeyPaths con rememberVeyaMoodProperties.
+ * Esto optimiza el tamaño del APK utilizando únicamente los 5 recursos JSON base entregados en res/raw/.
  */
 @RawRes
-fun resolveAvatarRawRes(state: AvatarState, mood: AvatarMood): Int {
+fun resolveAvatarRawRes(state: AvatarState, mood: AvatarMood = AvatarMood.SERENO): Int {
     return when (state) {
-        AvatarState.IDLE -> when (mood) {
-            AvatarMood.SERENO -> R.raw.veya_avatar_idle_sereno
-            AvatarMood.CERCANO -> R.raw.veya_avatar_idle_cercano
-            AvatarMood.CONCENTRADO -> R.raw.veya_avatar_idle_concentrado
-            AvatarMood.ANIMADO -> R.raw.veya_avatar_idle_animado
-            AvatarMood.EMPATICO -> R.raw.veya_avatar_idle_empatico
-            AvatarMood.ESPERA -> R.raw.veya_avatar_idle_espera
-        }
+        AvatarState.IDLE -> R.raw.veya_avatar_idle_sereno
         AvatarState.LISTENING -> R.raw.veya_avatar_listening_sereno
         AvatarState.THINKING -> R.raw.veya_avatar_thinking_sereno
         AvatarState.SPEAKING -> R.raw.veya_avatar_speaking_animado

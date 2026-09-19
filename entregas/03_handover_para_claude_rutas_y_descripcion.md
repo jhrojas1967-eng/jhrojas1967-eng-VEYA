@@ -8,6 +8,7 @@ Este documento contiene la relación exacta de archivos generados, sus rutas den
 
 | Archivo / Ruta relativa en el Repo | Formato | Propósito y Descripción para Claude |
 | :--- | :--- | :--- |
+| **`res_raw_export/`** <br> *(5 archivos `.json` generados)* | Lottie JSON (Bodymovin v5.5.2) | **Los 5 Assets de Animación Base compilados**:<br>• `veya_avatar_idle_sereno.json`<br>• `veya_avatar_listening_sereno.json`<br>• `veya_avatar_thinking_sereno.json`<br>• `veya_avatar_speaking_animado.json`<br>• `veya_avatar_muted_espera.json`<br>Listos para copiar a `app/src/main/res/raw/`. |
 | **`LottieExportConfig.json`** (raíz) <br> *(y copia en `public/LottieExportConfig.json`)* | JSON | **Archivo Canónico de Configuración Lottie-Compose**. Define las 5 capas Bodymovin, frame rate a 60 fps (120 frames, 2.0 s, 1.8 Hz), puntos de anclaje `[x,y,z]`, deformación squash & stretch, flotación vertical de 6px y los KeyPaths para tintado dinámico en Android. |
 | **`entregas/02_guia_integracion_lottie_compose.md`** | Markdown | **Guía de Integración Técnica Paso a Paso**. Contiene el código fuente completo del componente `VeyaAvatarLottie.kt`, configuración de `app/build.gradle.kts` (`com.airbnb.android:lottie-compose:6.4.0`), modulación reactiva por RMS acústico y accesibilidad (`LocalReducedMotion`). |
 | **`entregas/01_tokens_y_avatar_para_claude.md`** | Markdown | **Tokens Material 3 y Colores**. Define `VeyaLightColorScheme`, `VeyaDarkColorScheme` y la paleta de los 6 estados emocionales (*Sereno*, *Cercano*, *Concentrado*, *Animado*, *Empático*, *Espera*). |

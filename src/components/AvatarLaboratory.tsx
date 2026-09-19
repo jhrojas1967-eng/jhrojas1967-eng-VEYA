@@ -95,60 +95,138 @@ export const AvatarLaboratory: React.FC = () => {
     setTimeout(() => setCopiedConfigJson(false), 2200);
   };
 
+  // Descargar los 5 JSON canónicos base para res/raw
+  const [downloadingBatch, setDownloadingBatch] = useState(false);
+  const handleDownloadAll5BaseJson = () => {
+    setDownloadingBatch(true);
+    const baseFiles = [
+      { name: 'veya_avatar_idle_sereno.json', state: 'idle' as const, mood: 'sereno' as const, amp: 0.0 },
+      { name: 'veya_avatar_listening_sereno.json', state: 'listening' as const, mood: 'sereno' as const, amp: 0.0 },
+      { name: 'veya_avatar_thinking_sereno.json', state: 'thinking' as const, mood: 'sereno' as const, amp: 0.0 },
+      { name: 'veya_avatar_speaking_animado.json', state: 'speaking' as const, mood: 'animado' as const, amp: 0.5 },
+      { name: 'veya_avatar_muted_espera.json', state: 'muted' as const, mood: 'espera' as const, amp: 0.0 },
+    ];
+    baseFiles.forEach((file, index) => {
+      setTimeout(() => {
+        const data = generateLottieAvatarJson(file.state, file.mood, file.amp, false);
+        downloadJsonFile(file.name, data);
+        if (index === baseFiles.length - 1) {
+          setDownloadingBatch(false);
+        }
+      }, index * 250);
+    });
+  };
+
   const androidComposeSnippet = `// 1. Añadir en app/build.gradle.kts:
 // implementation("com.airbnb.android:lottie-compose:6.4.0")
 
-// 2. Colocar el archivo descargado en: app/src/main/res/raw/veya_avatar_${state}_${mood}.json
+// 2. Colocar los 5 archivos base en: app/src/main/res/raw/
+// - veya_avatar_idle_sereno.json
+// - veya_avatar_listening_sereno.json
+// - veya_avatar_thinking_sereno.json
+// - veya_avatar_speaking_animado.json
+// - veya_avatar_muted_espera.json
 
 // 3. Implementación en Jetpack Compose para Claude Code:
 package personal.veya.ui.components.avatar
 
+import androidx.annotation.RawRes
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.airbnb.lottie.LottieProperty
 import com.airbnb.lottie.RenderMode
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.airbnb.lottie.compose.rememberLottieDynamicProperties
+import com.airbnb.lottie.compose.rememberLottieDynamicProperty
 import personal.veya.R
+
+enum class AvatarState { IDLE, LISTENING, THINKING, SPEAKING, MUTED }
+enum class AvatarMood { SERENO, CERCANO, CONCENTRADO, ANIMADO, EMPATICO, ESPERA }
+
+@RawRes
+fun resolveAvatarRawRes(state: AvatarState, mood: AvatarMood = AvatarMood.SERENO): Int {
+    return when (state) {
+        AvatarState.IDLE -> R.raw.veya_avatar_idle_sereno
+        AvatarState.LISTENING -> R.raw.veya_avatar_listening_sereno
+        AvatarState.THINKING -> R.raw.veya_avatar_thinking_sereno
+        AvatarState.SPEAKING -> R.raw.veya_avatar_speaking_animado
+        AvatarState.MUTED -> R.raw.veya_avatar_muted_espera
+    }
+}
 
 @Composable
 fun VeyaLottieAvatar(
     modifier: Modifier = Modifier,
+    state: AvatarState = AvatarState.${state.toUpperCase()},
+    mood: AvatarMood = AvatarMood.${mood.toUpperCase()},
     size: Dp = ${size}.dp,
     amplitude: Float = ${amplitude}f,
     isPlaying: Boolean = true
 ) {
-    // Carga de la animación de respiración sinusoidal Pixar
+    val rawResId = resolveAvatarRawRes(state, mood)
     val composition by rememberLottieComposition(
-        LottieCompositionSpec.RawRes(R.raw.veya_avatar_${state}_${mood})
+        LottieCompositionSpec.RawRes(rawResId)
     )
 
-    // Ajuste dinámico de velocidad según estado
-    val dynamicSpeed = if ("${state}" == "speaking") 1.2f + (amplitude * 0.4f) else 1.0f
+    val dynamicSpeed = when (state) {
+        AvatarState.SPEAKING -> 1.2f + (amplitude * 0.4f)
+        AvatarState.LISTENING -> 1.15f
+        AvatarState.THINKING -> 0.85f
+        AvatarState.MUTED -> 0.0f
+        AvatarState.IDLE -> 1.0f
+    }
 
     val progress by animateLottieCompositionAsState(
         composition = composition,
-        isPlaying = isPlaying,
+        isPlaying = isPlaying && state != AvatarState.MUTED,
         iterations = LottieConstants.IterateForever,
         speed = dynamicSpeed
     )
 
-    // Modulación reactiva al micrófono si habla
     val reactiveScale by animateFloatAsState(
-        targetValue = if ("${state}" == "speaking") 1.0f + (amplitude * 0.12f) else 1.0f,
+        targetValue = if (state == AvatarState.SPEAKING) 1.0f + (amplitude * 0.12f) else 1.0f,
         animationSpec = tween(durationMillis = 80),
         label = "reactive_scale"
+    )
+
+    val moodColor = remember(mood) {
+        when (mood) {
+            AvatarMood.SERENO -> Color(0xFF0284C7)
+            AvatarMood.CERCANO -> Color(0xFFD97706)
+            AvatarMood.CONCENTRADO -> Color(0xFF7C3AED)
+            AvatarMood.ANIMADO -> Color(0xFF10B981)
+            AvatarMood.EMPATICO -> Color(0xFFEC4899)
+            AvatarMood.ESPERA -> Color(0xFF64748B)
+        }
+    }
+
+    val dynamicProperties = rememberLottieDynamicProperties(
+        rememberLottieDynamicProperty(
+            property = LottieProperty.STROKE_COLOR,
+            value = moodColor.toArgb(),
+            keyPath = arrayOf("Body_Breathing_Orb", "Main_Sphere", "Rim_Light_Stroke")
+        ),
+        rememberLottieDynamicProperty(
+            property = LottieProperty.STROKE_COLOR,
+            value = moodColor.toArgb(),
+            keyPath = arrayOf("Smile_Aperture", "Smile_Shape", "Stroke")
+        )
     )
 
     Box(
@@ -160,6 +238,7 @@ fun VeyaLottieAvatar(
         LottieAnimation(
             composition = composition,
             progress = { progress },
+            dynamicProperties = dynamicProperties,
             modifier = Modifier.size(size),
             renderMode = RenderMode.HARDWARE,
             enableMergePaths = true
@@ -438,6 +517,36 @@ fun VeyaLottieAvatar(
                     </button>
                   </div>
                 </div>
+              </div>
+
+              {/* Batch Download Banner for the 5 Canonical Base Assets */}
+              <div className="p-4 rounded-xl bg-gradient-to-r from-blue-500/10 via-emerald-500/10 to-purple-500/10 border border-blue-200 dark:border-blue-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                      Paquete Oficial Fase B: 5 Assets Base para res/raw/
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                    Incluye los 5 archivos canónicos (idle, listening, thinking, speaking, muted) con soporte para tintado dinámico de Mood en Compose.
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-2 text-[10px] font-mono">
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">veya_avatar_idle_sereno.json</span>
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">veya_avatar_listening_sereno.json</span>
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">veya_avatar_thinking_sereno.json</span>
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">veya_avatar_speaking_animado.json</span>
+                    <span className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded">veya_avatar_muted_espera.json</span>
+                  </div>
+                </div>
+                <button
+                  onClick={handleDownloadAll5BaseJson}
+                  disabled={downloadingBatch}
+                  className="shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-xs disabled:opacity-50"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>{downloadingBatch ? 'Descargando 5...' : 'Descargar los 5 .json'}</span>
+                </button>
               </div>
 
               {/* Quick Summary of Current Active Export Parameters */}
