@@ -132,15 +132,23 @@ if [[ -d "$LOTTIE_SOURCE_DIR" ]]; then
     done
 fi
 
-# 5. Copiar Componentes del AvatarLaboratory
-echo -e "${COLOR_BLUE}→ Exportando componentes de AvatarLaboratory...${COLOR_RESET}"
-for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx; do
+# 5. Copiar Componentes del AvatarLaboratory y Pantallas
+echo -e "${COLOR_BLUE}→ Exportando componentes de AvatarLaboratory y Pantallas...${COLOR_RESET}"
+for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx ScreenMusic.tsx; do
     if [[ -f "$SCRIPT_DIR/src/components/$comp" ]]; then
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_SYNC_ROOT/avatar-laboratory/$comp"
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_DOCS_LAB/$comp"
         echo -e "  ${COLOR_GREEN}✓${COLOR_RESET} src/components/$comp"
     fi
 done
+
+# Copiar submódulo de música jetAudio
+if [[ -d "$SCRIPT_DIR/src/components/music" ]]; then
+    mkdir -p "$DIR_SYNC_ROOT/music" "$DIR_DOCS_LAB/music"
+    cp -r "$SCRIPT_DIR/src/components/music/"* "$DIR_SYNC_ROOT/music/"
+    cp -r "$SCRIPT_DIR/src/components/music/"* "$DIR_DOCS_LAB/music/"
+    echo -e "  ${COLOR_GREEN}✓${COLOR_RESET} src/components/music/* (Motor jetAudio & DSP Rack)"
+fi
 
 # Exporter de Lottie
 if [[ -f "$SCRIPT_DIR/src/lottieExporter.ts" ]]; then

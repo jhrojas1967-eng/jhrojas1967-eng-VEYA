@@ -136,7 +136,15 @@ export default function App() {
                       Pantalla Activa en Mockup
                     </span>
                     <h2 className="text-xl font-extrabold capitalize text-slate-900 dark:text-slate-100">
-                      {currentTab === 'onboarding' ? 'Onboarding (8 pasos)' : currentTab === 'today' ? 'Inicio (Hoy)' : currentTab === 'chat' ? 'Conversar' : currentTab === 'music' ? 'Música Local' : 'Ajustes'}
+                      {currentTab === 'onboarding'
+                        ? 'Onboarding (8 pasos)'
+                        : currentTab === 'today'
+                        ? 'Inicio (Hoy)'
+                        : currentTab === 'chat'
+                        ? 'Conversar'
+                        : currentTab === 'music'
+                        ? 'Música Local (Motor jetAudio DSP)'
+                        : 'Ajustes'}
                     </h2>
                   </div>
                   <button
@@ -152,12 +160,22 @@ export default function App() {
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>Conformidad con Restricciones Técnicas:</span>
                   </div>
-                  <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
-                    <li><strong>Jetpack Compose + M3</strong>: Diseñado para teléfono vertical con Nunito Sans.</li>
-                    <li><strong>Accesibilidad</strong>: Objetivos táctiles ≥ 48dp, contraste AA validado y soporte para movimiento reducido.</li>
-                    <li><strong>Color Roles</strong>: Primary (#155E95), Secondary (#7654A7) en claro y oscuro dinámico.</li>
-                    <li><strong>Local & Privado</strong>: Sin llamadas externas ni streaming.</li>
-                  </ul>
+                  {currentTab === 'music' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Bypass Maestro DSP</strong>: El usuario puede desactivar todo el procesamiento para escucha directa bit-perfect (Bit-Perfect Direct Output).</li>
+                      <li><strong>Presets Ecualizador jetAudio</strong>: Modos Rock, Pop, Clásico, Dance, Estadio, Acústica, Jazz, Metal, Vocal, Bass Boost y Treble Boost.</li>
+                      <li><strong>Suite DSP Avanzada</strong>: 10 bandas (32Hz-16kHz), Preamp con Limiter, BBE Clarity, BBE ViVA 3D, X-Bass (corte 60/80/100Hz), Wide y Reverb de sala.</li>
+                      <li><strong>Reproductor Completo & Herramientas</strong>: Visualizador espectral RTA, Bucle A-B Repeat, control de Pitch y Velocidad (Tempo), y letras sincronizadas LRC.</li>
+                      <li><strong>Pipeline Android</strong>: Preparado para AAudio / OpenSL ES, ReplayGain (AGC) y exploración por carpetas locales.</li>
+                    </ul>
+                  ) : (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Jetpack Compose + M3</strong>: Diseñado para teléfono vertical con Nunito Sans.</li>
+                      <li><strong>Accesibilidad</strong>: Objetivos táctiles ≥ 48dp, contraste AA validado y soporte para movimiento reducido.</li>
+                      <li><strong>Color Roles</strong>: Primary (#155E95), Secondary (#7654A7) en claro y oscuro dinámico.</li>
+                      <li><strong>Local & Privado</strong>: Sin llamadas externas ni streaming.</li>
+                    </ul>
+                  )}
                 </div>
 
                 <div className="flex items-center gap-2 pt-1">
