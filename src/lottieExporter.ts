@@ -112,6 +112,10 @@ export function generateLottieAvatarJson(
         ty: 4,
         nm: 'Eye_Specularity_Glints',
         sr: 1,
+        st: 0,
+        ip: 0,
+        op: durationFrames,
+        bm: 0,
         ks: {
           o: { a: 0, k: 100 },
           r: { a: 0, k: 0 },
@@ -156,6 +160,10 @@ export function generateLottieAvatarJson(
         ty: 4,
         nm: 'Eyes_Pixar_Obsidian',
         sr: 1,
+        st: 0,
+        ip: 0,
+        op: durationFrames,
+        bm: 0,
         ks: {
           o: { a: 0, k: 100 },
           r: { a: 0, k: 0 },
@@ -200,6 +208,10 @@ export function generateLottieAvatarJson(
         ty: 4,
         nm: 'Smile_Aperture',
         sr: 1,
+        st: 0,
+        ip: 0,
+        op: durationFrames,
+        bm: 0,
         ks: {
           o: { a: 0, k: state === 'muted' ? 30 : 100 },
           r: { a: 0, k: 0 },
@@ -255,6 +267,10 @@ export function generateLottieAvatarJson(
         ty: 4,
         nm: 'Body_Breathing_Orb',
         sr: 1,
+        st: 0,
+        ip: 0,
+        op: durationFrames,
+        bm: 0,
         ks: {
           o: { a: 0, k: 100 },
           r: { a: 0, k: 0 },
@@ -323,6 +339,10 @@ export function generateLottieAvatarJson(
         ty: 4,
         nm: 'Atmospheric_Glow_Halo',
         sr: 1,
+        st: 0,
+        ip: 0,
+        op: durationFrames,
+        bm: 0,
         ks: {
           o: {
             a: 1,
