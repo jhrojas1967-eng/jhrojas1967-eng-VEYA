@@ -206,8 +206,21 @@ export const AudiophilePlayerModal: React.FC<AudiophilePlayerModalProps> = ({
                 className={`w-48 h-48 sm:w-56 sm:h-56 rounded-2xl p-4 shadow-2xl border border-white/20 relative z-10 flex flex-col justify-between overflow-hidden bg-gradient-to-br ${
                   track.coverGradient || 'from-sky-800 to-blue-950'
                 }`}
+                style={{ backgroundColor: track.coverHue }}
               >
-                <div className="flex justify-between items-start">
+                {track.coverImage && (
+                  <img
+                    src={track.coverImage}
+                    alt={track.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+                {/* Gradient overlay for text contrast */}
+                {track.coverImage && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/60 pointer-events-none" />
+                )}
+
+                <div className="flex justify-between items-start relative z-10">
                   <span className="text-[10px] font-mono font-black bg-black/60 px-2 py-0.5 rounded-full backdrop-blur-md border border-white/20">
                     {track.format} LOSSLESS
                   </span>
@@ -219,7 +232,7 @@ export const AudiophilePlayerModal: React.FC<AudiophilePlayerModalProps> = ({
                   </button>
                 </div>
 
-                <div className="space-y-0.5">
+                <div className="space-y-0.5 relative z-10">
                   <span className="text-[10px] text-white/80 font-medium">{track.genre}</span>
                   <h3 className="text-base font-black text-white leading-tight drop-shadow-md">
                     {track.title}
@@ -369,7 +382,20 @@ export const AudiophilePlayerModal: React.FC<AudiophilePlayerModalProps> = ({
         <div className="flex items-center gap-1.5">
           <span className="text-sky-300">{track.bitrate}</span>
           <span>·</span>
-          <span>ReplayGain {track.replayGainDb}dB</span>
+          <span
+            className={`px-1.5 py-0.2 rounded transition-colors ${
+              dsp.replayGainEnabled
+                ? 'text-emerald-300 bg-emerald-950/60 font-bold border border-emerald-500/30'
+                : 'text-slate-500 line-through'
+            }`}
+            title={
+              dsp.replayGainEnabled
+                ? `ReplayGain Activo: Target ${dsp.replayGainTargetDb} dBFS (Pista: ${track.replayGainDb} dB)`
+                : 'ReplayGain Desactivado'
+            }
+          >
+            RG {dsp.replayGainEnabled ? `${dsp.replayGainTargetDb}dB` : 'OFF'}
+          </span>
         </div>
       </div>
 

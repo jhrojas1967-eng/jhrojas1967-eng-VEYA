@@ -61,15 +61,30 @@ export interface SongTrack {
   isFavorite: boolean;
   coverHue: string;
   coverGradient?: string;
+  coverImage?: string; // Custom uploaded album cover URL or data URL
   format: 'FLAC' | 'WAV' | 'MP3' | 'DSD';
   bitDepth?: string; // e.g. '24-bit', '16-bit', '32-bit float'
   sampleRate: string; // e.g. '96.0 kHz', '192.0 kHz', '44.1 kHz'
   bitrate: string; // e.g. '2840 kbps', '9216 kbps', '320 kbps'
   genre?: string;
   year?: number;
+  composer?: string;
+  label?: string;
+  channels?: string;
+  fileSize?: string;
+  trackNumber?: number;
   folderPath?: string;
   lyrics?: string[];
   replayGainDb?: number;
+}
+
+export interface Playlist {
+  id: string;
+  name: string;
+  description?: string;
+  coverHue: string;
+  trackIds: string[];
+  createdAt: string;
 }
 
 export interface EqPreset {
@@ -99,6 +114,12 @@ export interface AudioDspState {
   reverbType: 'off' | 'room' | 'hall' | 'stadium' | 'stage' | 'cathedral';
   reverbWet: number; // 0 to 100
   agcVolumeLeveling: boolean; // Automatic Gain Control / ReplayGain
+  // ReplayGain Professional Configuration:
+  replayGainEnabled: boolean; // Enable ReplayGain volume normalization
+  replayGainMode: 'track' | 'album'; // Track gain vs Album gain
+  replayGainTargetDb: number; // Target SPL/LUFS gain: e.g. -14 dB (EBU R128), -18 dB (jetAudio/ReplayGain 2.0 standard), -23 dB (Broadcast)
+  replayGainPreampDb: number; // Preamp gain for tracks with ReplayGain tags (-6 to +6 dB)
+  replayGainPreventClipping: boolean; // Limiter/Peak protection against digital clipping
   crossfadeSeconds: number; // 0 to 10 seconds
   playbackSpeed: number; // 0.5x to 2.0x
   pitchSemitones: number; // -6 to +6 st

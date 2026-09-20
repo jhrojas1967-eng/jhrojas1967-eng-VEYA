@@ -13,6 +13,9 @@ import {
   Layers,
   Info,
   Radio,
+  ShieldCheck,
+  Settings,
+  ChevronDown,
 } from 'lucide-react';
 import { AudioDspState, EqPreset } from '../../types';
 import { EQ_FREQUENCIES, EQ_PRESETS } from '../../data/musicData';
@@ -20,15 +23,18 @@ import { EQ_FREQUENCIES, EQ_PRESETS } from '../../data/musicData';
 interface EqualizerDspRackProps {
   dsp: AudioDspState;
   onUpdateDsp: (updater: (prev: AudioDspState) => AudioDspState) => void;
+  onOpenSettings?: () => void;
   isDark?: boolean;
 }
 
 export const EqualizerDspRack: React.FC<EqualizerDspRackProps> = ({
   dsp,
   onUpdateDsp,
+  onOpenSettings,
   isDark = false,
 }) => {
   const [activeSection, setActiveSection] = useState<'eq' | 'bbe' | 'reverb' | 'engine'>('eq');
+  const [eqMode, setEqMode] = useState<'10bands' | '3bands'>('10bands');
   const [showPresetInfo, setShowPresetInfo] = useState(false);
 
   const activePreset = EQ_PRESETS.find((p) => p.id === dsp.activePresetId) || EQ_PRESETS[0];
@@ -134,6 +140,15 @@ export const EqualizerDspRack: React.FC<EqualizerDspRackProps> = ({
           </div>
 
           <div className="flex items-center gap-1">
+            {onOpenSettings && (
+              <button
+                onClick={onOpenSettings}
+                className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800"
+                title="Ajustes de Audio & ReplayGain"
+              >
+                <Settings className="w-4 h-4" />
+              </button>
+            )}
             <button
               onClick={() => setShowPresetInfo(!showPresetInfo)}
               className="p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800"
@@ -188,35 +203,42 @@ export const EqualizerDspRack: React.FC<EqualizerDspRackProps> = ({
       {/* SECTION 1: 10-BAND GRAPHIC EQUALIZER & PRESETS */}
       {activeSection === 'eq' && (
         <div className="space-y-3">
-          {/* Preset Selector Carousel (Rock, Pop, Clásico, Dance, Estadio, Acústica...) */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400 px-1">
-              <span>MODOS PREDEFINIDOS ({EQ_PRESETS.length})</span>
-              <span className="text-[10px] text-sky-600 dark:text-sky-400 font-mono">
+          {/* Preset Selector Dropdown (Lista Desplegable Inteligente) */}
+          <div className="bg-white dark:bg-[#131A22] p-3 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-2xs space-y-2">
+            <div className="flex items-center justify-between text-[11px] font-bold text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-1.5">
+                <SlidersHorizontal className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+                <span>MODO DSP / PERFIL ACÚSTICO</span>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 font-bold border border-sky-200 dark:border-sky-800">
                 {activePreset.genre}
               </span>
             </div>
 
-            <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
-              {EQ_PRESETS.map((preset) => {
-                const isSelected = dsp.activePresetId === preset.id;
-                return (
-                  <button
-                    key={preset.id}
-                    onClick={() => handleSelectPreset(preset)}
-                    disabled={!dsp.masterDspEnabled}
-                    className={`shrink-0 px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                      isSelected && dsp.masterDspEnabled
-                        ? 'bg-[#155E95] dark:bg-[#8ECEFF] text-white dark:text-[#002D4E] shadow-sm'
-                        : 'bg-white dark:bg-[#161F28] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-400 dark:hover:border-sky-600 disabled:opacity-40'
-                    }`}
-                  >
-                    {isSelected && dsp.masterDspEnabled && <Check className="w-3 h-3 stroke-[3]" />}
-                    <span>{preset.name}</span>
-                  </button>
-                );
-              })}
+            <div className="relative">
+              <select
+                value={dsp.activePresetId}
+                onChange={(e) => {
+                  const found = EQ_PRESETS.find((p) => p.id === e.target.value);
+                  if (found) handleSelectPreset(found);
+                }}
+                disabled={!dsp.masterDspEnabled}
+                className="w-full appearance-none bg-slate-50 dark:bg-[#18212C] text-slate-900 dark:text-slate-100 font-bold text-xs rounded-xl px-3.5 py-2.5 pr-9 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50 cursor-pointer transition-all shadow-2xs"
+              >
+                {EQ_PRESETS.map((preset) => (
+                  <option key={preset.id} value={preset.id}>
+                    {preset.name} — {preset.genre}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute right-3 top-3 pointer-events-none text-slate-400">
+                <ChevronDown className="w-4 h-4" />
+              </div>
             </div>
+
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
+              {activePreset.description}
+            </p>
           </div>
 
           {/* SVG Real-time Frequency Response Curve Visualizer */}
@@ -290,39 +312,178 @@ export const EqualizerDspRack: React.FC<EqualizerDspRackProps> = ({
             </span>
           </div>
 
-          {/* 10-Band Graphic Equalizer Faders */}
-          <div className="p-3.5 bg-white dark:bg-[#12181F] rounded-2xl border border-slate-200 dark:border-slate-800 space-y-2">
-            <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 px-0.5">
-              <span>GRAVES / BASS</span>
-              <span>MEDIOS / VOCAL</span>
-              <span>AGUDOS / TREBLE</span>
+          {/* Graphic Equalizer Faders Section */}
+          <div className="p-4 bg-white dark:bg-[#12181F] rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-bold text-slate-800 dark:text-slate-200 block">
+                  Ajuste de Bandas
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  {eqMode === '10bands' ? '10 Frecuencias ISO Independientes' : 'Controles Esenciales 3-Vías'}
+                </span>
+              </div>
+
+              {/* View Switcher: 10 Bandas vs 3 Vías */}
+              <div className="flex items-center gap-1 bg-slate-100 dark:bg-slate-800 p-0.5 rounded-xl text-[10px] font-bold">
+                <button
+                  type="button"
+                  onClick={() => setEqMode('10bands')}
+                  className={`px-2 py-1 rounded-lg transition-all ${
+                    eqMode === '10bands'
+                      ? 'bg-white dark:bg-[#1E293B] text-sky-700 dark:text-sky-300 shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  10 Bandas
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setEqMode('3bands')}
+                  className={`px-2 py-1 rounded-lg transition-all ${
+                    eqMode === '3bands'
+                      ? 'bg-white dark:bg-[#1E293B] text-sky-700 dark:text-sky-300 shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+                  }`}
+                >
+                  3 Vías Rápido
+                </button>
+              </div>
             </div>
 
-            <div className="grid grid-cols-10 gap-1 pt-2">
-              {dsp.eqBands.map((val, idx) => (
-                <div key={EQ_FREQUENCIES[idx]} className="flex flex-col items-center space-y-2">
-                  <span className="text-[9px] font-mono font-bold text-slate-600 dark:text-slate-300">
-                    {val > 0 ? `+${val}` : val}
-                  </span>
-                  <div className="h-28 flex items-center justify-center py-1">
-                    <input
-                      type="range"
-                      min="-10"
-                      max="10"
-                      step="0.5"
-                      disabled={!dsp.masterDspEnabled}
-                      value={val}
-                      onChange={(e) => handleBandChange(idx, parseFloat(e.target.value))}
-                      className="h-24 -rotate-90 w-24 accent-sky-600 dark:accent-sky-400 cursor-pointer disabled:opacity-40"
-                      style={{ transformOrigin: 'center' }}
-                    />
-                  </div>
-                  <span className="text-[8px] font-mono text-slate-400 text-center leading-tight">
-                    {EQ_FREQUENCIES[idx]}
-                  </span>
+            {eqMode === '10bands' ? (
+              <div className="space-y-1">
+                <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 px-1">
+                  <span>GRAVES (32-125Hz)</span>
+                  <span>MEDIOS (250Hz-2kHz)</span>
+                  <span>AGUDOS (4k-16kHz)</span>
                 </div>
-              ))}
-            </div>
+
+                {/* Horizontal Scrollable Rack with 48dp Touch Targets */}
+                <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none px-1">
+                  {dsp.eqBands.map((val, idx) => (
+                    <div
+                      key={EQ_FREQUENCIES[idx]}
+                      className="flex flex-col items-center space-y-1.5 min-w-[50px] shrink-0 bg-slate-50/70 dark:bg-[#18212C] p-2 rounded-xl border border-slate-100 dark:border-slate-800"
+                    >
+                      <span className="text-[10px] font-mono font-bold text-sky-700 dark:text-sky-300">
+                        {val > 0 ? `+${val}` : val} dB
+                      </span>
+                      <div className="h-28 flex items-center justify-center py-1">
+                        <input
+                          type="range"
+                          min="-10"
+                          max="10"
+                          step="0.5"
+                          disabled={!dsp.masterDspEnabled}
+                          value={val}
+                          onChange={(e) => handleBandChange(idx, parseFloat(e.target.value))}
+                          className="h-24 -rotate-90 w-24 accent-sky-600 dark:accent-sky-400 cursor-pointer disabled:opacity-40"
+                          style={{ transformOrigin: 'center' }}
+                        />
+                      </div>
+                      <span className="text-[9px] font-mono font-bold text-slate-500 dark:text-slate-400 text-center leading-tight">
+                        {EQ_FREQUENCIES[idx]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              /* 3-Band Simplified Sliders */
+              <div className="space-y-3 pt-1">
+                {/* Bass Range (Bands 0, 1, 2: 32Hz, 64Hz, 125Hz) */}
+                <div className="p-2.5 bg-slate-50/70 dark:bg-[#18212C] rounded-xl border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span>Graves (Bass)</span>
+                    <span className="font-mono text-sky-600 dark:text-sky-400">
+                      {dsp.eqBands[1] > 0 ? `+${dsp.eqBands[1]}` : dsp.eqBands[1]} dB
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-10"
+                    max="10"
+                    step="0.5"
+                    disabled={!dsp.masterDspEnabled}
+                    value={dsp.eqBands[1]}
+                    onChange={(e) => {
+                      const v = parseFloat(e.target.value);
+                      handleBandChange(0, v * 1.1);
+                      handleBandChange(1, v);
+                      handleBandChange(2, v * 0.8);
+                    }}
+                    className="w-full accent-sky-600 cursor-pointer disabled:opacity-40"
+                  />
+                  <div className="flex justify-between text-[9px] text-slate-400 font-mono">
+                    <span>-10 dB</span>
+                    <span>32 Hz - 125 Hz</span>
+                    <span>+10 dB</span>
+                  </div>
+                </div>
+
+                {/* Mid Range (Bands 3, 4, 5, 6: 250Hz - 2kHz) */}
+                <div className="p-2.5 bg-slate-50/70 dark:bg-[#18212C] rounded-xl border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span>Medios / Voces (Midrange)</span>
+                    <span className="font-mono text-sky-600 dark:text-sky-400">
+                      {dsp.eqBands[4] > 0 ? `+${dsp.eqBands[4]}` : dsp.eqBands[4]} dB
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-10"
+                    max="10"
+                    step="0.5"
+                    disabled={!dsp.masterDspEnabled}
+                    value={dsp.eqBands[4]}
+                    onChange={(e) => {
+                      const v = parseFloat(e.target.value);
+                      handleBandChange(3, v * 0.8);
+                      handleBandChange(4, v);
+                      handleBandChange(5, v);
+                      handleBandChange(6, v * 0.8);
+                    }}
+                    className="w-full accent-sky-600 cursor-pointer disabled:opacity-40"
+                  />
+                  <div className="flex justify-between text-[9px] text-slate-400 font-mono">
+                    <span>-10 dB</span>
+                    <span>250 Hz - 2 kHz</span>
+                    <span>+10 dB</span>
+                  </div>
+                </div>
+
+                {/* Treble Range (Bands 7, 8, 9: 4kHz - 16kHz) */}
+                <div className="p-2.5 bg-slate-50/70 dark:bg-[#18212C] rounded-xl border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div className="flex justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <span>Agudos / Brillo (Treble)</span>
+                    <span className="font-mono text-sky-600 dark:text-sky-400">
+                      {dsp.eqBands[8] > 0 ? `+${dsp.eqBands[8]}` : dsp.eqBands[8]} dB
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-10"
+                    max="10"
+                    step="0.5"
+                    disabled={!dsp.masterDspEnabled}
+                    value={dsp.eqBands[8]}
+                    onChange={(e) => {
+                      const v = parseFloat(e.target.value);
+                      handleBandChange(7, v * 0.8);
+                      handleBandChange(8, v);
+                      handleBandChange(9, v * 1.1);
+                    }}
+                    className="w-full accent-sky-600 cursor-pointer disabled:opacity-40"
+                  />
+                  <div className="flex justify-between text-[9px] text-slate-400 font-mono">
+                    <span>-10 dB</span>
+                    <span>4 kHz - 16 kHz</span>
+                    <span>+10 dB</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -568,29 +729,148 @@ export const EqualizerDspRack: React.FC<EqualizerDspRackProps> = ({
         </div>
       )}
 
-      {/* SECTION 4: ADVANCED AUDIO ENGINE (AGC, Crossfade, Hi-Res Output) */}
+      {/* SECTION 4: ADVANCED AUDIO ENGINE (ReplayGain, Crossfade, Hi-Res Output) */}
       {activeSection === 'engine' && (
         <div className="space-y-3">
-          {/* Automatic Gain Control (AGC) */}
-          <div className="p-3.5 bg-white dark:bg-[#12181F] rounded-2xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
-            <div>
-              <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">
-                Control Automático de Ganancia (AGC)
-              </h4>
-              <p className="text-[10px] text-slate-400">
-                Normalización ReplayGain para evitar saltos de volumen entre canciones
-              </p>
+          {/* ReplayGain Volume Normalization Card */}
+          <div className="p-4 bg-white dark:bg-[#12181F] rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Volume2 className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                <div>
+                  <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                    Normalización ReplayGain (RG 2.0)
+                  </h4>
+                  <p className="text-[10px] text-slate-400">
+                    Iguala el volumen percibido entre pistas para evitar cambios bruscos
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() =>
+                  onUpdateDsp((p) => ({
+                    ...p,
+                    replayGainEnabled: !p.replayGainEnabled,
+                    agcVolumeLeveling: !p.replayGainEnabled,
+                  }))
+                }
+                className={`w-11 h-6 rounded-full transition-colors relative p-0.5 shrink-0 ${
+                  dsp.replayGainEnabled ? 'bg-sky-600' : 'bg-slate-300 dark:bg-slate-700'
+                }`}
+                title="Activar o desactivar ReplayGain"
+              >
+                <div
+                  className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform ${
+                    dsp.replayGainEnabled ? 'translate-x-5' : 'translate-x-0'
+                  }`}
+                />
+              </button>
             </div>
-            <button
-              onClick={() => onUpdateDsp((p) => ({ ...p, agcVolumeLeveling: !p.agcVolumeLeveling }))}
-              className={`w-10 h-6 rounded-full transition-colors relative p-0.5 ${
-                dsp.agcVolumeLeveling ? 'bg-sky-600' : 'bg-slate-300 dark:bg-slate-700'
-              }`}
-            >
-              <div className={`w-5 h-5 rounded-full bg-white shadow-sm transition-transform ${
-                dsp.agcVolumeLeveling ? 'translate-x-4' : 'translate-x-0'
-              }`} />
-            </button>
+
+            {/* Target Gain & Options when enabled */}
+            {dsp.replayGainEnabled && (
+              <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 space-y-3">
+                {/* Target Slider */}
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span className="font-bold text-slate-700 dark:text-slate-300">
+                      Target de Ganancia Objetivo
+                    </span>
+                    <span className="font-mono font-black text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-sky-950/80 px-2 py-0.5 rounded-lg border border-sky-300/40 text-xs">
+                      {dsp.replayGainTargetDb} dBFS
+                    </span>
+                  </div>
+                  <input
+                    type="range"
+                    min="-26"
+                    max="-10"
+                    step="1"
+                    value={dsp.replayGainTargetDb}
+                    onChange={(e) =>
+                      onUpdateDsp((p) => ({
+                        ...p,
+                        replayGainTargetDb: parseInt(e.target.value),
+                      }))
+                    }
+                    className="w-full accent-sky-600 h-2 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer"
+                  />
+                  <div className="flex justify-between text-[9px] font-mono text-slate-400">
+                    <span>-26 dB (Broadcast)</span>
+                    <span className="text-sky-600 dark:text-sky-400 font-bold">-18 dB (jetAudio Estándar)</span>
+                    <span>-10 dB (Streaming)</span>
+                  </div>
+                </div>
+
+                {/* Target Presets Quick Pills */}
+                <div className="grid grid-cols-3 gap-1.5">
+                  {[
+                    { val: -14, lbl: 'Spotify / -14 dB' },
+                    { val: -18, lbl: 'jetAudio / -18 dB' },
+                    { val: -23, lbl: 'EBU / -23 dB' },
+                  ].map((preset) => {
+                    const isSel = dsp.replayGainTargetDb === preset.val;
+                    return (
+                      <button
+                        key={preset.val}
+                        onClick={() =>
+                          onUpdateDsp((p) => ({ ...p, replayGainTargetDb: preset.val }))
+                        }
+                        className={`py-1.5 px-2 rounded-xl text-[10px] font-mono border transition-all text-center ${
+                          isSel
+                            ? 'bg-sky-500 text-white border-sky-600 font-bold shadow-2xs'
+                            : 'bg-slate-50 dark:bg-[#161F28] border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300'
+                        }`}
+                      >
+                        {preset.lbl}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Mode: Track vs Album & Anti-Clipping */}
+                <div className="flex items-center justify-between pt-1 text-[11px]">
+                  <div className="flex items-center gap-1 bg-slate-100 dark:bg-[#161F28] p-0.5 rounded-xl">
+                    <button
+                      onClick={() => onUpdateDsp((p) => ({ ...p, replayGainMode: 'track' }))}
+                      className={`px-2 py-1 rounded-lg text-[10px] font-bold transition-all ${
+                        dsp.replayGainMode === 'track'
+                          ? 'bg-white dark:bg-[#1E293B] text-sky-700 dark:text-sky-300 shadow-2xs'
+                          : 'text-slate-500'
+                      }`}
+                    >
+                      Pista
+                    </button>
+                    <button
+                      onClick={() => onUpdateDsp((p) => ({ ...p, replayGainMode: 'album' }))}
+                      className={`px-2 py-1 rounded-lg text-[10px] font-bold transition-all ${
+                        dsp.replayGainMode === 'album'
+                          ? 'bg-white dark:bg-[#1E293B] text-sky-700 dark:text-sky-300 shadow-2xs'
+                          : 'text-slate-500'
+                      }`}
+                    >
+                      Álbum
+                    </button>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      onUpdateDsp((p) => ({
+                        ...p,
+                        replayGainPreventClipping: !p.replayGainPreventClipping,
+                      }))
+                    }
+                    className={`flex items-center gap-1 px-2 py-1 rounded-xl text-[10px] font-bold border transition-colors ${
+                      dsp.replayGainPreventClipping
+                        ? 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-400/40'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700'
+                    }`}
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    <span>Anti-Clipping</span>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Crossfade Slider */}
