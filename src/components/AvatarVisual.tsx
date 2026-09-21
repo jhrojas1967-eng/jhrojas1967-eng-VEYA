@@ -9,12 +9,17 @@ interface AvatarVisualProps {
   reducedMotion?: boolean;
   amplitude?: number;
   showStatusLabel?: boolean;
+  interactiveGaze?: boolean;
+  enableBlinking?: boolean;
+  enableTapSquish?: boolean;
+  onTap?: () => void;
 }
 
 /**
  * AvatarVisual (Pixar / Disney 3D Volumetric Edition)
  * Provides organic breathing, dynamic subsurface light scattering,
- * sentient ambient particles, and responsive Pixar-style expressions.
+ * sentient ambient particles, interactive 2.5D gaze tracking,
+ * procedural blinking, and responsive Pixar-style expressions.
  */
 export const AvatarVisual: React.FC<AvatarVisualProps> = ({
   state,
@@ -23,6 +28,10 @@ export const AvatarVisual: React.FC<AvatarVisualProps> = ({
   reducedMotion = false,
   amplitude = 0.5,
   showStatusLabel = false,
+  interactiveGaze = true,
+  enableBlinking = true,
+  enableTapSquish = true,
+  onTap,
 }) => {
   return (
     <CinematicAvatarCanvas
@@ -32,6 +41,10 @@ export const AvatarVisual: React.FC<AvatarVisualProps> = ({
       reducedMotion={reducedMotion}
       amplitude={amplitude}
       showMoodBadge={showStatusLabel}
+      interactiveGaze={interactiveGaze}
+      enableBlinking={enableBlinking}
+      enableTapSquish={enableTapSquish}
+      onTap={onTap}
     />
   );
 };

@@ -7,6 +7,13 @@ import { ScreenMusic } from './components/ScreenMusic';
 import { ScreenSettings } from './components/ScreenSettings';
 import { ScreenOnboarding } from './components/ScreenOnboarding';
 import { ScreenVault } from './components/ScreenVault';
+import { ScreenVoice } from './components/ScreenVoice';
+import { ScreenTraining } from './components/ScreenTraining';
+import { ScreenAlarm } from './components/ScreenAlarm';
+import { ScreenWeather } from './components/ScreenWeather';
+import { ScreenNews } from './components/ScreenNews';
+import { ScreenPartner } from './components/ScreenPartner';
+import { ScreenMusicStreaming } from './components/ScreenMusicStreaming';
 import { BottomNav } from './components/BottomNav';
 import { ScreenTab, ThemeMode } from './types';
 import { Smartphone, Moon, Sun, Laptop, ArrowRight, Share2, Download, Sparkles, CheckCircle, ShieldCheck, GitBranch } from 'lucide-react';
@@ -112,6 +119,9 @@ export default function App() {
                   )}
                   {currentTab === 'chat' && <ScreenChat />}
                   {currentTab === 'music' && <ScreenMusic />}
+                  {currentTab === 'streaming' && (
+                    <ScreenMusicStreaming onBack={() => setCurrentTab('music')} />
+                  )}
                   {currentTab === 'settings' && (
                     <ScreenSettings
                       onOpenOnboarding={() => setCurrentTab('onboarding')}
@@ -121,10 +131,31 @@ export default function App() {
                   {currentTab === 'vault' && (
                     <ScreenVault onBack={() => setCurrentTab('settings')} />
                   )}
+                  {currentTab === 'voice' && (
+                    <ScreenVoice onBack={() => setCurrentTab('settings')} />
+                  )}
+                  {currentTab === 'training' && (
+                    <ScreenTraining onBack={() => setCurrentTab('settings')} />
+                  )}
+                  {currentTab === 'alarm' && (
+                    <ScreenAlarm onBack={() => setCurrentTab('settings')} />
+                  )}
+                  {currentTab === 'weather' && (
+                    <ScreenWeather onBack={() => setCurrentTab('settings')} />
+                  )}
+                  {currentTab === 'news' && (
+                    <ScreenNews onBack={() => setCurrentTab('settings')} />
+                  )}
+                  {currentTab === 'partner' && (
+                    <ScreenPartner
+                      onBack={() => setCurrentTab('settings')}
+                      onOpenOnboarding={() => setCurrentTab('onboarding')}
+                    />
+                  )}
                 </div>
 
-                {/* Bottom Navigation (Only visible outside onboarding and vault) */}
-                {currentTab !== 'onboarding' && currentTab !== 'vault' && (
+                {/* Bottom Navigation (Only visible on main tabs) */}
+                {['today', 'chat', 'music', 'settings'].includes(currentTab) && (
                   <BottomNav
                     currentTab={currentTab}
                     onSelectTab={setCurrentTab}
@@ -151,8 +182,22 @@ export default function App() {
                         ? 'Conversar'
                         : currentTab === 'music'
                         ? 'Música Local (Motor jetAudio DSP)'
+                        : currentTab === 'streaming'
+                        ? 'Música & Streaming Unificado (OAuth 2.0)'
                         : currentTab === 'vault'
                         ? 'Bóveda de Privacidad & Memoria Local'
+                        : currentTab === 'voice'
+                        ? 'Voz y Personalidad (Síntesis Neuronal)'
+                        : currentTab === 'training'
+                        ? 'ENTRENA (Perfiles de Adaptación)'
+                        : currentTab === 'alarm'
+                        ? 'Música de Alarma & Fade-in DSP'
+                        : currentTab === 'weather'
+                        ? 'Meteorología Privada sin GPS'
+                        : currentTab === 'news'
+                        ? 'Medios de Noticias RSS Descentralizados'
+                        : currentTab === 'partner'
+                        ? 'Tu Compañero VEYA (Perfil y Trato)'
                         : 'Ajustes'}
                     </h2>
                   </div>
@@ -176,6 +221,50 @@ export default function App() {
                       <li><strong>Separación Criptográfica</strong>: Claves en Android Keystore de hardware; partición estricta entre datos de usuario y memoria operativa efímera.</li>
                       <li><strong>Control Soberano & Purga</strong>: El usuario puede auditar, editar o purgar cualquier recuerdo o categoría en cualquier instante con confirmación biométrica.</li>
                       <li><strong>Zero Telemetry</strong>: Sin analítica externa, sin tracking ni filtración de metadatos.</li>
+                    </ul>
+                  ) : currentTab === 'voice' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Síntesis Neuronal On-Device</strong>: Motor TTS local con 4 voces (Aura, Ópalo, Céfiro, Vesper).</li>
+                      <li><strong>Prosodia Personalizable</strong>: Control dinámico de velocidad (0.75x a 1.50x), tono semitonal y pausas biológicas orgánicas.</li>
+                      <li><strong>Matriz de Temperamento M3</strong>: Calidez empática, concisión/extensión, proactividad y sentido de la ironía ajustables mediante Sliders M3 continuos.</li>
+                    </ul>
+                  ) : currentTab === 'training' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Aprendizaje Federado en Dispositivo</strong>: Adaptación algorítmica sin enviar registros de uso a la nube.</li>
+                      <li><strong>Gestión de Hábitos M3</strong>: Disparadores por contexto y métricas de adherencia por perfil (Rutina, Deep Work, Bienestar, Noche).</li>
+                      <li><strong>Persistencia Local</strong>: Room DAO para creación, edición y activación selectiva de perfiles.</li>
+                    </ul>
+                  ) : currentTab === 'alarm' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Despertar Armónico Progresivo</strong>: Curva de fade-in gradual de 1 a 5 minutos para evitar descargas repentinas de cortisol.</li>
+                      <li><strong>Fuentes Locales & Bioacústicas</strong>: Integración con pistas de alta resolución de la biblioteca jetAudio y generadores de lluvia y ondas alfa.</li>
+                      <li><strong>Sincronización con el Avatar</strong>: Transición al estado `sereno` y saludo vocal contextual al apagar la alarma.</li>
+                    </ul>
+                  ) : currentTab === 'weather' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Cero Rastreo GPS</strong>: Sin permiso `ACCESS_FINE_LOCATION`; configuración manual de ciudad o distrito.</li>
+                      <li><strong>API Open-Meteo Privada</strong>: Consultas sin cookies, sin tokens ni vinculación de identidad de dispositivo.</li>
+                      <li><strong>Avisos Proactivos Contextuales</strong>: Alertas exclusivas ante precipitaciones inminentes en la rutina del día.</li>
+                    </ul>
+                  ) : currentTab === 'news' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Estándares Abiertos RSS / Atom</strong>: Conexión directa a servidores de medios sin intermediarios algorítmicos opacos.</li>
+                      <li><strong>Resumen Express Matinal</strong>: Síntesis de 3 titulares clave en menos de 60 segundos de lectura vocal.</li>
+                      <li><strong>Filtro Anti-Sensacionalismo</strong>: Descarte de notas amarillistas para una mañana serena.</li>
+                    </ul>
+                  ) : currentTab === 'partner' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Perfil de Soberanía</strong>: Control del nombre de usuario, pronombre de trato (Tú vs. Usted) y rol de la IA.</li>
+                      <li><strong>Modo No Invasivo</strong>: Silencio absoluto y respeto del modo No Molestar del sistema operativo.</li>
+                      <li><strong>Detección de Fatiga Local</strong>: Sugerencia de pausas saludables tras sesiones prolongadas.</li>
+                    </ul>
+                  ) : currentTab === 'streaming' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Vinculación OAuth 2.0 PKCE</strong>: Integración con Spotify Connect, Apple MusicKit SDK y TIDAL Connect.</li>
+                      <li><strong>Selector de Fuente Material 3</strong>: Conmutación en tiempo real entre ExoPlayer Local (AAudio) y SDKs de streaming.</li>
+                      <li><strong>Lista Híbrida Unificada</strong>: Pistas locales FLAC 24/96 amalgamadas con canciones streaming.</li>
+                      <li><strong>Offline Failsafe</strong>: Respaldo continuo a pistas locales si se pierde la conectividad a Internet.</li>
+                      <li><strong>Android Keystore</strong>: Almacenamiento seguro de tokens y credenciales cifradas con AES-256-GCM.</li>
                     </ul>
                   ) : currentTab === 'music' ? (
                     <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
@@ -214,27 +303,39 @@ export default function App() {
               </div>
 
               {/* Screen Quick Selector Chips */}
-              <div className="flex flex-wrap gap-2">
-                {[
-                  { id: 'today', label: '1. Hoy (Rutina)' },
-                  { id: 'chat', label: '2. Conversar' },
-                  { id: 'music', label: '3. Música Local' },
-                  { id: 'vault', label: '4. Bóveda Privacidad' },
-                  { id: 'settings', label: '5. Ajustes' },
-                  { id: 'onboarding', label: '6. Onboarding (8 pasos)' },
-                ].map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setCurrentTab(s.id as any)}
-                    className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all ${
-                      currentTab === s.id
-                        ? 'bg-[#155E95] dark:bg-[#8ECEFF] text-white dark:text-[#003355] shadow-sm'
-                        : 'bg-white dark:bg-[#12181F] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-50'
-                    }`}
-                  >
-                    {s.label}
-                  </button>
-                ))}
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-black uppercase tracking-wider text-slate-400 px-1">
+                  Navegación Rápida de Pantallas (Mockup Android)
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    { id: 'today', label: '1. Hoy (Rutina)' },
+                    { id: 'chat', label: '2. Conversar' },
+                    { id: 'music', label: '3. Música Local' },
+                    { id: 'streaming', label: 'Streaming & OAuth' },
+                    { id: 'vault', label: '4. Bóveda Privacidad' },
+                    { id: 'settings', label: '5. Ajustes' },
+                    { id: 'partner', label: 'Tu Compañero' },
+                    { id: 'voice', label: 'Voz & Personalidad' },
+                    { id: 'training', label: 'ENTRENA (Perfiles)' },
+                    { id: 'alarm', label: 'Música Alarma' },
+                    { id: 'weather', label: 'Meteorología' },
+                    { id: 'news', label: 'Medios RSS' },
+                    { id: 'onboarding', label: 'Onboarding (8 pasos)' },
+                  ].map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setCurrentTab(s.id as any)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        currentTab === s.id
+                          ? 'bg-[#155E95] dark:bg-[#8ECEFF] text-white dark:text-[#003355] shadow-xs'
+                          : 'bg-white dark:bg-[#12181F] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                      }`}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

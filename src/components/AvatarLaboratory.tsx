@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CinematicAvatarCanvas } from './CinematicAvatarCanvas';
 import { PixarAvatarSvg } from './PixarAvatarSvg';
 import { AvatarState, AvatarMood } from '../types';
@@ -24,6 +24,12 @@ import {
   Settings2,
   BookOpen,
   Boxes,
+  Mic,
+  MicOff,
+  Play,
+  Square,
+  MousePointer,
+  Radio,
 } from 'lucide-react';
 
 export const AvatarLaboratory: React.FC = () => {
@@ -43,6 +49,22 @@ export const AvatarLaboratory: React.FC = () => {
   const [showAtmosphericParticles, setShowAtmosphericParticles] = useState<boolean>(true);
   const [showLottieModal, setShowLottieModal] = useState<boolean>(false);
   const [activeModalTab, setActiveModalTab] = useState<'export' | 'config' | 'guide' | 'statesGuide' | 'stageSpecs'>('export');
+
+  // Advanced Avatar Interaction Controls
+  const [interactiveGaze, setInteractiveGaze] = useState<boolean>(true);
+  const [enableBlinking, setEnableBlinking] = useState<boolean>(true);
+  const [enableTapSquish, setEnableTapSquish] = useState<boolean>(true);
+  const [tapFeedbackToast, setTapFeedbackToast] = useState<string | null>(null);
+
+  // Real Microphone Live Stream
+  const [isMicActive, setIsMicActive] = useState<boolean>(false);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const micStreamRef = useRef<MediaStream | null>(null);
+  const micAnimFrameRef = useRef<number | null>(null);
+
+  // Web Speech TTS Demo
+  const [isSpeakingTts, setIsSpeakingTts] = useState<boolean>(false);
 
   const states: { id: AvatarState; label: string; desc: string }[] = [
     { id: 'idle', label: 'Idle / Reposo', desc: 'Respiración orgánica sinusoidal (1.8 rad/s) y flotación armónica.' },
@@ -292,6 +314,145 @@ fun VeyaLottieAvatar(
     setMood(md);
     setAmplitude(amp);
   };
+
+  // Real Microphone Stream Controller (Web Audio API)
+  const toggleRealMic = async () => {
+    if (isMicActive) {
+      if (micAnimFrameRef.current) cancelAnimationFrame(micAnimFrameRef.current);
+      if (micStreamRef.current) {
+        micStreamRef.current.getTracks().forEach((t) => t.stop());
+        micStreamRef.current = null;
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {});
+        audioContextRef.current = null;
+      }
+      setIsMicActive(false);
+      setState('idle');
+      setAmplitude(0.45);
+    } else {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        micStreamRef.current = stream;
+        const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const ctx = new AudioCtx();
+        audioContextRef.current = ctx;
+        const source = ctx.createMediaStreamSource(stream);
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.45;
+        source.connect(analyser);
+        analyserRef.current = analyser;
+
+        setIsMicActive(true);
+        setState('listening');
+        setMood('concentrado');
+
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        const updateMicLevel = () => {
+          if (!analyserRef.current) return;
+          analyserRef.current.getByteFrequencyData(dataArray);
+          let sum = 0;
+          for (let i = 0; i < dataArray.length; i++) {
+            sum += dataArray[i];
+          }
+          const avg = sum / dataArray.length;
+          const normalizedAmp = Math.min(1, Math.max(0, avg / 110));
+          setAmplitude(normalizedAmp);
+
+          if (normalizedAmp > 0.22) {
+            setState('listening');
+          } else {
+            setState('listening');
+          }
+
+          micAnimFrameRef.current = requestAnimationFrame(updateMicLevel);
+        };
+        micAnimFrameRef.current = requestAnimationFrame(updateMicLevel);
+      } catch (err) {
+        console.warn('Microphone permission error or unavailable:', err);
+        setTapFeedbackToast('⚠️ No se pudo acceder al micrófono. Verifica los permisos de tu navegador.');
+        setTimeout(() => setTapFeedbackToast(null), 3000);
+      }
+    }
+  };
+
+  // Web Speech API Voice Synthesis Test
+  const handleTestSpeech = () => {
+    if (!('speechSynthesis' in window)) {
+      setTapFeedbackToast('⚠️ Síntesis de voz no disponible en este navegador');
+      setTimeout(() => setTapFeedbackToast(null), 2500);
+      return;
+    }
+    if (isSpeakingTts) {
+      window.speechSynthesis.cancel();
+      setIsSpeakingTts(false);
+      setState('idle');
+      setAmplitude(0.45);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(
+      'Hola José. Soy VEYA. Todo tu procesamiento es local, privado y respetuoso con tu atención.'
+    );
+    utterance.lang = 'es-ES';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.06;
+
+    setState('speaking');
+    setMood('cercano');
+    setIsSpeakingTts(true);
+
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      if (!window.speechSynthesis.speaking) {
+        clearInterval(interval);
+        return;
+      }
+      const elapsed = (Date.now() - startTime) / 1000;
+      const wave = (Math.sin(elapsed * 9) + Math.cos(elapsed * 13) + 2) / 4;
+      setAmplitude(0.25 + wave * 0.65);
+    }, 60);
+
+    utterance.onend = () => {
+      clearInterval(interval);
+      setIsSpeakingTts(false);
+      setState('idle');
+      setAmplitude(0.45);
+    };
+
+    utterance.onerror = () => {
+      clearInterval(interval);
+      setIsSpeakingTts(false);
+      setState('idle');
+      setAmplitude(0.45);
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Tactile Avatar Tap Handler
+  const handleAvatarTap = () => {
+    setTapFeedbackToast('✨ ¡Interacción táctil! Rebote elástico & destellos bioluminiscentes');
+    setTimeout(() => setTapFeedbackToast(null), 2200);
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (micAnimFrameRef.current) cancelAnimationFrame(micAnimFrameRef.current);
+      if (micStreamRef.current) {
+        micStreamRef.current.getTracks().forEach((t) => t.stop());
+      }
+      if (audioContextRef.current) {
+        audioContextRef.current.close().catch(() => {});
+      }
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   return (
     <div className="bg-white dark:bg-[#12181F] border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-6">

@@ -15,6 +15,7 @@ import {
   Volume2,
   Settings,
   Sparkles,
+  Radio,
 } from 'lucide-react';
 import { SongTrack, AudioDspState, Playlist } from '../types';
 import {
@@ -39,6 +40,7 @@ import { AddTracksToPlaylistModal } from './music/dialogs/AddTracksToPlaylistMod
 import { MusicSettingsModal } from './music/dialogs/MusicSettingsModal';
 import { TrackMetadataModal } from './music/dialogs/TrackMetadataModal';
 import { EditCoverModal } from './music/dialogs/EditCoverModal';
+import { ScreenMusicStreaming } from './ScreenMusicStreaming';
 
 type AudioBottomTab = 'library' | 'playlists' | 'dsp';
 type LibraryCategory = 'tracks' | 'albums' | 'gallery' | 'folders';
@@ -55,6 +57,9 @@ export const ScreenMusic: React.FC = () => {
 
   // Sub-category selector for Biblioteca
   const [libraryCategory, setLibraryCategory] = useState<LibraryCategory>('tracks');
+
+  // Streaming Unified View
+  const [isStreamingViewActive, setIsStreamingViewActive] = useState<boolean>(false);
 
   // Detail views state
   const [selectedAlbum, setSelectedAlbum] = useState<AlbumData | null>(null);
@@ -347,6 +352,10 @@ export const ScreenMusic: React.FC = () => {
     (progressSeconds / (currentTrack.durationSeconds || 300)) * 100
   );
 
+  if (isStreamingViewActive) {
+    return <ScreenMusicStreaming onBack={() => setIsStreamingViewActive(false)} />;
+  }
+
   return (
     <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F8FAFC] dark:bg-[#0D1117] select-none">
       {/* 1. TOP HEADER (Desaturated & Professional) */}
@@ -375,6 +384,16 @@ export const ScreenMusic: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-1.5">
+            {/* Quick Streaming Mode Button */}
+            <button
+              onClick={() => setIsStreamingViewActive(true)}
+              className="flex items-center gap-1 px-2 py-1 rounded-xl text-[10px] font-bold bg-[#D7EEFF] text-[#155E95] dark:bg-[#004A7B]/50 dark:text-[#8ECEFF] border border-[#155E95]/30 hover:bg-[#D7EEFF]/80 transition-all shadow-2xs"
+              title="Abrir Pantalla de Streaming & Cuentas OAuth (Spotify, Apple Music, TIDAL)"
+            >
+              <Radio className="w-3 h-3 text-[#155E95] dark:text-[#8ECEFF]" />
+              <span>Streaming</span>
+            </button>
+
             {/* Audio Settings (ReplayGain, Engine) */}
             <button
               onClick={() => setIsMusicSettingsOpen(true)}
@@ -767,6 +786,21 @@ export const ScreenMusic: React.FC = () => {
               />
             </div>
             <span className="text-[10px] tracking-tight">Ecualizador</span>
+          </button>
+
+          {/* TAB 4: STREAMING & HÍBRIDO */}
+          <button
+            onClick={() => {
+              setIsStreamingViewActive(true);
+            }}
+            className="flex-1 py-1.5 px-2 rounded-xl flex flex-col items-center justify-center gap-0.5 transition-all min-h-[44px] relative text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
+            title="Streaming & Cuentas OAuth (Spotify, Apple Music, TIDAL)"
+          >
+            <div className="relative">
+              <Radio className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span className="absolute -top-0.5 -right-1 w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            </div>
+            <span className="text-[10px] tracking-tight">Streaming</span>
           </button>
         </nav>
       </footer>

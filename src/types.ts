@@ -4,7 +4,20 @@ export type AvatarState = 'idle' | 'listening' | 'thinking' | 'speaking' | 'mute
 
 export type AvatarMood = 'sereno' | 'cercano' | 'concentrado' | 'animado' | 'empatico' | 'espera';
 
-export type ScreenTab = 'onboarding' | 'today' | 'chat' | 'music' | 'settings' | 'vault';
+export type ScreenTab =
+  | 'onboarding'
+  | 'today'
+  | 'chat'
+  | 'music'
+  | 'streaming'
+  | 'settings'
+  | 'vault'
+  | 'voice'
+  | 'training'
+  | 'alarm'
+  | 'weather'
+  | 'news'
+  | 'partner';
 
 export interface M3ColorScheme {
   primary: string;
@@ -132,3 +145,63 @@ export interface OnboardingStep {
   subtitle: string;
   isOptional: boolean;
 }
+
+export type MusicSourceProvider = 'local' | 'bioacoustic' | 'spotify' | 'apple_music' | 'youtube_music' | 'tidal';
+
+export interface StreamingAccount {
+  provider: MusicSourceProvider;
+  name: string;
+  iconName: string;
+  isConnected: boolean;
+  userAccount?: string;
+  isPremium?: boolean;
+  selectedPlaylistId?: string;
+  selectedPlaylistName?: string;
+  playlistUri?: string;
+  offlineFallbackEnabled: boolean;
+  fallbackTrackId: string;
+}
+
+export interface StreamingPlaylistItem {
+  id: string;
+  provider: MusicSourceProvider;
+  title: string;
+  curator: string;
+  trackCount: number;
+  vibe: string;
+  uri: string;
+  isMorningRecommended?: boolean;
+}
+
+export interface UnifiedTrack {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  source: 'local' | 'spotify' | 'apple_music' | 'tidal';
+  duration: string;
+  durationSeconds: number;
+  coverImage?: string;
+  coverHue: string;
+  qualityBadge: string;
+  isAvailableOffline: boolean;
+  localPath?: string;
+  streamingUri?: string;
+  serviceTrackId?: string;
+  hasFailsafeLocalFallback?: boolean;
+  fallbackTrackTitle?: string;
+  isFavorite?: boolean;
+}
+
+export interface OAuthServiceConfig {
+  provider: 'spotify' | 'apple_music' | 'tidal';
+  name: string;
+  tagline: string;
+  brandColor: string;
+  clientId: string;
+  redirectUri: string;
+  scopes: string[];
+  docUrl: string;
+  supportedQuality: string;
+}
+

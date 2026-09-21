@@ -1,38 +1,147 @@
 import React, { useState } from 'react';
-import { User, Volume2, CloudSun, Newspaper, Brain, Bell, Palette, ChevronRight, Shield, Cpu, Sparkles } from 'lucide-react';
+import {
+  User,
+  Volume2,
+  CloudSun,
+  Newspaper,
+  Brain,
+  Bell,
+  ChevronRight,
+  Shield,
+  Cpu,
+  Sparkles,
+} from 'lucide-react';
+import { ScreenVoice } from './ScreenVoice';
+import { ScreenTraining } from './ScreenTraining';
+import { ScreenAlarm } from './ScreenAlarm';
+import { ScreenWeather } from './ScreenWeather';
+import { ScreenNews } from './ScreenNews';
+import { ScreenPartner } from './ScreenPartner';
+
+type SettingsSubScreen =
+  | 'partner'
+  | 'voice'
+  | 'training'
+  | 'alarm'
+  | 'weather'
+  | 'news'
+  | null;
 
 interface ScreenSettingsProps {
   onOpenOnboarding: () => void;
   onOpenVault?: () => void;
+  initialSubScreen?: SettingsSubScreen;
 }
 
-export const ScreenSettings: React.FC<ScreenSettingsProps> = ({ onOpenOnboarding, onOpenVault }) => {
-  const [voiceSpeed, setVoiceSpeed] = useState(1.0);
-  const [selectedVoice, setSelectedVoice] = useState('Voz 1 (Calmada & Cercana)');
+export const ScreenSettings: React.FC<ScreenSettingsProps> = ({
+  onOpenOnboarding,
+  onOpenVault,
+  initialSubScreen = null,
+}) => {
+  const [activeSubScreen, setActiveSubScreen] = useState<SettingsSubScreen>(initialSubScreen);
+
+  // If a subscreen is active, render that subscreen with a back button to settings
+  if (activeSubScreen === 'voice') {
+    return <ScreenVoice onBack={() => setActiveSubScreen(null)} />;
+  }
+  if (activeSubScreen === 'training') {
+    return <ScreenTraining onBack={() => setActiveSubScreen(null)} />;
+  }
+  if (activeSubScreen === 'alarm') {
+    return <ScreenAlarm onBack={() => setActiveSubScreen(null)} />;
+  }
+  if (activeSubScreen === 'weather') {
+    return <ScreenWeather onBack={() => setActiveSubScreen(null)} />;
+  }
+  if (activeSubScreen === 'news') {
+    return <ScreenNews onBack={() => setActiveSubScreen(null)} />;
+  }
+  if (activeSubScreen === 'partner') {
+    return (
+      <ScreenPartner
+        onBack={() => setActiveSubScreen(null)}
+        onOpenOnboarding={onOpenOnboarding}
+      />
+    );
+  }
 
   const settingsGroups = [
     {
       title: 'Tu Compañero VEYA',
       items: [
-        { id: 'partner', title: 'Tu compañero', desc: 'Asistente VEYA · Nombre: José · Trato cercano', icon: <User className="w-4 h-4 text-[#155E95]" />, onClick: onOpenOnboarding },
-        { id: 'voice', title: 'Voz y personalidad', desc: selectedVoice, icon: <Volume2 className="w-4 h-4 text-[#7654A7]" /> },
-        { id: 'entrena', title: 'ENTRENA (Perfiles)', desc: 'Perfiles de aprendizaje activo y hábitos', icon: <Cpu className="w-4 h-4 text-[#006A67]" /> },
-        { id: 'memory', title: 'Bóveda de memoria local', desc: 'Recuerdos protegidos · Zero-Knowledge', icon: <Brain className="w-4 h-4 text-amber-600" />, onClick: onOpenVault },
+        {
+          id: 'partner',
+          title: 'Tu compañero',
+          desc: 'Asistente VEYA · Nombre: José · Trato cercano',
+          icon: <User className="w-4 h-4 text-[#155E95]" />,
+          onClick: () => setActiveSubScreen('partner'),
+        },
+        {
+          id: 'voice',
+          title: 'Voz y personalidad',
+          desc: 'Voz Aura · Calidez 75% · Prosodia local',
+          icon: <Volume2 className="w-4 h-4 text-[#7654A7]" />,
+          onClick: () => setActiveSubScreen('voice'),
+        },
+        {
+          id: 'entrena',
+          title: 'ENTRENA (Perfiles)',
+          desc: '4 perfiles activos · Aprendizaje local federado',
+          icon: <Cpu className="w-4 h-4 text-[#006A67]" />,
+          onClick: () => setActiveSubScreen('training'),
+        },
+        {
+          id: 'memory',
+          title: 'Bóveda de memoria local',
+          desc: 'Recuerdos protegidos · Zero-Knowledge',
+          icon: <Brain className="w-4 h-4 text-amber-600" />,
+          onClick: onOpenVault,
+        },
       ],
     },
     {
       title: 'Servicios & Rutina',
       items: [
-        { id: 'alarm', title: 'Música de alarma', desc: 'Piano acústico matinal', icon: <Bell className="w-4 h-4 text-rose-600" /> },
-        { id: 'weather', title: 'Meteorología', desc: 'Sin GPS · Ubicación preestablecida', icon: <CloudSun className="w-4 h-4 text-sky-600" /> },
-        { id: 'news', title: 'Medios de noticias', desc: '2 feeds RSS seleccionados', icon: <Newspaper className="w-4 h-4 text-indigo-600" /> },
+        {
+          id: 'alarm',
+          title: 'Música de alarma',
+          desc: '07:30 · Piano acústico con fade-in gradual',
+          icon: <Bell className="w-4 h-4 text-rose-600" />,
+          onClick: () => setActiveSubScreen('alarm'),
+        },
+        {
+          id: 'weather',
+          title: 'Meteorología',
+          desc: 'Madrid (Centro) · Sin GPS ni rastreo',
+          icon: <CloudSun className="w-4 h-4 text-sky-600" />,
+          onClick: () => setActiveSubScreen('weather'),
+        },
+        {
+          id: 'news',
+          title: 'Medios de noticias',
+          desc: '4 feeds RSS suscritos · Resumen matinal 60s',
+          icon: <Newspaper className="w-4 h-4 text-indigo-600" />,
+          onClick: () => setActiveSubScreen('news'),
+        },
       ],
     },
     {
       title: 'Sistema & Privacidad',
       items: [
-        { id: 'privacy', title: 'Memoria & Privacidad', desc: '100% en dispositivo · Cifrado hardware AES-256', icon: <Shield className="w-4 h-4 text-emerald-600" />, onClick: onOpenVault },
-        { id: 'onboarding_restart', title: 'Reconfigurar Onboarding', desc: 'Volver a iniciar el asistente paso a paso', icon: <Sparkles className="w-4 h-4 text-[#7654A7]" />, onClick: onOpenOnboarding },
+        {
+          id: 'privacy',
+          title: 'Memoria & Privacidad',
+          desc: '100% en dispositivo · Cifrado hardware AES-256',
+          icon: <Shield className="w-4 h-4 text-emerald-600" />,
+          onClick: onOpenVault,
+        },
+        {
+          id: 'onboarding_restart',
+          title: 'Reconfigurar Onboarding',
+          desc: 'Volver a iniciar el asistente paso a paso',
+          icon: <Sparkles className="w-4 h-4 text-[#7654A7]" />,
+          onClick: onOpenOnboarding,
+        },
       ],
     },
   ];
