@@ -38,8 +38,11 @@ export const AvatarLaboratory: React.FC = () => {
   const [copiedConfigJson, setCopiedConfigJson] = useState<boolean>(false);
   const [renderEngine, setRenderEngine] = useState<'canvas' | 'svg'>('canvas');
   const [lightingPreset, setLightingPreset] = useState<'studio' | 'night' | 'warm'>('studio');
+  const [stageLighting, setStageLighting] = useState<'obsidian' | 'claridad'>('obsidian');
+  const [showContactShadow, setShowContactShadow] = useState<boolean>(true);
+  const [showAtmosphericParticles, setShowAtmosphericParticles] = useState<boolean>(true);
   const [showLottieModal, setShowLottieModal] = useState<boolean>(false);
-  const [activeModalTab, setActiveModalTab] = useState<'export' | 'config' | 'guide'>('export');
+  const [activeModalTab, setActiveModalTab] = useState<'export' | 'config' | 'guide' | 'statesGuide' | 'stageSpecs'>('export');
 
   const states: { id: AvatarState; label: string; desc: string }[] = [
     { id: 'idle', label: 'Idle / Reposo', desc: 'Respiración orgánica sinusoidal (1.8 rad/s) y flotación armónica.' },
@@ -439,6 +442,28 @@ fun VeyaLottieAvatar(
                   <BookOpen className="w-3.5 h-3.5 text-purple-500" />
                   <span>Guía Kotlin</span>
                 </button>
+                <button
+                  onClick={() => setActiveModalTab('statesGuide')}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all ${
+                    activeModalTab === 'statesGuide'
+                      ? 'bg-white dark:bg-[#1C2633] text-slate-900 dark:text-slate-100 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                  }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Avatar ↔ Estados</span>
+                </button>
+                <button
+                  onClick={() => setActiveModalTab('stageSpecs')}
+                  className={`flex items-center gap-1.5 px-3 py-1 rounded-lg transition-all ${
+                    activeModalTab === 'stageSpecs'
+                      ? 'bg-white dark:bg-[#1C2633] text-slate-900 dark:text-slate-100 shadow-xs'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900'
+                  }`}
+                >
+                  <Layers className="w-3.5 h-3.5 text-sky-500" />
+                  <span>Specs Escenario 3D</span>
+                </button>
               </div>
 
               <button
@@ -665,6 +690,105 @@ fun VeyaLottieAvatar(
               </div>
             </div>
           )}
+
+          {/* TAB 4: GUÍA CANÓNICA AVATAR ↔ ESTADO Y TRANSICIONES */}
+          {activeModalTab === 'statesGuide' && (
+            <div className="space-y-4 max-h-[460px] overflow-y-auto pr-1">
+              <div className="p-3.5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/40 text-xs text-amber-900 dark:text-amber-200 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span>Guía Técnica Canónica: 5 Estados y Matriz de Transiciones</span>
+                </div>
+                <p className="text-[11px] text-amber-800/90 dark:text-amber-300/80">
+                  Especificación de micro-comportamientos faciales, frecuencias respiratorias y curvas cinéticas en Jetpack Compose.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                {[
+                  {
+                    st: 'IDLE (Reposo)',
+                    freq: '1.8 rad/s (60 FPS, 120f)',
+                    desc: 'Respiración orgánica sinusoidal en contrafase. Parpadeo periódico cada 3.5s ± 1.2s. Sonrisa relajada.',
+                    file: 'veya_avatar_idle_sereno.json',
+                  },
+                  {
+                    st: 'LISTENING (Escucha)',
+                    freq: '1.15x velocidad',
+                    desc: 'Dilatación pupilar +15%, inclinación atenta de 1.5º y ondas acústicas concéntricas (00_Acoustic_Listening_Ripples).',
+                    file: 'veya_avatar_listening_sereno.json',
+                  },
+                  {
+                    st: 'THINKING (Pensando)',
+                    freq: '0.85x velocidad',
+                    desc: 'Mirada reflexiva ascendente (Y = -8px), constricción analítica pupilar al 85% y aceleración del latido interno a 2.4 Hz.',
+                    file: 'veya_avatar_thinking_sereno.json',
+                  },
+                  {
+                    st: 'SPEAKING (Habla)',
+                    freq: 'Reactiva a RMS Mic (1.4x - 1.8x)',
+                    desc: 'Apertura oral elíptica con cavidad interna y resonancia lingual. Rebote elástico con squash & stretch sincronizado con la voz.',
+                    file: 'veya_avatar_speaking_animado.json',
+                  },
+                  {
+                    st: 'MUTED (Espera/Silencio)',
+                    freq: '0.0x (Estático)',
+                    desc: 'Barra diagonal de silencio roja (00_Muted_Slash_Indicator), opacidad atenuada al 20% y postura serena de descanso.',
+                    file: 'veya_avatar_muted_espera.json',
+                  },
+                ].map((item) => (
+                  <div key={item.st} className="p-3 rounded-2xl bg-white dark:bg-[#141E28] border border-slate-200/80 dark:border-slate-800 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-extrabold text-slate-900 dark:text-slate-100">{item.st}</span>
+                      <span className="text-[10px] font-mono text-blue-600 dark:text-blue-400 font-bold">{item.freq}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400">{item.desc}</p>
+                    <span className="text-[10px] font-mono text-slate-400 block pt-1 border-t border-slate-100 dark:border-slate-800">
+                      Archivo: {item.file}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 5: SPECS CLARIDAD Y ESCENARIO 3D */}
+          {activeModalTab === 'stageSpecs' && (
+            <div className="space-y-4 max-h-[460px] overflow-y-auto pr-1">
+              <div className="p-3.5 rounded-2xl bg-sky-50/70 dark:bg-sky-950/20 border border-sky-200/80 dark:border-sky-900/40 text-xs text-sky-900 dark:text-sky-200 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold">
+                  <Layers className="w-4 h-4 text-sky-600" />
+                  <span>Especificación Óptica: Escenario Tridimensional & Claridad</span>
+                </div>
+                <p className="text-[11px] text-sky-800/90 dark:text-sky-300/80">
+                  Modelo de 4 planos de profundidad, iluminación cenital a 45º, sombra de suelo en contrafase y atmósfera browniana.
+                </p>
+              </div>
+
+              <div className="space-y-3 text-xs">
+                <div className="p-3.5 rounded-2xl bg-white dark:bg-[#141E28] border border-slate-200/80 dark:border-slate-800 space-y-2">
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100">1. Iluminación Keylight Cenital & Rim Light Vítreo</h4>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Keylight a 45º superior izquierda (temperatura 6500K luz diurna). Gradiente de Subsurface Scattering (SSS) de 4 paradas: Highlight Blanco Puro (0.00) &rarr; Borde Translúcido Rim (0.25) &rarr; Dispersión SSS (0.65) &rarr; Sombra de Base (1.00).
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-white dark:bg-[#141E28] border border-slate-200/80 dark:border-slate-800 space-y-2">
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100">2. Sombra de Contacto en Suelo (Contact Shadow Floor)</h4>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Elipse difusa situada bajo el avatar con deformación en contrafase a la flotación: al subir el avatar, la sombra mengua y se difumina; al bajar, se ensancha y densifica.
+                  </p>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-white dark:bg-[#141E28] border border-slate-200/80 dark:border-slate-800 space-y-2">
+                  <h4 className="font-extrabold text-slate-900 dark:text-slate-100">3. Atmósfera de Micro-Partículas Bioluminiscentes (26 Motas)</h4>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                    13 partículas en plano de fondo y 13 en primer plano con movimiento browniano y centelleo armónico dependiente del matiz emocional activo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -687,31 +811,86 @@ fun VeyaLottieAvatar(
         />
 
         {/* Top Studio Lighting Controls Overlay */}
-        <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+        <div className="absolute top-4 left-4 right-4 flex flex-wrap items-center justify-between gap-2 z-10">
           <div className="flex items-center gap-1.5 bg-white/80 dark:bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-white/40 dark:border-white/10 text-[11px] font-bold text-slate-700 dark:text-slate-300">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
             <span>Motor: {renderEngine === 'canvas' ? 'Interactive 2D Canvas con Partículas' : 'SVG con Filtros y Radial Shaders'}</span>
           </div>
 
-          <div className="flex items-center gap-1 bg-white/80 dark:bg-black/60 backdrop-blur-md p-1 rounded-2xl border border-white/40 dark:border-white/10 text-xs">
-            <span className="text-[10px] font-bold text-slate-400 px-2">Escenario:</span>
-            {[
-              { id: 'studio', label: 'Estudio Azul' },
-              { id: 'warm', label: 'Luz Cálida' },
-              { id: 'night', label: 'Noche OLED' },
-            ].map((lp) => (
+          <div className="flex flex-wrap items-center gap-1.5">
+            {/* 3D Stage Mode: Claridad vs Obsidian */}
+            <div className="flex items-center gap-1 bg-white/80 dark:bg-black/60 backdrop-blur-md p-1 rounded-2xl border border-white/40 dark:border-white/10 text-xs">
+              <span className="text-[10px] font-bold text-slate-400 px-1.5">3D Stage:</span>
               <button
-                key={lp.id}
-                onClick={() => setLightingPreset(lp.id as any)}
-                className={`px-2.5 py-1 rounded-xl text-[10px] font-bold transition-all ${
-                  lightingPreset === lp.id
-                    ? 'bg-[#155E95] text-white shadow-xs'
+                onClick={() => setStageLighting('claridad')}
+                className={`px-2 py-1 rounded-xl text-[10px] font-bold transition-all ${
+                  stageLighting === 'claridad'
+                    ? 'bg-amber-500 text-white shadow-xs'
                     : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/10'
                 }`}
+                title="Luz diurna cristalina con keylight cenital 6500K"
               >
-                {lp.label}
+                Claridad
               </button>
-            ))}
+              <button
+                onClick={() => setStageLighting('obsidian')}
+                className={`px-2 py-1 rounded-xl text-[10px] font-bold transition-all ${
+                  stageLighting === 'obsidian'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/10'
+                }`}
+                title="Fondo cinematográfico oscuro de alta inmersión"
+              >
+                Obsidian
+              </button>
+            </div>
+
+            {/* Sombra Suelo & Partículas Toggles */}
+            <div className="flex items-center gap-1 bg-white/80 dark:bg-black/60 backdrop-blur-md p-1 rounded-2xl border border-white/40 dark:border-white/10 text-xs">
+              <button
+                onClick={() => setShowContactShadow(!showContactShadow)}
+                className={`px-2 py-1 rounded-xl text-[10px] font-bold transition-all ${
+                  showContactShadow
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+                title="Sombra de contacto en suelo con deformación elíptica en contrafase"
+              >
+                Sombra Suelo
+              </button>
+              <button
+                onClick={() => setShowAtmosphericParticles(!showAtmosphericParticles)}
+                className={`px-2 py-1 rounded-xl text-[10px] font-bold transition-all ${
+                  showAtmosphericParticles
+                    ? 'bg-purple-600 text-white'
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+                title="26 motas atmosféricas bioluminiscentes flotantes"
+              >
+                Partículas
+              </button>
+            </div>
+
+            {/* Ambiente Preset */}
+            <div className="flex items-center gap-1 bg-white/80 dark:bg-black/60 backdrop-blur-md p-1 rounded-2xl border border-white/40 dark:border-white/10 text-xs">
+              {[
+                { id: 'studio', label: 'Estudio' },
+                { id: 'warm', label: 'Cálido' },
+                { id: 'night', label: 'OLED' },
+              ].map((lp) => (
+                <button
+                  key={lp.id}
+                  onClick={() => setLightingPreset(lp.id as any)}
+                  className={`px-2 py-1 rounded-xl text-[10px] font-bold transition-all ${
+                    lightingPreset === lp.id
+                      ? 'bg-[#155E95] text-white shadow-xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/10'
+                  }`}
+                >
+                  {lp.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -725,6 +904,9 @@ fun VeyaLottieAvatar(
               reducedMotion={reducedMotion}
               amplitude={amplitude}
               showMoodBadge
+              stageMode={stageLighting}
+              showFloorShadow={showContactShadow}
+              showAtmosphere={showAtmosphericParticles}
             />
           ) : (
             <PixarAvatarSvg

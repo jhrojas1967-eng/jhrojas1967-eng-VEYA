@@ -8,6 +8,9 @@ interface CinematicAvatarCanvasProps {
   reducedMotion?: boolean;
   amplitude?: number; // 0.0 to 1.0 (microphone RMS level)
   showMoodBadge?: boolean;
+  stageMode?: 'obsidian' | 'claridad';
+  showFloorShadow?: boolean;
+  showAtmosphere?: boolean;
 }
 
 interface Particle {
@@ -86,15 +89,18 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
   reducedMotion = false,
   amplitude = 0.5,
   showMoodBadge = false,
+  stageMode = 'obsidian',
+  showFloorShadow = true,
+  showAtmosphere = true,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animFrameId = useRef<number | null>(null);
 
   // Maintain state references for the continuous 60fps render loop
-  const propsRef = useRef({ state, mood, reducedMotion, amplitude, size });
+  const propsRef = useRef({ state, mood, reducedMotion, amplitude, size, stageMode, showFloorShadow, showAtmosphere });
   useEffect(() => {
-    propsRef.current = { state, mood, reducedMotion, amplitude, size };
-  }, [state, mood, reducedMotion, amplitude, size]);
+    propsRef.current = { state, mood, reducedMotion, amplitude, size, stageMode, showFloorShadow, showAtmosphere };
+  }, [state, mood, reducedMotion, amplitude, size, stageMode, showFloorShadow, showAtmosphere]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -136,6 +142,9 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
         reducedMotion: isReduced,
         amplitude: curAmp,
         size: curSize,
+        stageMode: curStage,
+        showFloorShadow: hasFloorShadow,
+        showAtmosphere: hasAtmosphere,
       } = propsRef.current;
 
       const spectrum = MOOD_SPECTRA[curMood] || MOOD_SPECTRA.sereno;
@@ -192,6 +201,16 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
 
       const baseR = curSize * 0.28 * stateScale;
 
+      // Optional Stage 3D Ambient Base in Claridad Mode
+      if (curStage === 'claridad') {
+        const stageGlow = ctx.createRadialGradient(cx, cy, baseR * 0.2, cx, cy, curSize * 0.55);
+        stageGlow.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+        stageGlow.addColorStop(0.6, 'rgba(241, 245, 249, 0.2)');
+        stageGlow.addColorStop(1, 'rgba(241, 245, 249, 0)');
+        ctx.fillStyle = stageGlow;
+        ctx.fillRect(0, 0, curSize, curSize);
+      }
+
       // 2. VOLUMETRIC BACKLIGHT & SUBSURFACE GLOW (Layered Radial Gradients)
       const auraGrad = ctx.createRadialGradient(cx, cy, baseR * 0.4, cx, cy, baseR * 2.2);
       auraGrad.addColorStop(0, `rgba(${sr}, ${sg}, ${sb}, ${auraAlpha * 0.85})`);
@@ -204,7 +223,7 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
       ctx.fill();
 
       // 3. AMBIENT SENTIENT PARTICLES (Dust motes floating in Pixar studio lighting)
-      if (!isReduced && curState !== 'muted') {
+      if (hasAtmosphere && !isReduced && curState !== 'muted') {
         particles.forEach((p) => {
           p.angle += p.orbitSpeed;
           p.y += p.speedY;
@@ -242,6 +261,28 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
           ctx.lineWidth = 2.0;
           ctx.stroke();
         }
+      }
+
+      // 4.5. 3D STAGE FLOOR CONTACT SHADOW (Contact Occlusion in counter-phase)
+      const floatY = isReduced ? 0 : Math.sin(time * 1.5) * 4;
+      if (hasFloorShadow) {
+        const floorY = cy + baseR * 1.05;
+        // Inverted scaling: higher float -> smaller, softer shadow
+        const shadowScaleX = Math.max(0.7, 1.0 - (floatY * 0.035));
+        const shadowScaleY = Math.max(0.65, 1.0 - (floatY * 0.05));
+        const shadowAlpha = curStage === 'claridad' ? Math.max(0.08, 0.22 - floatY * 0.015) : Math.max(0.15, 0.42 - floatY * 0.02);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(cx, floorY, baseR * 0.72 * shadowScaleX, baseR * 0.16 * shadowScaleY, 0, 0, Math.PI * 2);
+        const shadowGrad = ctx.createRadialGradient(cx, floorY, 0, cx, floorY, baseR * 0.72 * shadowScaleX);
+        const shadowBaseColor = curStage === 'claridad' ? '15, 23, 42' : '0, 8, 20';
+        shadowGrad.addColorStop(0, `rgba(${shadowBaseColor}, ${shadowAlpha})`);
+        shadowGrad.addColorStop(0.5, `rgba(${shadowBaseColor}, ${shadowAlpha * 0.45})`);
+        shadowGrad.addColorStop(1, `rgba(${shadowBaseColor}, 0)`);
+        ctx.fillStyle = shadowGrad;
+        ctx.fill();
+        ctx.restore();
       }
 
       // 5. THE ORGANIC PEARL CHARACTER BODY (Volumetric 3D Sphere with Subsurface Lighting)

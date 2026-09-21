@@ -6,6 +6,7 @@ import { ScreenChat } from './components/ScreenChat';
 import { ScreenMusic } from './components/ScreenMusic';
 import { ScreenSettings } from './components/ScreenSettings';
 import { ScreenOnboarding } from './components/ScreenOnboarding';
+import { ScreenVault } from './components/ScreenVault';
 import { BottomNav } from './components/BottomNav';
 import { ScreenTab, ThemeMode } from './types';
 import { Smartphone, Moon, Sun, Laptop, ArrowRight, Share2, Download, Sparkles, CheckCircle, ShieldCheck, GitBranch } from 'lucide-react';
@@ -112,12 +113,18 @@ export default function App() {
                   {currentTab === 'chat' && <ScreenChat />}
                   {currentTab === 'music' && <ScreenMusic />}
                   {currentTab === 'settings' && (
-                    <ScreenSettings onOpenOnboarding={() => setCurrentTab('onboarding')} />
+                    <ScreenSettings
+                      onOpenOnboarding={() => setCurrentTab('onboarding')}
+                      onOpenVault={() => setCurrentTab('vault')}
+                    />
+                  )}
+                  {currentTab === 'vault' && (
+                    <ScreenVault onBack={() => setCurrentTab('settings')} />
                   )}
                 </div>
 
-                {/* Bottom Navigation (Only visible outside onboarding) */}
-                {currentTab !== 'onboarding' && (
+                {/* Bottom Navigation (Only visible outside onboarding and vault) */}
+                {currentTab !== 'onboarding' && currentTab !== 'vault' && (
                   <BottomNav
                     currentTab={currentTab}
                     onSelectTab={setCurrentTab}
@@ -144,6 +151,8 @@ export default function App() {
                         ? 'Conversar'
                         : currentTab === 'music'
                         ? 'Música Local (Motor jetAudio DSP)'
+                        : currentTab === 'vault'
+                        ? 'Bóveda de Privacidad & Memoria Local'
                         : 'Ajustes'}
                     </h2>
                   </div>
@@ -160,7 +169,15 @@ export default function App() {
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     <span>Conformidad con Restricciones Técnicas:</span>
                   </div>
-                  {currentTab === 'music' ? (
+                  {currentTab === 'vault' ? (
+                    <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                      <li><strong>Arquitectura Local-First</strong>: Los datos del usuario residen 100% en el dispositivo con SQLite cifrado (SQLCipher AES-256-GCM).</li>
+                      <li><strong>IA Stateless Broker</strong>: La IA nunca almacena permanentemente recuerdos de usuario en la nube; solo recibe contexto efímero recuperado en local antes del turno.</li>
+                      <li><strong>Separación Criptográfica</strong>: Claves en Android Keystore de hardware; partición estricta entre datos de usuario y memoria operativa efímera.</li>
+                      <li><strong>Control Soberano & Purga</strong>: El usuario puede auditar, editar o purgar cualquier recuerdo o categoría en cualquier instante con confirmación biométrica.</li>
+                      <li><strong>Zero Telemetry</strong>: Sin analítica externa, sin tracking ni filtración de metadatos.</li>
+                    </ul>
+                  ) : currentTab === 'music' ? (
                     <ul className="list-disc pl-5 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
                       <li><strong>Bypass Maestro DSP</strong>: El usuario puede desactivar todo el procesamiento para escucha directa bit-perfect (Bit-Perfect Direct Output).</li>
                       <li><strong>Presets Ecualizador jetAudio</strong>: Modos Rock, Pop, Clásico, Dance, Estadio, Acústica, Jazz, Metal, Vocal, Bass Boost y Treble Boost.</li>
@@ -202,8 +219,9 @@ export default function App() {
                   { id: 'today', label: '1. Hoy (Rutina)' },
                   { id: 'chat', label: '2. Conversar' },
                   { id: 'music', label: '3. Música Local' },
-                  { id: 'settings', label: '4. Ajustes' },
-                  { id: 'onboarding', label: '5. Onboarding (8 pasos)' },
+                  { id: 'vault', label: '4. Bóveda Privacidad' },
+                  { id: 'settings', label: '5. Ajustes' },
+                  { id: 'onboarding', label: '6. Onboarding (8 pasos)' },
                 ].map((s) => (
                   <button
                     key={s.id}

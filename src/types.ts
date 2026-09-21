@@ -4,7 +4,7 @@ export type AvatarState = 'idle' | 'listening' | 'thinking' | 'speaking' | 'mute
 
 export type AvatarMood = 'sereno' | 'cercano' | 'concentrado' | 'animado' | 'empatico' | 'espera';
 
-export type ScreenTab = 'onboarding' | 'today' | 'chat' | 'music' | 'settings';
+export type ScreenTab = 'onboarding' | 'today' | 'chat' | 'music' | 'settings' | 'vault';
 
 export interface M3ColorScheme {
   primary: string;

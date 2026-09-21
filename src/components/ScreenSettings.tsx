@@ -3,9 +3,10 @@ import { User, Volume2, CloudSun, Newspaper, Brain, Bell, Palette, ChevronRight,
 
 interface ScreenSettingsProps {
   onOpenOnboarding: () => void;
+  onOpenVault?: () => void;
 }
 
-export const ScreenSettings: React.FC<ScreenSettingsProps> = ({ onOpenOnboarding }) => {
+export const ScreenSettings: React.FC<ScreenSettingsProps> = ({ onOpenOnboarding, onOpenVault }) => {
   const [voiceSpeed, setVoiceSpeed] = useState(1.0);
   const [selectedVoice, setSelectedVoice] = useState('Voz 1 (Calmada & Cercana)');
 
@@ -16,7 +17,7 @@ export const ScreenSettings: React.FC<ScreenSettingsProps> = ({ onOpenOnboarding
         { id: 'partner', title: 'Tu compañero', desc: 'Asistente VEYA · Nombre: José · Trato cercano', icon: <User className="w-4 h-4 text-[#155E95]" />, onClick: onOpenOnboarding },
         { id: 'voice', title: 'Voz y personalidad', desc: selectedVoice, icon: <Volume2 className="w-4 h-4 text-[#7654A7]" /> },
         { id: 'entrena', title: 'ENTRENA (Perfiles)', desc: 'Perfiles de aprendizaje activo y hábitos', icon: <Cpu className="w-4 h-4 text-[#006A67]" /> },
-        { id: 'memory', title: 'Personalización y memoria explícita', desc: '4 memorias guardadas en local', icon: <Brain className="w-4 h-4 text-amber-600" /> },
+        { id: 'memory', title: 'Bóveda de memoria local', desc: 'Recuerdos protegidos · Zero-Knowledge', icon: <Brain className="w-4 h-4 text-amber-600" />, onClick: onOpenVault },
       ],
     },
     {
@@ -30,7 +31,7 @@ export const ScreenSettings: React.FC<ScreenSettingsProps> = ({ onOpenOnboarding
     {
       title: 'Sistema & Privacidad',
       items: [
-        { id: 'privacy', title: 'Privacidad y datos', desc: '100% en dispositivo · Sin telemetría', icon: <Shield className="w-4 h-4 text-emerald-600" /> },
+        { id: 'privacy', title: 'Memoria & Privacidad', desc: '100% en dispositivo · Cifrado hardware AES-256', icon: <Shield className="w-4 h-4 text-emerald-600" />, onClick: onOpenVault },
         { id: 'onboarding_restart', title: 'Reconfigurar Onboarding', desc: 'Volver a iniciar el asistente paso a paso', icon: <Sparkles className="w-4 h-4 text-[#7654A7]" />, onClick: onOpenOnboarding },
       ],
     },
