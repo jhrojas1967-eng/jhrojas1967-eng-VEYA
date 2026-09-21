@@ -220,12 +220,17 @@ fun VeyaLottieAvatar(
         rememberLottieDynamicProperty(
             property = LottieProperty.STROKE_COLOR,
             value = moodColor.toArgb(),
-            keyPath = arrayOf("Body_Breathing_Orb", "Main_Sphere", "Rim_Light_Stroke")
+            keyPath = arrayOf("07_Body_Breathing_Orb", "Main_Sphere", "Rim_Light_Stroke")
+        ),
+        rememberLottieDynamicProperty(
+            property = LottieProperty.COLOR_FILTER,
+            value = moodColor.toArgb(),
+            keyPath = arrayOf("04_Iris_Bioluminescence", "**")
         ),
         rememberLottieDynamicProperty(
             property = LottieProperty.STROKE_COLOR,
             value = moodColor.toArgb(),
-            keyPath = arrayOf("Smile_Aperture", "Smile_Shape", "Stroke")
+            keyPath = arrayOf("06_Mouth_Micro_Expression", "**")
         )
     )
 
