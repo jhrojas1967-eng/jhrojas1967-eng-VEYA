@@ -1057,6 +1057,11 @@ fun VeyaLottieAvatar(
 
         {/* The Pixar Avatar Component */}
         <div className="relative my-4 z-10 flex flex-col items-center">
+          {tapFeedbackToast && (
+            <div className="absolute -top-10 px-3 py-1 rounded-full bg-slate-900/90 text-white text-xs font-semibold shadow-lg backdrop-blur-md border border-white/20 animate-in fade-in slide-in-from-top-2 duration-150 z-20 pointer-events-none">
+              {tapFeedbackToast}
+            </div>
+          )}
           {renderEngine === 'canvas' ? (
             <CinematicAvatarCanvas
               state={state}
@@ -1068,6 +1073,10 @@ fun VeyaLottieAvatar(
               stageMode={stageLighting}
               showFloorShadow={showContactShadow}
               showAtmosphere={showAtmosphericParticles}
+              interactiveGaze={interactiveGaze}
+              enableBlinking={enableBlinking}
+              enableTapSquish={enableTapSquish}
+              onTap={handleAvatarTap}
             />
           ) : (
             <PixarAvatarSvg
@@ -1079,6 +1088,35 @@ fun VeyaLottieAvatar(
               showStatusLabel
             />
           )}
+        </div>
+
+        {/* Real-time Interaction Bar: Mic, Voice TTS, Gaze, Blink, Tap */}
+        <div className="mb-3 flex flex-wrap items-center justify-center gap-2 z-10">
+          <button
+            onClick={toggleRealMic}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs ${
+              isMicActive
+                ? 'bg-rose-500 text-white border-rose-600 animate-pulse'
+                : 'bg-white/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-50'
+            }`}
+            title="Activa el micrófono real mediante Web Audio API para modular la amplitud del avatar"
+          >
+            {isMicActive ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5 text-rose-500" />}
+            <span>{isMicActive ? 'Detener Micrófono' : 'Hablar al Avatar (Mic Real)'}</span>
+          </button>
+
+          <button
+            onClick={handleTestSpeech}
+            className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all flex items-center gap-1.5 shadow-xs ${
+              isSpeakingTts
+                ? 'bg-[#155E95] text-white border-[#104873]'
+                : 'bg-white/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-50'
+            }`}
+            title="Sintetiza voz con Web Speech API y modula la boca del avatar"
+          >
+            {isSpeakingTts ? <Square className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-blue-500" />}
+            <span>{isSpeakingTts ? 'Detener Voz' : 'Probar Voz Sintetizada (TTS)'}</span>
+          </button>
         </div>
 
         {/* Quick Pixar Presets Bar (Instant Personality Demonstrations) */}
@@ -1239,6 +1277,52 @@ fun VeyaLottieAvatar(
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Interactive Physics & Eye Toggles */}
+            <div className="space-y-2 mb-4 bg-white dark:bg-[#12181F] p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
+              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 block mb-2">
+                Física e Interacción Biométrica:
+              </span>
+              
+              <label className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer py-1">
+                <span className="flex items-center gap-1.5">
+                  <MousePointer className="w-3.5 h-3.5 text-[#155E95] dark:text-[#8ECEFF]" />
+                  <span>Seguimiento de Mirada 2.5D</span>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={interactiveGaze}
+                  onChange={(e) => setInteractiveGaze(e.target.checked)}
+                  className="w-4 h-4 rounded text-[#155E95] focus:ring-[#155E95]"
+                />
+              </label>
+
+              <label className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer py-1">
+                <span className="flex items-center gap-1.5">
+                  <Radio className="w-3.5 h-3.5 text-[#7654A7] dark:text-[#C084FC]" />
+                  <span>Parpadeo Orgánico (150ms)</span>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={enableBlinking}
+                  onChange={(e) => setEnableBlinking(e.target.checked)}
+                  className="w-4 h-4 rounded text-[#155E95] focus:ring-[#155E95]"
+                />
+              </label>
+
+              <label className="flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer py-1">
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Squish Táctil & Destellos</span>
+                </span>
+                <input
+                  type="checkbox"
+                  checked={enableTapSquish}
+                  onChange={(e) => setEnableTapSquish(e.target.checked)}
+                  className="w-4 h-4 rounded text-[#155E95] focus:ring-[#155E95]"
+                />
+              </label>
             </div>
 
             {/* Reduced Motion Toggle */}

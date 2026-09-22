@@ -205,3 +205,33 @@ export interface OAuthServiceConfig {
   supportedQuality: string;
 }
 
+// =========================================================================
+// CONTRATO CANÓNICO MEMORIAFACT (NOTA-GEMINI-PANEL-MEMORIA.md)
+// =========================================================================
+export type MemoryCategory = 'personal' | 'work' | 'preferences' | 'routine' | 'music' | 'health' | 'inferred';
+export type MemoryOrigin = 'explicit' | 'inferred';
+export type PurgeScheduleOption = 'never' | '7d' | '30d' | '90d' | 'session';
+
+export interface MemoriaFact {
+  id: string; // ID único como key en LazyColumn / React
+  category: MemoryCategory;
+  title: string;
+  detail: string;
+  origin: MemoryOrigin; // Origen: explicit vs inferred (separado de estado)
+  timestamp: string | null; // Nullable: null ≠ 'Hoy'
+  activeInContext: boolean; // Estado: toggle de inyección en prompt IA
+  sha256Hash: string;
+  embeddingVectorDims?: number;
+}
+
+export type MemoryFact = MemoriaFact;
+
+export interface StructuredVaultStorage {
+  version: string;
+  lastUpdated: string;
+  isHardwareEncrypted: boolean;
+  purgeSchedule: PurgeScheduleOption;
+  preserveExplicitFacts: boolean;
+  facts: MemoriaFact[];
+}
+
