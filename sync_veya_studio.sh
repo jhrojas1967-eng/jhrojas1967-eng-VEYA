@@ -134,7 +134,7 @@ fi
 
 # 5. Copiar Componentes del AvatarLaboratory y Pantallas
 echo -e "${COLOR_BLUE}→ Exportando componentes de AvatarLaboratory y Pantallas...${COLOR_RESET}"
-for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx ScreenMusic.tsx; do
+for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx ScreenMusic.tsx ScreenIntelligence.tsx; do
     if [[ -f "$SCRIPT_DIR/src/components/$comp" ]]; then
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_SYNC_ROOT/avatar-laboratory/$comp"
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_DOCS_LAB/$comp"
@@ -170,6 +170,13 @@ if [[ -f "$SCRIPT_DIR/DEPLOY_CLAUDE_CODE.md" ]]; then
     cp "$SCRIPT_DIR/DEPLOY_CLAUDE_CODE.md" "$DIR_DOCS_DS/DEPLOY_CLAUDE_CODE.md"
     cp "$SCRIPT_DIR/DEPLOY_CLAUDE_CODE.md" "$TARGET_PATH/DEPLOY_CLAUDE_CODE.md"
     echo -e "  ${COLOR_GREEN}✓${COLOR_RESET} DEPLOY_CLAUDE_CODE.md"
+fi
+
+if [[ -f "$SCRIPT_DIR/NOTA-GEMINI-GUIA-CLAVE-IA.md" ]]; then
+    cp "$SCRIPT_DIR/NOTA-GEMINI-GUIA-CLAVE-IA.md" "$DIR_SYNC_ROOT/NOTA-GEMINI-GUIA-CLAVE-IA.md"
+    cp "$SCRIPT_DIR/NOTA-GEMINI-GUIA-CLAVE-IA.md" "$DIR_DOCS_DS/NOTA-GEMINI-GUIA-CLAVE-IA.md"
+    cp "$SCRIPT_DIR/NOTA-GEMINI-GUIA-CLAVE-IA.md" "$TARGET_PATH/NOTA-GEMINI-GUIA-CLAVE-IA.md"
+    echo -e "  ${COLOR_GREEN}✓${COLOR_RESET} NOTA-GEMINI-GUIA-CLAVE-IA.md"
 fi
 
 # 7. Git Commit si es repositorio Git

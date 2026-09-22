@@ -276,3 +276,21 @@ export interface StructuredVaultStorage {
   facts: MemoriaFact[];
 }
 
+// =============================================================================
+// MOTOR COGNITIVO & CLAVE IA (BYO KEY & OPCIÓN GESTIONADA)
+// =============================================================================
+export type AiProvider = 'gemini' | 'anthropic' | 'openai' | 'local_ollama';
+export type AiConnectionMode = 'byo' | 'managed';
+
+export interface AiKeyConfig {
+  mode: AiConnectionMode;
+  provider: AiProvider;
+  apiKey: string;
+  modelName: string;
+  customEndpoint?: string;
+  isTested: boolean;
+  lastPingMs?: number;
+  lastTestedAt?: string;
+  notifyOnManagedAvailable?: boolean;
+}
+

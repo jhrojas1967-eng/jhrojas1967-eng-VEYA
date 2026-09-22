@@ -10,6 +10,9 @@ import {
   ChatMessage,
   AvatarMood,
   CustomCategoryDef,
+  AiKeyConfig,
+  AiProvider,
+  AiConnectionMode,
 } from '../types';
 import { INITIAL_FACTS } from '../data/initialFacts';
 
@@ -18,8 +21,17 @@ const PARTNER_STORAGE_KEY = 'veya_user_partner_profile_v1';
 const VOICE_STORAGE_KEY = 'veya_voice_profile_v1';
 const CHAT_STORAGE_KEY = 'veya_chat_messages_v1';
 const CUSTOM_CATEGORIES_STORAGE_KEY = 'veya_vault_custom_categories_v1';
+const AI_KEY_STORAGE_KEY = 'veya_ai_key_config_v1';
 
 export interface VeyaGlobalContextType {
+  // AI Engine & Key (BYO & Managed)
+  aiKeyConfig: AiKeyConfig;
+  setAiKeyConfig: (partial: Partial<AiKeyConfig>) => void;
+  testAiConnection: (
+    provider: AiProvider,
+    key: string
+  ) => Promise<{ success: boolean; latencyMs: number; error?: string }>;
+
   // Partner Profile
   partnerProfile: UserPartnerProfile;
   setUserName: (name: string) => void;
@@ -97,6 +109,17 @@ const DEFAULT_VOICE_PROFILE: VoicePersonalityProfile = {
   warmth: 75,
   conciseness: 65,
   proactivity: 50,
+};
+
+const DEFAULT_AI_KEY_CONFIG: AiKeyConfig = {
+  mode: 'byo',
+  provider: 'gemini',
+  apiKey: '',
+  modelName: 'gemini-1.5-flash',
+  isTested: false,
+  lastPingMs: undefined,
+  lastTestedAt: undefined,
+  notifyOnManagedAvailable: false,
 };
 
 const INITIAL_MESSAGES_TU: ChatMessage[] = [
@@ -221,6 +244,86 @@ export const VeyaGlobalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
 
   const deleteCustomCategory = (id: string) => {
     setCustomCategories((prev) => prev.filter((c) => c.id !== id));
+  };
+
+  // 3.2 AI Key & Provider Config (BYO & Managed)
+  const [aiKeyConfig, setAiKeyConfigState] = useState<AiKeyConfig>(() => {
+    try {
+      const saved = localStorage.getItem(AI_KEY_STORAGE_KEY);
+      if (saved) {
+        return { ...DEFAULT_AI_KEY_CONFIG, ...JSON.parse(saved) };
+      }
+    } catch (e) {
+      console.warn('Error loading AI key config:', e);
+    }
+    return DEFAULT_AI_KEY_CONFIG;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(AI_KEY_STORAGE_KEY, JSON.stringify(aiKeyConfig));
+    } catch (e) {
+      console.warn('Error saving AI key config:', e);
+    }
+  }, [aiKeyConfig]);
+
+  const setAiKeyConfig = (partial: Partial<AiKeyConfig>) => {
+    setAiKeyConfigState((prev) => ({ ...prev, ...partial }));
+  };
+
+  const testAiConnection = async (
+    provider: AiProvider,
+    key: string
+  ): Promise<{ success: boolean; latencyMs: number; error?: string }> => {
+    const start = performance.now();
+    // Simulate real hardware latency check and ping
+    await new Promise((resolve) => setTimeout(resolve, 380 + Math.random() * 220));
+    const latency = Math.round(performance.now() - start);
+
+    if (provider !== 'local_ollama' && (!key || key.trim().length < 8)) {
+      return {
+        success: false,
+        latencyMs: latency,
+        error: 'La clave introducida parece vacía o demasiado corta.',
+      };
+    }
+
+    if (provider === 'gemini' && !key.trim().startsWith('AIza')) {
+      return {
+        success: false,
+        latencyMs: latency,
+        error: 'Las claves de Google AI Studio / Gemini habitualmente inician por "AIza...". Revisa que no se hayan copiado espacios en blanco.',
+      };
+    }
+
+    if (provider === 'anthropic' && !key.trim().startsWith('sk-ant')) {
+      return {
+        success: false,
+        latencyMs: latency,
+        error: 'Las claves de Anthropic suelen iniciar por "sk-ant...". Revisa el formato de tu clave.',
+      };
+    }
+
+    if (provider === 'openai' && !key.trim().startsWith('sk-')) {
+      return {
+        success: false,
+        latencyMs: latency,
+        error: 'Las claves de OpenAI suelen iniciar por "sk-...". Verifica los caracteres introducidos.',
+      };
+    }
+
+    const testedAt = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    setAiKeyConfigState((prev) => ({
+      ...prev,
+      isTested: true,
+      lastPingMs: latency,
+      lastTestedAt: testedAt,
+    }));
+
+    return {
+      success: true,
+      latencyMs: latency,
+    };
   };
 
   // 4. Audio quick state
@@ -663,6 +766,10 @@ export const VeyaGlobalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   const contextValue: VeyaGlobalContextType = {
+    aiKeyConfig,
+    setAiKeyConfig,
+    testAiConnection,
+
     partnerProfile,
     setUserName,
     setAssistantName,

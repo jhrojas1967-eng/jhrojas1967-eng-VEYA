@@ -17,6 +17,7 @@ import { ScreenAlarm } from './ScreenAlarm';
 import { ScreenWeather } from './ScreenWeather';
 import { ScreenNews } from './ScreenNews';
 import { ScreenPartner } from './ScreenPartner';
+import { ScreenIntelligence } from './ScreenIntelligence';
 
 type SettingsSubScreen =
   | 'partner'
@@ -25,6 +26,7 @@ type SettingsSubScreen =
   | 'alarm'
   | 'weather'
   | 'news'
+  | 'intelligence'
   | null;
 
 interface ScreenSettingsProps {
@@ -64,6 +66,9 @@ export const ScreenSettings: React.FC<ScreenSettingsProps> = ({
       />
     );
   }
+  if (activeSubScreen === 'intelligence') {
+    return <ScreenIntelligence onBack={() => setActiveSubScreen(null)} />;
+  }
 
   const settingsGroups = [
     {
@@ -75,6 +80,13 @@ export const ScreenSettings: React.FC<ScreenSettingsProps> = ({
           desc: 'Asistente VEYA · Nombre: José · Trato cercano',
           icon: <User className="w-4 h-4 text-[#155E95]" />,
           onClick: () => setActiveSubScreen('partner'),
+        },
+        {
+          id: 'intelligence',
+          title: 'Inteligencia',
+          desc: 'Motor de IA · BYO Key (Gemini) · Guía visual paso a paso',
+          icon: <Sparkles className="w-4 h-4 text-[#155E95]" />,
+          onClick: () => setActiveSubScreen('intelligence'),
         },
         {
           id: 'voice',
