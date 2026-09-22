@@ -1,68 +1,46 @@
 import React, { useState } from 'react';
 import { AvatarVisual } from './AvatarVisual';
-import { Send, Trash2, Mic, MicOff, Volume2, Sparkles, User, Info } from 'lucide-react';
+import { Send, Trash2, Mic, MicOff, Volume2, Sparkles, User, Info, Layers, Eye, EyeOff, ShieldCheck, ChevronDown, ChevronUp } from 'lucide-react';
 import { ChatMessage, AvatarState, AvatarMood } from '../types';
+import { useVeya } from '../context/VeyaGlobalContext';
 
 export const ScreenChat: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: '1',
-      sender: 'veya',
-      text: 'Hola José. Estoy aquí. ¿En qué puedo acompañarte hoy?',
-      timestamp: '08:14',
-      mood: 'sereno',
-    },
-    {
-      id: '2',
-      sender: 'user',
-      text: 'Recuérdame revisar la integración del tema Material 3 con Claude a las 10:00.',
-      timestamp: '08:15',
-    },
-    {
-      id: '3',
-      sender: 'veya',
-      text: 'Anotado en tu memoria local: "Revisar integración Material 3 con Claude a las 10:00". No saldrá de tu teléfono.',
-      timestamp: '08:15',
-      mood: 'concentrado',
-    },
-  ]);
+  const {
+    partnerProfile,
+    voiceProfile,
+    activeInContextFacts,
+    toggleFactContext,
+    messages,
+    sendMessage,
+    clearMessages,
+  } = useVeya();
 
   const [inputVal, setInputVal] = useState('');
   const [avatarState, setAvatarState] = useState<AvatarState>('idle');
   const [avatarMood, setAvatarMood] = useState<AvatarMood>('sereno');
   const [isListening, setIsListening] = useState(false);
+  const [showBrokerContext, setShowBrokerContext] = useState(false);
 
   const handleSend = () => {
     if (!inputVal.trim()) return;
-
-    const userMsg: ChatMessage = {
-      id: Date.now().toString(),
-      sender: 'user',
-      text: inputVal.trim(),
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    };
-
-    setMessages((prev) => [...prev, userMsg]);
+    const textToSend = inputVal.trim();
     setInputVal('');
-    setAvatarState('thinking');
 
-    // Simulate local VEYA response
+    setAvatarState('thinking');
+    setAvatarMood('concentrado');
+
+    sendMessage(textToSend);
+
+    // Coordinate avatar transition
     setTimeout(() => {
       setAvatarState('speaking');
-      setAvatarMood('cercano');
-      const responseMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        sender: 'veya',
-        text: 'He procesado tu petición en local. Tu privacidad es sagrada.',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        mood: 'cercano',
-      };
-      setMessages((prev) => [...prev, responseMsg]);
+      setAvatarMood(voiceProfile.warmth > 70 ? 'cercano' : 'sereno');
 
       setTimeout(() => {
         setAvatarState('idle');
-      }, 3000);
-    }, 1200);
+        setAvatarMood('sereno');
+      }, 2500);
+    }, 700);
   };
 
   const handleToggleVoice = () => {
@@ -77,36 +55,118 @@ export const ScreenChat: React.FC = () => {
   };
 
   const handleClear = () => {
-    setMessages([]);
+    clearMessages();
     setAvatarState('idle');
   };
 
+  const promptChips = [
+    '¿Qué sabes sobre mí?',
+    'Recomienda música para concentrarme',
+    'Estoy cansado de picar código',
+    '¿Cómo está configurada mi rutina?',
+  ];
+
   return (
-    <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F7FAFC] dark:bg-[#101418]">
-      {/* Top Bar with Clear and Status */}
-      <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-white dark:bg-[#12181F] shrink-0">
+    <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F7FAFC] dark:bg-[#101418] font-['Nunito_Sans']">
+      {/* Top Bar with Clear, Persona Badge, and Status */}
+      <div className="px-4 py-2.5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-white dark:bg-[#12181F] shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
           <div>
-            <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200">Conversar con VEYA</h2>
-            <p className="text-[10px] text-slate-400">Canal local directo · Sin conexión externa</p>
+            <div className="flex items-center gap-1.5">
+              <h2 className="text-sm font-bold text-slate-800 dark:text-slate-200">
+                {partnerProfile.assistantName}
+              </h2>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
+                {partnerProfile.pronounTreatment === 'tu' ? 'Tú' : 'Usted'}
+              </span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded bg-blue-50 dark:bg-blue-950/60 text-[#155E95] dark:text-[#8ECEFF] font-medium">
+                {voiceProfile.selectedVoiceId.replace('voice_', '')}
+              </span>
+            </div>
+            <p className="text-[10px] text-slate-400">Motor local on-device · Privacidad absoluta</p>
           </div>
         </div>
-        <button
-          onClick={handleClear}
-          className="p-2 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          title="Vaciar transcripción"
-        >
-          <Trash2 className="w-4 h-4" />
-        </button>
+
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setShowBrokerContext(!showBrokerContext)}
+            className={`px-2.5 py-1 rounded-xl text-[11px] font-bold flex items-center gap-1 transition-colors border ${
+              showBrokerContext
+                ? 'bg-blue-50 dark:bg-blue-950/70 border-blue-200 dark:border-blue-800 text-[#155E95] dark:text-[#8ECEFF]'
+                : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300'
+            }`}
+            title="Ver contexto efímero inyectado (Stateless Broker)"
+          >
+            <Layers className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+            <span>Prompt: {activeInContextFacts.length}</span>
+            {showBrokerContext ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+          </button>
+
+          <button
+            onClick={handleClear}
+            className="p-2 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            title="Vaciar transcripción"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        </div>
       </div>
+
+      {/* Ephemeral Injected Context Drawer (Stateless Broker Inspector) */}
+      {showBrokerContext && (
+        <div className="px-4 py-3 bg-slate-50 dark:bg-[#151D26] border-b border-slate-200 dark:border-slate-800 text-xs shrink-0 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-1.5 font-bold text-slate-800 dark:text-slate-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span>Contexto Efímero en Prompt (Stateless Broker)</span>
+            </div>
+            <span className="text-[10px] text-slate-400">
+              {activeInContextFacts.length} hechos cargados en RAM local
+            </span>
+          </div>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-2">
+            La IA no guarda estado. En cada turno solo recibe estos recuerdos recuperados de SQLite cifrado:
+          </p>
+          <div className="max-h-36 overflow-y-auto space-y-1.5 pr-1">
+            {activeInContextFacts.length === 0 ? (
+              <p className="text-[11px] italic text-slate-400 py-1">
+                Ningún recuerdo activo en la Bóveda. El prompt efímero está limpio.
+              </p>
+            ) : (
+              activeInContextFacts.map((fact) => (
+                <div
+                  key={fact.id}
+                  className="flex items-center justify-between p-2 rounded-xl bg-white dark:bg-[#1A222D] border border-slate-200/80 dark:border-slate-800 text-[11px]"
+                >
+                  <div className="flex-1 min-w-0 pr-2">
+                    <span className="font-bold text-slate-700 dark:text-slate-200 truncate block">
+                      {fact.title}
+                    </span>
+                    <span className="text-[10px] text-slate-400 truncate block">
+                      {fact.detail}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => toggleFactContext(fact.id)}
+                    className="p-1 rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-slate-100 dark:hover:bg-slate-700 shrink-0"
+                    title="Excluir de este turno"
+                  >
+                    <Eye className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Floating Interactive Avatar Banner */}
       <div className="py-2 px-4 flex items-center justify-center bg-gradient-to-b from-white/90 to-transparent dark:from-[#12181F]/90 shrink-0">
         <AvatarVisual
           state={avatarState}
           mood={avatarMood}
-          size={105}
+          size={100}
           amplitude={avatarState === 'speaking' ? 0.7 : 0.2}
           showStatusLabel
         />
@@ -118,7 +178,9 @@ export const ScreenChat: React.FC = () => {
           <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-400">
             <Sparkles className="w-8 h-8 text-[#7654A7] mb-2 opacity-50" />
             <p className="text-sm font-medium">Transcripción vacía</p>
-            <p className="text-xs mt-1 max-w-xs">Escribe o pulsa el micrófono para hablar directamente con VEYA.</p>
+            <p className="text-xs mt-1 max-w-xs">
+              Escribe o pulsa un atajo contextual para conversar con {partnerProfile.assistantName}.
+            </p>
           </div>
         ) : (
           messages.map((m) => {
@@ -129,7 +191,7 @@ export const ScreenChat: React.FC = () => {
                 className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}
               >
                 <div
-                  className={`max-w-[82%] px-4 py-3 rounded-2xl text-xs sm:text-sm leading-relaxed ${
+                  className={`max-w-[85%] px-4 py-3 rounded-2xl text-xs sm:text-sm leading-relaxed whitespace-pre-wrap ${
                     isUser
                       ? 'bg-[#155E95] text-white rounded-br-sm shadow-sm'
                       : 'bg-white dark:bg-[#1C242E] text-slate-800 dark:text-slate-100 border border-slate-200/80 dark:border-slate-800 rounded-bl-sm shadow-sm'
@@ -144,6 +206,21 @@ export const ScreenChat: React.FC = () => {
             );
           })
         )}
+      </div>
+
+      {/* Prompt Suggestion Chips */}
+      <div className="px-3 py-1.5 flex items-center gap-1.5 overflow-x-auto bg-slate-50/80 dark:bg-[#12181F]/80 border-t border-slate-100 dark:border-slate-800/80 shrink-0 no-scrollbar">
+        {promptChips.map((chip, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setInputVal(chip);
+            }}
+            className="text-[11px] px-2.5 py-1 rounded-full whitespace-nowrap bg-white dark:bg-[#1C242E] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:border-[#155E95] dark:hover:border-[#8ECEFF] transition-all shrink-0"
+          >
+            {chip}
+          </button>
+        ))}
       </div>
 
       {/* Bottom Input Field */}
@@ -166,7 +243,7 @@ export const ScreenChat: React.FC = () => {
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            placeholder={isListening ? 'Escuchando tu voz...' : 'Escribe a VEYA...'}
+            placeholder={isListening ? 'Escuchando tu voz...' : `Escribe a ${partnerProfile.assistantName}...`}
             className="flex-1 bg-slate-100 dark:bg-[#1A222B] text-slate-800 dark:text-slate-100 placeholder-slate-400 text-xs sm:text-sm px-4 py-3 rounded-full border border-transparent focus:border-[#155E95] dark:focus:border-[#8ECEFF] focus:outline-none transition-all"
           />
 

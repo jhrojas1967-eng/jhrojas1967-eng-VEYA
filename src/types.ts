@@ -208,7 +208,26 @@ export interface OAuthServiceConfig {
 // =========================================================================
 // CONTRATO CANÓNICO MEMORIAFACT (NOTA-GEMINI-PANEL-MEMORIA.md)
 // =========================================================================
-export type MemoryCategory = 'personal' | 'work' | 'preferences' | 'routine' | 'music' | 'health' | 'inferred';
+export type MemoryCategory =
+  | 'personal'
+  | 'work'
+  | 'preferences'
+  | 'routine'
+  | 'music'
+  | 'cinema'
+  | 'sports'
+  | 'health'
+  | 'inferred'
+  | (string & {});
+
+export interface CustomCategoryDef {
+  id: string;
+  label: string;
+  desc?: string;
+  iconName?: string;
+  colorTheme?: string;
+}
+
 export type MemoryOrigin = 'explicit' | 'inferred';
 export type PurgeScheduleOption = 'never' | '7d' | '30d' | '90d' | 'session';
 
@@ -225,6 +244,28 @@ export interface MemoriaFact {
 }
 
 export type MemoryFact = MemoriaFact;
+
+export type PronounTreatment = 'tu' | 'usted';
+export type CompanionRole = 'friend' | 'mentor' | 'functional';
+
+export interface UserPartnerProfile {
+  userName: string;
+  assistantName: string;
+  pronounTreatment: PronounTreatment;
+  companionRole: CompanionRole;
+  detectFatigue: boolean;
+  nonInvasiveMode: boolean;
+}
+
+export interface VoicePersonalityProfile {
+  selectedVoiceId: string;
+  speechSpeed: number;
+  pitch: number;
+  naturalPauses: boolean;
+  warmth: number; // 0..100
+  conciseness: number; // 0..100
+  proactivity: number; // 0..100
+}
 
 export interface StructuredVaultStorage {
   version: string;

@@ -32,6 +32,19 @@ import {
   Sliders,
   Edit3,
   CheckCheck,
+  Film,
+  Trophy,
+  Activity,
+  BookOpen,
+  Compass,
+  Utensils,
+  Camera,
+  Palette,
+  Tag,
+  PlusCircle,
+  X,
+  FolderPlus,
+  Heart,
 } from 'lucide-react';
 import {
   MemoriaFact,
@@ -39,114 +52,17 @@ import {
   MemoryOrigin,
   PurgeScheduleOption,
   StructuredVaultStorage,
+  CustomCategoryDef,
 } from '../types';
 
 export type { MemoriaFact, PurgeScheduleOption };
 export type MemoryFact = MemoriaFact;
 
-const VAULT_STORAGE_KEY = 'veya_local_vault_facts_v2';
+import { INITIAL_FACTS } from '../data/initialFacts';
+import { useVeya } from '../context/VeyaGlobalContext';
+export { INITIAL_FACTS };
 
-const INITIAL_FACTS: MemoriaFact[] = [
-  {
-    id: 'f1',
-    category: 'personal',
-    title: 'Nombre y estilo de trato',
-    detail: 'Se llama José. Prefiere comunicación cercana, directa, cálida y sin formalismos innecesarios.',
-    origin: 'explicit',
-    timestamp: 'Hoy, 08:30',
-    activeInContext: true,
-    sha256Hash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f_work1',
-    category: 'work',
-    title: 'Arquitectura Local-First y Stacks',
-    detail: 'Especialista en Kotlin, Jetpack Compose, TypeScript y bases de datos seguras SQLCipher en dispositivo.',
-    origin: 'explicit',
-    timestamp: 'Ayer, 16:45',
-    activeInContext: true,
-    sha256Hash: 'a1b2c3d4e5f67890123456789abcdef0123456789abcdef0123456789abcdef0',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f_pref1',
-    category: 'preferences',
-    title: 'Modo visual de interfaz y contraste',
-    detail: 'Prioriza modo oscuro con alto contraste, bordes definidos M3 y cero animaciones superfluas o distractivas.',
-    origin: 'explicit',
-    timestamp: null, // Caso de prueba obligatorio: fecha nula (null ≠ 'Hoy')
-    activeInContext: true,
-    sha256Hash: 'c4ca4238a0b923820dcc509a6f75849b28489d81d6006e87f174e92eb0e5210e',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f2',
-    category: 'routine',
-    title: 'Rutina matinal de enfoque',
-    detail: 'Despierta habitualmente a las 07:30. Inicia con agua, respiración consciente y revisión de titulares breves.',
-    origin: 'explicit',
-    timestamp: '18 de Septiembre',
-    activeInContext: true,
-    sha256Hash: '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f3',
-    category: 'music',
-    title: 'Preferencia acústica de trabajo',
-    detail: 'Escucha piano acústico, jazz nórdico y ambient a 24-bit/96kHz para sesiones de concentración profunda.',
-    origin: 'inferred',
-    timestamp: 'Hace 2 días',
-    activeInContext: true,
-    sha256Hash: '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f4',
-    category: 'health',
-    title: 'Sensibilidad a pausas posturales',
-    detail: 'Aprecia recordatorios discretos tras 90 minutos de trabajo continuado en el escritorio.',
-    origin: 'inferred',
-    timestamp: 'Hace 3 días',
-    activeInContext: true,
-    sha256Hash: 'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f5',
-    category: 'personal',
-    title: 'Ubicación meteorológica estática',
-    detail: 'Consulta el pronóstico para Madrid/Centro sin permitir seguimiento GPS en tiempo real.',
-    origin: 'explicit',
-    timestamp: null, // Caso de prueba obligatorio: fecha nula (null ≠ 'Hoy')
-    activeInContext: false,
-    sha256Hash: 'cd2eb0837c9b4c962c22d2ff8b5441b7b45805887f051d39bf133b583baf6860',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f_work2',
-    category: 'work',
-    title: 'Ciclos de releases e integración continua',
-    detail: 'Prefiere revisiones por pares exhaustivas y contratos de API estrictamente versionados antes de desplegar.',
-    origin: 'inferred',
-    timestamp: null, // Caso null ≠ hoy en categoría de trabajo
-    activeInContext: false,
-    sha256Hash: '7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b',
-    embeddingVectorDims: 384,
-  },
-  {
-    id: 'f6',
-    category: 'inferred',
-    title: 'Mood nocturno y síntesis concisa',
-    detail: 'Disminución del ritmo de interacción a partir de las 22:30; prefiere respuestas muy concisas y tono sereno.',
-    origin: 'inferred',
-    timestamp: 'Hace 5 días',
-    activeInContext: true,
-    sha256Hash: '7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069',
-    embeddingVectorDims: 384,
-  },
-];
+const VAULT_STORAGE_KEY = 'veya_local_vault_facts_v2';
 
 // Helper para carga estructurada y resiliente desde LocalStorage
 const loadSavedVaultState = (): {
@@ -189,7 +105,7 @@ interface ScreenVaultProps {
 
 // Metadatos de Categorías Material 3
 const CATEGORY_META: Record<
-  MemoriaFact['category'],
+  string,
   { label: string; desc: string; icon: React.ReactNode; colorPill: string; headerBg: string }
 > = {
   personal: {
@@ -227,20 +143,71 @@ const CATEGORY_META: Record<
     colorPill: 'bg-purple-100/70 text-purple-900 dark:bg-purple-950/60 dark:text-purple-300 border-purple-200 dark:border-purple-900/50',
     headerBg: 'bg-purple-50/50 dark:bg-purple-950/20 border-purple-100 dark:border-purple-950',
   },
+  cinema: {
+    label: 'Cine & Audiovisual',
+    desc: 'Directores de culto, géneros preferidos, bandas sonoras y cinematografía',
+    icon: <Film className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />,
+    colorPill: 'bg-rose-100/70 text-rose-900 dark:bg-rose-950/60 dark:text-rose-300 border-rose-200 dark:border-rose-900/50',
+    headerBg: 'bg-rose-50/50 dark:bg-rose-950/20 border-rose-100 dark:border-rose-950',
+  },
+  sports: {
+    label: 'Deporte & Rendimiento',
+    desc: 'Disciplinas físicas, partidos de pádel, running y entrenamiento',
+    icon: <Trophy className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />,
+    colorPill: 'bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50',
+    headerBg: 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-100 dark:border-emerald-950',
+  },
   health: {
     label: 'Salud & Bienestar',
     desc: 'Pausas posturales, hidratación y descansos de vista',
-    icon: <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />,
-    colorPill: 'bg-emerald-100/70 text-emerald-900 dark:bg-emerald-950/60 dark:text-emerald-300 border-emerald-200 dark:border-emerald-900/50',
-    headerBg: 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-100 dark:border-emerald-950',
+    icon: <Clock className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />,
+    colorPill: 'bg-teal-100/70 text-teal-900 dark:bg-teal-950/60 dark:text-teal-300 border-teal-200 dark:border-teal-900/50',
+    headerBg: 'bg-teal-50/50 dark:bg-teal-950/20 border-teal-100 dark:border-teal-950',
   },
   inferred: {
     label: 'Inferencias de VEYA',
     desc: 'Deducciones locales a partir de patrones observados',
-    icon: <Brain className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />,
-    colorPill: 'bg-teal-100/70 text-teal-900 dark:bg-teal-950/60 dark:text-teal-300 border-teal-200 dark:border-teal-900/50',
-    headerBg: 'bg-teal-50/50 dark:bg-teal-950/20 border-teal-100 dark:border-teal-950',
+    icon: <Brain className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />,
+    colorPill: 'bg-indigo-100/70 text-indigo-900 dark:bg-indigo-950/60 dark:text-indigo-300 border-indigo-200 dark:border-indigo-900/50',
+    headerBg: 'bg-indigo-50/50 dark:bg-indigo-950/20 border-indigo-100 dark:border-indigo-950',
   },
+};
+
+const getCategoryMeta = (
+  catId: string,
+  customCategories: CustomCategoryDef[] = []
+): { label: string; desc: string; icon: React.ReactNode; colorPill: string; headerBg: string } => {
+  if (CATEGORY_META[catId]) {
+    return CATEGORY_META[catId];
+  }
+  const custom = customCategories.find((c) => c.id === catId);
+  if (custom) {
+    let iconEl = <Tag className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />;
+    if (custom.iconName === 'film') iconEl = <Film className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />;
+    else if (custom.iconName === 'trophy') iconEl = <Trophy className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />;
+    else if (custom.iconName === 'activity') iconEl = <Activity className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />;
+    else if (custom.iconName === 'book') iconEl = <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />;
+    else if (custom.iconName === 'compass') iconEl = <Compass className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />;
+    else if (custom.iconName === 'utensils') iconEl = <Utensils className="w-3.5 h-3.5 text-orange-600 dark:text-orange-400" />;
+    else if (custom.iconName === 'camera') iconEl = <Camera className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />;
+    else if (custom.iconName === 'palette') iconEl = <Palette className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />;
+    else if (custom.iconName === 'heart') iconEl = <Heart className="w-3.5 h-3.5 text-red-600 dark:text-red-400" />;
+
+    return {
+      label: custom.label,
+      desc: custom.desc || `Recuerdos sobre ${custom.label}`,
+      icon: iconEl,
+      colorPill: 'bg-cyan-100/70 text-cyan-900 dark:bg-cyan-950/60 dark:text-cyan-300 border-cyan-200 dark:border-cyan-900/50',
+      headerBg: 'bg-cyan-50/50 dark:bg-cyan-950/20 border-cyan-100 dark:border-cyan-950',
+    };
+  }
+  return {
+    label: catId.charAt(0).toUpperCase() + catId.slice(1),
+    desc: 'Categoría personalizada en memoria local',
+    icon: <Tag className="w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />,
+    colorPill: 'bg-slate-100/70 text-slate-900 dark:bg-slate-800 dark:text-slate-300 border-slate-200 dark:border-slate-700',
+    headerBg: 'bg-slate-50 dark:bg-slate-900/40 border-slate-200 dark:border-slate-800',
+  };
 };
 
 export const ScreenVault: React.FC<ScreenVaultProps> = ({
@@ -249,23 +216,45 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
   onDeleteFact: externalDeleteFact,
   onPurgeAll: externalPurgeAll,
 }) => {
-  const initialVault = useMemo(() => loadSavedVaultState(), []);
-  const [facts, setFacts] = useState<MemoriaFact[]>(initialVault.facts);
+  const {
+    facts,
+    isEncrypted,
+    purgeSchedule,
+    preserveExplicitFacts,
+    toggleFactContext: globalToggleContext,
+    confirmFact: globalConfirmFact,
+    updateFact: globalUpdateFact,
+    deleteFact: globalDeleteFact,
+    addFact: globalAddFact,
+    purgeAllFacts: globalPurgeAllFacts,
+    restoreInitialFacts: globalRestoreInitialFacts,
+    setHardwareEncryption: globalSetHardwareEncryption,
+    setPurgeSchedule: globalSetPurgeSchedule,
+    setPreserveExplicitFacts: globalSetPreserveExplicitFacts,
+    importFacts: globalImportFacts,
+    customCategories,
+    addCustomCategory,
+    deleteCustomCategory,
+  } = useVeya();
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedFactId, setExpandedFactId] = useState<string | null>(null);
 
   // Material 3 Security Controls State
-  const [isEncrypted, setIsEncrypted] = useState<boolean>(initialVault.isEncrypted);
   const [showEncryptionWarningModal, setShowEncryptionWarningModal] = useState<boolean>(false);
-  const [purgeSchedule, setPurgeSchedule] = useState<PurgeScheduleOption>(initialVault.purgeSchedule);
-  const [preserveExplicitFacts, setPreserveExplicitFacts] = useState<boolean>(initialVault.preserveExplicitFacts);
 
   // Modals & Sheets
   const [showAddModal, setShowAddModal] = useState<boolean>(false);
   const [showPurgeModal, setShowPurgeModal] = useState<boolean>(false);
   const [showComposeCodeModal, setShowComposeCodeModal] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Modal de Nueva Pestaña / Categoría Personalizada
+  const [showNewCategoryModal, setShowNewCategoryModal] = useState<boolean>(false);
+  const [newCatName, setNewCatName] = useState<string>('');
+  const [newCatDesc, setNewCatDesc] = useState<string>('');
+  const [newCatIcon, setNewCatIcon] = useState<string>('film');
 
   // Modal de Edición de Recuerdo Material 3
   const [editingFact, setEditingFact] = useState<MemoriaFact | null>(null);
@@ -287,35 +276,48 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
     setTimeout(() => setToastMessage(null), 2800);
   };
 
-  // PERSISTENCIA ESTRUCTURADA: Guarda en localStorage en cada cambio
-  useEffect(() => {
-    try {
-      const payload: StructuredVaultStorage = {
-        version: '2.5.0',
-        lastUpdated: new Date().toISOString(),
-        isHardwareEncrypted: isEncrypted,
-        purgeSchedule,
-        preserveExplicitFacts,
-        facts,
-      };
-      localStorage.setItem(VAULT_STORAGE_KEY, JSON.stringify(payload));
-    } catch (e) {
-      console.warn('No se pudo guardar la bóveda en LocalStorage:', e);
+  // Creación de nueva categoría / pestaña personalizada
+  const handleCreateCategory = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = newCatName.trim();
+    if (!trimmed) return;
+    const catId = 'cat_' + trimmed.toLowerCase().replace(/[^a-z0-9]/g, '_') + '_' + Date.now().toString().slice(-4);
+    const newCatDef: CustomCategoryDef = {
+      id: catId,
+      label: trimmed,
+      desc: newCatDesc.trim() || `Recuerdos locales sobre ${trimmed}`,
+      iconName: newCatIcon,
+    };
+    addCustomCategory(newCatDef);
+    setSelectedCategory(catId);
+    setNewCategory(catId);
+    setNewCatName('');
+    setNewCatDesc('');
+    setShowNewCategoryModal(false);
+    showToast(`Pestaña "${trimmed}" creada con éxito`);
+  };
+
+  // Eliminación de categoría personalizada
+  const handleDeleteCategory = (catId: string, catLabel: string) => {
+    deleteCustomCategory(catId);
+    if (selectedCategory === catId) {
+      setSelectedCategory('all');
     }
-  }, [facts, isEncrypted, purgeSchedule, preserveExplicitFacts]);
+    showToast(`Pestaña "${catLabel}" eliminada`);
+  };
 
   // Toggle Hardware Encryption
   const handleToggleEncryption = () => {
     if (isEncrypted) {
       setShowEncryptionWarningModal(true);
     } else {
-      setIsEncrypted(true);
+      globalSetHardwareEncryption(true);
       showToast('Cifrado de Hardware AES-256 activado');
     }
   };
 
   const confirmDisableEncryption = () => {
-    setIsEncrypted(false);
+    globalSetHardwareEncryption(false);
     setShowEncryptionWarningModal(false);
     showToast('Cifrado desactivado (Almacenamiento en texto plano)');
   };
@@ -323,39 +325,19 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
   // ACCIÓN 1 CABLEADA: Alternar inclusión en prompt efímero (activeInContext)
   const handleToggleFactContext = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setFacts((prev) =>
-      prev.map((f) => {
-        if (f.id === id) {
-          const updated = !f.activeInContext;
-          if (externalToggleContext) {
-            externalToggleContext(id, updated);
-          }
-          return { ...f, activeInContext: updated };
-        }
-        return f;
-      })
-    );
+    const fact = facts.find((f) => f.id === id);
+    const updated = fact ? !fact.activeInContext : true;
+    globalToggleContext(id);
+    if (externalToggleContext) {
+      externalToggleContext(id, updated);
+    }
   };
 
   // ACCIÓN: Confirmar recuerdo (Promueve inferencia a explícito o ratifica validación)
   const handleConfirmFact = (fact: MemoriaFact, e: React.MouseEvent) => {
     e.stopPropagation();
     if (fact.origin === 'inferred') {
-      const updatedTimestamp =
-        fact.timestamp !== null
-          ? fact.timestamp
-          : 'Hoy, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      setFacts((prev) =>
-        prev.map((f) =>
-          f.id === fact.id
-            ? {
-                ...f,
-                origin: 'explicit',
-                timestamp: updatedTimestamp,
-              }
-            : f
-        )
-      );
+      globalConfirmFact(fact.id);
       showToast(`Recuerdo "${fact.title}" confirmado y validado como hecho explícito`);
     } else {
       showToast(`El recuerdo "${fact.title}" ya se encuentra validado y confirmado`);
@@ -373,17 +355,11 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
     e.preventDefault();
     if (!editingFact || !editingFact.title.trim() || !editingFact.detail.trim()) return;
 
-    setFacts((prev) =>
-      prev.map((f) =>
-        f.id === editingFact.id
-          ? {
-              ...editingFact,
-              title: editingFact.title.trim(),
-              detail: editingFact.detail.trim(),
-            }
-          : f
-      )
-    );
+    globalUpdateFact({
+      ...editingFact,
+      title: editingFact.title.trim(),
+      detail: editingFact.detail.trim(),
+    });
     showToast(`Recuerdo "${editingFact.title.trim()}" guardado con éxito`);
     setEditingFact(null);
   };
@@ -402,7 +378,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
   };
 
   const executeDeleteFact = (id: string) => {
-    setFacts((prev) => prev.filter((f) => f.id !== id));
+    globalDeleteFact(id);
     if (externalDeleteFact) {
       externalDeleteFact(id);
     }
@@ -411,13 +387,8 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
 
   // ACCIÓN 3 CABLEADA: Purga Soberana (Kill Switch)
   const handlePurgeAll = () => {
-    setFacts([]);
+    globalPurgeAllFacts();
     setShowPurgeModal(false);
-    try {
-      localStorage.removeItem(VAULT_STORAGE_KEY);
-    } catch (e) {
-      console.warn('Error al vaciar localStorage:', e);
-    }
     if (externalPurgeAll) {
       externalPurgeAll();
     }
@@ -426,7 +397,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
 
   // Restablecer Recuerdos Iniciales (Canónicos)
   const handleRestoreInitialFacts = () => {
-    setFacts(INITIAL_FACTS);
+    globalRestoreInitialFacts();
     showToast('Recuerdos canónicos restaurados');
   };
 
@@ -452,7 +423,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
       embeddingVectorDims: 384,
     };
 
-    setFacts([newFact, ...facts]);
+    globalAddFact(newFact);
     setNewTitle('');
     setNewDetail('');
     setNewDateType('now');
@@ -513,10 +484,10 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
             embeddingVectorDims: item.embeddingVectorDims || 384,
           }));
 
-          setFacts(sanitized);
-          if (typeof data.isHardwareEncrypted === 'boolean') setIsEncrypted(data.isHardwareEncrypted);
-          if (data.purgeSchedule) setPurgeSchedule(data.purgeSchedule);
-          if (typeof data.preserveExplicitFacts === 'boolean') setPreserveExplicitFacts(data.preserveExplicitFacts);
+          globalImportFacts(sanitized);
+          if (typeof data.isHardwareEncrypted === 'boolean') globalSetHardwareEncryption(data.isHardwareEncrypted);
+          if (data.purgeSchedule) globalSetPurgeSchedule(data.purgeSchedule);
+          if (typeof data.preserveExplicitFacts === 'boolean') globalSetPreserveExplicitFacts(data.preserveExplicitFacts);
 
           showToast(`${sanitized.length} recuerdos importados a la bóveda local`);
         } else {
@@ -528,6 +499,13 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
     };
     reader.readAsText(file);
     if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  // Helper para abrir modal de nuevo recuerdo con categoría preseleccionada
+  const openAddModal = (catToPreselect?: string) => {
+    const targetCat = catToPreselect || (selectedCategory !== 'all' ? selectedCategory : 'personal');
+    setNewCategory(targetCat);
+    setShowAddModal(true);
   };
 
   // Filtrado de hechos
@@ -542,20 +520,75 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
     });
   }, [facts, selectedCategory, searchQuery]);
 
-  // REQUISITO CLAUDE: Agrupar por categoría
+  // Metadatos de la categoría activa actualmente
+  const activeMeta = useMemo(() => {
+    return getCategoryMeta(selectedCategory, customCategories);
+  }, [selectedCategory, customCategories]);
+
+  // Todas las opciones de pestañas en la barra de navegación horizontal
+  const allTabOptions = useMemo(() => {
+    const canonicalTabs = [
+      { id: 'all', label: 'Todo', icon: <Layers className="w-3.5 h-3.5" /> },
+      { id: 'personal', label: 'Personal', icon: <User className="w-3.5 h-3.5" /> },
+      { id: 'work', label: 'Trabajo', icon: <Briefcase className="w-3.5 h-3.5" /> },
+      { id: 'preferences', label: 'Preferencias', icon: <Sliders className="w-3.5 h-3.5" /> },
+      { id: 'routine', label: 'Rutinas', icon: <Calendar className="w-3.5 h-3.5" /> },
+      { id: 'music', label: 'Música', icon: <Sparkles className="w-3.5 h-3.5" /> },
+      { id: 'cinema', label: 'Cine', icon: <Film className="w-3.5 h-3.5" /> },
+      { id: 'sports', label: 'Deporte', icon: <Trophy className="w-3.5 h-3.5" /> },
+      { id: 'health', label: 'Salud', icon: <Clock className="w-3.5 h-3.5" /> },
+      { id: 'inferred', label: 'Inferencias', icon: <Brain className="w-3.5 h-3.5" /> },
+    ];
+
+    const customTabs = customCategories.map((c) => {
+      const meta = getCategoryMeta(c.id, customCategories);
+      return {
+        id: c.id,
+        label: c.label,
+        icon: meta.icon,
+        isCustom: true,
+      };
+    });
+
+    const coveredIds = new Set([...canonicalTabs.map((t) => t.id), ...customTabs.map((t) => t.id)]);
+    const existingFactCats = Array.from(new Set(facts.map((f) => f.category)));
+    const extraTabs = existingFactCats
+      .filter((cat) => !coveredIds.has(cat))
+      .map((cat) => {
+        const meta = getCategoryMeta(cat, customCategories);
+        return {
+          id: cat,
+          label: meta.label,
+          icon: meta.icon,
+          isCustom: false,
+        };
+      });
+
+    return [...canonicalTabs, ...customTabs, ...extraTabs];
+  }, [customCategories, facts]);
+
+  // REQUISITO CLAUDE: Agrupación dinámica por categoría (canónicas + personalizadas)
   const groupedFacts = useMemo(() => {
-    const categoriesOrder: MemoriaFact['category'][] = [
+    const canonicalOrder: string[] = [
       'personal',
       'work',
       'preferences',
       'routine',
       'music',
+      'cinema',
+      'sports',
       'health',
       'inferred',
     ];
-    const groups: { category: MemoriaFact['category']; items: MemoriaFact[] }[] = [];
+    const customIds = customCategories.map((c) => c.id);
+    const existingFactCats = Array.from(new Set(facts.map((f) => f.category)));
+    const allKnownCategories = Array.from(
+      new Set([...canonicalOrder, ...customIds, ...existingFactCats])
+    );
 
-    categoriesOrder.forEach((cat) => {
+    const groups: { category: string; items: MemoriaFact[] }[] = [];
+
+    allKnownCategories.forEach((cat) => {
       if (selectedCategory === 'all' || selectedCategory === cat) {
         const items = filteredFacts.filter((f) => f.category === cat);
         if (items.length > 0) {
@@ -565,7 +598,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
     });
 
     return groups;
-  }, [filteredFacts, selectedCategory]);
+  }, [filteredFacts, selectedCategory, customCategories, facts]);
 
   // REQUISITO CLAUDE: Fechas null ≠ hoy
   const renderFactDate = (timestamp: string | null) => {
@@ -785,7 +818,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
               <button
                 key={opt.id}
                 onClick={() => {
-                  setPurgeSchedule(opt.id as PurgeScheduleOption);
+                  globalSetPurgeSchedule(opt.id as PurgeScheduleOption);
                   showToast(`Ciclo de purga actualizado: ${opt.label}`);
                 }}
                 className={`py-1.5 rounded-xl text-xs font-bold transition-all text-center ${
@@ -817,7 +850,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
               </span>
             </div>
             <button
-              onClick={() => setPreserveExplicitFacts(!preserveExplicitFacts)}
+              onClick={() => globalSetPreserveExplicitFacts(!preserveExplicitFacts)}
               className={`w-10 h-6 rounded-full p-0.5 transition-colors relative shrink-0 ${
                 preserveExplicitFacts ? 'bg-[#155E95]' : 'bg-slate-300 dark:bg-slate-700'
               }`}
@@ -915,52 +948,131 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
             )}
           </div>
 
-          {/* M3 Filter Chips con categorías completas */}
-          <div className="flex gap-1.5 overflow-x-auto pb-1 text-[11px] font-bold no-scrollbar">
-            {[
-              { id: 'all', label: `Todas (${facts.length})` },
-              { id: 'personal', label: 'Personal' },
-              { id: 'work', label: 'Trabajo' },
-              { id: 'preferences', label: 'Preferencias' },
-              { id: 'routine', label: 'Rutinas' },
-              { id: 'music', label: 'Música' },
-              { id: 'health', label: 'Salud' },
-              { id: 'inferred', label: 'Inferencias' },
-            ].map((c) => {
-              const isSelected = selectedCategory === c.id;
-              return (
+          {/* BARRA DE NAVEGACIÓN HORIZONTAL CON PESTAÑAS DE FILTRO (MATERIAL 3) */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between px-1">
+              <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-[#155E95] dark:text-[#8ECEFF]" />
+                Pestañas de Memoria
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowNewCategoryModal(true)}
+                className="text-[11px] font-bold text-[#155E95] dark:text-[#8ECEFF] hover:underline flex items-center gap-1"
+                title="Crear nueva pestaña o categoría de memoria"
+              >
+                <PlusCircle className="w-3.5 h-3.5" />
+                <span>+ Nueva pestaña</span>
+              </button>
+            </div>
+
+            {/* Carrusel de Pestañas Horizontales M3 */}
+            <div className="relative">
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-0.5 px-0.5 no-scrollbar scroll-smooth">
+                {allTabOptions.map((tab) => {
+                  const isSelected = selectedCategory === tab.id;
+                  const count =
+                    tab.id === 'all'
+                      ? facts.length
+                      : facts.filter((f) => f.category === tab.id).length;
+
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setSelectedCategory(tab.id)}
+                      className={`group flex items-center gap-1.5 px-3.5 py-2 rounded-2xl whitespace-nowrap text-xs font-bold transition-all shrink-0 border ${
+                        isSelected
+                          ? 'bg-[#155E95] text-white border-[#155E95] dark:bg-[#8ECEFF] dark:text-[#003355] dark:border-[#8ECEFF] shadow-xs'
+                          : 'bg-white dark:bg-[#141A24] text-slate-600 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                      }`}
+                    >
+                      <span className="shrink-0">{tab.icon}</span>
+                      <span>{tab.label}</span>
+                      <span
+                        className={`text-[10px] font-mono font-black px-1.5 py-0.5 rounded-full ${
+                          isSelected
+                            ? 'bg-white/20 text-white dark:bg-[#003355]/20 dark:text-[#003355]'
+                            : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+                        }`}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+
+                {/* Botón "+ Nueva Pestaña" en la propia barra */}
                 <button
-                  key={c.id}
-                  onClick={() => setSelectedCategory(c.id)}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded-full whitespace-nowrap transition-all border ${
-                    isSelected
-                      ? 'bg-[#155E95] text-white border-[#155E95] dark:bg-[#8ECEFF] dark:text-[#003355] dark:border-[#8ECEFF] shadow-xs'
-                      : 'bg-white dark:bg-[#141A24] text-slate-600 dark:text-slate-400 border-slate-200/80 dark:border-slate-800 hover:bg-slate-50'
-                  }`}
+                  type="button"
+                  onClick={() => setShowNewCategoryModal(true)}
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-2xl whitespace-nowrap text-xs font-bold border border-dashed border-[#155E95]/40 dark:border-[#8ECEFF]/40 text-[#155E95] dark:text-[#8ECEFF] bg-[#155E95]/5 hover:bg-[#155E95]/10 shrink-0 transition-all"
+                  title="Crear nueva pestaña o categoría de memoria"
                 >
-                  {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
-                  <span>{c.label}</span>
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Crear pestaña</span>
                 </button>
-              );
-            })}
+              </div>
+            </div>
+
+            {/* Sub-barra contextual cuando se filtra por una pestaña específica */}
+            {selectedCategory !== 'all' && (
+              <div className="flex items-center justify-between px-3 py-2 text-[11px] text-slate-600 dark:text-slate-300 bg-slate-100/70 dark:bg-slate-900/50 rounded-2xl border border-slate-200/60 dark:border-slate-800/60">
+                <div className="flex items-center gap-2 truncate pr-2">
+                  <div className="p-1 rounded-lg bg-white dark:bg-slate-800 shadow-2xs">
+                    {activeMeta.icon}
+                  </div>
+                  <div className="truncate">
+                    <span className="font-bold text-slate-800 dark:text-slate-100">
+                      {activeMeta.label}
+                    </span>
+                    <span className="text-slate-400 ml-1.5 text-[10px]">
+                      — {activeMeta.desc} ({filteredFacts.length} {filteredFacts.length === 1 ? 'recuerdo' : 'recuerdos'})
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  {customCategories.some((c) => c.id === selectedCategory) && (
+                    <button
+                      onClick={() => handleDeleteCategory(selectedCategory, activeMeta.label)}
+                      className="text-red-500 hover:text-red-700 dark:text-red-400 text-[10px] font-bold flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/40 transition-colors"
+                      title="Eliminar esta pestaña personalizada"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                      <span>Eliminar pestaña</span>
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setSelectedCategory('all')}
+                    className="text-[#155E95] dark:text-[#8ECEFF] hover:underline font-bold text-[10px] px-2 py-1 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors"
+                  >
+                    Ver todas
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* REQUISITO CLAUDE: Agrupación visual por categoría */}
           {groupedFacts.length === 0 ? (
             <div className="p-8 text-center bg-white dark:bg-[#141A24] rounded-3xl border border-slate-200/80 dark:border-slate-800 space-y-4">
               <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800/80 flex items-center justify-center mx-auto text-slate-400">
-                <Brain className="w-6 h-6" />
+                {selectedCategory !== 'all' ? activeMeta.icon : <Brain className="w-6 h-6" />}
               </div>
               <div className="space-y-1">
                 <p className="text-xs font-black text-slate-800 dark:text-slate-200">
                   {facts.length === 0
                     ? 'Bóveda local vacía (0 recuerdos almacenados)'
+                    : selectedCategory !== 'all'
+                    ? `No hay recuerdos en la pestaña "${activeMeta.label}"`
                     : 'No hay recuerdos que coincidan con el filtro actual'}
                 </p>
                 <p className="text-[11px] text-slate-400 max-w-sm mx-auto">
                   {facts.length === 0
                     ? 'Todos los datos fueron purgados localmente o estás en una nueva sesión sin recuerdos registrados.'
-                    : 'Prueba a cambiar de categoría o limpiar el término de búsqueda.'}
+                    : selectedCategory !== 'all'
+                    ? `Puedes añadir tus preferencias, gustos o notas sobre ${activeMeta.label} para que VEYA las guarde localmente.`
+                    : 'Prueba a cambiar de pestaña o limpiar el término de búsqueda.'}
                 </p>
               </div>
 
@@ -982,7 +1094,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                       <span>Importar Respaldo JSON</span>
                     </button>
                     <button
-                      onClick={() => setShowAddModal(true)}
+                      onClick={() => openAddModal()}
                       className="px-3.5 py-2 rounded-2xl bg-[#155E95] hover:bg-[#124d7b] text-white text-xs font-bold transition-colors flex items-center gap-1.5 shadow-xs"
                     >
                       <Plus className="w-3.5 h-3.5" />
@@ -991,6 +1103,15 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                   </>
                 ) : (
                   <>
+                    {selectedCategory !== 'all' && (
+                      <button
+                        onClick={() => openAddModal(selectedCategory)}
+                        className="px-3.5 py-2 rounded-2xl bg-[#155E95] hover:bg-[#124d7b] text-white text-xs font-bold transition-colors flex items-center gap-1.5 shadow-xs"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                        <span>Añadir a {activeMeta.label}</span>
+                      </button>
+                    )}
                     {searchQuery && (
                       <button
                         onClick={() => setSearchQuery('')}
@@ -1004,7 +1125,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                         onClick={() => setSelectedCategory('all')}
                         className="px-3 py-1.5 rounded-xl bg-[#155E95]/10 text-[#155E95] dark:text-[#8ECEFF] text-xs font-bold"
                       >
-                        Ver todas las categorías
+                        Ver todas las pestañas
                       </button>
                     )}
                   </>
@@ -1014,7 +1135,7 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
           ) : (
             <div className="space-y-4">
               {groupedFacts.map((group) => {
-                const meta = CATEGORY_META[group.category];
+                const meta = getCategoryMeta(group.category, customCategories);
                 return (
                   <div
                     key={`cat-group-${group.category}`}
@@ -1344,8 +1465,15 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                   <option value="preferences">Preferencias (UI & Respuestas)</option>
                   <option value="routine">Rutinas & Horarios</option>
                   <option value="music">Música & Acústica</option>
+                  <option value="cinema">Cine & Audiovisual</option>
+                  <option value="sports">Deporte & Rendimiento</option>
                   <option value="health">Salud & Bienestar</option>
                   <option value="inferred">Inferencia de VEYA</option>
+                  {customCategories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.label} (Personalizada)
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -1477,8 +1605,15 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                   <option value="preferences">Preferencias (UI & Respuestas)</option>
                   <option value="routine">Rutinas & Horarios</option>
                   <option value="music">Música & Acústica</option>
+                  <option value="cinema">Cine & Audiovisual</option>
+                  <option value="sports">Deporte & Rendimiento</option>
                   <option value="health">Salud & Bienestar</option>
                   <option value="inferred">Inferencias de VEYA</option>
+                  {customCategories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.label} (Personalizada)
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -1797,6 +1932,118 @@ export const ScreenVault: React.FC<ScreenVaultProps> = ({
                 Cerrar
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* MODAL MATERIAL 3: CREAR NUEVA PESTAÑA / CATEGORÍA DE MEMORIA             */}
+      {/* ========================================================================= */}
+      {showNewCategoryModal && (
+        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#141A24] rounded-3xl p-5 w-full max-w-md border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-blue-100 text-[#155E95] dark:bg-blue-950 dark:text-[#8ECEFF] flex items-center justify-center">
+                  <FolderPlus className="w-4 h-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                    Nueva Pestaña de Memoria
+                  </h3>
+                  <p className="text-[10px] text-slate-400">
+                    Categoría personalizada para clasificar recuerdos locales
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowNewCategoryModal(false)}
+                className="w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateCategory} className="space-y-3.5">
+              <div>
+                <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
+                  Nombre de la pestaña
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ej: Cine, Pádel, Lectura, Viajes, Gastronomía..."
+                  value={newCatName}
+                  onChange={(e) => setNewCatName(e.target.value)}
+                  className="w-full p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#155E95]"
+                  required
+                  autoFocus
+                />
+              </div>
+
+              <div>
+                <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
+                  Descripción breve (opcional)
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ej: Películas de autor preferidas, directores y bandas sonoras"
+                  value={newCatDesc}
+                  onChange={(e) => setNewCatDesc(e.target.value)}
+                  className="w-full p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#155E95]"
+                />
+              </div>
+
+              {/* Selector de Icono Temático */}
+              <div>
+                <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1.5">
+                  Icono Temático
+                </label>
+                <div className="grid grid-cols-5 gap-2">
+                  {[
+                    { id: 'film', label: 'Cine', icon: <Film className="w-4 h-4" /> },
+                    { id: 'trophy', label: 'Deporte', icon: <Trophy className="w-4 h-4" /> },
+                    { id: 'activity', label: 'Fitness', icon: <Activity className="w-4 h-4" /> },
+                    { id: 'book', label: 'Libros', icon: <BookOpen className="w-4 h-4" /> },
+                    { id: 'compass', label: 'Viajes', icon: <Compass className="w-4 h-4" /> },
+                    { id: 'utensils', label: 'Cocina', icon: <Utensils className="w-4 h-4" /> },
+                    { id: 'camera', label: 'Fotos', icon: <Camera className="w-4 h-4" /> },
+                    { id: 'palette', label: 'Arte', icon: <Palette className="w-4 h-4" /> },
+                    { id: 'heart', label: 'Familia', icon: <Heart className="w-4 h-4" /> },
+                    { id: 'tag', label: 'General', icon: <Tag className="w-4 h-4" /> },
+                  ].map((ic) => (
+                    <button
+                      key={ic.id}
+                      type="button"
+                      onClick={() => setNewCatIcon(ic.id)}
+                      className={`flex flex-col items-center justify-center p-2 rounded-xl border text-[10px] font-bold transition-all ${
+                        newCatIcon === ic.id
+                          ? 'bg-[#155E95] text-white border-[#155E95] dark:bg-[#8ECEFF] dark:text-[#003355]'
+                          : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                      }`}
+                    >
+                      {ic.icon}
+                      <span className="mt-1 text-[9px] truncate max-w-[50px]">{ic.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowNewCategoryModal(false)}
+                  className="flex-1 py-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="flex-1 py-2.5 rounded-2xl bg-[#155E95] hover:bg-[#124d7b] text-white text-xs font-bold shadow-xs transition-colors"
+                >
+                  Crear pestaña
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

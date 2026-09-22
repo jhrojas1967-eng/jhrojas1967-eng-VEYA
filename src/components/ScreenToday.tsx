@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 import { AvatarVisual } from './AvatarVisual';
-import { Play, AlarmClock, Sun, CloudRain, Bell, CheckCircle2, ChevronRight, Mic, Sparkles } from 'lucide-react';
+import { Play, AlarmClock, Sun, CloudRain, Bell, CheckCircle2, ChevronRight, Mic, Sparkles, Shield, User, Volume2, Layers } from 'lucide-react';
 import { RoutineStep } from '../types';
+import { useVeya } from '../context/VeyaGlobalContext';
 
 interface ScreenTodayProps {
   onGoToChat: () => void;
   onGoToRoutineSettings: () => void;
+  onGoToVault?: () => void;
 }
 
-export const ScreenToday: React.FC<ScreenTodayProps> = ({ onGoToChat, onGoToRoutineSettings }) => {
+export const ScreenToday: React.FC<ScreenTodayProps> = ({
+  onGoToChat,
+  onGoToRoutineSettings,
+  onGoToVault,
+}) => {
+  const {
+    partnerProfile,
+    voiceProfile,
+    activeInContextFacts,
+    getTodayGreeting,
+    getRoutineGreetingDetail,
+    getCompanionSubtitle,
+  } = useVeya();
+
   const [isPlayingRoutine, setIsPlayingRoutine] = useState(false);
   const [currentStepIdx, setCurrentStepIdx] = useState(0);
 
   const routineSteps: RoutineStep[] = [
-    { id: '1', order: 1, time: '07:30', title: 'Alarma & Despertar', detail: 'Sonido suave de piano acústico', icon: 'alarm', status: 'completed' },
-    { id: '2', order: 2, time: '07:32', title: 'Saludo personal', detail: 'Buenos días, José. Hoy es jueves', icon: 'greeting', status: 'completed' },
-    { id: '3', order: 3, time: '07:33', title: 'Meteorología local', detail: '18°C, cielo despejado, sin lluvias', icon: 'weather', status: 'active' },
-    { id: '4', order: 4, time: '07:35', title: 'Titulares de Noticias', detail: '3 noticias principales de tu feed RSS', icon: 'news', status: 'pending' },
-    { id: '5', order: 5, time: '07:38', title: 'Recordatorios del día', detail: 'Revisión código VEYA a las 10:00', icon: 'reminder', status: 'pending' },
-    { id: '6', order: 6, time: '07:40', title: 'Cierre y energía', detail: 'VEYA lista en segundo plano', icon: 'finish', status: 'pending' },
+    { id: '1', order: 1, time: '07:30', title: 'Alarma & Despertar', detail: 'Sonido suave de piano acústico armónico', icon: 'alarm', status: 'completed' },
+    { id: '2', order: 2, time: '07:32', title: 'Saludo personal', detail: getRoutineGreetingDetail(), icon: 'greeting', status: 'completed' },
+    { id: '3', order: 3, time: '07:33', title: 'Meteorología local', detail: '18°C, cielo despejado, sin seguimiento GPS', icon: 'weather', status: 'active' },
+    { id: '4', order: 4, time: '07:35', title: 'Titulares de Noticias', detail: '3 noticias principales de tu feed RSS privado', icon: 'news', status: 'pending' },
+    { id: '5', order: 5, time: '07:38', title: 'Recordatorios del día', detail: `Revisión arquitectura con ${partnerProfile.assistantName} a las 10:00`, icon: 'reminder', status: 'pending' },
+    { id: '6', order: 6, time: '07:40', title: 'Cierre y energía', detail: `${partnerProfile.assistantName} lista en segundo plano seguro`, icon: 'finish', status: 'pending' },
   ];
 
   const handleToggleRoutine = () => {
@@ -29,16 +44,24 @@ export const ScreenToday: React.FC<ScreenTodayProps> = ({ onGoToChat, onGoToRout
   };
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 pb-20 space-y-4">
-      {/* Top Greeting Header */}
+    <div className="flex-1 overflow-y-auto px-4 py-4 pb-20 space-y-4 font-['Nunito_Sans']">
+      {/* Top Greeting Header (Dynamically synchronized with User Profile) */}
       <div className="flex items-center justify-between">
         <div>
           <span className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400">
             Jueves, 19 de Septiembre
           </span>
           <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-100 font-['Nunito_Sans']">
-            Buenos días, José
+            {getTodayGreeting()}
           </h1>
+          <div className="flex items-center gap-1.5 mt-0.5">
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-[#155E95] dark:text-[#8ECEFF] font-bold border border-blue-200/60 dark:border-blue-900/50">
+              Trato: {partnerProfile.pronounTreatment === 'tu' ? 'Tú (Cercano)' : 'Usted (Formal)'}
+            </span>
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold">
+              Voz: {voiceProfile.selectedVoiceId.replace('voice_', '')}
+            </span>
+          </div>
         </div>
         <button
           onClick={onGoToChat}
@@ -47,6 +70,34 @@ export const ScreenToday: React.FC<ScreenTodayProps> = ({ onGoToChat, onGoToRout
         >
           <Mic className="w-6 h-6" />
         </button>
+      </div>
+
+      {/* Synchronized Local Memory Banner */}
+      <div
+        onClick={onGoToVault}
+        className="p-3 rounded-2xl bg-white dark:bg-[#141A24] border border-slate-200/80 dark:border-slate-800 shadow-2xs flex items-center justify-between cursor-pointer hover:border-slate-300 dark:hover:border-slate-700 transition-all"
+        title="Ver Bóveda de Privacidad"
+      >
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center border border-emerald-200/60 dark:border-emerald-900/40">
+            <Layers className="w-3.5 h-3.5" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+                Memoria Local Soberana
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            </div>
+            <p className="text-[10px] text-slate-400">
+              {activeInContextFacts.length} recuerdos inyectados en prompt efímero
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] font-bold text-[#155E95] dark:text-[#8ECEFF]">
+          <span>Gestionar</span>
+          <ChevronRight className="w-3.5 h-3.5" />
+        </div>
       </div>
 
       {/* Avatar Ambient Presence Card */}
@@ -60,10 +111,12 @@ export const ScreenToday: React.FC<ScreenTodayProps> = ({ onGoToChat, onGoToRout
           />
         </div>
         <h2 className="text-base font-bold text-slate-800 dark:text-slate-200">
-          VEYA está tranquila y lista
+          {partnerProfile.assistantName} está tranquila y lista
         </h2>
         <p className="text-xs text-slate-600 dark:text-slate-400 max-w-xs mt-0.5">
-          {isPlayingRoutine ? 'Reproduciendo rutina matinal...' : 'Tu privacidad está protegida. Todo el cómputo es local en tu dispositivo.'}
+          {isPlayingRoutine
+            ? 'Reproduciendo rutina matinal...'
+            : getCompanionSubtitle()}
         </p>
 
         <div className="mt-4 flex items-center gap-2 w-full">

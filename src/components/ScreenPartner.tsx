@@ -10,6 +10,7 @@ import {
   MessageSquare,
   Sliders,
 } from 'lucide-react';
+import { useVeya } from '../context/VeyaGlobalContext';
 
 interface ScreenPartnerProps {
   onBack: () => void;
@@ -20,12 +21,23 @@ export const ScreenPartner: React.FC<ScreenPartnerProps> = ({
   onBack,
   onOpenOnboarding,
 }) => {
-  const [userName, setUserName] = useState('José');
-  const [assistantName, setAssistantName] = useState('VEYA');
-  const [pronounTreatment, setPronounTreatment] = useState<'tu' | 'usted'>('tu');
-  const [companionRole, setCompanionRole] = useState<'friend' | 'mentor' | 'functional'>('friend');
-  const [detectFatigue, setDetectFatigue] = useState(true);
-  const [nonInvasiveMode, setNonInvasiveMode] = useState(true);
+  const {
+    partnerProfile,
+    setUserName,
+    setAssistantName,
+    setPronounTreatment,
+    setCompanionRole,
+    setDetectFatigue,
+    setNonInvasiveMode,
+  } = useVeya();
+
+  const userName = partnerProfile.userName;
+  const assistantName = partnerProfile.assistantName;
+  const pronounTreatment = partnerProfile.pronounTreatment;
+  const companionRole = partnerProfile.companionRole;
+  const detectFatigue = partnerProfile.detectFatigue;
+  const nonInvasiveMode = partnerProfile.nonInvasiveMode;
+
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [showComposeCodeModal, setShowComposeCodeModal] = useState(false);
 

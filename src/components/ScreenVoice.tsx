@@ -24,6 +24,7 @@ import {
   Layers,
   BookOpen,
 } from 'lucide-react';
+import { useVeya } from '../context/VeyaGlobalContext';
 
 interface ScreenVoiceProps {
   onBack: () => void;
@@ -89,20 +90,29 @@ const VOICE_PROFILES: VoiceProfile[] = [
 ];
 
 export const ScreenVoice: React.FC<ScreenVoiceProps> = ({ onBack }) => {
-  // 1. Voice Profile State
-  const [selectedVoiceId, setSelectedVoiceId] = useState<string>('voice_aura');
+  const {
+    voiceProfile,
+    setSelectedVoiceId,
+    setSpeechSpeed,
+    setPitch,
+    setNaturalPauses,
+    setWarmth,
+    setConciseness,
+    setProactivity,
+    resetVoiceDefaults,
+    applyTemperamentPreset: applyGlobalPreset,
+  } = useVeya();
+
+  const selectedVoiceId = voiceProfile.selectedVoiceId;
+  const speechSpeed = voiceProfile.speechSpeed;
+  const pitch = voiceProfile.pitch;
+  const naturalPauses = voiceProfile.naturalPauses;
+  const warmth = voiceProfile.warmth;
+  const conciseness = voiceProfile.conciseness;
+  const proactivity = voiceProfile.proactivity;
+
   const [playingVoiceId, setPlayingVoiceId] = useState<string | null>(null);
   const [waveformBars, setWaveformBars] = useState<number[]>([35, 55, 40, 80, 60, 90, 50, 75, 45, 65, 30, 70]);
-
-  // 2. Prosody Controls (Sliders)
-  const [speechSpeed, setSpeechSpeed] = useState<number>(1.0); // 0.75x a 1.50x
-  const [pitch, setPitch] = useState<number>(0); // -3 a +3 semitonos
-  const [naturalPauses, setNaturalPauses] = useState<boolean>(true); // Biological organic pauses
-
-  // 3. Temperament Matrix (Continuous Sliders 0..100)
-  const [warmth, setWarmth] = useState<number>(75); // Calidez: Sobrio -> Afectuoso
-  const [conciseness, setConciseness] = useState<number>(65); // Concisión: Telegráfico -> Pedagógico
-  const [proactivity, setProactivity] = useState<number>(50); // Proactividad: Solo bajo demanda -> Sugerencias activas
 
   // UI Interactive States
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -149,31 +159,17 @@ export const ScreenVoice: React.FC<ScreenVoiceProps> = ({ onBack }) => {
   };
 
   const handleResetDefaults = () => {
-    setSelectedVoiceId('voice_aura');
-    setSpeechSpeed(1.0);
-    setPitch(0);
-    setNaturalPauses(true);
-    setWarmth(75);
-    setConciseness(65);
-    setProactivity(50);
+    resetVoiceDefaults();
     showToast('Valores de fábrica M3 restaurados');
   };
 
   const applyTemperamentPreset = (type: 'zen' | 'mentor' | 'friend') => {
+    applyGlobalPreset(type);
     if (type === 'zen') {
-      setWarmth(40);
-      setConciseness(90); // Muy directo
-      setProactivity(25);
       showToast('Preajuste Zen & Directo aplicado');
     } else if (type === 'mentor') {
-      setWarmth(70);
-      setConciseness(30); // Didáctico
-      setProactivity(80);
       showToast('Preajuste Mentor Didáctico aplicado');
     } else if (type === 'friend') {
-      setWarmth(90);
-      setConciseness(60);
-      setProactivity(65);
       showToast('Preajuste Compañero Cálido aplicado');
     }
   };
