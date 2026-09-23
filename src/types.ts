@@ -281,6 +281,8 @@ export interface StructuredVaultStorage {
 // =============================================================================
 export type AiProvider = 'gemini' | 'anthropic' | 'openai' | 'local_ollama';
 export type AiConnectionMode = 'byo' | 'managed';
+export type ResponseDetailLevel = 'bajo' | 'medio' | 'alto' | 'concise' | 'balanced' | 'detailed';
+export type EphemeralMemoryRetention = 'session_only' | '1_hour' | '24_hours' | 'never';
 
 export interface AiKeyConfig {
   mode: AiConnectionMode;
@@ -292,5 +294,13 @@ export interface AiKeyConfig {
   lastPingMs?: number;
   lastTestedAt?: string;
   notifyOnManagedAvailable?: boolean;
+
+  // Preferencias de IA y Comportamiento Cognitivo
+  proactivityLevel: number; // 0..100 (slider proactividad)
+  detailLevel: ResponseDetailLevel; // bajo, medio, alto (o concise, balanced, detailed)
+  ephemeralMemoryEnabled: boolean; // Interruptor ON/OFF para memoria efímera local
+  ephemeralMemoryRetention: EphemeralMemoryRetention; // Cuánto tiempo retiene la memoria volátil
+  ephemeralMemoryAutoPurge: boolean; // Purgar automáticamente al cerrar la sesión o bloquear
+  localContextInjection: boolean; // Si inyectar hechos de la bóveda local en el prompt
 }
 

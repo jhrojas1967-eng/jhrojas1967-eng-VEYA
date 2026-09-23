@@ -134,7 +134,7 @@ fi
 
 # 5. Copiar Componentes del AvatarLaboratory y Pantallas
 echo -e "${COLOR_BLUE}→ Exportando componentes de AvatarLaboratory y Pantallas...${COLOR_RESET}"
-for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx ScreenMusic.tsx ScreenIntelligence.tsx; do
+for comp in AvatarLaboratory.tsx AvatarVisual.tsx PixarAvatarSvg.tsx CinematicAvatarCanvas.tsx TokenViewer.tsx ScreenMusic.tsx ScreenIntelligence.tsx GeminiDesignMockup.tsx; do
     if [[ -f "$SCRIPT_DIR/src/components/$comp" ]]; then
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_SYNC_ROOT/avatar-laboratory/$comp"
         cp "$SCRIPT_DIR/src/components/$comp" "$DIR_DOCS_LAB/$comp"

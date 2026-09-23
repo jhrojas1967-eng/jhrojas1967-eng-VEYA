@@ -120,6 +120,12 @@ const DEFAULT_AI_KEY_CONFIG: AiKeyConfig = {
   lastPingMs: undefined,
   lastTestedAt: undefined,
   notifyOnManagedAvailable: false,
+  proactivityLevel: 60,
+  detailLevel: 'medio',
+  ephemeralMemoryEnabled: true,
+  ephemeralMemoryRetention: 'session_only',
+  ephemeralMemoryAutoPurge: true,
+  localContextInjection: true,
 };
 
 const INITIAL_MESSAGES_TU: ChatMessage[] = [
