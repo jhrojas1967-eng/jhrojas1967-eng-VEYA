@@ -15,6 +15,7 @@ export interface CinematicAvatarCanvasProps {
   enableBlinking?: boolean; // Periodic organic blinking & micro-blinks
   enableTapSquish?: boolean; // Haptic spring squash & sparkle burst on click/touch
   onTap?: () => void;
+  isWakeupActive?: boolean; // Animación de partículas de despertar enérgico y ondas solares
 }
 
 interface Particle {
@@ -95,6 +96,13 @@ export const MOOD_SPECTRA: Record<
     particleHue: [203, 213, 225],
     label: 'En espera',
   },
+  vital: {
+    coreColor: [234, 88, 12],       // Coral ámbar cálido
+    sssColor: [251, 146, 60],       // Resplandor dorado matinal
+    ambientRim: [254, 240, 138],    // Halo solar brillante
+    particleHue: [253, 224, 71],    // Chispa solar dorada
+    label: 'Vital',
+  },
 };
 
 export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
@@ -111,6 +119,7 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
   enableBlinking = true,
   enableTapSquish = true,
   onTap,
+  isWakeupActive = false,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -140,6 +149,7 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
     interactiveGaze,
     enableBlinking,
     enableTapSquish,
+    isWakeupActive,
   });
 
   useEffect(() => {
@@ -155,6 +165,7 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
       interactiveGaze,
       enableBlinking,
       enableTapSquish,
+      isWakeupActive,
     };
   }, [
     state,
@@ -168,6 +179,7 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
     interactiveGaze,
     enableBlinking,
     enableTapSquish,
+    isWakeupActive,
   ]);
 
   // Pointer event handlers for interactive gaze and squish
@@ -235,6 +247,79 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
 
     // Sparkle burst particles on tap
     let burstParticles: BurstParticle[] = [];
+
+    // Energetic wake-up solar particles & sparks (Despertar Vital)
+    interface WakeupSpark {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      alpha: number;
+      maxAlpha: number;
+      life: number;
+      maxLife: number;
+      angle: number;
+      spinSpeed: number;
+      color: [number, number, number];
+      isStar: boolean;
+    }
+    let wakeupParticles: WakeupSpark[] = [];
+    let wakeupSpawnAccum = 0;
+
+    // Smooth state transitions values to avoid abrupt rigidity
+    let smoothStateScale = 1.0;
+    let smoothAuraAlpha = 0.35;
+    let smoothEyeSquint = 1.0;
+
+    // Dedicated smooth 60fps gesture and facial transition interpolators exclusively for 'Vital'
+    let vitalSmoothTilt = 0;
+    let vitalSmoothNodY = 0;
+    let vitalSmoothBrowLift = -4.8;
+    let vitalSmoothBrowTilt = 0.08;
+    let vitalSmoothSmileArch = 0.88;
+    let vitalSmoothBlushAlpha = 0.34;
+    let vitalSmoothEyeSquintY = 0.98;
+
+    const drawPixarSparkle = (
+      px: number,
+      py: number,
+      r: number,
+      rot: number,
+      sparkleColor: [number, number, number],
+      alpha: number
+    ) => {
+      ctx.save();
+      ctx.translate(px, py);
+      ctx.rotate(rot);
+      ctx.fillStyle = `rgba(${sparkleColor[0]}, ${sparkleColor[1]}, ${sparkleColor[2]}, ${alpha})`;
+      ctx.shadowColor = `rgba(255, 255, 255, ${alpha * 0.9})`;
+      ctx.shadowBlur = 8;
+      // 4-point diamond sparkle
+      ctx.beginPath();
+      ctx.moveTo(0, -r);
+      ctx.quadraticCurveTo(0, 0, r * 0.25, 0);
+      ctx.quadraticCurveTo(0, 0, 0, r);
+      ctx.quadraticCurveTo(0, 0, -r * 0.25, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(-r, 0);
+      ctx.quadraticCurveTo(0, 0, 0, r * 0.25);
+      ctx.quadraticCurveTo(0, 0, r, 0);
+      ctx.quadraticCurveTo(0, 0, 0, -r * 0.25);
+      ctx.closePath();
+      ctx.fill();
+
+      // Tiny center diamond
+      ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      ctx.beginPath();
+      ctx.arc(0, 0, r * 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.restore();
+    };
 
     // Internal dynamic state variables
     let time = 0;
@@ -418,11 +503,12 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
       const breathWave = Math.sin(time * 1.8);
       const secondaryWave = Math.cos(time * 2.4);
 
+      let eyeGazeOffsetY = currentGazeY * 6;
+      let eyeGazeOffsetX = currentGazeX * 8;
+
       let stateScale = 1.0;
       let auraAlpha = 0.35;
       let eyeSquint = 1.0;
-      let eyeGazeOffsetY = currentGazeY * 6;
-      let eyeGazeOffsetX = currentGazeX * 8;
 
       if (curState === 'idle') {
         stateScale = 1.0 + (isReduced ? 0 : breathWave * 0.024);
@@ -444,6 +530,87 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
         stateScale = 0.94;
         auraAlpha = 0.14;
         eyeSquint = 0.72;
+      }
+
+      // ONLY for Vital: fluid organic transitions, empathetic postures, and gentle gestures without rigidity
+      if (curMood === 'vital') {
+        let targetTilt = 0;
+        let targetNodY = 0;
+        let targetBrowLift = -4.8;
+        let targetBrowTilt = 0.08;
+        let targetSmileArch = 0.88;
+        let targetBlushAlpha = 0.34;
+        let targetEyeSquintY = 0.98;
+
+        if (curState === 'idle') {
+          // Presencia tranquila y acogedora: balanceo sinusoidal suave y respiración armónica
+          targetTilt = isReduced ? 0 : Math.sin(time * 1.3) * 0.035;
+          targetNodY = isReduced ? 0 : Math.cos(time * 1.3) * 0.9;
+          targetBrowLift = -4.8;
+          targetBrowTilt = 0.07;
+          targetSmileArch = 0.88 + (isReduced ? 0 : Math.sin(time * 1.8) * 0.04);
+          targetBlushAlpha = 0.34;
+          targetEyeSquintY = 0.97;
+        } else if (curState === 'listening') {
+          // Escucha activa y empática: tierno ladeo de cabeza y micro-asentimiento tranquilizador
+          targetTilt = isReduced ? 0.045 : 0.058 + Math.sin(time * 1.5) * 0.018;
+          targetNodY = isReduced ? 0 : Math.sin(time * 2.6) * 1.8;
+          targetBrowLift = -5.8; // Cejas alzadas con curiosidad cariñosa
+          targetBrowTilt = 0.12;
+          targetSmileArch = 0.92;
+          targetBlushAlpha = 0.42; // Rubor más vivo por atención cercana
+          targetEyeSquintY = 1.04; // Mirada despierta, dulce y atenta
+        } else if (curState === 'thinking') {
+          // Reflexión bondadosa: leve ladeo curioso, mirada reflexiva sin frialdad
+          targetTilt = isReduced ? -0.04 : -0.042 + Math.sin(time * 1.8) * 0.015;
+          targetNodY = isReduced ? 0 : Math.sin(time * 1.6) * 0.5;
+          targetBrowLift = -4.0;
+          targetBrowTilt = 0.04;
+          targetSmileArch = 0.78;
+          targetBlushAlpha = 0.28;
+          targetEyeSquintY = 0.92;
+        } else if (curState === 'speaking') {
+          // Diálogo expresivo, afectuoso y elocuente con cadencia natural
+          targetTilt = isReduced ? 0 : Math.sin(time * 3.6) * 0.035;
+          targetNodY = isReduced ? 0 : Math.sin(time * 5.5) * 1.4 + curAmp * 2.0;
+          targetBrowLift = -4.6 + Math.sin(time * 4.0) * 1.2;
+          targetBrowTilt = 0.08;
+          targetSmileArch = 0.86;
+          targetBlushAlpha = 0.38 + curAmp * 0.12;
+          targetEyeSquintY = 0.92 - curAmp * 0.08; // Sonrisa de ojos al modular voz
+        } else if (curState === 'muted') {
+          targetTilt = 0.02;
+          targetNodY = 0;
+          targetBrowLift = -2.2;
+          targetBrowTilt = 0.02;
+          targetSmileArch = 0.45;
+          targetBlushAlpha = 0.12;
+          targetEyeSquintY = 0.76;
+        }
+
+        // Si el usuario acaba de tocar el avatar, respuesta de alegría cálida
+        if (happySquintTimer > 0) {
+          targetSmileArch = Math.max(targetSmileArch, 1.15);
+          targetEyeSquintY = Math.min(targetEyeSquintY, 0.76);
+          targetBlushAlpha = Math.min(0.55, targetBlushAlpha + 0.18);
+          targetTilt += 0.045;
+        }
+
+        const vRate = isReduced ? 1.0 : Math.min(1.0, dt * 6.5);
+        smoothStateScale += (stateScale - smoothStateScale) * vRate;
+        smoothAuraAlpha += (auraAlpha - smoothAuraAlpha) * vRate;
+        smoothEyeSquint += (eyeSquint - smoothEyeSquint) * vRate;
+        vitalSmoothTilt += (targetTilt - vitalSmoothTilt) * vRate;
+        vitalSmoothNodY += (targetNodY - vitalSmoothNodY) * vRate;
+        vitalSmoothBrowLift += (targetBrowLift - vitalSmoothBrowLift) * vRate;
+        vitalSmoothBrowTilt += (targetBrowTilt - vitalSmoothBrowTilt) * vRate;
+        vitalSmoothSmileArch += (targetSmileArch - vitalSmoothSmileArch) * vRate;
+        vitalSmoothBlushAlpha += (targetBlushAlpha - vitalSmoothBlushAlpha) * vRate;
+        vitalSmoothEyeSquintY += (targetEyeSquintY - vitalSmoothEyeSquintY) * vRate;
+
+        stateScale = smoothStateScale;
+        auraAlpha = smoothAuraAlpha;
+        eyeSquint = smoothEyeSquint;
       }
 
       // Base radius with squish & stretch deformation
@@ -472,7 +639,93 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
       ctx.arc(cx, cy, baseR * 2.3, 0, Math.PI * 2);
       ctx.fill();
 
-      // 8. AMBIENT PARTICLES (Disney dust motes)
+      // 7.1 ENERGETIC MORNING SUNBEAM HALO (Despertar Vital ONLY)
+      const isVital = curMood === 'vital';
+      if (isVital && !isReduced) {
+        const rayCount = 10;
+        const rayRot = time * 0.2;
+        ctx.save();
+        ctx.translate(cx, cy);
+        for (let r = 0; r < rayCount; r++) {
+          const rayAngle = (r / rayCount) * Math.PI * 2 + rayRot;
+          const rayLen = baseR * (1.9 + Math.sin(time * 2.8 + r) * 0.28);
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.arc(0, 0, rayLen, rayAngle - 0.14, rayAngle + 0.14);
+          ctx.closePath();
+          const rayGrad = ctx.createRadialGradient(0, 0, baseR * 0.45, 0, 0, rayLen);
+          rayGrad.addColorStop(0, 'rgba(254, 240, 138, 0.24)');
+          rayGrad.addColorStop(0.5, 'rgba(251, 146, 60, 0.10)');
+          rayGrad.addColorStop(1, 'rgba(251, 146, 60, 0)');
+          ctx.fillStyle = rayGrad;
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      // 8. ENERGETIC WAKE-UP SOLAR PARTICLES (Despertar Vital ONLY)
+      if (isVital && !isReduced && curState !== 'muted') {
+        wakeupSpawnAccum += dt * 28;
+        while (wakeupSpawnAccum >= 1) {
+          wakeupSpawnAccum -= 1;
+          const angle = Math.random() * Math.PI * 2;
+          const spawnDist = baseR * (0.35 + Math.random() * 0.75);
+          const pColor: [number, number, number] =
+            Math.random() > 0.45
+              ? [254, 240, 138] // Golden sunlight
+              : Math.random() > 0.5
+              ? [251, 146, 60]  // Coral dawn
+              : [253, 224, 71]; // Vivid gold
+          const maxLife = Math.random() * 1.5 + 0.9;
+          wakeupParticles.push({
+            x: cx + Math.cos(angle) * spawnDist,
+            y: cy + Math.sin(angle) * spawnDist + baseR * 0.2,
+            vx: (Math.random() - 0.5) * 45 + Math.cos(angle) * 12,
+            vy: -(Math.random() * 65 + 40), // Ascending energy
+            radius: Math.random() * 3.2 + 1.4,
+            alpha: 0,
+            maxAlpha: Math.random() * 0.55 + 0.45,
+            life: 0,
+            maxLife,
+            angle: Math.random() * Math.PI,
+            spinSpeed: (Math.random() - 0.5) * 3,
+            color: pColor,
+            isStar: Math.random() > 0.45,
+          });
+        }
+      }
+
+      // Render Wakeup Particles
+      if (wakeupParticles.length > 0) {
+        wakeupParticles = wakeupParticles.filter((wp) => {
+          wp.life += dt;
+          if (wp.life >= wp.maxLife) return false;
+          wp.x += wp.vx * dt;
+          wp.y += wp.vy * dt;
+          wp.angle += wp.spinSpeed * dt;
+
+          const progress = wp.life / wp.maxLife;
+          const curAlpha =
+            progress < 0.25
+              ? (progress / 0.25) * wp.maxAlpha
+              : (1 - (progress - 0.25) / 0.75) * wp.maxAlpha;
+
+          if (wp.isStar) {
+            drawPixarSparkle(wp.x, wp.y, wp.radius * 2.2, wp.angle, wp.color, curAlpha);
+          } else {
+            ctx.beginPath();
+            ctx.arc(wp.x, wp.y, wp.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${wp.color[0]}, ${wp.color[1]}, ${wp.color[2]}, ${curAlpha})`;
+            ctx.shadowColor = `rgba(${wp.color[0]}, ${wp.color[1]}, ${wp.color[2]}, ${curAlpha * 0.8})`;
+            ctx.shadowBlur = 8;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+          return true;
+        });
+      }
+
+      // 8.1 AMBIENT PARTICLES (Disney dust motes)
       if (hasAtmosphere && !isReduced && curState !== 'muted') {
         particles.forEach((p) => {
           p.angle += p.orbitSpeed;
@@ -560,10 +813,19 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
 
       ctx.save();
       // Apply center position, vertical float, head parallax offset and squish
-      const headOffsetY = (isReduced ? 0 : floatY) + currentGazeY * 3;
-      const headOffsetX = currentGazeX * 4;
+      let headOffsetY = (isReduced ? 0 : floatY) + currentGazeY * 3;
+      let headOffsetX = currentGazeX * 4;
+
+      if (curMood === 'vital') {
+        headOffsetY += vitalSmoothNodY;
+      }
+
       ctx.translate(cx + headOffsetX, cy + headOffsetY);
       ctx.scale(squishScaleX, squishScaleY);
+
+      if (curMood === 'vital') {
+        ctx.rotate(vitalSmoothTilt);
+      }
 
       // Body Drop Shadow
       ctx.shadowColor = `rgba(0, 15, 35, 0.45)`;
@@ -621,132 +883,306 @@ export const CinematicAvatarCanvas: React.FC<CinematicAvatarCanvasProps> = ({
       const eyeSpacing = baseR * 0.42;
       const eyeBaseY = -baseR * 0.1 + eyeGazeOffsetY;
       const eyeRadiusX = baseR * 0.14 * eyeSquint;
-      const eyeRadiusY = Math.max(0.5, baseR * 0.19 * (curState === 'thinking' ? 0.86 : 1.0) * blinkScaleY);
+      const eyeRadiusY = Math.max(
+        0.5,
+        baseR * 0.19 * (curMood === 'vital' ? vitalSmoothEyeSquintY : (curState === 'thinking' ? 0.86 : 1.0)) * blinkScaleY
+      );
+
+      // SOFT PEACH BLUSH CHEEKS ONLY FOR VITAL (Cercanía y empatía matinal)
+      if (curMood === 'vital' && curState !== 'muted') {
+        [-1, 1].forEach((dir) => {
+          const blushX = dir * (baseR * 0.44) + eyeGazeOffsetX * 0.6;
+          const blushY = eyeBaseY + baseR * 0.22;
+          const blushR = baseR * 0.16;
+          const blushGrad = ctx.createRadialGradient(blushX, blushY, 0, blushX, blushY, blushR);
+          blushGrad.addColorStop(0, `rgba(251, 146, 60, ${vitalSmoothBlushAlpha})`);
+          blushGrad.addColorStop(0.55, `rgba(253, 186, 116, ${vitalSmoothBlushAlpha * 0.35})`);
+          blushGrad.addColorStop(1, 'rgba(251, 146, 60, 0)');
+          ctx.fillStyle = blushGrad;
+          ctx.beginPath();
+          ctx.ellipse(blushX, blushY, blushR, blushR * 0.55, 0, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
 
       // Render Left & Right Eyes with Disney Depth
       [-1, 1].forEach((dir) => {
         const eyeX = dir * eyeSpacing + eyeGazeOffsetX;
         const eyeY = eyeBaseY;
 
-        // A. Eye Socket Soft Ambient Glow
-        ctx.beginPath();
-        ctx.ellipse(eyeX, eyeY, eyeRadiusX * 1.35, Math.max(1, eyeRadiusY * 1.35), 0, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, 0.28)`;
-        ctx.fill();
-
-        // B. Pupil Cornea (Deep Sapphire Obsidian)
-        ctx.beginPath();
-        ctx.ellipse(eyeX, eyeY, eyeRadiusX, eyeRadiusY, 0, 0, Math.PI * 2);
-        ctx.fillStyle = curState === 'muted' ? '#334155' : '#0B1522';
-        ctx.fill();
-
-        // C. Iris Inner Bioluminescence (Only visible when eyes are open)
-        if (curState !== 'muted' && blinkScaleY > 0.25) {
+        if (curMood === 'vital') {
+          // EXCLUSIVE TO VITAL: Mirada luminosa, dulce, bonita y empática
+          // A. Eye Socket Soft Ambient Warm Glow
           ctx.beginPath();
-          ctx.ellipse(eyeX, eyeY + 1, eyeRadiusX * 0.72, eyeRadiusY * 0.72, 0, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, 0.65)`;
+          ctx.ellipse(eyeX, eyeY, eyeRadiusX * 1.35, Math.max(1, eyeRadiusY * 1.35), 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, 0.35)`;
           ctx.fill();
+
+          // B. Pupil Cornea
+          ctx.beginPath();
+          ctx.ellipse(eyeX, eyeY, eyeRadiusX, eyeRadiusY, 0, 0, Math.PI * 2);
+          ctx.fillStyle = curState === 'muted' ? '#334155' : '#0B1522';
+          ctx.fill();
+
+          // C. Iris Inner Bioluminescence (Warm sunrise amber depth with golden crescent light bounce)
+          if (curState !== 'muted' && blinkScaleY > 0.25) {
+            const irisGrad = ctx.createRadialGradient(
+              eyeX,
+              eyeY + eyeRadiusY * 0.15,
+              0,
+              eyeX,
+              eyeY,
+              eyeRadiusX * 0.92
+            );
+            irisGrad.addColorStop(0, `rgba(${sr}, ${sg}, ${sb}, 0.92)`);
+            irisGrad.addColorStop(0.65, `rgba(${cr}, ${cg}, ${cb}, 0.5)`);
+            irisGrad.addColorStop(1, 'rgba(11, 21, 34, 0)');
+
+            ctx.beginPath();
+            ctx.ellipse(eyeX, eyeY + 1, eyeRadiusX * 0.78, eyeRadiusY * 0.78, 0, 0, Math.PI * 2);
+            ctx.fillStyle = irisGrad;
+            ctx.fill();
+
+            // Bottom warm golden crescent bounce light
+            ctx.beginPath();
+            ctx.ellipse(eyeX, eyeY + eyeRadiusY * 0.38, eyeRadiusX * 0.44, eyeRadiusY * 0.18, 0, 0, Math.PI);
+            ctx.strokeStyle = `rgba(${rr}, ${rg}, ${rb}, 0.65)`;
+            ctx.lineWidth = 1.4;
+            ctx.stroke();
+          }
+
+          // D. Sweet Primary Specular Catchlight (Double glint for warmth & life)
+          if (blinkScaleY > 0.35) {
+            const catchX = eyeX - eyeRadiusX * 0.32 + currentGazeX * 1.5;
+            const catchY = eyeY - eyeRadiusY * 0.32 + currentGazeY * 1.5;
+
+            ctx.beginPath();
+            ctx.ellipse(catchX, catchY, eyeRadiusX * 0.36, eyeRadiusY * 0.32, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+            ctx.shadowBlur = 4;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+
+            // Secondary Soft Catchlight
+            ctx.beginPath();
+            ctx.ellipse(
+              eyeX + eyeRadiusX * 0.28,
+              eyeY + eyeRadiusY * 0.28,
+              eyeRadiusX * 0.18,
+              eyeRadiusY * 0.18,
+              0,
+              0,
+              Math.PI * 2
+            );
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.fill();
+
+            // Micro tertiary twinkle
+            ctx.beginPath();
+            ctx.arc(catchX + eyeRadiusX * 0.16, catchY - eyeRadiusY * 0.12, eyeRadiusX * 0.07, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.fill();
+          }
+
+          // Cejas de Vital: Arqueo amable matinal alegre (suavizado a 60fps)
+          if (curState !== 'muted') {
+            const browLift = vitalSmoothBrowLift;
+            const browTilt = dir * vitalSmoothBrowTilt;
+            const browY = eyeBaseY - eyeRadiusY * 1.25 + browLift;
+            const browWidth = eyeRadiusX * 1.5;
+
+            ctx.save();
+            ctx.translate(eyeX, browY);
+            ctx.rotate(browTilt);
+
+            ctx.beginPath();
+            ctx.arc(0, 0, browWidth * 0.82, Math.PI * 1.14, Math.PI * 1.86);
+            ctx.strokeStyle = `rgba(${sr}, ${sg}, ${sb}, 0.85)`;
+            ctx.lineWidth = 2.2;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            ctx.restore();
+          }
+        } else {
+          // EXACT ORIGINAL RENDERING FOR ALL OTHER MOODS
+          // A. Eye Socket Soft Ambient Glow
+          ctx.beginPath();
+          ctx.ellipse(eyeX, eyeY, eyeRadiusX * 1.35, Math.max(1, eyeRadiusY * 1.35), 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, 0.28)`;
+          ctx.fill();
+
+          // B. Pupil Cornea (Deep Sapphire Obsidian)
+          ctx.beginPath();
+          ctx.ellipse(eyeX, eyeY, eyeRadiusX, eyeRadiusY, 0, 0, Math.PI * 2);
+          ctx.fillStyle = curState === 'muted' ? '#334155' : '#0B1522';
+          ctx.fill();
+
+          // C. Iris Inner Bioluminescence (Only visible when eyes are open)
+          if (curState !== 'muted' && blinkScaleY > 0.25) {
+            ctx.beginPath();
+            ctx.ellipse(eyeX, eyeY + 1, eyeRadiusX * 0.72, eyeRadiusY * 0.72, 0, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, 0.65)`;
+            ctx.fill();
+          }
+
+          // D. Primary Specular Catchlight (Star Glint that tracks gaze)
+          if (blinkScaleY > 0.35) {
+            const catchX = eyeX - eyeRadiusX * 0.35 + currentGazeX * 1.5;
+            const catchY = eyeY - eyeRadiusY * 0.35 + currentGazeY * 1.5;
+
+            ctx.beginPath();
+            ctx.ellipse(catchX, catchY, eyeRadiusX * 0.38, eyeRadiusY * 0.32, 0, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fill();
+
+            // Secondary Soft Catchlight
+            ctx.beginPath();
+            ctx.ellipse(
+              catchX + eyeRadiusX * 0.35,
+              catchY + eyeRadiusY * 0.35,
+              eyeRadiusX * 0.16,
+              eyeRadiusY * 0.14,
+              0,
+              0,
+              Math.PI * 2
+            );
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+            ctx.fill();
+          }
+
+          // E. ORGANIC PIXAR EYEBROWS (Delicate, emotive arched brows)
+          if (curState !== 'muted') {
+            // Brow height & slant per state/mood
+            let browLift = 0;
+            let browTilt = 0;
+
+            if (curState === 'thinking') {
+              browLift = -2;
+              browTilt = -dir * 0.18; // Inward furrow
+            } else if (curState === 'listening') {
+              browLift = -4;
+              browTilt = dir * 0.12; // Inward attentive slant
+            } else if (curState === 'speaking') {
+              browLift = -3 + Math.sin(time * 5) * 2;
+            } else if (curMood === 'animado') {
+              browLift = -5;
+            } else if (curMood === 'empatico') {
+              browLift = -3;
+              browTilt = dir * 0.15; // Gentle caring tilt
+            }
+
+            const browY = eyeBaseY - eyeRadiusY * 1.25 + browLift;
+            const browWidth = eyeRadiusX * 1.5;
+
+            ctx.save();
+            ctx.translate(eyeX, browY);
+            ctx.rotate(browTilt);
+
+            ctx.beginPath();
+            ctx.arc(0, 0, browWidth * 0.8, Math.PI * 1.15, Math.PI * 1.85);
+            ctx.strokeStyle = `rgba(${sr}, ${sg}, ${sb}, 0.75)`;
+            ctx.lineWidth = 2.0;
+            ctx.lineCap = 'round';
+            ctx.stroke();
+
+            ctx.restore();
+          }
         }
+      });
 
-        // D. Primary Specular Catchlight (Star Glint that tracks gaze)
-        if (blinkScaleY > 0.35) {
-          const catchX = eyeX - eyeRadiusX * 0.35 + currentGazeX * 1.5;
-          const catchY = eyeY - eyeRadiusY * 0.35 + currentGazeY * 1.5;
+      // 15. EXPRESSIVE DISNEY MOUTH
+      const mouthY = baseR * 0.32 + eyeGazeOffsetY * 0.4;
+      const mouthWidth = baseR * 0.22;
 
+      if (curMood === 'vital') {
+        // EXCLUSIVE TO VITAL: Boca empática con modulación suave y sonrisa cercana
+        if (curState === 'speaking' && curAmp > 0.04) {
+          const mouthOpenH = Math.max(3, baseR * (0.10 + curAmp * 0.24));
+          const mouthOpenW = mouthWidth * (0.82 + curAmp * 0.22);
           ctx.beginPath();
-          ctx.ellipse(catchX, catchY, eyeRadiusX * 0.38, eyeRadiusY * 0.32, 0, 0, Math.PI * 2);
-          ctx.fillStyle = '#FFFFFF';
+          ctx.ellipse(eyeGazeOffsetX * 0.5, mouthY, mouthOpenW, mouthOpenH, 0, 0, Math.PI * 2);
+          ctx.fillStyle = '#0F172A';
           ctx.fill();
 
-          // Secondary Soft Catchlight
+          // Warm inner resonance
+          ctx.beginPath();
+          ctx.ellipse(eyeGazeOffsetX * 0.5, mouthY + mouthOpenH * 0.28, mouthOpenW * 0.55, mouthOpenH * 0.45, 0, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${rr}, ${rg}, ${rb}, 0.85)`;
+          ctx.fill();
+        } else {
+          const arch = vitalSmoothSmileArch;
+          ctx.beginPath();
+          ctx.arc(
+            eyeGazeOffsetX * 0.5,
+            mouthY - mouthWidth * (0.36 * arch),
+            mouthWidth * arch,
+            0.24 * Math.PI,
+            0.76 * Math.PI
+          );
+          ctx.lineWidth = 2.8;
+          ctx.strokeStyle =
+            curState === 'muted'
+              ? '#64748B'
+              : `rgba(${Math.max(0, cr - 15)}, ${Math.max(0, cg - 15)}, ${Math.max(0, cb - 15)}, 0.9)`;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          // Subtle corner smile dimples for endearing warmth
+          if (curState !== 'muted') {
+            [-1, 1].forEach((d) => {
+              const dimpleX = eyeGazeOffsetX * 0.5 + d * mouthWidth * 0.62 * arch;
+              const dimpleY = mouthY - baseR * 0.01;
+              ctx.fillStyle = `rgba(${sr}, ${sg}, ${sb}, ${0.45 * vitalSmoothBlushAlpha})`;
+              ctx.beginPath();
+              ctx.arc(dimpleX, dimpleY, 1.2, 0, Math.PI * 2);
+              ctx.fill();
+            });
+          }
+        }
+      } else {
+        // ORIGINAL CODE UNTOUCHED FOR ALL OTHER MOODS
+        if (curState === 'speaking' && curAmp > 0.05) {
+          // Dynamic speaking mouth cavity (phoneme-driven)
+          const mouthHeight = Math.max(3, baseR * (0.12 + curAmp * 0.28));
           ctx.beginPath();
           ctx.ellipse(
-            eyeX + eyeRadiusX * 0.28,
-            eyeY + eyeRadiusY * 0.28,
-            eyeRadiusX * 0.18,
-            eyeRadiusY * 0.18,
+            eyeGazeOffsetX * 0.5,
+            mouthY,
+            mouthWidth * (0.8 + curAmp * 0.3),
+            mouthHeight,
             0,
             0,
             Math.PI * 2
           );
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+          ctx.fillStyle = `rgba(${rr}, ${rg}, ${rb}, 0.88)`;
           ctx.fill();
-        }
-
-        // E. ORGANIC PIXAR EYEBROWS (Delicate, emotive arched brows)
-        if (curState !== 'muted') {
-          // Brow height & slant per state/mood
-          let browLift = 0;
-          let browTilt = 0;
-
-          if (curState === 'thinking') {
-            // Asymmetric eyebrow lift (Pixar curiosity)
-            browLift = dir === 1 ? -6 : 1;
-            browTilt = dir === 1 ? -0.15 : 0.08;
-          } else if (curState === 'listening') {
-            browLift = -4;
-            browTilt = dir * 0.12; // Inward attentive slant
-          } else if (curState === 'speaking') {
-            browLift = -3 + Math.sin(time * 5) * 2;
-          } else if (curMood === 'animado') {
-            browLift = -5;
-          } else if (curMood === 'empatico') {
-            browTilt = -dir * 0.1;
-          }
-
-          const browY = eyeBaseY - eyeRadiusY * 1.25 + browLift;
-          const browWidth = eyeRadiusX * 1.5;
-
-          ctx.save();
-          ctx.translate(eyeX, browY);
-          ctx.rotate(browTilt);
+        } else {
+          // Gentle smile curve
+          const smileArch =
+            happySquintTimer > 0
+              ? 0.9
+              : curMood === 'animado'
+              ? 0.75
+              : 0.45;
 
           ctx.beginPath();
-          ctx.arc(0, 0, browWidth * 0.8, Math.PI * 1.15, Math.PI * 1.85);
-          ctx.strokeStyle = `rgba(${sr}, ${sg}, ${sb}, 0.75)`;
-          ctx.lineWidth = 2.0;
+          ctx.arc(
+            eyeGazeOffsetX * 0.5,
+            mouthY - mouthWidth * 0.4,
+            mouthWidth * smileArch,
+            0.25 * Math.PI,
+            0.75 * Math.PI
+          );
+          ctx.lineWidth = happySquintTimer > 0 ? 3.0 : 2.5;
+          ctx.strokeStyle =
+            curState === 'muted'
+              ? '#64748B'
+              : `rgba(${Math.max(0, cr - 20)}, ${Math.max(0, cg - 20)}, ${Math.max(0, cb - 20)}, 0.85)`;
           ctx.lineCap = 'round';
           ctx.stroke();
-
-          ctx.restore();
         }
-      });
-
-      // 15. EXPRESSIVE MOUTH / ORAL RESONANCE
-      const mouthY = eyeBaseY + baseR * 0.38;
-      const mouthWidth = baseR * 0.28;
-
-      if (curState === 'speaking') {
-        // Resonant speaking aperture modulated by RMS amplitude
-        const openH = baseR * (0.12 + curAmp * 0.18);
-        ctx.beginPath();
-        ctx.ellipse(eyeGazeOffsetX * 0.5, mouthY, mouthWidth * 0.82, openH, 0, 0, Math.PI * 2);
-        ctx.fillStyle = '#0F172A';
-        ctx.fill();
-
-        // Inner warm resonance / tongue glow
-        ctx.beginPath();
-        ctx.ellipse(eyeGazeOffsetX * 0.5, mouthY + openH * 0.3, mouthWidth * 0.52, openH * 0.5, 0, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${rr}, ${rg}, ${rb}, 0.88)`;
-        ctx.fill();
-      } else {
-        // Gentle smile curve
-        const smileArch = happySquintTimer > 0 ? 0.9 : curMood === 'animado' ? 0.75 : 0.45;
-        ctx.beginPath();
-        ctx.arc(
-          eyeGazeOffsetX * 0.5,
-          mouthY - mouthWidth * 0.4,
-          mouthWidth * smileArch,
-          0.25 * Math.PI,
-          0.75 * Math.PI
-        );
-        ctx.lineWidth = happySquintTimer > 0 ? 3.0 : 2.5;
-        ctx.strokeStyle =
-          curState === 'muted'
-            ? '#64748B'
-            : `rgba(${Math.max(0, cr - 20)}, ${Math.max(0, cg - 20)}, ${Math.max(0, cb - 20)}, 0.85)`;
-        ctx.lineCap = 'round';
-        ctx.stroke();
       }
 
       // 16. SOFT GLASS RIM SPECULARITY

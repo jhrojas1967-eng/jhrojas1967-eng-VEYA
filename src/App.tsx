@@ -109,7 +109,16 @@ export default function App() {
                 {/* Active Screen Rendering */}
                 <div className="flex-1 flex flex-col overflow-hidden relative">
                   {currentTab === 'onboarding' && (
-                    <ScreenOnboarding onFinish={() => setCurrentTab('today')} />
+                    <ScreenOnboarding
+                      onFinish={() => setCurrentTab('today')}
+                      onNavigateToSettings={(sectionId) => {
+                        if (sectionId === 'partner') setCurrentTab('partner');
+                        else if (sectionId === 'voice') setCurrentTab('voice');
+                        else if (sectionId === 'alarm') setCurrentTab('alarm');
+                        else if (sectionId === 'privacy') setCurrentTab('vault');
+                        else setCurrentTab('settings');
+                      }}
+                    />
                   )}
                   {currentTab === 'today' && (
                     <ScreenToday

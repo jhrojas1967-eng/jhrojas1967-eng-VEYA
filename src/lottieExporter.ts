@@ -60,6 +60,12 @@ const MOOD_LOTTIE_COLORS: Record<AvatarMood, { core: ColorRGB; sss: ColorRGB; ri
     rim: { r: 226 / 255, g: 232 / 255, b: 240 / 255 },
     glow: { r: 148 / 255, g: 163 / 255, b: 184 / 255 },
   },
+  vital: {
+    core: { r: 234 / 255, g: 88 / 255, b: 12 / 255 },
+    sss: { r: 251 / 255, g: 146 / 255, b: 60 / 255 },
+    rim: { r: 254 / 255, g: 240 / 255, b: 138 / 255 },
+    glow: { r: 251 / 255, g: 146 / 255, b: 60 / 255 },
+  },
 };
 
 export function generateLottieAvatarJson(

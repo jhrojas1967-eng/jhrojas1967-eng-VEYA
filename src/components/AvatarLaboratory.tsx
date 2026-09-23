@@ -30,6 +30,10 @@ import {
   Square,
   MousePointer,
   Radio,
+  Sunrise,
+  Flame,
+  RotateCcw,
+  Heart,
 } from 'lucide-react';
 
 export const AvatarLaboratory: React.FC = () => {
@@ -81,6 +85,7 @@ export const AvatarLaboratory: React.FC = () => {
     { id: 'animado', name: 'Animado', hex: '#FBBF24', desc: 'Ámbar solar cálido · Motivación matinal y vitalidad' },
     { id: 'empatico', name: 'Empático', hex: '#F472B6', desc: 'Rosa coral aterciopelado · Acompañamiento reflexivo' },
     { id: 'espera', name: 'En espera', hex: '#94A3B8', desc: 'Perla y niebla pizarra · Discreción respetuosa' },
+    { id: 'vital', name: 'Vital', hex: '#F97316', desc: 'Coral ámbar & destellos solares · Despertar enérgico, luz matinal y vitalidad empática' },
   ];
 
   // Configuración de exportación actual sincronizada
@@ -1123,11 +1128,20 @@ fun VeyaLottieAvatar(
         <div className="mt-2 flex flex-wrap items-center justify-center gap-2 z-10">
           <span className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Escenas rápidas:</span>
           <button
-            onClick={() => triggerStatePreset('speaking', 'animado', 0.85)}
-            className="px-2.5 py-1 rounded-full bg-white/80 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-bold border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5"
+            onClick={() => triggerStatePreset('speaking', 'vital', 0.85)}
+            className="px-2.5 py-1 rounded-full bg-orange-50 hover:bg-orange-100 dark:bg-orange-950/40 dark:hover:bg-orange-900/60 text-orange-700 dark:text-orange-300 text-[11px] font-bold border border-orange-300 dark:border-orange-800 transition-all flex items-center gap-1.5 shadow-xs"
+            title="Modelo Vital: Despertar enérgico, calidez vocal y destellos solares"
           >
-            <SunMedium className="w-3 h-3 text-amber-500" />
-            <span>Despertar Enérgico</span>
+            <SunMedium className="w-3 h-3 text-orange-500" />
+            <span>Vital · Despertar Enérgico</span>
+          </button>
+          <button
+            onClick={() => triggerStatePreset('listening', 'vital', 0.0)}
+            className="px-2.5 py-1 rounded-full bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 text-amber-700 dark:text-amber-300 text-[11px] font-bold border border-amber-300 dark:border-amber-800 transition-all flex items-center gap-1.5 shadow-xs"
+            title="Modelo Vital: Ladeo empático de cabeza, micro-asentimiento y mirada atenta"
+          >
+            <Heart className="w-3 h-3 text-amber-500" />
+            <span>Vital · Escucha Empática</span>
           </button>
           <button
             onClick={() => triggerStatePreset('thinking', 'concentrado', 0.1)}
@@ -1192,36 +1206,66 @@ fun VeyaLottieAvatar(
               <Smile className="w-3.5 h-3.5 text-[#7654A7] dark:text-[#DCB8FF]" />
               <span>2. Espectro Emocional / Moods</span>
             </h3>
-            <span className="text-[10px] font-mono text-slate-400">6 Matices</span>
+            <span className="text-[10px] font-mono text-slate-400">{moods.length} Matices</span>
           </div>
 
           <div className="space-y-2">
-            {moods.map((m) => (
-              <button
-                key={m.id}
-                onClick={() => setMood(m.id)}
-                className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between border ${
-                  mood === m.id
-                    ? 'bg-white dark:bg-[#1F2B38] border-slate-300 dark:border-slate-600 shadow-xs'
-                    : 'bg-transparent border-transparent hover:bg-slate-200/50 dark:hover:bg-slate-800/50'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <span
-                    className="w-3.5 h-3.5 rounded-full shrink-0 shadow-xs"
-                    style={{ backgroundColor: m.hex }}
-                  />
-                  <div>
-                    <p className={`text-xs font-bold ${mood === m.id ? 'text-slate-900 dark:text-slate-100' : 'text-slate-700 dark:text-slate-300'}`}>
-                      {m.name}
-                    </p>
-                    <p className="text-[10px] text-slate-400 leading-tight">{m.desc.split('·')[0]}</p>
+            {moods.map((m) => {
+              const isVital = m.id === 'vital';
+              const isSelected = mood === m.id;
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => setMood(m.id)}
+                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center justify-between border ${
+                    isSelected
+                      ? isVital
+                        ? 'bg-orange-50/80 dark:bg-orange-950/30 border-orange-400 dark:border-orange-600 shadow-xs ring-1 ring-orange-400'
+                        : 'bg-white dark:bg-[#1F2B38] border-slate-300 dark:border-slate-600 shadow-xs'
+                      : isVital
+                      ? 'bg-orange-50/30 dark:bg-orange-950/10 border-orange-200/70 dark:border-orange-900/40 hover:bg-orange-50/60 dark:hover:bg-orange-950/20'
+                      : 'bg-transparent border-transparent hover:bg-slate-200/50 dark:hover:bg-slate-800/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="w-3.5 h-3.5 rounded-full shrink-0 shadow-xs"
+                      style={{ backgroundColor: m.hex }}
+                    />
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <p className={`text-xs font-bold ${isSelected ? 'text-slate-900 dark:text-slate-100' : 'text-slate-700 dark:text-slate-300'}`}>
+                          {m.name}
+                        </p>
+                        {isVital && (
+                          <span className="text-[9px] font-black uppercase px-1.5 py-0.5 rounded-full bg-orange-100 dark:bg-orange-900/60 text-orange-700 dark:text-orange-300 tracking-wider">
+                            Empático & Amable
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-[10px] text-slate-400 leading-tight">{m.desc.split('·')[0]}</p>
+                    </div>
                   </div>
-                </div>
-                {mood === m.id && <Check className="w-3.5 h-3.5 text-emerald-500" />}
-              </button>
-            ))}
+                  {isSelected && (
+                    <Check className={`w-3.5 h-3.5 ${isVital ? 'text-orange-500' : 'text-emerald-500'}`} />
+                  )}
+                </button>
+              );
+            })}
           </div>
+
+          {/* Banner de información de gestualidad exclusiva del modelo Vital */}
+          {mood === 'vital' && (
+            <div className="mt-3 p-3 rounded-xl bg-orange-50/90 dark:bg-orange-950/40 border border-orange-200/90 dark:border-orange-800/70 text-xs animate-in fade-in duration-200">
+              <div className="flex items-center gap-1.5 text-orange-800 dark:text-orange-300 font-bold mb-1">
+                <Heart className="w-3.5 h-3.5 text-orange-500 fill-orange-500/20" />
+                <span>Modelo Vital: Expresiones Empáticas Activas</span>
+              </div>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                Ladeo empático de cabeza en escucha, asentimiento dulce, mirada luminosa con rubor melocotón, sonrisa cercana con hoyuelos y transiciones continuas a 60 fps exclusivas de este modelo.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Column 3: Physical Parameters & Lighting Modulations */}

@@ -328,6 +328,18 @@ export const DEFAULT_LOTTIE_EXPORT_CONFIG: LottieExportConfiguration = {
         glow: [0.5804, 0.6392, 0.7216],
       },
     },
+    vital: {
+      coreHex: '#C2410C',
+      sssHex: '#F97316',
+      rimHex: '#FED7AA',
+      glowHex: '#F97316',
+      rgbNormalized: {
+        core: [0.7608, 0.2549, 0.0471],
+        sss: [0.9765, 0.451, 0.0863],
+        rim: [0.9961, 0.8431, 0.6667],
+        glow: [0.9765, 0.451, 0.0863],
+      },
+    },
   },
   dynamicPropertiesAndroid: {
     colorKeyPaths: [

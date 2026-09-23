@@ -25,6 +25,7 @@ import {
   BookOpen,
 } from 'lucide-react';
 import { useVeya } from '../context/VeyaGlobalContext';
+import { localAudio } from '../utils/localAudioSynth';
 
 interface ScreenVoiceProps {
   onBack: () => void;
@@ -145,16 +146,21 @@ export const ScreenVoice: React.FC<ScreenVoiceProps> = ({ onBack }) => {
 
   const handleTogglePlaySample = (voiceId: string) => {
     if (playingVoiceId === voiceId) {
+      localAudio.stop();
       setPlayingVoiceId(null);
     } else {
       setPlayingVoiceId(voiceId);
       const voice = VOICE_PROFILES.find((v) => v.id === voiceId);
       if (voice) {
         showToast(`Reproduciendo muestra acústica: ${voice.name}`);
+        localAudio.speak(voice.sampleText, {
+          voiceId,
+          rate: speechSpeed,
+          pitch: voiceId === 'voice_vesper' ? 0.8 : voiceId === 'voice_cefiro' ? 0.95 : voiceId === 'voice_opalo' ? 1.05 : 1.0,
+          onEnd: () => setPlayingVoiceId(null),
+          onError: () => setPlayingVoiceId(null),
+        });
       }
-      setTimeout(() => {
-        setPlayingVoiceId(null);
-      }, 4200);
     }
   };
 
@@ -175,16 +181,24 @@ export const ScreenVoice: React.FC<ScreenVoiceProps> = ({ onBack }) => {
   };
 
   const handleSimulateResponse = () => {
+    let cleanVoiceText = '';
     let result = '';
     if (conciseness > 75) {
-      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "Buenos días. Tres tareas hoy. Primera a las 09:00. Música iniciada."`;
+      cleanVoiceText = 'Buenos días. Tres tareas hoy. Primera a las 09:00. Música iniciada.';
+      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "${cleanVoiceText}"`;
     } else if (conciseness < 40) {
-      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "Buenos días, José. He preparado tu jornada con dos bloques de trabajo y una pausa de respiración consciente a las 11:30 para asegurar que tu nivel de energía se mantenga óptimo."`;
+      cleanVoiceText = 'Buenos días, José. He preparado tu jornada con dos bloques de trabajo y una pausa de respiración consciente a las 11:30 para asegurar que tu nivel de energía se mantenga óptimo.';
+      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "${cleanVoiceText}"`;
     } else {
-      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "Buenos días, José. Tu plan matinal está organizado con foco en arquitectura de sistemas. Cuando gustes, iniciamos."`;
+      cleanVoiceText = 'Buenos días, José. Tu plan matinal está organizado con foco en arquitectura de sistemas. Cuando gustes, iniciamos.';
+      result = `[${selectedVoice.name} | ${speechSpeed.toFixed(2)}x | Concisión ${conciseness}%]: "${cleanVoiceText}"`;
     }
     setSimulatedTestText(result);
     showToast('Respuesta simulada con el temperamento actual');
+    localAudio.speak(cleanVoiceText, {
+      voiceId: selectedVoiceId,
+      rate: speechSpeed,
+    });
   };
 
   const copyClaudePrompt = () => {

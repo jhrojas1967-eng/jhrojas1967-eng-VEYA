@@ -76,6 +76,15 @@ const PIXAR_PALETTES: Record<
     ambientGlow: 'rgba(148, 163, 184, 0.3)',
     label: 'En espera',
   },
+  vital: {
+    gradientStart: '#FFEDD5', // Dawn light
+    gradientMid: '#FB923C',   // Solar Coral Amber
+    gradientEnd: '#9A3412',   // Deep Warm Amber
+    rimLight: '#FEF08A',      // Sunlight rim
+    particle: '#FDE047',      // Golden spark
+    ambientGlow: 'rgba(251, 146, 60, 0.55)',
+    label: 'Vital',
+  },
 };
 
 export const PixarAvatarSvg: React.FC<PixarAvatarSvgProps> = ({
@@ -241,7 +250,14 @@ export const PixarAvatarSvg: React.FC<PixarAvatarSvgProps> = ({
         )}
 
         {/* 3D Main Sphere Body with Shadows & Highlights */}
-        <g filter="url(#pixarShadow)">
+        <g
+          filter="url(#pixarShadow)"
+          transform={
+            mood === 'vital' && !reducedMotion
+              ? `rotate(${state === 'listening' ? 3.8 : state === 'idle' ? Math.sin(time * 1.3) * 2.0 : 0} ${cx} ${cy})`
+              : undefined
+          }
+        >
           <ellipse
             cx={cx}
             cy={cy + (reducedMotion ? 0 : Math.sin(time * 1.5) * 3)}
@@ -269,6 +285,14 @@ export const PixarAvatarSvg: React.FC<PixarAvatarSvgProps> = ({
             strokeWidth="2.5"
           />
 
+          {/* Soft Peach Blush Cheeks (Exclusively for Vital) */}
+          {mood === 'vital' && state !== 'muted' && (
+            <g opacity={0.34}>
+              <ellipse cx={cx - baseR * 0.42} cy={cy + baseR * 0.12} rx={baseR * 0.16} ry={baseR * 0.09} fill="#FB923C" />
+              <ellipse cx={cx + baseR * 0.42} cy={cy + baseR * 0.12} rx={baseR * 0.16} ry={baseR * 0.09} fill="#FB923C" />
+            </g>
+          )}
+
           {/* Warm Pixar Eyes */}
           <g transform={`translate(0, ${eyeOffsetY + (reducedMotion ? 0 : Math.sin(time * 1.5) * 3)})`}>
             {[-1, 1].map((dir) => {
@@ -294,6 +318,23 @@ export const PixarAvatarSvg: React.FC<PixarAvatarSvgProps> = ({
               );
             })}
 
+            {/* Kind Arched Eyebrows for Vital */}
+            {mood === 'vital' && state !== 'muted' && (
+              <g>
+                {[-1, 1].map((dir) => (
+                  <path
+                    key={dir}
+                    d={`M ${cx + dir * (baseR * 0.42) - baseR * 0.12} ${cy - baseR * 0.22} Q ${cx + dir * (baseR * 0.42)} ${cy - baseR * 0.28} ${cx + dir * (baseR * 0.42) + baseR * 0.12} ${cy - baseR * 0.22}`}
+                    fill="none"
+                    stroke="#EA580C"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    opacity="0.85"
+                  />
+                ))}
+              </g>
+            )}
+
             {/* Pixar Smile / Speaking Mouth */}
             {state === 'speaking' ? (
               <ellipse
@@ -305,10 +346,14 @@ export const PixarAvatarSvg: React.FC<PixarAvatarSvgProps> = ({
               />
             ) : (
               <path
-                d={`M ${cx - baseR * 0.2} ${cy + baseR * 0.3} Q ${cx} ${cy + baseR * 0.42} ${cx + baseR * 0.2} ${cy + baseR * 0.3}`}
+                d={
+                  mood === 'vital'
+                    ? `M ${cx - baseR * 0.22} ${cy + baseR * 0.29} Q ${cx} ${cy + baseR * 0.43} ${cx + baseR * 0.22} ${cy + baseR * 0.29}`
+                    : `M ${cx - baseR * 0.2} ${cy + baseR * 0.3} Q ${cx} ${cy + baseR * 0.42} ${cx + baseR * 0.2} ${cy + baseR * 0.3}`
+                }
                 fill="none"
                 stroke={state === 'muted' ? '#64748B' : palette.gradientEnd}
-                strokeWidth="2.5"
+                strokeWidth={mood === 'vital' ? 2.8 : 2.5}
                 strokeLinecap="round"
               />
             )}
