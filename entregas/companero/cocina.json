@@ -1,0 +1,130 @@
+{
+  "suggestions": [
+    {
+      "id": "cocina-001",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Tortilla de patatas melosa",
+      "pitch": "El secreto reside en pochar las patatas y la cebolla a fuego muy lento en aceite de oliva virgen extra hasta que casi se deshagan, y cuajarla apenas un minuto por lado para lograr un centro jugoso y cremoso."
+    },
+    {
+      "id": "cocina-002",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "El origen documentado de la tortilla de patatas",
+      "followUp": false,
+      "pitch": "¿Sabías que la primera mención escrita de la tortilla de patatas data de 1798 en Villanueva de la Serena (Badajoz)?",
+      "more": "El historiador Javier López Linaje localizó en 2008 un documento del marqués de Robledo y José de Tena Godoy que describe una receta de tortilla elaborada con patatas y huevos con el fin de abaratar el pan durante una época de escasez de trigo, desmontando el mito de su invención en las guerras carlistas de Navarra."
+    },
+    {
+      "id": "cocina-003",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Gazpacho andaluz tradicional",
+      "pitch": "Tomate pera maduro, pepino pelado, pimiento verde italiano, un diente de ajo sin germen, buen vinagre de Jerez y una emulsión generosa de aceite de oliva. Servir muy frío, sin pan añadido."
+    },
+    {
+      "id": "cocina-004",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "El gazpacho precolombino: blanco y sin tomate",
+      "followUp": false,
+      "pitch": "Antes de la llegada del tomate y el pimiento desde América en el siglo XVI, el gazpacho ya existía en la península ibérica.",
+      "more": "Los campesinos andaluces majaban en dornillos de madera pan duro del día anterior, ajo silvestre, sal marina, agua de pozo, vinagre y aceite de oliva. Ese gazpacho blanco original sigue vivo hoy en platos tradicionales como el ajoblanco malagueño con almendras."
+    },
+    {
+      "id": "cocina-005",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Ceviche peruano clásico",
+      "pitch": "Corvina o lubina fresca cortada en dados limpios, marinada apenas tres minutos en zumo de lima recién exprimido sin apretar la corteza, ají limo picado, cilantro y cebolla morada en pluma con choclo y camote."
+    },
+    {
+      "id": "cocina-006",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "La leche de tigre y el cambio de cocción del ceviche",
+      "followUp": false,
+      "pitch": "Hasta los años setenta, el pescado del ceviche en Perú se dejaba macerar durante toda la noche en jugo de naranja agria.",
+      "more": "La influencia de los cocineros de la comunidad 'nikkei' (inmigrantes japoneses como Humberto Sato y Toshiro Konishi) introdujo la técnica del corte al momento y el macerado exprés de dos minutos con lima fresca, preservando la textura firme y translúcida del pescado y dando origen a la actual 'leche de tigre'."
+    },
+    {
+      "id": "cocina-007",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Fabada asturiana a fuego lento",
+      "pitch": "Faba asturiana de la IGP mantecosa, compango de chorizo ahumado, morcilla asturiana y lacón. El secreto es asustar las alubias tres veces con agua fría y no meter jamás cuchara de metal para no romper el hollejo."
+    },
+    {
+      "id": "cocina-008",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Salmorejo cordobés sedoso",
+      "pitch": "Solo cuatro ingredientes en proporciones exactas: un kilo de tomates maduros, doscientos gramos de pan de telera cordobesa, cien mililitros de aceite de oliva virgen extra y un pellizco de sal. Guarnecido con jamón ibérico picado y huevo duro."
+    },
+    {
+      "id": "cocina-009",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "El azafrán: el oro rojo de La Mancha",
+      "followUp": false,
+      "pitch": "¿Por qué un kilo de azafrán de hebra requiere recolectar y mondar a mano doscientas mil flores?",
+      "more": "Cada flor de Crocus sativus produce únicamente tres estigmas rojos. Las flores se recolectan al amanecer en otoño antes de que el sol marchite los pétalos, y se monda manualmente flor por flor el mismo día antes de tostarlas suavemente sobre brasas de encina."
+    },
+    {
+      "id": "cocina-010",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Pulpo á feira a la gallega",
+      "pitch": "Cocido en olla de cobre hasta que esté tierno pero con resistencia al mordisco, cortado con tijera sobre plato de madera húmeda, sal gorda marina, pimentón dulce de la Vera y un toque picante con buen aceite."
+    },
+    {
+      "id": "cocina-011",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "Por qué se golpeaba el pulpo en las rocas",
+      "followUp": false,
+      "pitch": "Antiguamente en las costas gallegas las pulpeiras golpeaban el cefalópodo cuarenta veces contra las piedras del muelle.",
+      "more": "El pulpo tiene fibras de colágeno musculares extraordinariamente densas dispuestas en capas cruzadas. Golpear el animal rompía mecánicamente esas fibras para evitar que quedase gomoso; hoy en día el mismo resultado se consigue congelándolo al menos cuarenta y ocho horas a -18 °C antes de cocinarlo."
+    },
+    {
+      "id": "cocina-012",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Empanadas salteñas argentinas",
+      "pitch": "Masa casera con grasa de pella, relleno de carne cortada a cuchillo con cebolla de verdeo, pimentón dulce, comino, huevo duro y papa hervida. Horneadas a fuego muy vivo para conservar todo su jugo ardiente."
+    },
+    {
+      "id": "cocina-013",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "El chocolate mesoamericano que sedujo a la corte española",
+      "followUp": false,
+      "pitch": "El primer lugar de Europa continental donde se elaboró chocolate caliente fue el Monasterio de Piedra (Zaragoza).",
+      "more": "En 1534, fray Jerónimo de Aguilar envió las primeras semillas de cacao desde México junto a la receta de los monjes cistercienses, quienes sustituyeron los chiles picantes mesoamericanos por azúcar de caña y canela, creando la bebida dulce que conquistó las cortes europeas."
+    },
+    {
+      "id": "cocina-014",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Arroz a banda alicantino",
+      "pitch": "Un potente caldo de morralla de roca y galera marina con sofrito de salmorreta alicantina (ñora, ajo y tomate frito). El arroz absorbe todo el fondo marino y se sirve con alioli casero al mortero."
+    },
+    {
+      "id": "cocina-015",
+      "topic": "COCINA",
+      "kind": "receta",
+      "title": "Mole poblano mexicano",
+      "pitch": "Una salsa compleja y solemne que reúne más de veinticinco ingredientes tostados por separado: chiles secos (ancho, pasilla y mulato), cacao puro amargo, ajonjolí, almendras, plátano macho y especias molidas en metate."
+    },
+    {
+      "id": "cocina-016",
+      "topic": "COCINA",
+      "kind": "curiosidad",
+      "title": "El socarrat de la paella: química de la reacción de Maillard",
+      "followUp": false,
+      "pitch": "¿Por qué la capa tostada del fondo de la paella tiene ese sabor tan adictivo?",
+      "more": "En los últimos dos minutos de cocción, al evaporarse todo el caldo, la grasa del sofrito y los almidones sueltos del grano se caramelizan sobre el metal a unos 150 °C mediante la reacción de Maillard, produciendo una costra dorada y crujiente sin llegar a quemarse ni carbonizarse."
+    }
+  ]
+}

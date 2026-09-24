@@ -14,13 +14,15 @@ import { ScreenWeather } from './components/ScreenWeather';
 import { ScreenNews } from './components/ScreenNews';
 import { ScreenPartner } from './components/ScreenPartner';
 import { ScreenMusicStreaming } from './components/ScreenMusicStreaming';
+import { ScreenBlackboard } from './components/ScreenBlackboard';
 import { BottomNav } from './components/BottomNav';
-import { ScreenTab, ThemeMode } from './types';
-import { Smartphone, Moon, Sun, Laptop, ArrowRight, Share2, Download, Sparkles, CheckCircle, ShieldCheck, GitBranch } from 'lucide-react';
+import { ScreenTab, ThemeMode, BlackboardTemplateType } from './types';
+import { Smartphone, Moon, Sun, Laptop, ArrowRight, Share2, Download, Sparkles, CheckCircle, ShieldCheck, GitBranch, Compass } from 'lucide-react';
 
 export default function App() {
   const [themeMode, setThemeMode] = useState<ThemeMode>('light');
   const [currentTab, setCurrentTab] = useState<ScreenTab>('today');
+  const [selectedBlackboardTemplate, setSelectedBlackboardTemplate] = useState<BlackboardTemplateType>('orbits_astronomy');
   const [activeStudioView, setActiveStudioView] = useState<'mockup' | 'tokens' | 'avatar' | 'collaboration'>('mockup');
 
   const isDark = themeMode === 'dark';
@@ -69,6 +71,21 @@ export default function App() {
                 </button>
               ))}
             </div>
+
+            {/* Quick Blackboard Prototype Trigger */}
+            <button
+              onClick={() => {
+                setActiveStudioView('mockup');
+                setSelectedBlackboardTemplate('orbits_astronomy');
+                setCurrentTab('blackboard');
+              }}
+              className="px-3 py-1.5 rounded-2xl bg-cyan-600/10 hover:bg-cyan-600/20 text-cyan-700 dark:text-cyan-300 border border-cyan-300/80 dark:border-cyan-800 text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm"
+              title="Abrir Pizarra Interactiva (Modelos astronómicos, capas y simuladores)"
+            >
+              <Compass className="w-3.5 h-3.5 text-cyan-500" />
+              <span className="hidden sm:inline">Pizarra Interactiva</span>
+              <span className="sm:hidden">Pizarra</span>
+            </button>
 
             {/* Light / Dark Mode Toggle */}
             <button
@@ -126,7 +143,20 @@ export default function App() {
                       onGoToRoutineSettings={() => setCurrentTab('settings')}
                     />
                   )}
-                  {currentTab === 'chat' && <ScreenChat />}
+                  {currentTab === 'chat' && (
+                    <ScreenChat
+                      onOpenBlackboard={(tmpl) => {
+                        if (tmpl) setSelectedBlackboardTemplate(tmpl);
+                        setCurrentTab('blackboard');
+                      }}
+                    />
+                  )}
+                  {currentTab === 'blackboard' && (
+                    <ScreenBlackboard
+                      initialTemplate={selectedBlackboardTemplate}
+                      onBack={() => setCurrentTab('chat')}
+                    />
+                  )}
                   {currentTab === 'music' && <ScreenMusic />}
                   {currentTab === 'streaming' && (
                     <ScreenMusicStreaming onBack={() => setCurrentTab('music')} />

@@ -1,0 +1,84 @@
+{
+  "subjectId": "recursos_humanos",
+  "subjectTitle": "Recursos Humanos",
+  "category": "organizacion_empresa",
+  "description": "Gestión del talento, cultura organizativa, liderazgo, bienestar laboral y relaciones laborales contemporáneas.",
+  "blocks": [
+    {
+      "id": "rh-b1",
+      "title": "Atracción y selección por competencias",
+      "description": "Procesos justos, estructurados y libres de sesgos para incorporar profesionales.",
+      "cards": [
+        {
+          "q": "¿Qué distingue una entrevista por competencias del método tradicional cronológico?",
+          "a": "La entrevista por competencias indaga situaciones reales del pasado mediante el método STAR (Situación, Tarea, Acción, Resultado), bajo la premisa contrastada de que la conducta pasada es el mejor predictor del desempeño futuro."
+        },
+        {
+          "q": "¿Qué es el 'sesgo de afinidad' (efecto espejo) en un proceso de selección?",
+          "a": "La tendencia inconsciente del evaluador a valorar más favorablemente a candidatos que comparten sus mismos orígenes, aficiones, estilo comunicativo o universidad, descuidando la idoneidad técnica objetiva."
+        },
+        {
+          "q": "¿Qué papel desempeña un 'onboarding' estructurado en la retención inicial?",
+          "a": "Facilita la asimilación gradual de la cultura organizativa, clarifica expectativas del puesto desde la primera semana y reduce la rotación no deseada durante los primeros noventa días en más de un 50%."
+        }
+      ]
+    },
+    {
+      "id": "rh-b2",
+      "title": "Evaluación del desempeño y cultura de feedback",
+      "description": "Desarrollo profesional, objetivos alineados y retroalimentación constructiva.",
+      "cards": [
+        {
+          "q": "¿Qué aporta una evaluación de 360 grados frente a la evaluación descendente tradicional?",
+          "a": "Recoge valoraciones anónimas de superiores, compañeros de equipo, subordinados directos y clientes internos, ofreciendo una visión integral de las habilidades interpersonales y de liderazgo del evaluado."
+        },
+        {
+          "q": "¿Cuál es la regla de oro para dar un feedback constructivo eficaz?",
+          "a": "Debe ser oportuno en el tiempo, centrado en hechos y comportamientos observables concretos (no en juicios sobre la personalidad), y orientado a pactar soluciones y compromisos futuros."
+        },
+        {
+          "q": "¿En qué se diferencian los OKR (Objectives and Key Results) de los KPI tradicionales?",
+          "a": "Los KPI miden el rendimiento operativo habitual y estable de un proceso, mientras que los OKR fijan metas cualitativas ambiciosas e inspiradoras acompañadas de métricas cuantitativas trimestrales de transformación."
+        }
+      ]
+    },
+    {
+      "id": "rh-b3",
+      "title": "Bienestar laboral y prevención del burnout",
+      "description": "Salud psicológica, ergonomía, conciliación y desconexión digital.",
+      "cards": [
+        {
+          "q": "¿Cuáles son las tres dimensiones clínicas del síndrome de desgaste profesional (burnout)?",
+          "a": "Agotamiento emocional crónico, despersonalización o cinismo hacia las tareas y compañeros, y sensación profunda de ineficacia o falta de realización personal en el trabajo."
+        },
+        {
+          "q": "¿Qué implica el derecho a la desconexión digital en la legislación laboral española?",
+          "a": "La garantía legal de que la persona trabajadora no está obligada a responder correos, mensajes o llamadas corporativas fuera de su jornada ordinaria, salvaguardando su intimidad y descanso."
+        },
+        {
+          "q": "¿Qué es el 'salario emocional' y por qué impacta en el compromiso?",
+          "a": "El conjunto de beneficios no monetarios (flexibilidad horaria, teletrabajo, formación continua, reconocimiento y clima de respeto) que incrementan el sentido de pertenencia y bienestar."
+        }
+      ]
+    },
+    {
+      "id": "rh-b4",
+      "title": "Liderazgo, seguridad psicológica y gestión del cambio",
+      "description": "Equipos de alto rendimiento basados en confianza y aprendizaje del error.",
+      "cards": [
+        {
+          "q": "¿Qué define a un entorno con alta 'seguridad psicológica' según Amy Edmondson?",
+          "a": "La convicción compartida en el equipo de que nadie será humillado, ridiculizado o castigado por admitir un error, plantear una duda sincera o proponer una idea innovadora."
+        },
+        {
+          "q": "¿En qué consiste el modelo de cambio en tres etapas de Kurt Lewin?",
+          "a": "Descongelar (cuestionar los hábitos arraigados y crear conciencia de la necesidad de cambio), Transicionar (implementar las nuevas prácticas guiando al equipo) y Recongelar (consolidar las nuevas normas en la cultura cotidiana)."
+        },
+        {
+          "q": "¿Qué caracteriza al liderazgo servicial (servant leadership)?",
+          "a": "El líder prioriza desbloquear obstáculos para su equipo, empoderar el talento de sus miembros y facilitar su autonomía en lugar de ejercer control autoritario y microgestión."
+        }
+      ]
+    }
+  ]
+}

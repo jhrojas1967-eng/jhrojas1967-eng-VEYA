@@ -1,0 +1,140 @@
+{
+  "suggestions": [
+    {
+      "id": "tecnologia-001",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "La Enciclopedia Mecánica de Ángela Ruiz Robles (1949)",
+      "followUp": false,
+      "pitch": "¿Sabías que el primer libro electrónico interactivo de la historia fue patentado por una maestra gallega en León hace más de setenta años?",
+      "more": "Ángela Ruiz Robles diseñó en 1949 un dispositivo con bobinas de texto intercambiables, luces para lectura nocturna, cristales de aumento y pulsadores sonoros para aligerar las carteras de los escolares y personalizar la enseñanza. Su prototipo de zinc y bronce se conserva en el Museo Nacional de Ciencia y Tecnología de A Coruña."
+    },
+    {
+      "id": "tecnologia-002",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El Telekino de Leonardo Torres Quevedo (1902)",
+      "followUp": false,
+      "pitch": "El primer mando a distancia por ondas hertzianas del mundo no controló una televisión, sino un triciclo y una barca en el puerto de Bilbao.",
+      "more": "Torres Quevedo concibió el Telekino como un autómata receptor capaz de decodificar secuencias de impulsos electromagnéticos y traducirlos a órdenes mecánicas complejas (adelante, giro de timón, cambio de velocidad). En 1906 realizó una demostración pública en la ría de Bilbao guiando una lancha a ochocientos metros de distancia ante el rey Alfonso XIII."
+    },
+    {
+      "id": "tecnologia-003",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El Proyecto Synco / Cybersyn (Chile, 1971-1973)",
+      "followUp": false,
+      "pitch": "¿Sabías que Chile construyó una red de internet cibernética de gestión económica en tiempo real con máquinas de telex?",
+      "more": "Bajo la dirección del pionero británico Stafford Beer y el ingeniero Fernando Flores, Cybersyn conectó quinientas fábricas nacionalizadas a un ordenador central en Santiago mediante una red de teletipos, permitiendo anticipar cuellos de botella y gestionar la distribución de suministros desde una sala de operaciones futurista con pantallas de datos en hexágonos."
+    },
+    {
+      "id": "tecnologia-004",
+      "topic": "TECNOLOGIA",
+      "kind": "libro",
+      "title": "Criptonomicon (Neal Stephenson)",
+      "pitch": "Una novela torrencial que entrelaza a los criptoanalistas de Bletchley Park que descifraron Enigma en la Segunda Guerra Mundial con los ingenieros que crean paraísos de datos privados en los años noventa."
+    },
+    {
+      "id": "tecnologia-005",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El cable transatlántico Marea (Bilbao - Virginia)",
+      "followUp": false,
+      "pitch": "El cable submarino de fibra óptica de mayor capacidad del mundo cruza el Atlántico y tiene su amarre europeo en Sopelana (Vizcaya).",
+      "more": "Tendido en 2017 por Microsoft, Meta y Telxius, recorre más de seis mil seiscientos kilómetros a más de cuatro mil metros de profundidad bajo el océano y es capaz de transmitir doscientos terabits por segundo a través de ocho pares de fibras no más gruesas que un cabello humano."
+    },
+    {
+      "id": "tecnologia-006",
+      "topic": "TECNOLOGIA",
+      "kind": "libro",
+      "title": "La era del capitalismo de la vigilancia (Shoshana Zuboff)",
+      "pitch": "El estudio más riguroso sobre cómo las plataformas tecnológicas convirtieron el comportamiento humano cotidiano en materia prima gratuita para alimentar algoritmos predictivos de modificación de conducta."
+    },
+    {
+      "id": "tecnologia-007",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El origen del formato JPEG y la foto de Lenna",
+      "followUp": false,
+      "pitch": "¿Por qué la misma fotografía de una joven con sombrero apareció en miles de artículos científicos de procesamiento digital de imágenes?",
+      "more": "En junio de 1973, ingenieros del Instituto de Procesamiento de Señales de la Universidad del Sur de California buscaban una imagen con texturas finas, tonos de piel y bordes contrastados para probar nuevos algoritmos de compresión; escanearon una página de una revista y ese recorte de 512x512 píxeles se convirtió en el estándar informal de la industria durante cuarenta años."
+    },
+    {
+      "id": "tecnologia-008",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El primer mensaje enviado por ARPANET (1969)",
+      "followUp": false,
+      "pitch": "La primera palabra transmitida entre dos ordenadores a distancia en la historia de internet fue un error involuntario: 'LO'.",
+      "more": "El 29 de octubre de 1969, estudiantes de la UCLA intentaban enviar la palabra 'LOGIN' a un ordenador del Stanford Research Institute en Menlo Park. El sistema se colgó tras teclear las letras 'L' y 'O', por lo que ese fragmento accidental fue el primer paquete digital en recorrer la red."
+    },
+    {
+      "id": "tecnologia-009",
+      "topic": "TECNOLOGIA",
+      "kind": "libro",
+      "title": "Hackers: Héroes de la revolución informática (Steven Levy)",
+      "pitch": "La historia apasionante de los entusiastas del laboratorio de inteligencia artificial del MIT en los años cincuenta y sesenta que creían que la información debía ser libre y el acceso a los ordenadores ilimitado."
+    },
+    {
+      "id": "tecnologia-010",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El chip de grafeno y el sincrotrón ALBA de Cerdanyola",
+      "followUp": false,
+      "pitch": "En Barcelona funciona un acelerador de electrones de tres gigaelectronvoltios que analiza la materia a escala atómica.",
+      "more": "El sincrotrón ALBA produce haces de luz sincrotrón extraordinariamente brillantes que permiten a investigadores estudiar desde fármacos contra el cáncer hasta baterías de litio y semiconductores de última generación sin destruir las muestras microscópicas."
+    },
+    {
+      "id": "tecnologia-011",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El astrolabio andalusí de Azarquiel (Toledo, siglo XI)",
+      "followUp": false,
+      "pitch": "El astrónomo e inventor toledano Al-Zarqali creó la 'azafea', el primer ordenador analógico universal de cálculo estelar.",
+      "more": "A diferencia de los astrolabios clásicos, que requerían placas intercambiables distintas para cada latitud geográfica, la azafea de Azarquiel utilizaba una proyección estereográfica especial sobre el plano equinoccial que funcionaba en cualquier lugar de la Tierra sin ajuste de placas, revolucionando la navegación astronómica medieval."
+    },
+    {
+      "id": "tecnologia-012",
+      "topic": "TECNOLOGIA",
+      "kind": "libro",
+      "title": "El alma de una nueva máquina (Tracy Kidder)",
+      "pitch": "Premio Pulitzer de no ficción: crónica trepidante de un grupo de jóvenes ingenieros encerrados en un sótano en Massachusetts compitiendo contrarreloj para diseñar un nuevo superminicomputador de 32 bits."
+    },
+    {
+      "id": "tecnologia-013",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El supercomputador MareNostrum en la capilla de Torre Girona",
+      "followUp": false,
+      "pitch": "¿Por qué uno de los supercomputadores más potentes de Europa está dentro de una capilla católica desacralizada del siglo XIX?",
+      "more": "El Barcelona Supercomputing Center (BSC) instaló el clúster MareNostrum en la nave central de la antigua capilla de Torre Girona porque sus muros de piedra proporcionaban una excelente masa térmica y espacio diáfano para la jaula de cristal refrigerada, creando un llamativo contraste entre vidrieras y miles de procesadores paralelos."
+    },
+    {
+      "id": "tecnologia-014",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El transistor: inventado en los Laboratorios Bell en 1947",
+      "followUp": false,
+      "pitch": "El componente más influyente del siglo XX sustituyó a las voluminosas y frágiles válvulas de vacío por un trozo de germanio.",
+      "more": "John Bardeen, Walter Brattain y William Shockley crearon el primer transistor de contacto puntual en diciembre de 1947; hoy un teléfono móvil común alberga en su microprocesador más de quince mil millones de transistores microscópicos de pocos nanómetros."
+    },
+    {
+      "id": "tecnologia-015",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "El kernel de Linux anunciado en Usenet en 1991",
+      "followUp": false,
+      "pitch": "El sistema operativo que gobierna la mayoría de servidores de internet y teléfonos Android nació como un pasatiempo de un estudiante finlandés de veintiún años.",
+      "more": "Linus Torvalds publicó el 25 de agosto de 1991 un mensaje en el grupo comp.os.minix avisando de que estaba escribiendo 'un sistema operativo gratuito (sólo un hobby, no será grande ni profesional como GNU)' para ordenadores AT 386; la colaboración global abierta lo transformó en la base de la infraestructura tecnológica mundial."
+    },
+    {
+      "id": "tecnologia-016",
+      "topic": "TECNOLOGIA",
+      "kind": "curiosidad",
+      "title": "La máquina de cifrado Lorente y los códigos de la Guerra Civil",
+      "followUp": false,
+      "pitch": "España contó con sus propios inventores de cifrado mecánico militar durante los años treinta.",
+      "more": "El coronel e ingeniero militar Antonio Lorente Hurtado patentó una máquina criptográfica basada en cilindros rotatorios combinatorios inspirada en los primeros diseños europeos, empleada en transmisiones de estado mayor antes de la llegada de las máquinas Enigma comerciales cedidas por Alemania."
+    }
+  ]
+}

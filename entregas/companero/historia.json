@@ -1,0 +1,140 @@
+{
+  "suggestions": [
+    {
+      "id": "historia-001",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "La Real Expedición Filantrópica de la Vacuna (Balmis)",
+      "followUp": false,
+      "pitch": "¿Sabías que la primera campaña de vacunación global de la historia se realizó en 1803 usando a veintidós niños huérfanos como cadena viva?",
+      "more": "El médico alicantino Francisco Javier Balmis y la enfermera Isabel Zendal transportaron la vacuna de la viruela hasta América y Filipinas inoculando el virus de brazo en brazo cada diez días entre los niños de la corbeta María Pita, salvando cientos de miles de vidas."
+    },
+    {
+      "id": "historia-002",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "Las Cortes de León de 1188: cuna del parlamentarismo",
+      "followUp": false,
+      "pitch": "El Reino Unido no fue el primer parlamento europeo; la UNESCO reconoce oficialmente que la cuna nació en León en 1188.",
+      "more": "Bajo el reinado de Alfonso IX de León, se convocó por primera vez en la historia de Europa a representantes del pueblo llano (ciudadanos elegidos) junto a la nobleza y el clero para tomar decisiones vinculantes de gobierno y garantías jurídicas."
+    },
+    {
+      "id": "historia-003",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El Galeón de Manila: la primera globalización comercial",
+      "followUp": false,
+      "pitch": "¿Sabías que durante doscientos cincuenta años una ruta naval conectó Asia, América y Europa de forma ininterrumpida?",
+      "more": "Entre 1565 y 1815, los galeones españoles cruzaban anualmente el océano Pacífico desde Manila hasta Acapulco transportando sedas, especias y porcelanas chinas que luego se cruzaban por tierra hasta Veracruz para navegar a Sevilla, pagadas en plata americana que circulaba como moneda global."
+    },
+    {
+      "id": "historia-004",
+      "topic": "HISTORIA",
+      "kind": "libro",
+      "title": "Breve historia del mundo (Ernst H. Gombrich)",
+      "pitch": "Escrita originalmente para jóvenes lectores, repasa milenios de civilización con una sencillez cristalina, compasión y sin academicismos estériles. Una delicia reparadora."
+    },
+    {
+      "id": "historia-005",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "La Escuela de Traductores de Toledo",
+      "followUp": false,
+      "pitch": "Sin la labor de los traductores de Toledo en los siglos XII y XIII, Europa occidental habría perdido gran parte del saber griego clásico.",
+      "more": "Eruditos musulmanes, judíos y cristianos colaboraron en Toledo para verter al latín y al romance castellano textos de Aristóteles, Ptolomeo, Galeno y Avicena preservados y ampliados en el mundo islámico, sentando las bases del Renacimiento europeo."
+    },
+    {
+      "id": "historia-006",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El rescate de Atahualpa y el cuarto lleno de oro",
+      "followUp": false,
+      "pitch": "¿Sabías que el cuarto del rescate en Cajamarca fue una de las transacciones más descomunales jamás registradas?",
+      "more": "Para recuperar su libertad en 1532, el inca Atahualpa ofreció llenar una habitación de seis metros de largo por cinco de ancho una vez de oro hasta donde alcanzara su mano y dos veces de plata. A pesar de cumplirse la entrega de toneladas de orfebrería, fue ejecutado al año siguiente."
+    },
+    {
+      "id": "historia-007",
+      "topic": "HISTORIA",
+      "kind": "ensayo",
+      "title": "La Guerra Civil española (Hugh Thomas)",
+      "pitch": "La investigación que devolvió la objetividad y la documentación rigurosa al estudio del conflicto fratricida de 1936. Imprescindible para comprender el siglo XX español."
+    },
+    {
+      "id": "historia-008",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El Gran Terremoto de Lisboa de 1755 y la Ilustración",
+      "followUp": false,
+      "pitch": "Un seísmo y posterior tsunami de diez minutos el día de Todos los Santos transformó para siempre la filosofía y la ciencia europea.",
+      "more": "El desastre destruyó Lisboa y devastó las costas de Huelva y Cádiz. Impulsó al Marqués de Pombal a aplicar el primer cuestionario sismológico sistemático y llevó a Voltaire y Kant a cuestionar el optimismo teológico imperante."
+    },
+    {
+      "id": "historia-009",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "Los Últimos de Filipinas en la iglesia de Baler",
+      "followUp": false,
+      "pitch": "Cincuenta soldados españoles resistieron encerrados en una pequeña iglesia durante trescientos treinta y siete días sin saber que la guerra había terminado.",
+      "more": "Creyendo que las noticias de periódicos eran tretas del enemigo, aguantaron el asedio de junio de 1898 a junio de 1899. El presidente filipino Emilio Aguinaldo emitió un decreto declarándolos amigos valientes y permitiéndoles marchar con honores militares."
+    },
+    {
+      "id": "historia-010",
+      "topic": "HISTORIA",
+      "kind": "biografía",
+      "title": "Clara Campoamor: la mujer que logró el voto femenino",
+      "pitch": "En 1931, en solitario frente a gran parte de su propio partido y de las cortes republicanas, defendió con oratoria implacable el sufragio universal e igualitario. Una lección de coherencia."
+    },
+    {
+      "id": "historia-011",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El Tratado de Tordesillas de 1494",
+      "followUp": false,
+      "pitch": "¿Por qué en Brasil se habla portugués y en el resto de América del Sur español?",
+      "more": "En una pequeña villa vallisoletana, Castilla y Portugal trazaron una línea imaginaria a trescientas setenta leguas al oeste de Cabo Verde, dividiendo el mundo por descubrir. La línea rozó la costa este de Sudamérica, dejando Brasil bajo órbita portuguesa sin que aún se hubiese cartografiado con precisión."
+    },
+    {
+      "id": "historia-012",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "La Expedición Malaspina (1789-1794)",
+      "followUp": false,
+      "pitch": "La mayor expedición científica y cartográfica de la Ilustración hispánica recorrió todo el Pacífico durante cinco años.",
+      "more": "Al mando de Alejandro Malaspina y José de Bustamante, las corbetas Descubierta y Atrevida catalogaron miles de especies botánicas y levantaron mapas exactos desde Alaska hasta la Patagonia. Al regresar a Madrid, las intrigas cortesanas de Godoy censuraron los resultados y encarcelaron a Malaspina."
+    },
+    {
+      "id": "historia-013",
+      "topic": "HISTORIA",
+      "kind": "ensayo",
+      "title": "Armas, gérmenes y acero (Jared Diamond)",
+      "pitch": "Un análisis geográfico y ecológico sobre por qué el progreso tecnológico y militar se distribuyó de forma tan desigual entre los continentes. Desmonta prejuicios racistas con datos."
+    },
+    {
+      "id": "historia-014",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El Códice de Dresde y el calendario maya",
+      "followUp": false,
+      "pitch": "Uno de los cuatro códices mayas que sobrevivieron a las quemas coloniales contiene tablas astronómicas de una precisión milimétrica.",
+      "more": "Escrito en corteza de higuera salvaje, calcula los ciclos sinódicos de Venus con un margen de error de minutos respecto a mediciones satelitales modernas, prediciendo eclipses solares y lunares con siglos de antelación."
+    },
+    {
+      "id": "historia-015",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "La leyenda del Camino de Santiago y el Codex Calixtinus",
+      "followUp": false,
+      "pitch": "El Libro V del Codex Calixtinus, fechado en torno a 1140, es considerado la primera guía turística de la historia europea.",
+      "more": "Detalla las cuatro rutas francesas, describe la calidad del agua de cada río, advierte sobre barqueros corruptos y analiza el carácter de los habitantes de Gascuña, Navarra y Galicia con sorprendente franqueza medieval."
+    },
+    {
+      "id": "historia-016",
+      "topic": "HISTORIA",
+      "kind": "curiosidad",
+      "title": "El oro de las Médulas y la técnica romana de Ruina Montium",
+      "followUp": false,
+      "pitch": "La mayor mina de oro a cielo abierto del Imperio Romano se encuentra en El Bierzo (León).",
+      "more": "Los ingenieros romanos construyeron una red de más de cuatrocientos kilómetros de canales que desviaban ríos hacia depósitos en las cumbres; soltaban el agua de golpe por galerías subterráneas excavadas en la arcilla, provocando el colapso controlado de las montañas para filtrar el mineral."
+    }
+  ]
+}

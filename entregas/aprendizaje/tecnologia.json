@@ -1,0 +1,25 @@
+{
+  "topic": "Tecnología",
+  "cards": [
+    {
+      "q": "¿Cómo le explicaría Alan Turing a un joven qué hace una Inteligencia Artificial cuando parece hablar como una persona?",
+      "a": "Turing te diría: 'No busques magia en el silicio'. Una IA generativa no tiene sentimientos ni comprende el mundo; ha leído millones de textos en internet y calcula con asombrosa precisión matemática qué palabra es la más probable que deba escribir a continuación. ¡Es un prodigio estadístico, pero el alma y la conciencia siguen siendo tuyas!"
+    },
+    {
+      "q": "¿Por qué Ada Lovelace ya avisó hace 180 años de que las máquinas nunca tendrían iniciativa propia?",
+      "a": "Lovelace, la primera programadora de la historia, predijo que los ordenadores podrían componer música y crear gráficos increíbles, pero subrayó que solo pueden hacer lo que los seres humanos sepamos ordenarles. La tecnología multiplica tus ideas, pero la chispa creativa siempre es humana."
+    },
+    {
+      "q": "¿Cómo viaja un mensaje de TikTok o WhatsApp al otro lado del planeta en una fracción de segundo?",
+      "a": "Tu teléfono convierte tu mensaje en pulsos de luz láser que se sumergen en cables de fibra óptica del grosor de una manguera tendidos en el fondo de los océanos. Esos haces de luz recorren miles de kilómetros rebotando en cristales a 200.000 km por segundo para llegar a tu amigo al instante."
+    },
+    {
+      "q": "¿Cómo funciona el truco del candado abierto que protege tus contraseñas y mensajes de los piratas?",
+      "a": "Es la criptografía de clave pública: repartes candados abiertos con tu nombre a todo el mundo. Cualquiera puede meter una carta en una caja y cerrarla con tu candado con un 'clic', pero una vez cerrado nadie puede volver a abrirlo, salvo tú, que guardas la única llave secreta en tu bolsillo."
+    },
+    {
+      "q": "¿Por qué las IA sufren 'alucinaciones' inventando datos falsos y por qué tu criterio es insustituible?",
+      "a": "Porque su prioridad matemática es redactar una frase que suene elocuente y convincente, no comprobar si lo que dice es verdad objetiva. Si no sabe un dato, se inventará la respuesta que mejor rima probabilísticamente. Dudar, contrastar fuentes y pensar por ti mismo es tu mayor superpoder."
+    }
+  ]
+}

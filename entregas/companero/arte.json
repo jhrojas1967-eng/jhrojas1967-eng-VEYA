@@ -1,0 +1,128 @@
+{
+  "suggestions": [
+    {
+      "id": "arte-001",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "Las Meninas (Diego Velázquez)",
+      "pitch": "El mayor juego de espejos y perspectivas de la historia de la pintura: el artista nos mira mientras pinta a los reyes que ocupan nuestro propio lugar de espectadores. La atmósfera de aire y polvo en suspensión es irrepetible."
+    },
+    {
+      "id": "arte-002",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "La cruz de Santiago añadida a Velázquez tras su muerte",
+      "followUp": false,
+      "pitch": "¿Sabías que la cruz roja de la Orden de Santiago sobre el pecho de Velázquez en Las Meninas no la pintó el artista en vida?",
+      "more": "Velázquez terminó el cuadro en 1656 pero no fue investido caballero de la prestigiosa Orden de Santiago hasta 1659, meses antes de morir, tras intensas gestiones de Felipe IV para sortear la exigencia de hidalguía de sangre. La leyenda afirma que el propio rey tomó los pinceles para añadir la cruz roja en homenaje póstumo a su pintor de cámara."
+    },
+    {
+      "id": "arte-003",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "Guernica (Pablo Picasso)",
+      "pitch": "El alegato universal definitivo contra la barbarie y el bombardeo de población civil. Lienzo monocromo monumental de casi ocho metros donde el toro, el caballo agonizante y la madre desgarrada claman justicia sin un solo color."
+    },
+    {
+      "id": "arte-004",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "El viaje clandestino del Guernica en el MoMA y su regreso",
+      "followUp": false,
+      "pitch": "Picasso dejó orden expresa por escrito de que el Guernica no pisaría suelo español hasta que se restableciesen plenamente las libertades democráticas y la República.",
+      "more": "El cuadro permaneció en custodia en el MoMA de Nueva York durante más de cuarenta años. En septiembre de 1981, en una compleja y secreta operación de estado con escolta policial y un Boeing 747 comercial bautizado Lope de Vega, el lienzo aterrizó en Madrid para instalarse en el Casón del Buen Retiro protegido por cristales blindados."
+    },
+    {
+      "id": "arte-005",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "Saturno devorando a su hijo (Francisco de Goya)",
+      "pitch": "Una de las Pinturas Negras pintadas directamente con espátula sobre el revoco de cal de los muros de su casa campestre, la Quinta del Sordo. Pura angustia expresionista anticipada en un siglo."
+    },
+    {
+      "id": "arte-006",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "Paseo a orillas del mar (Joaquín Sorolla)",
+      "pitch": "La brisa marina levantando las gasas blancas de los vestidos de su mujer e hija sobre la arena de la playa del Cabañal en Valencia. Un dominio absoluto del reflejo de la luz solar estival mediterránea."
+    },
+    {
+      "id": "arte-007",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "Las dos Fridas (Frida Kahlo)",
+      "pitch": "Autorretrato doble pintado en 1939 tras su separación de Diego Rivera: la Frida con traje tradicional tehuana amada por Diego unida por una arteria visible a la Frida con vestido victoriano blanco que desangra su corazón roto."
+    },
+    {
+      "id": "arte-008",
+      "topic": "ARTE",
+      "kind": "escultura",
+      "title": "El Peine del Viento XV (Eduardo Chillida)",
+      "pitch": "Tres colosales piezas de acero corten de diez toneladas cada una empotradas en las rocas del extremo de la bahía de La Concha en San Sebastián. El mar Cantábrico batiendo contra el hierro es música y naturaleza viva."
+    },
+    {
+      "id": "arte-009",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "Remedios Varo y el surrealismo alquímico en México",
+      "followUp": false,
+      "pitch": "¿Por qué las pinturas de la artista gerundense exiliada en México están pobladas de laboratorios mágicos e instrumentos musicales navegantes?",
+      "more": "Remedios Varo fusionó en Ciudad de México el dibujo técnico aprendido de su padre ingeniero hidráulico con el psicoanálisis de Jung y el esoterismo medieval. Sus personajes con ojos almendrados y rostros de pájaro tejen hilos de luz celestial o atrapan estrellas en jaulas con un nivel de detalle en miniatura asombroso."
+    },
+    {
+      "id": "arte-010",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "La persistencia de la memoria (Salvador Dalí)",
+      "pitch": "Los célebres 'relojes blandos' derritiéndose al calor del sol sobre los acantilados de Portlligat y un tronco seco de olivo. Una metáfora surrealista inolvidable sobre la relatividad del tiempo y la descomposición del orden."
+    },
+    {
+      "id": "arte-011",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "El queso Camembert que inspiró los relojes blandos de Dalí",
+      "followUp": false,
+      "pitch": "Dalí concibió una de las obras más célebres del arte moderno tras una cena indigesta en Portlligat.",
+      "more": "Según confesó en sus memorias, tras comer un queso Camembert muy maduro y cremoso que se reblandecía a temperatura ambiente en una calurosa noche de verano de 1931, se quedó contemplando un paisaje inacabado de Cadaqués en su caballete y visualizó de golpe dos horas después los relojes goteando flácidos sobre las rocas."
+    },
+    {
+      "id": "arte-012",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "El entierro del Conde de Orgaz (El Greco)",
+      "pitch": "En la iglesia toledana de Santo Tomé, la composición divide de forma magistral el mundo terrenal de caballeros con golas blancas y armaduras toledanas del cielo abierto en espirales de luz mística y figuras ingrávidas."
+    },
+    {
+      "id": "arte-013",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "El autorretrato escondido del Greco y su hijo Jorge Manuel",
+      "followUp": false,
+      "pitch": "Entre la treintena de hidalgos toledanos que asisten al milagro, sólo dos personas miran directamente a los ojos del visitante.",
+      "more": "Uno es el propio Doménikos Theotokópoulos ('El Greco'), que levanta la mano derecha sobre la cabeza de San Esteban; el otro es su hijo pequeño Jorge Manuel, que en primer plano señala con el dedo hacia el cadáver del conde con un pañuelo asomando del bolsillo con la fecha de su nacimiento: 1578."
+    },
+    {
+      "id": "arte-014",
+      "topic": "ARTE",
+      "kind": "cuadro",
+      "title": "La masacre de los Inocentes / Viacrucis (Fernando Botero)",
+      "pitch": "El pintor colombiano aplicó su reconocible volumen formal y sensual a la denuncia de la violencia, el narcotráfico y las torturas en Abu Ghraib, demostrando que la forma robusta también puede vehicular una profunda compasión testimonial."
+    },
+    {
+      "id": "arte-015",
+      "topic": "ARTE",
+      "kind": "libro",
+      "title": "Historia del arte (Ernst H. Gombrich)",
+      "pitch": "El texto de referencia indispensable para cualquier amante del arte: un relato apasionante y sin jerga pretenciosa sobre cómo cada generación de artistas resolvió los enigmas visuales de su tiempo."
+    },
+    {
+      "id": "arte-016",
+      "topic": "ARTE",
+      "kind": "curiosidad",
+      "title": "El traslado del tesoro del Museo del Prado durante la Guerra Civil",
+      "followUp": false,
+      "pitch": "¿Cómo se salvaron Las Meninas, los cuadros de Goya y Tiziano de los bombardeos de Madrid en 1936?",
+      "more": "La Junta de Incautación y Protección del Tesoro Artístico embaló las obras maestras en camiones amortiguados con mantas y las evacuó primero a las Torres de Serranos de Valencia, luego al castillo de Figueres en Cataluña y finalmente a la sede de la Sociedad de Naciones en Ginebra (Suiza), regresando intactas a Madrid en tren blindado en 1939 sin que se perdiera ni un solo lienzo."
+    }
+  ]
+}

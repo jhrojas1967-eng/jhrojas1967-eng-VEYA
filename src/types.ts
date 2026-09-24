@@ -8,6 +8,7 @@ export type ScreenTab =
   | 'onboarding'
   | 'today'
   | 'chat'
+  | 'blackboard'
   | 'music'
   | 'streaming'
   | 'settings'
@@ -18,6 +19,39 @@ export type ScreenTab =
   | 'weather'
   | 'news'
   | 'partner';
+
+export type BlackboardSuiteCategory =
+  | 'astronomy_physics'     // NASA's Eyes · Stellarium · SkyView · ISS · Mareas · Relatividad
+  | 'biology_anatomy'       // Anatronica 3D · Smithsonian 3D · Órganos · Célula · Piel
+  | 'math_geogebra_wolfram' // GeoGebra Graficador · WolframAlpha Solver · Fracciones · Cálculo
+  | 'trades_engineering';   // Automoción · Electricidad/Fontanería · IA · Derecho · Conductual
+
+export type BlackboardTemplateType =
+  | 'educational_simulator_3d' // Simulador Educativo 3D: Viewport & Render Engine Placeholders (Anatomía y Física)
+  | 'nasa_eyes_astronomy'   // NASA's Eyes + Stellarium + SkyView + ISS Tracker
+  | 'anatronica_biology'    // Anatronica 3D + Smithsonian 3D + Órganos + Microscopía
+  | 'geogebra_wolfram'      // GeoGebra Graficador de funciones + WolframAlpha Solver
+  | 'fractions_math'        // Quebrados, fracciones visuales y proporciones
+  | 'home_circuits'         // Electricidad (Ley de Ohm, circuito) y Fontanería (sifón y presión)
+  | 'automotive_engine'     // Automoción: motor de 4 tiempos y transmisión
+  | 'practical_law'         // Derecho ciudadano y laboral: árbol de decisión y garantías
+  | 'skin_health'           // Salud y dermatología: corte de piel y regla ABCD del cáncer de piel
+  | 'orbits_astronomy'      // Astronomía: planetario, mareas lunares y Estación Espacial (ISS)
+  | 'concentric_layers'     // Corte por capas: estructura de la Tierra y atmósfera
+  | 'stepped_timeline'      // Línea temporal: ciclo estelar y procesos por etapas
+  | 'particle_simulator'    // Física y química: simulador de partículas y gases
+  | 'behavioral_skills'     // Competencias conductuales y asertividad (método DESC)
+  | 'ai_neural_concept'     // Inteligencia Artificial: la neurona artificial y los pesos
+  | 'distribution_stats';   // Matemáticas y probabilidad: tablero de Galton y Gauss
+
+export type PedagogicalLevel = 'cotidiano' | 'practico' | 'universitario';
+
+export interface InteractiveExamplePayload {
+  template: BlackboardTemplateType;
+  title: string;
+  subtitle: string;
+  topic: string;
+}
 
 export interface M3ColorScheme {
   primary: string;
@@ -62,6 +96,7 @@ export interface ChatMessage {
   text: string;
   timestamp: string;
   mood?: AvatarMood;
+  interactivePayload?: InteractiveExamplePayload;
 }
 
 export interface SongTrack {

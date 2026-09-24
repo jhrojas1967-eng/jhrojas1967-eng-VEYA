@@ -1,0 +1,84 @@
+{
+  "subjectId": "formacion_profesorado",
+  "subjectTitle": "Formación del Profesorado",
+  "category": "ciencias_educacion",
+  "description": "Pedagogía contemporánea, metodologías activas, evaluación formativa, inclusión educativa (DUA) y gestión positiva del aula.",
+  "blocks": [
+    {
+      "id": "fp-b1",
+      "title": "Diseño Universal para el Aprendizaje (DUA)",
+      "description": "Accesibilidad cognitiva, personalización y eliminación de barreras para todo el alumnado.",
+      "cards": [
+        {
+          "q": "¿Cuáles son los tres principios vertebradores del Diseño Universal para el Aprendizaje (DUA)?",
+          "a": "1) Proporcionar múltiples formas de compromiso (el 'por qué' del aprendizaje). 2) Proporcionar múltiples formas de representación (el 'qué' de la información). 3) Proporcionar múltiples formas de acción y expresión (el 'cómo' demuestran lo aprendido)."
+        },
+        {
+          "q": "¿Qué diferencia sustancial hay entre 'adaptación curricular individualizada' y enfoque DUA?",
+          "a": "La adaptación individual modifica a posteriori el currículo para un alumno con dificultades específicas; el DUA diseña la lección desde el inicio de forma flexible y accesible para que todos puedan progresar sin adaptaciones segregadoras."
+        },
+        {
+          "q": "¿Cómo favorece la accesibilidad cognitiva a la totalidad del aula?",
+          "a": "El uso de apoyos visuales, organizadores gráficos, instrucciones secuenciadas y textos claros beneficia no solo a alumnos con dificultades de comprensión, sino que clarifica los objetivos para todo el grupo."
+        }
+      ]
+    },
+    {
+      "id": "fp-b2",
+      "title": "Evaluación formativa y compartida",
+      "description": "La evaluación como motor de aprendizaje y autorregulación, no como mero filtro calificador.",
+      "cards": [
+        {
+          "q": "¿En qué se diferencia la evaluación formativa de la sumativa?",
+          "a": "La sumativa se realiza al final de un proceso para certificar o calificar resultados finales; la formativa se produce durante el proceso de aprendizaje para ofrecer retroalimentación continua que permita al alumno autorregularse y mejorar a tiempo."
+        },
+        {
+          "q": "¿Qué papel juegan las rúbricas analíticas en la autoevaluación del estudiante?",
+          "a": "Hacen explícitos y transparentes los criterios de éxito y los niveles de dominio esperados antes de iniciar la tarea, permitiendo al alumno cotejar su propio trabajo de manera crítica y autónoma."
+        },
+        {
+          "q": "¿Qué es la coevaluación entre iguales guiada?",
+          "a": "Una práctica pedagógica en la que los estudiantes revisan y comentan los trabajos de sus compañeros siguiendo pautas rigurosas y respetuosas, desarrollando juicio crítico y empatía intelectual."
+        }
+      ]
+    },
+    {
+      "id": "fp-b3",
+      "title": "Metodologías activas: ABP y Aprendizaje Cooperativo",
+      "description": "El alumno como protagonista activo en la resolución de problemas reales.",
+      "cards": [
+        {
+          "q": "¿Qué elementos definen un Aprendizaje Basado en Proyectos (ABP) auténtico?",
+          "a": "Parte de una pregunta o reto del mundo real desafiante, promueve la indagación sostenida en equipo, fomenta la voz y elección del alumnado y culmina en un producto público difundido a la comunidad."
+        },
+        {
+          "q": "¿Cuáles son los cinco pilares del aprendizaje cooperativo según los hermanos Johnson?",
+          "a": "Interdependencia positiva ('nadie gana si no ganamos todos'), interacción cara a cara promotora, responsabilidad individual, habilidades grupales y procesamiento periódico de la eficacia del equipo."
+        },
+        {
+          "q": "¿Por qué el trabajo en grupo tradicional no equivale a aprendizaje cooperativo?",
+          "a": "En el trabajo en grupo tradicional suele recaer todo el esfuerzo en uno o dos alumnos líderes; en el cooperativo la tarea está estructurada para que la contribución de cada miembro sea imprescindible para el éxito común."
+        }
+      ]
+    },
+    {
+      "id": "fp-b4",
+      "title": "Gestión del aula y convivencia positiva",
+      "description": "Vínculo afectivo seguro, mediación de conflictos y prevención del acoso escolar.",
+      "cards": [
+        {
+          "q": "¿Qué establece el modelo de disciplina positiva frente al castigo punitivo?",
+          "a": "Enseña habilidades socioemocionales a largo plazo mediante límites firmes y afecto mutuo, sustituyendo las sanciones arbitrarias por consecuencias naturales y lógicas orientadas a la reparación del daño."
+        },
+        {
+          "q": "¿Qué es el 'efecto Pigmalión' (profecía autocumplida) en las expectativas docentes?",
+          "a": "Las expectativas inconscientes que el profesorado proyecta sobre el potencial o torpeza de un alumno acaban condicionando su rendimiento real a través de sutiles mensajes verbales y no verbales de aliento o desaliento."
+        },
+        {
+          "q": "¿Cómo opera la mediación entre iguales en la resolución de conflictos escolares?",
+          "a": "Alumnos formados como mediadores facilitan un espacio confidencial y neutral donde las partes en disputa exponen sus percepciones, escuchan al otro y pactan acuerdos consensuados sin imposición de adultos."
+        }
+      ]
+    }
+  ]
+}

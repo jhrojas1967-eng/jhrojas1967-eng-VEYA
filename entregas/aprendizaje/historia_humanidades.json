@@ -1,0 +1,25 @@
+{
+  "topic": "Historia y Humanidades",
+  "cards": [
+    {
+      "q": "¿Cómo te enseñaría Sócrates a desmontar una mentira o un bulo viral en redes sociales sin perder la calma?",
+      "a": "Sócrates nunca gritaba en la plaza pública: hacía preguntas sencillas y curiosas ('¿En qué te basas para asegurar eso?', '¿Qué pasaría si todo el mundo hiciera lo mismo?'). Al pedir razones con educación, quien inventó la mentira descubre por sí mismo sus propias contradicciones sin sentirse atacado."
+    },
+    {
+      "q": "¿Por qué un constitucionalista te diría que la Constitución es como el reglamento de un partido donde nadie puede hacer trampas?",
+      "a": "En un juego sin normas, el más fuerte o el más agresivo siempre sometería a los demás. La Constitución es el pacto sagrado que le ata las manos a los gobernantes para que nadie abuse de su poder, garantizando que tu libertad de opinar, de aprender y de ser respetado sea intocable."
+    },
+    {
+      "q": "¿Qué nos enseña la Caverna de Platón sobre el peligro de vivir atrapado en el algoritmo de las pantallas?",
+      "a": "Platón imaginó prisioneros en una cueva oscura que creían que las sombras en la pared eran la realidad entera. Hoy, los algoritmos te muestran solo lo que confirma lo que ya piensas. El verdadero inconformista tiene el valor de apagar las pantallas, escuchar ideas distintas y ver el mundo real con sus propios ojos."
+    },
+    {
+      "q": "¿Por qué chicos de tu edad en el siglo XIX tuvieron que salir a protestar para que hoy tengas derecho a estudiar?",
+      "a": "Durante la Revolución Industrial, los niños trabajaban 14 horas al día en minas de carbón y fábricas peligrosas. Fueron las huelgas y la valentía de miles de trabajadores las que lograron prohibir la explotación infantil y conquistar el derecho universal a la escuela gratuita y al tiempo de ocio."
+    },
+    {
+      "q": "¿Qué significa el lema 'Sapere aude' y por qué pensar por tu cuenta es el mayor acto de libertad?",
+      "a": "Immanuel Kant lo resumió como 'atrévete a pensar por ti mismo'. Es muy fácil dejar que otros te digan qué comprar, qué opinar o qué odiar. Exigirte tus propias razones cuesta un poco más de esfuerzo, pero es lo único que te convierte en el dueño de tu propio destino."
+    }
+  ]
+}

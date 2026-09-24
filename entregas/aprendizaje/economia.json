@@ -1,0 +1,92 @@
+{
+  "subjectId": "economia",
+  "subjectTitle": "Economía",
+  "category": "ciencias_sociales",
+  "description": "Conceptos fundamentales de microeconomía, macroeconomía, finanzas públicas y política monetaria explicados de forma clara y cotidiana.",
+  "blocks": [
+    {
+      "id": "eco-b1",
+      "title": "Inflación, deflación y poder adquisitivo",
+      "description": "Cómo evoluciona el nivel general de precios y por qué afecta a la cesta de la compra y a los ahorros.",
+      "cards": [
+        {
+          "q": "¿Qué diferencia existe entre el IPC y la inflación subyacente?",
+          "a": "El IPC mide la variación de precios de toda la cesta de consumo habitual, mientras que la inflación subyacente excluye la energía y los alimentos no elaborados por ser componentes extraordinariamente volátiles, permitiendo evaluar la tendencia de fondo."
+        },
+        {
+          "q": "¿Por qué la deflación prolongada suele ser temida por los bancos centrales?",
+          "a": "Porque si los consumidores prevén que los precios bajarán mañana, posponen sus decisiones de compra e inversión, reduciendo drásticamente la actividad económica, los ingresos empresariales y el empleo en una espiral recesiva."
+        },
+        {
+          "q": "¿Qué es la 'ilusión monetaria' descrita por Keynes?",
+          "a": "Es la tendencia psicológica a pensar en el dinero en términos nominales (la cifra en euros de la nómina) en lugar de en términos reales (el volumen de bienes y servicios que esa nómina permite adquirir tras descontar la inflación)."
+        },
+        {
+          "q": "¿Cómo influye la subida de tipos de interés oficiales en el control de precios?",
+          "a": "Al encarecer el coste del crédito hipotecario y empresarial, desincentiva el consumo financiado y la inversión rápida, enfriando la demanda agregada para aliviar la presión alcista sobre los precios."
+        }
+      ]
+    },
+    {
+      "id": "eco-b2",
+      "title": "Coste de oportunidad y toma de decisiones",
+      "description": "El principio angular de la escasez y la elección racional en economía.",
+      "cards": [
+        {
+          "q": "¿Qué define con exactitud el 'coste de oportunidad'?",
+          "a": "Es el valor del mejor beneficio o alternativa a la que renunciamos cuando decidimos asignar recursos limitados (tiempo, dinero o capital) a una opción determinada."
+        },
+        {
+          "q": "¿En qué consiste la falacia del coste irrecuperable (sunk cost fallacy)?",
+          "a": "En continuar invirtiendo tiempo o fondos en un proyecto fallido solo por no admitir lo ya gastado en el pasado, en lugar de evaluar únicamente los costes y beneficios futuros previsibles."
+        },
+        {
+          "q": "¿Qué representa la frontera de posibilidades de producción (FPP)?",
+          "a": "El límite máximo de bienes que una sociedad puede producir eficientemente con los recursos y la tecnología disponibles en un momento dado, ilustrando el dilema entre producir unos bienes u otros."
+        }
+      ]
+    },
+    {
+      "id": "eco-b3",
+      "title": "Mercado, externalidades y fallos de mercado",
+      "description": "Situaciones donde la libre asignación de precios no produce un resultado socialmente óptimo.",
+      "cards": [
+        {
+          "q": "¿Qué es una externalidad negativa y qué instrumento se suele usar para corregirla?",
+          "a": "Es un perjuicio involuntario impuesto a terceros sin compensación de mercado (como la contaminación acústica o atmosférica). Suele corregirse mediante impuestos pigouvianos que internalizan el coste ambiental en el precio."
+        },
+        {
+          "q": "¿Qué características definen a un 'bien público puro'?",
+          "a": "Es no rival (el uso de una persona no reduce la disponibilidad para otra) y no excluyente (no es factible impedir que alguien lo disfrute sin pagar, como el alumbrado público o la defensa nacional)."
+        },
+        {
+          "q": "¿Qué es el problema del polizón o 'free rider'?",
+          "a": "La situación en la que individuos consumen o se benefician de un recurso colectivo sin contribuir a su financiación, esperando que otros asuman el coste por ellos."
+        },
+        {
+          "q": "¿Qué es la asimetría de información en una transacción?",
+          "a": "El desequilibrio que ocurre cuando una de las partes contratantes posee más y mejor información relevante sobre el producto que la otra (por ejemplo, el vendedor de un vehículo de segunda mano frente al comprador)."
+        }
+      ]
+    },
+    {
+      "id": "eco-b4",
+      "title": "Política fiscal y sostenibilidad de la deuda",
+      "description": "Impuestos, gasto público y el equilibrio presupuestario de las administraciones.",
+      "cards": [
+        {
+          "q": "¿Cuál es la diferencia entre déficit público y deuda pública?",
+          "a": "El déficit público es una variable flujo: la diferencia negativa entre ingresos y gastos del Estado durante un año específico; la deuda pública es una variable stock: el importe acumulado total adeudado por el Estado a sus acreedores."
+        },
+        {
+          "q": "¿Qué son los estabilizadores automáticos del presupuesto?",
+          "a": "Mecanismos fiscales que se activan sin necesidad de nueva legislación (como las prestaciones por desempleo en recesión o el IRPF progresivo en auge) amortiguando las fluctuaciones del ciclo económico."
+        },
+        {
+          "q": "¿Qué establece la curva de Laffer?",
+          "a": "La hipótesis teórica de que tipos impositivos desmesuradamente altos pueden desincentivar la actividad productiva hasta el punto de reducir la recaudación tributaria total en vez de aumentarla."
+        }
+      ]
+    }
+  ]
+}

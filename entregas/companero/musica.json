@@ -1,0 +1,229 @@
+{
+  "suggestions": [
+    {
+      "id": "musica-001",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "La leyenda del tiempo (Camarón de la Isla)",
+      "pitch": "El disco que revolucionó el flamenco al mezclar bajo eléctrico, cítara y batería con los poemas de Lorca. En 1979 devolvían los vinilos en las tiendas; hoy es patrimonio cultural indiscutible."
+    },
+    {
+      "id": "musica-002",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Clics modernos (Charly García)",
+      "pitch": "Grabado en Nueva York en 1983 tras el fin de la dictadura argentina, introdujo sintetizadores y cajas de ritmo con una lírica pop afiladísima. Canciones directas que no han envejecido un solo día."
+    },
+    {
+      "id": "musica-003",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "El mal querer (Rosalía)",
+      "pitch": "Reinvención conceptual de la novela occitana medieval Flamenca a base de palmas sampleadas, motores de moto y armonías vocales contemporáneas. Producción audaz y milimétrica."
+    },
+    {
+      "id": "musica-004",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Canción animal (Soda Stereo)",
+      "pitch": "Guitarras crudas, melodías monumentales y la voz envolvente de Gustavo Cerati en el cenit del rock en español continental. Diez temas contundentes de principio a fin."
+    },
+    {
+      "id": "musica-005",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Mediterráneo (Joan Manuel Serrat)",
+      "pitch": "Diez composiciones compuestas en un hotel de Calella de Palafrugell que retrataron la nostalgia, el mar y la libertad de toda una generación. Canción de autor en estado de gracia."
+    },
+    {
+      "id": "musica-006",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Al caer el sol (Paco de Lucía - Fuente y caudal)",
+      "pitch": "El álbum que incluyó 'Entre dos aguas', nacida como una improvisación de relleno y convertida en la rumba flamenca más célebre y virtuosa del mundo."
+    },
+    {
+      "id": "musica-007",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Buena Vista Social Club (Ry Cooder & maestros cubanos)",
+      "pitch": "El rescate histórico de leyendas del son cubano como Ibrahim Ferrer, Omara Portuondo y Compay Segundo en los estudios Egrem de La Habana. Calidez acústica irrepetible."
+    },
+    {
+      "id": "musica-008",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Un día en el mundo (Vetusta Morla)",
+      "pitch": "El debut autoeditado que cambió las reglas de la música independiente en España con letras enigmáticas y una instrumentación enérgica y cuidada al milímetro."
+    },
+    {
+      "id": "musica-009",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Eco (Jorge Drexler)",
+      "pitch": "Texturas acústicas y bases electrónicas discretas con letras sobre la comunicación, la física y los encuentros fortuitos. Poesía cotidiana cantada al oído."
+    },
+    {
+      "id": "musica-010",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "El patio (Triana)",
+      "pitch": "La fundación del rock andaluz que unió el rock progresivo sinfónico de los setenta con la queja flamenca desgarrada de Jesús de la Rosa. Solemne e hipnótico."
+    },
+    {
+      "id": "musica-011",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Gracias a la vida (Mercedes Sosa)",
+      "pitch": "La voz profunda de América Latina cantando las verdades de Violeta Parra y la resistencia pacífica. Una lección de dignidad interpretativa y emoción pura."
+    },
+    {
+      "id": "musica-012",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Omega (Enrique Morente y Lagartija Nick)",
+      "pitch": "El encuentro volcánico entre el cante jondo de Morente, las guitarras distorsionadas del punk-rock y la poesía de Lorca y Leonard Cohen. Rompió todos los moldes."
+    },
+    {
+      "id": "musica-013",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Clube da Esquina (Milton Nascimento & Lô Borges)",
+      "pitch": "Un doble álbum brasileño donde confluyen jazz, bossa nova, folk y pop psicodélico bajo armonías vocales celestiales. Uno de los discos más bellos jamás grabados."
+    },
+    {
+      "id": "musica-014",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Honestidad brutal (Andrés Calamaro)",
+      "pitch": "Treinta y siete canciones de catarsis sentimental, desamor y rock porteño grabadas en una maratón desbocada en estudios de medio mundo. Desmesurado y auténtico."
+    },
+    {
+      "id": "musica-015",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Sin mirar atrás (Kiko Veneno - Échate un cantecito)",
+      "pitch": "Canciones frescas, luminosas y callejeras producidas por Joe Dworniak en Londres que demostraron que la rumba y el pop pueden ser alta costura popular."
+    },
+    {
+      "id": "musica-016",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "La misión (Ennio Morricone)",
+      "pitch": "El oboe solista de Gabriel entrelazado con coros guaraníes y percusión tribal en la selva del Iguazú. Una de las cumbres más espirituales y desgarradoras de la historia del cine."
+    },
+    {
+      "id": "musica-017",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "Interstellar (Hans Zimmer)",
+      "pitch": "El órgano monumental de cuatro niveles de la iglesia de Temple en Londres llevado al paroxismo para evocar la inmensidad cósmica, el paso implacable del tiempo y el amor gravitatorio."
+    },
+    {
+      "id": "musica-018",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "El Señor de los Anillos: La Comunidad del Anillo (Howard Shore)",
+      "pitch": "Una arquitectura sinfónica colosal basada en más de ochenta leitmotivs que identifican a cada pueblo y reino de la Tierra Media. Complejidad orquestal a la altura de las óperas de Wagner."
+    },
+    {
+      "id": "musica-019",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "La lista de Schindler (John Williams)",
+      "pitch": "El violín acústico de Itzhak Perlman derrama una elegía íntima de duelo y compasión sobre el horror del Holocausto. Menos artificio y más verdad humana en cada nota sostenida."
+    },
+    {
+      "id": "musica-020",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "El viaje de Chihiro (Joe Hisaishi)",
+      "pitch": "El piano melancólico y la orquesta de Tokio crean una atmósfera donde lo sagrado, la nostalgia de la infancia y los espíritus del bosque se sienten tan cercanos como un susurro familiar."
+    },
+    {
+      "id": "musica-021",
+      "topic": "MUSICA",
+      "kind": "bso",
+      "title": "Vertigo / De entre los muertos (Bernard Herrmann)",
+      "pitch": "Espirales armónicas obsesivas de cuerdas y arpas que reproducen el vértigo psicológico, el romanticismo fatal y la caída en el abismo amoroso orquestada por Alfred Hitchcock."
+    },
+    {
+      "id": "musica-022",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Kind of Blue (Miles Davis - Jazz modal)",
+      "pitch": "En dos sesiones improvisadas en 1959 en una antigua iglesia de Nueva York con John Coltrane y Bill Evans, liberó al jazz de los acordes rígidos para pintar lienzos sonoros con silencio y aire."
+    },
+    {
+      "id": "musica-023",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "The Dark Side of the Moon (Pink Floyd - Rock progresivo)",
+      "pitch": "Grabado en Abbey Road con sintetizadores EMS, latidos de corazón y grabaciones de voces anónimas. Un viaje conceptual atemporal sobre la alienación moderna, el dinero y la salud mental."
+    },
+    {
+      "id": "musica-024",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Blue (Joni Mitchell - Canción de autor folk)",
+      "pitch": "Acompañada solo de piano y dulcimer apalache, desnudó el desamor, la soledad y la búsqueda de libertad con una vulnerabilidad poética y una técnica de afinaciones abiertas única."
+    },
+    {
+      "id": "musica-025",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Discovery (Daft Punk - Electrónica / French Touch)",
+      "pitch": "Muestreos de funk de los años setenta acelerados, codificadores de voz vocoder y melodías pop galácticas que redefinieron la música de baile electrónica para todo el siglo XXI."
+    },
+    {
+      "id": "musica-026",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "What's Going On (Marvin Gaye - Soul sinfónico)",
+      "pitch": "El álbum que rompió los moldes de la Motown para hablar con delicadeza conmovedora de la guerra de Vietnam, la pobreza urbana y la ecología desde el dolor de una voz de terciopelo."
+    },
+    {
+      "id": "musica-027",
+      "topic": "MUSICA",
+      "kind": "disco",
+      "title": "Variaciones Goldberg (J.S. Bach - Glenn Gould, 1981)",
+      "pitch": "El pianista canadiense registró su testamento vital sobre la estructura matemática más pura de Bach: treinta variaciones sobre un aria donde cada nota tiene la precisión de un reloj estelar."
+    },
+    {
+      "id": "musica-028",
+      "topic": "MUSICA",
+      "kind": "curiosidad",
+      "title": "El silbido y la ocarina de Ennio Morricone",
+      "followUp": false,
+      "pitch": "¿Por qué las bandas sonoras de Morricone para los spaghetti westerns no usaron las típicas trompetas de Hollywood?",
+      "more": "Por falta de presupuesto para orquestas completas en Roma, Morricone recurrió al silbido de su compañero de colegio Alessandro Alessandroni, disparos reales, crujidos de látigo y la voz de Edda Dell'Orso, creando un lenguaje sonoro revolucionario e icónico."
+    },
+    {
+      "id": "musica-029",
+      "topic": "MUSICA",
+      "kind": "curiosidad",
+      "title": "El reloj de bolsillo en la música de Interstellar",
+      "followUp": false,
+      "pitch": "¿Sabías que el ritmo de fondo en el planeta de las olas de Interstellar marca un segundo por cada día en la Tierra?",
+      "more": "Hans Zimmer programó un tic-tac acústico constante cada 1,25 segundos en la pista 'Mountains'. Cada golpe del péndulo equivale exactamente a un día transcurrido en el tiempo relativo de la Tierra para la hija de Cooper, traduciendo la dilatación temporal de la relatividad general a pulso musical."
+    },
+    {
+      "id": "musica-030",
+      "topic": "MUSICA",
+      "kind": "curiosidad",
+      "title": "El origen casual de Entre dos aguas",
+      "followUp": false,
+      "pitch": "¿Sabías que la pieza flamenca más famosa de Paco de Lucía se improvisó en el último minuto para completar la duración del vinilo?",
+      "more": "Al finalizar la grabación del disco Fuente y caudal en 1973, faltaban cuatro minutos para completar el minutaje estándar. Paco pidió una guitarra con cuerdas desgastadas y sobre el ritmo de bongó y bajo eléctrico improvisó la melodía que acabó catapultándolo a escala internacional."
+    },
+    {
+      "id": "musica-031",
+      "topic": "MUSICA",
+      "kind": "curiosidad",
+      "title": "La silueta de Charly García en Clics modernos",
+      "followUp": false,
+      "pitch": "La portada de Clics modernos se fotografió en una esquina de Manhattan junto a un grafiti premonitorio.",
+      "more": "Charly vio una pintada que decía 'Modern Clix' de una banda local desconocida y posó junto a una silueta negra pintada en la pared. Al regresar a Buenos Aires descubrió que las Madres de Plaza de Mayo usaban exactamente la misma silueta para representar a los desaparecidos, uniendo azar y memoria política."
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "suggestions": [
+    {
+      "id": "cine-001",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "El espíritu de la colmena (Víctor Erice)",
+      "pitch": "Una mirada infantil fascinada y silenciosa a la posguerra castellana tras ver Frankenstein en el cine ambulante. Su luz dorada de miel y su tempo pausado se quedan contigo días enteros."
+    },
+    {
+      "id": "cine-002",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "El secreto de sus ojos (Juan José Campanella)",
+      "pitch": "Un oficial de justicia jubilado intenta cerrar una obsesión del pasado a través de una novela inconclusa. Diálogos memorables y una lección brillante sobre la naturaleza innegociable de la pasión."
+    },
+    {
+      "id": "cine-003",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Tesis (Alejandro Amenábar)",
+      "pitch": "El thriller universitario que demostró que el suspense psicológico de precisión milimétrica tenía cabida en España. Tensa, sobria y con una atmósfera que todavía no ha perdido pulso."
+    },
+    {
+      "id": "cine-004",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Roma (Alfonso Cuarón)",
+      "pitch": "Un homenaje en blanco y negro deslumbrante a las mujeres que sostienen familias en la sombra cotidiana de Ciudad de México. El sonido ambiente y la cadencia visual son puro cine."
+    },
+    {
+      "id": "cine-005",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Plácido (Luis García Berlanga)",
+      "pitch": "Nochebuena, una campaña de caridad forzada y una letra de cambio que vence antes de medianoche. Retrato coral insuperable con la ironía más lúcida y compasiva de nuestro cine."
+    },
+    {
+      "id": "cine-006",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Relatos salvajes (Damián Szifron)",
+      "pitch": "Seis historias al límite sobre la pérdida de control y la furia cotidiana ante la burocracia y la hipocresía. Mordaz, catártica y con un ritmo que no concede un segundo de tregua."
+    },
+    {
+      "id": "cine-007",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Verano 1993 (Carla Simón)",
+      "pitch": "Una niña de seis años afronta el duelo y la adaptación con sus tíos en el campo catalán. Honesta hasta el estremecimiento, sin un ápice de melodrama artificial."
+    },
+    {
+      "id": "cine-008",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Los santos inocentes (Mario Camus)",
+      "pitch": "La adaptación definitiva del campo extremeño de Delibes, con Paco Rabal y Alfredo Landa en el cénit de su oficio. Duele por su verdad y conmueve por su dignidad silenciosa."
+    },
+    {
+      "id": "cine-009",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Amores perros (Alejandro González Iñárritu)",
+      "pitch": "Un brutal accidente en un cruce une tres vidas radicalmente distintas en el asfalto mexicano. Energía visceral, montaje cortante y una banda sonora que marcó una época."
+    },
+    {
+      "id": "cine-010",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "La trinchera infinita (Arregi, Garaño, Goenaga)",
+      "pitch": "Treinta años de confinamiento clandestino tras una pared contados desde la tensión del miedo sordo y la respiración contenida. La historia de un topo que conmueve por su intimidad."
+    },
+    {
+      "id": "cine-011",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "El laberinto del fauno (Guillermo del Toro)",
+      "pitch": "Cuento de hadas oscuro donde los monstruos de fantasía resultan menos aterradores que el fascismo real en los bosques de 1944. Visualmente imborrable y poética."
+    },
+    {
+      "id": "cine-012",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "As bestas (Rodrigo Sorogoyen)",
+      "pitch": "Una pareja francesa busca una vida autosuficiente en una aldea gallega y choca con el resentimiento vecinal. La tensión escala con una violencia contenida que quita el aliento."
+    },
+    {
+      "id": "cine-013",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Nueve reinas (Fabián Bielinsky)",
+      "pitch": "Dos estafadores de poca monta se cruzan en Buenos Aires ante el timo de su vida con unos sellos falsos. Un guion de relojería suiza donde nada ni nadie es lo que parece."
+    },
+    {
+      "id": "cine-014",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "El abuelo (José Luis Garci)",
+      "pitch": "Un anciano conde arruinado busca descubrir cuál de sus dos nietas lleva su sangre legítima, aprendiendo que la nobleza de alma supera cualquier linaje. Interpretación colosal de Fernando Fernán Gómez."
+    },
+    {
+      "id": "cine-015",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Machuca (Andrés Wood)",
+      "pitch": "Dos niños de mundos socioeconómicos opuestos forjan amistad en un colegio de Santiago previo al golpe de 1973. Mirada sensible, tierna y devastadora sobre la inocencia truncada."
+    },
+    {
+      "id": "cine-016",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Los siete samuráis (Akira Kurosawa - Shichinin no Samurai)",
+      "pitch": "Una aldea de campesinos indefensos contrata a guerreros errantes para defender su cosecha de bandidos. El nacimiento de la gramática visual de la acción moderna y la dignidad moral del sacrificio."
+    },
+    {
+      "id": "cine-017",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Cinema Paradiso (Giuseppe Tornatore - Nuovo Cinema Paradiso)",
+      "pitch": "La infancia de un niño en la cabina de proyección de un pueblo siciliano guiado por el entrañable proyeccionista Alfredo. Una carta de amor desgarradora a la magia del celuloide y al paso del tiempo."
+    },
+    {
+      "id": "cine-018",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Parásitos (Bong Joon-ho - Gisaengchung)",
+      "pitch": "Una familia desempleada se infiltra paso a paso en el servicio doméstico de un clan multimillonario en Seúl. Una comedia negra y satírica implacable sobre la brecha de clases que desemboca en catástrofe."
+    },
+    {
+      "id": "cine-019",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Los cuatrocientos golpes (François Truffaut - Les Quatre Cents Coups)",
+      "pitch": "La mirada desamparada y rebelde del joven Antoine Doinel por las calles de París huyendo de la incomprensión escolar y familiar. La obra fundacional de la Nouvelle Vague que respira libertad pura."
+    },
+    {
+      "id": "cine-020",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "La vida de los otros (Florian Henckel von Donnersmarck - Das Leben der Anderen)",
+      "pitch": "Un frío capitán de la Stasi en el Berlín Este de 1984 espía noche y día a un dramaturgo y a su pareja, descubriendo cómo el arte y el amor conmueven su propia coraza ideológica."
+    },
+    {
+      "id": "cine-021",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Deseando amar (Wong Kar-wai - In the Mood for Love)",
+      "pitch": "En el Hong Kong de 1962, dos vecinos descubren la infidelidad simultánea de sus cónyuges e inician un idilio silencioso de miradas y paseos al ralentí donde lo que no se dice pesa más que mil palabras."
+    },
+    {
+      "id": "cine-022",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "El viaje de Chihiro (Hayao Miyazaki - Sen to Chihiro no Kamikakushi)",
+      "pitch": "Una niña caprichosa debe trabajar en la casa de baños termales de dioses y espíritus para rescatar a sus padres convertidos en cerdos. Una parábola visual portentosa sobre la identidad y la valentía."
+    },
+    {
+      "id": "cine-023",
+      "topic": "CINE",
+      "kind": "película",
+      "title": "Ciudadano Kane (Orson Welles - Citizen Kane)",
+      "pitch": "La reconstrucción de la vida solitaria de un magnate de la prensa tras pronunciar en su lecho de muerte la palabra 'Rosebud'. Inventó la profundidad de campo, los techos visibles y la narrativa no lineal."
+    },
+    {
+      "id": "cine-024",
+      "topic": "CINE",
+      "kind": "curiosidad",
+      "title": "El plano secuencia de El secreto de sus ojos",
+      "followUp": false,
+      "pitch": "¿Sabías que el impresionante plano secuencia en el estadio de Huracán tardó tres meses en rodarse y sincronizarse?",
+      "more": "El equipo de Campanella combinó una toma aérea en helicóptero con grúa y cámara al hombro entre gradas y pasillos. Aunque parece una sola toma de cinco minutos sin cortes, requirió meses de posproducción digital artesanal para camuflar las transiciones."
+    },
+    {
+      "id": "cine-025",
+      "topic": "CINE",
+      "kind": "curiosidad",
+      "title": "La lluvia artificial con tinta negra de Akira Kurosawa",
+      "followUp": false,
+      "pitch": "¿Por qué la lluvia en la batalla final de Los siete samuráis parece tan violenta y densa en pantalla?",
+      "more": "Para que el agua destacara bajo el cielo gris japonés en blanco y negro, Kurosawa y su director de fotografía mandaron mezclar litros de tinta china negra con el agua de los camiones de bomberos, logrando gotas oscuras de textura dramática imborrable."
+    },
+    {
+      "id": "cine-026",
+      "topic": "CINE",
+      "kind": "curiosidad",
+      "title": "La voz prestada de Alfredo Landa en Los santos inocentes",
+      "followUp": false,
+      "pitch": "Alfredo Landa se negó a usar apuntador o doblaje exterior para componer a Paco el Bajo.",
+      "more": "Pasó semanas conviviendo con jornaleros en Extremadura para interiorizar su prosodia y su postura corporal encorvada. Su interpretación le valió el premio a mejor actor en Cannes compartido con Francisco Rabal en 1984."
+    }
+  ]
+}

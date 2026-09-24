@@ -1,0 +1,25 @@
+{
+  "topic": "Idiomas",
+  "cards": [
+    {
+      "q": "¿Por qué Noam Chomsky te diría que cometer fallos al hablar en otro idioma es una gran noticia?",
+      "a": "Porque tu cerebro no es un loro que repite frases hechas, sino un laboratorio vivo. Cuando inventas una palabra o dudas con un verbo, tus neuronas están creando conexiones nuevas y buscando patrones propios. ¡Equivocarse sin vergüenza es la única prueba real de que estás aprendiendo!"
+    },
+    {
+      "q": "¿Cómo te convencería Stephen Krashen de que ver anime o series en versión original te enseña más que una lista de gramática?",
+      "a": "Krashen descubrió la magia del 'input comprensible': cuando una historia te apasiona y entiendes el contexto general, tu mente absorbe el vocabulario y las estructuras de forma natural y sin esfuerzo, exactamente igual a como aprendiste a hablar cuando eras un niño pequeño."
+    },
+    {
+      "q": "¿Qué es el 'filtro afectivo' y cómo puedes desactivar la timidez cuando te toca hablar en público?",
+      "a": "Es un escudo que levanta tu cerebro cuando siente miedo a hacer el ridículo, bloqueando las palabras aunque te sepas la lección. El truco es sonreír y recordar que nadie busca que seas perfecto: la gente solo quiere conectar contigo y entender lo que sientes."
+    },
+    {
+      "q": "¿Por qué en inglés parece que las palabras se funden y cómo puedes hackear su ritmo?",
+      "a": "El español marca cada sílaba como las campanadas de un reloj, pero el inglés va al ritmo de una batería con acentos fuertes. Las sílabas intermedias se relajan en un sonido perezoso llamado 'schwa'. No fuerces cada letra: déjate llevar por la melodía de la frase."
+    },
+    {
+      "q": "¿Qué truco de oro usan los políglotas si se les olvida una palabra en plena conversación?",
+      "a": "Usan el 'circunloquio': describen para qué sirve lo que quieren decir ('esa herramienta con la que abres las latas de refresco'). La otra persona te entenderá al segundo, te dirá la palabra correcta con una sonrisa y la charla seguirá fluyendo sin silencios incómodos."
+    }
+  ]
+}

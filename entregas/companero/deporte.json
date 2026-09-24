@@ -1,0 +1,138 @@
+{
+  "suggestions": [
+    {
+      "id": "deporte-001",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "El corazón de 28 pulsaciones en reposo de Miguel Induráin",
+      "followUp": false,
+      "pitch": "¿Sabías que el quíntuple campeón del Tour de Francia tenía una capacidad pulmonar de casi ocho litros y un corazón prodigioso?",
+      "more": "Los reconocimientos médicos en la Universidad de Navarra determinaron que su corazón bombeaba hasta cincuenta litros de sangre por minuto en esfuerzo máximo (frente a los veinticinco de una persona común) y bajaba hasta veintiocho latidos por minuto en reposo absoluto, permitiéndole rodar contra el crono con una economía fisiológica insólita."
+    },
+    {
+      "id": "deporte-002",
+      "topic": "DEPORTE",
+      "kind": "documental",
+      "title": "Informe Robinson (Michael Robinson)",
+      "pitch": "El programa televisivo que elevó el periodismo deportivo a narrativa literaria humana: historias de atletas anónimos, gestas y caídas contadas con mirada compasiva y respeto."
+    },
+    {
+      "id": "deporte-003",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "La final de Wimbledon 2008: Federer vs. Nadal",
+      "followUp": false,
+      "pitch": "Considerado unánimemente el mejor partido de tenis de todos los tiempos, jugado al límite de la luz crepuscular londinense.",
+      "more": "Tras cuatro horas y cuarenta y ocho minutos de juego interrumpido dos veces por la lluvia, Nadal se impuso 9-7 en el quinto set sobre la hierba sagrada de Federer a las 21:16 horas, cerrando un ciclo histórico de dominio en la central a oscuras."
+    },
+    {
+      "id": "deporte-004",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "Severiano Ballesteros y el Open Británico desde el aparcamiento",
+      "followUp": false,
+      "pitch": "En el hoyo 16 de Royal Lytham en 1979, el golfista cántabro inventó un golpe legendario entre los coches de los espectadores.",
+      "more": "Su salida se desvió al aparcamiento provisional de hierba pisoteada; en lugar de pedir alivio o amilanarse, Seve evaluó la distancia, pegó un hierro 9 limpio por encima de las carpas y dejó la bola a cinco metros de bandera para firmar el birdie que selló su primer grande con veintidós años."
+    },
+    {
+      "id": "deporte-005",
+      "topic": "DEPORTE",
+      "kind": "libro",
+      "title": "Open: Memorias (Andre Agassi)",
+      "pitch": "La confesión demoledora de un prodigio del tenis que confiesa haber odiado el deporte durante gran parte de su carrera por la presión paterna. Extraordinariamente sincero y revelador."
+    },
+    {
+      "id": "deporte-006",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "El gol del siglo de Diego Maradona en México 86",
+      "followUp": false,
+      "pitch": "Diez segundos y sesenta metros recorridos tocando el balón doce veces exclusivamente con la bota izquierda.",
+      "more": "Frente a Inglaterra en el Estadio Azteca, Maradona dejó atrás a Hoddle, Reid, Sansom, Butcher, Fenwick y al portero Shilton antes de empujarla a la red mientras era derribado, en una jugada analizada biomecánicamente por universidades como la cumbre del regate en carrera."
+    },
+    {
+      "id": "deporte-007",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "Blanca Fernández Ochoa: primera medalla olímpica femenina de España",
+      "followUp": false,
+      "pitch": "En los Juegos de Invierno de Albertville 1992, rompió el techo de cristal de la nieve española veinte años después de su hermano Paquito.",
+      "more": "Logró la medalla de bronce en el eslalon especial con una segunda manga impecable, dedicándole el metal a su familia de Cercedilla y abriendo el camino para las siguientes generaciones de deportistas de invierno en España."
+    },
+    {
+      "id": "deporte-008",
+      "topic": "DEPORTE",
+      "kind": "documental",
+      "title": "El último baile (The Last Dance)",
+      "pitch": "Crónica íntima de la última temporada de Michael Jordan en los Chicago Bulls de 1998. Una radiografía sin filtros sobre la obsesión despiadada por la excelencia competitiva."
+    },
+    {
+      "id": "deporte-009",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "El oro olímpico de la selección de fútbol en Barcelona 92",
+      "followUp": false,
+      "pitch": "Un gol de Kiko Narváez en el minuto noventa ante noventa y cinco mil gargantas en el Camp Nou.",
+      "more": "España perdía 1-2 contra Polonia en la final y remontó en un final épico con el gol definitivo de Kiko en el descuento, convirtiéndose en el único oro olímpico del fútbol español hasta los Juegos de París 2024."
+    },
+    {
+      "id": "deporte-010",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "La carrera benéfica de Roberto Clemente",
+      "followUp": false,
+      "pitch": "El primer latinoamericano en ingresar al Salón de la Fama del Béisbol murió ayudando a los demás.",
+      "more": "La estrella puertorriqueña de los Pittsburgh Pirates fletó un avión cargado con víveres y medicinas para las víctimas del terremoto de Managua de 1972 tras enterarse de que los envíos anteriores eran retenidos por militares corruptos; el avión se estrelló en el mar nada más despegar."
+    },
+    {
+      "id": "deporte-011",
+      "topic": "DEPORTE",
+      "kind": "libro",
+      "title": "Correr o morir (Kilian Jornet)",
+      "pitch": "Las reflexiones de montaña del mayor corredor de ultradistancia del mundo sobre el dolor, el silencio de las cumbres y la comunión física con la naturaleza sin artificios."
+    },
+    {
+      "id": "deporte-012",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "La parada de Iker Casillas con la puntera en la final de 2010",
+      "followUp": false,
+      "pitch": "El instante que congeló a toda España en el Soccer City de Johannesburgo.",
+      "more": "En el minuto sesenta y dos de la final del Mundial, Arjen Robben encaró completamente solo a Casillas; cuando el neerlandés disparó cruzado, el capitán español se venció a su izquierda y desvió el balón con el talón y la puntera de su bota derecha cuando ya se cantaba el gol."
+    },
+    {
+      "id": "deporte-013",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "El récord de Fermín Cacho en los 1.500 metros de Barcelona 92",
+      "followUp": false,
+      "pitch": "¿Sabías que la carrera de 1.500 metros fue tácticamente una de las más lentas y audaces de los Juegos?",
+      "more": "Nadie quería tirar del pelotón por miedo al calor y la tensión. A falta de doscientos metros, el soriano Fermín Cacho vio un hueco por la cuerda interior dejado por el etíope Birir y desató un sprint fulgurante mirando atrás tres veces con incredulidad antes de cruzar la meta."
+    },
+    {
+      "id": "deporte-014",
+      "topic": "DEPORTE",
+      "kind": "libro",
+      "title": "El factor humano (John Carlin)",
+      "pitch": "Cómo Nelson Mandela utilizó el Mundial de Rugby de 1995 y a los Springboks —símbolo histórico de los afrikáners blancos— para unir a una Sudáfrica al borde de la guerra civil."
+    },
+    {
+      "id": "deporte-015",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "Pau Gasol y el salto inicial del All-Star contra su hermano Marc (2015)",
+      "followUp": false,
+      "pitch": "Dos hermanos nacidos en Sant Boi de Llobregat saltaron como pívots titulares en el Madison Square Garden de Nueva York.",
+      "more": "Marc por la Conferencia Oeste y Pau por la Conferencia Este fueron elegidos por votación popular mundial para el quinteto inicial del All-Star de la NBA, un hito fraternal irrepetible en la historia del baloncesto profesional."
+    },
+    {
+      "id": "deporte-016",
+      "topic": "DEPORTE",
+      "kind": "curiosidad",
+      "title": "La natación pionera de David Meca cruzando el Estrecho de Gibraltar",
+      "followUp": false,
+      "pitch": "El nadador catalán cruzó a nado el Estrecho tres veces seguidas sin traje de neopreno.",
+      "more": "En 2006 completó el triple cruce (ida, vuelta y de nuevo ida entre Tarifa y Ceuta) braceando más de cuarenta y cuatro kilómetros contra fuertes corrientes atlánticas y bancos de medusas en catorce horas continuadas."
+    }
+  ]
+}

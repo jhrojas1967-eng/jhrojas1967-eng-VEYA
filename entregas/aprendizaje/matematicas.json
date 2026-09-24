@@ -1,0 +1,25 @@
+{
+  "topic": "Matemáticas",
+  "cards": [
+    {
+      "q": "¿Cómo te explicaría Albert Einstein por qué el tiempo pasa más lento en una nave espacial que en la Tierra?",
+      "a": "Einstein descubrió que la velocidad de la luz es el límite supremo del cosmos. Para que la luz viaje siempre a la misma velocidad para todos, el tiempo tiene que ser elástico: si viajas en un cohete casi a la velocidad de la luz, el tiempo dentro de tu nave se estira y tus relojes avanzan más despacio. ¡El tiempo no es absoluto!"
+    },
+    {
+      "q": "¿Cómo sumó Gauss del 1 al 100 en dos segundos con solo 9 años y qué te enseña sobre los atajos?",
+      "a": "Gauss descubrió un patrón escondido: 1 + 100 = 101, 2 + 99 = 101, 3 + 98 = 101... Vio que había 50 parejas que sumaban 101, multiplicó 50 x 101 y obtuvo 5.050 al instante. Las matemáticas no son cuentas aburridas, sino el arte de encontrar simetrías elegantes en el desorden."
+    },
+    {
+      "q": "¿Cómo una misma curva matemática ondulante explica las mareas del mar, tu canción favorita y la luz?",
+      "a": "La naturaleza es sabia y reutiliza sus mejores fórmulas: la onda senoidal describe el balanceo del mar por la atracción lunar, la vibración de las cuerdas de una guitarra y la corriente eléctrica de tu casa. Una sola ecuación modela el ritmo del universo entero."
+    },
+    {
+      "q": "¿Por qué los números primos gigantes son los guardianes secretos de todo el dinero de internet?",
+      "a": "Multiplicar dos primos gigantes toma milisegundos en un ordenador, pero averiguar cuáles eran esos dos primos teniendo solo el resultado final tomaría miles de años de cálculo. Esa 'trampa' matemática en una sola dirección es el candado invencible de la seguridad digital."
+    },
+    {
+      "q": "¿Cómo demostró Emmy Noether que detrás de cada ley física del universo hay una simetría matemática perfecta?",
+      "a": "Noether probó que la energía nunca se pierde porque las leyes del cosmos son idénticas hoy que mañana (simetría del tiempo), y que el movimiento se conserva porque la física funciona igual aquí que en otra galaxia. La armonía matemática es el andamio invisible de la realidad."
+    }
+  ]
+}

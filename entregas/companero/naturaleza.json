@@ -1,0 +1,132 @@
+{
+  "suggestions": [
+    {
+      "id": "naturaleza-001",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "La pradera de Posidonia oceánica de Formentera",
+      "followUp": false,
+      "pitch": "¿Sabías que el ser vivo más grande y antiguo del planeta vive sumergido entre Ibiza y Formentera?",
+      "more": "Se trata de un clon continuo de Posidonia oceánica que mide más de quince kilómetros de longitud y tiene más de cien mil años de edad. Es una planta marina con flores y raíces (no un alga) que filtra el agua del Mediterráneo dándole su transparencia turquesa única y captura quince veces más carbono por hectárea que la selva amazónica."
+    },
+    {
+      "id": "naturaleza-002",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Hayedo de Montejo (Sierra del Rincón, Madrid)",
+      "pitch": "Uno de los hayedos más meridionales de toda Europa, protegido en una ladera umbría junto al río Jarama. En otoño sus ocres y amarillos parecen sacados de una estampa nórdica en plena meseta."
+    },
+    {
+      "id": "naturaleza-003",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "La recuperación del Lince ibérico (Lynx pardinus)",
+      "followUp": false,
+      "pitch": "En 2002 quedaban menos de cien ejemplares libres; hoy supera los dos mil y ya no está en peligro crítico.",
+      "more": "La cría en cautividad, los pasos de fauna bajo carreteras y la reintroducción coordinada entre Andalucía, Castilla-La Mancha, Extremadura y Portugal han protagonizado el mayor éxito de conservación de felinos en el mundo."
+    },
+    {
+      "id": "naturaleza-004",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Parque Nacional de Doñana (Huelva/Sevilla)",
+      "pitch": "Un mosaico ecológico único donde confluyen dunas móviles, pinares y marismas que reciben cada invierno a seis millones de aves migratorias entre África y Europa. El corazón latiente del sur."
+    },
+    {
+      "id": "naturaleza-005",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "El Glaciar Perito Moreno y sus rupturas cíclicas",
+      "followUp": false,
+      "pitch": "A diferencia de la mayoría de glaciares del mundo que retroceden, el Perito Moreno avanza periódicamente hasta represar un lago.",
+      "more": "El glaciar en la Patagonia argentina bloquea el canal de los Témpanos del Lago Argentino; la presión del agua acumulada socava la base de hielo hasta crear un arco gigantesco que colapsa con estruendo de trueno ante los visitantes cada pocos años."
+    },
+    {
+      "id": "naturaleza-006",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Parque Nacional de Garajonay (La Gomera)",
+      "pitch": "Bosque milenario de laurisilva canaria envuelto casi todo el año en la niebla del mar de nubes. Caminar por sus senderos entre musgos gigantes es viajar directamente a la era terciaria."
+    },
+    {
+      "id": "naturaleza-007",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "El vuelo acrobático del Quebrantahuesos pirenaico",
+      "followUp": false,
+      "pitch": "¿Por qué esta gran rapaz buitre lanza huesos de oveja y rebeco desde cincuenta metros de altura contra los canchales?",
+      "more": "El quebrantahuesos (Gypaetus barbatus) es la única ave del planeta cuya dieta se compone en un 85% de huesos. Al estrellarlos contra rocas planas llamadas 'rompederos', fragmenta las piezas para ingerirlas enteras y digerirlas con sus potentes jugos gástricos de pH casi cero."
+    },
+    {
+      "id": "naturaleza-008",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Desierto de Tabernas (Almería)",
+      "pitch": "El único desierto propiamente dicho del continente europeo, con cárcavas esculpidas por ramblas torrenciales y una flora esteparia adaptada a la aridez extrema. Un paisaje mineral imponente."
+    },
+    {
+      "id": "naturaleza-009",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "La floración del Desierto de Atacama",
+      "followUp": false,
+      "pitch": "En el lugar más árido de la Tierra, un invierno con lluvias excepcionales despierta millones de semillas latentes.",
+      "more": "El fenómeno del 'desierto florido' en Chile ocurre cada varios años cuando el evento de El Niño aporta humedad; más de doscientas especies de flores endémicas brotan sincronizadas en cuestión de semanas transformando la arena rojiza en una alfombra violeta y blanca."
+    },
+    {
+      "id": "naturaleza-010",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Parque Nacional de Ordesa y Monte Perdido (Huesca)",
+      "pitch": "Cañones calizos de paredes verticales de mil metros tallados por antiguos glaciares. La ruta de la Cola de Caballo entre cascadas y bosques de hayas es una de las mayores joyas senderistas de Europa."
+    },
+    {
+      "id": "naturaleza-011",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "La migración de la mariposa monarca hacia Michoacán",
+      "followUp": false,
+      "pitch": "Insectos de menos de medio gramo viajan cuatro mil quinientos kilómetros desde Canadá hasta México sin haber estado allí jamás.",
+      "more": "Las mariposas de la generación 'matusalén' viven hasta ocho meses (diez veces más que sus padres) y utilizan una brújula solar y el campo magnético terrestre para hibernar en los mismos bosques de oyamel donde durmieron sus bisabuelas."
+    },
+    {
+      "id": "naturaleza-012",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Islas Cíes (Parque Nacional de las Islas Atlánticas, Galicia)",
+      "pitch": "Aguas cristalinas del Atlántico batiendo contra acantilados graníticos y la playa de Rodas uniendo dos islas por un arenal blanco impoluto. Cero coches y silencio puro."
+    },
+    {
+      "id": "naturaleza-013",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "Los murciélagos como insecticidas biológicos en el arrozal",
+      "followUp": false,
+      "pitch": "En el Delta del Ebro y la Albufera de Valencia, las casetas de murciélagos han reducido drásticamente el uso de pesticidas químicos.",
+      "more": "Un solo murciélago enano (Pipistrellus pygmaeus) puede cazar hasta tres mil mosquitos y polillas barrenadoras por noche. Los agricultores locales instalan refugios artificiales de madera en los márgenes de los arrozales para fomentar su población natural."
+    },
+    {
+      "id": "naturaleza-014",
+      "topic": "NATURALEZA",
+      "kind": "libro",
+      "title": "La vida secreta de los árboles (Peter Wohlleben)",
+      "pitch": "Un ingeniero forestal explica cómo los árboles se comunican bajo tierra a través de redes de hongos, cuidan a sus retoños enfermos y comparten nutrientes como una comunidad solidaria."
+    },
+    {
+      "id": "naturaleza-015",
+      "topic": "NATURALEZA",
+      "kind": "escapada",
+      "title": "Las Médulas (León) en primavera",
+      "pitch": "El contraste de los picos rojizos arcillosos moldeados por los romanos con el verde tierno de los castaños centenarios. Las vistas desde el mirador de Orellán al atardecer son inolvidables."
+    },
+    {
+      "id": "naturaleza-016",
+      "topic": "NATURALEZA",
+      "kind": "curiosidad",
+      "title": "Las tortugas gigantes de las islas Galápagos",
+      "followUp": false,
+      "pitch": "La forma del caparazón de cada tortuga varía según la isla del archipiélago donde vive.",
+      "more": "En islas húmedas con vegetación a ras de suelo, los caparazones tienen forma de cúpula; en islas áridas con cactus altos, el caparazón tiene forma de silla de montar para permitir que la tortuga estire el cuello varios palmos, observación clave para la teoría evolutiva de Darwin."
+    }
+  ]
+}

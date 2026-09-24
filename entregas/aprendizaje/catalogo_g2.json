@@ -1,0 +1,154 @@
+{
+  "catalogId": "catalogo_g2_aprendizaje",
+  "title": "Catálogo de Aprendizaje G2: Ciencia, Humanidades y Vida Cotidiana",
+  "category": "aprendizaje_integral",
+  "targetAudience": "Adolescentes, jóvenes estudiantes y mentes curiosas",
+  "pedagogicalTone": "Cálido, honesto, motivador y riguroso. Sin tecnicismos vacíos ni condescendencia.",
+  "blocks": [
+    {
+      "id": "g2-idiomas",
+      "title": "Idiomas y Lingüística: Comunica sin Miedo",
+      "topic": "IDIOMAS",
+      "mentorRole": "Noam Chomsky y Stephen Krashen · Lingüistas y pedagogos de la adquisición natural",
+      "description": "Cómo aprende tu cerebro de verdad una lengua, cómo derribar el miedo a equivocarse y los trucos reales para ganar fluidez sin memorizar listas interminables.",
+      "cards": [
+        {
+          "q": "¿Por qué Noam Chomsky te diría que equivocarte al hablar en otro idioma no es un fallo, sino la prueba de que tu cerebro está construyendo conexiones?",
+          "a": "Chomsky descubrió que los seres humanos nacemos con un 'órgano del lenguaje' natural. Cuando dices una palabra rara o inventas una conjugación lógica que no existe, tu cerebro no está fallando: está experimentando y ajustando sus circuitos neuronales. Equivocarse con valentía es el único camino biológico hacia la fluidez auténtica."
+        },
+        {
+          "q": "¿Cómo te explicaría Stephen Krashen que ver tu serie o anime favorito en versión original te enseña más que memorizar 100 verbos?",
+          "a": "Krashen demostró que hay un abismo entre 'aprender reglas' para aprobar un examen y 'adquirir una lengua' para la vida. Tu mente adquiere un idioma de forma subconsciente cuando recibe 'input comprensible': mensajes que te enganchan emocionalmente y que entiendes por el contexto. Si una historia te emociona, tu cerebro absorbe las estructuras casi por arte de magia."
+        },
+        {
+          "q": "¿Qué es el 'filtro afectivo' y cómo puedes desactivar la timidez cuando tienes que hablar en público en otro idioma?",
+          "a": "Es un escudo invisible que levanta la amígdala cerebral cuando sientes miedo a hacer el ridículo, bloqueando las palabras aunque te sepas la lección. Para bajarlo a cero, cambia el foco: no estás dando un examen para ser juzgado, estás usando una herramienta humana para conectar con otra persona. La empatía y una sonrisa siempre superan a la gramática perfecta."
+        },
+        {
+          "q": "¿Por qué en inglés parece que las palabras se funden y cómo puedes hackear su ritmo usando el sonido 'schwa'?",
+          "a": "El español va a ritmo de metrónomo uniforme, pero el inglés va a ritmo de acentos fuertes espaciados. Para llegar a tiempo de un golpe a otro, los nativos aplastan las vocales que no llevan fuerza y las convierten en una vocal perezosa y neutra llamada 'schwa' (/ə/). En lugar de pronunciar cada letra con esfuerzo, relaja la lengua y fluye con el compás musical."
+        },
+        {
+          "q": "¿Cuál es el superpoder del 'circunloquio' que usan los políglotas cuando se les olvida una palabra en plena conversación?",
+          "a": "Si no recuerdas cómo se dice 'paraguas' o 'sacacorchos', jamás te quedes en silencio: describe su utilidad ('la cosa que usas cuando llueve para no mojarte'). La otra persona te entenderá de inmediato, te regalará la palabra exacta con amabilidad y la conversación continuará viva y natural. La soltura no es saber todas las palabras, es saber salir del apuro."
+        }
+      ]
+    },
+    {
+      "id": "g2-salud",
+      "title": "Salud, Neurociencia y Bienestar: El Manual de tu Cuerpo",
+      "topic": "SALUD_BIENESTAR",
+      "mentorRole": "Santiago Ramón y Cajal, Rita Levi-Montalcini y Matthew Walker · Pioneros de la neurobiología y la fisiología del descanso",
+      "description": "La ciencia real detrás de tu energía, el reloj biológico del adolescente, la conexión entre tu intestino y tus emociones, y herramientas biológicas para apagar la ansiedad.",
+      "cards": [
+        {
+          "q": "¿Por qué la ciencia médica demuestra que no es pereza que te cueste tanto dormirte antes de las doce de la noche siendo adolescente?",
+          "a": "Durante la pubertad, tu reloj biológico central sufre un cambio hormonal natural: la melatonina (la hormona que le avisa a tu cuerpo de que es hora de descansar) empieza a liberarse con casi dos horas de retraso respecto a los adultos. Madrugar a las siete para el instituto equivale biológicamente a despertar a las cuatro y media de la madrugada. Conocer tu biología te ayuda a no culparte y a cuidar tus horarios."
+        },
+        {
+          "q": "¿Qué le ocurre al 'camión de la basura' de tu cerebro cuando te quedas despierto mirando el móvil en la oscuridad?",
+          "a": "La luz azul de la pantalla le grita a tu cerebro que es mediodía, frenando en seco la melatonina. Además, impides que se active el sistema glinfático, un fluido nocturno que limpia los residuos tóxicos que acumulan tus neuronas durante el día. Cuando trasnochas, tu cerebro amanece literalmente 'sucio', lo que causa esa pesadez y falta de concentración al día siguiente."
+        },
+        {
+          "q": "¿Por qué Santiago Ramón y Cajal te diría que el ejercicio de fuerza y la actividad física son el mejor fertilizante para estudiar mejor?",
+          "a": "Cajal demostró que el cerebro es plástico y puede modelarse con la voluntad. Cuando mueves tus músculos con intensidad, estos liberan 'mioquinas' y estimulan el factor BDNF (descubierto en la estela de Rita Levi-Montalcini). Este factor actúa como abono en el hipocampo, haciendo que broten nuevas conexiones entre neuronas y fijando lo que estudias mucho más rápido."
+        },
+        {
+          "q": "¿Por qué se llama al intestino 'el segundo cerebro' y cómo lo que comes decide si tienes un día alegre o gris?",
+          "a": "En tu sistema digestivo viven más de 100 millones de neuronas que charlan directamente con tu cabeza a través del nervio vago. Pero lo más increíble es que más del 90% de la serotonina (el mensajero de la calma y el optimismo) la fabrican tus bacterias intestinales cuando las alimentas con comida real, frutas y verduras, en lugar de castigarlas con ultraprocesados."
+        },
+        {
+          "q": "¿Cómo puedes desactivar un ataque de nervios o taquicardia antes de una prueba en 30 segundos con el 'suspiro fisiológico'?",
+          "a": "Haz dos inhalaciones seguidas por la nariz (una profunda y otra corta encima para llenar los pulmones al máximo) y suelta todo el aire muy despacio por la boca. Al hacer esto dos o tres veces, los sensores de tus pulmones envían una señal directa al corazón a través del nervio vago ordenándole frenar los latidos. Es el botón de pausa biológico que llevas incorporado."
+        }
+      ]
+    },
+    {
+      "id": "g2-tecnologia",
+      "title": "Tecnología e Inteligencia Artificial: Dentro de la Máquina",
+      "topic": "TECNOLOGIA",
+      "mentorRole": "Alan Turing, Ada Lovelace y científicos pioneros de la computación moderna",
+      "description": "Desmitificando la caja negra de la tecnología: cables submarinos intercontinentales, el candado matemático de la criptografía y cómo piensa realmente una IA.",
+      "cards": [
+        {
+          "q": "¿Cómo le explicaría Alan Turing a un adolescente qué hace una IA generativa cuando parece responder como una persona?",
+          "a": "Turing te diría: 'No busques un alma mágica en el silicio'. Una Inteligencia Artificial no razona ni siente como tú; ha leído millones de textos en internet y ha aprendido a calcular qué palabra es la más probable que deba ir después de otra en una frase. Es un prodigio matemático de probabilidad y estadística que imita el lenguaje humano, pero el pensamiento crítico y la conciencia siguen siendo exclusivamente tuyos."
+        },
+        {
+          "q": "¿Por qué Ada Lovelace ya anticipó en el siglo XIX que las máquinas podían componer arte pero nunca tendrían iniciativa propia?",
+          "a": "Lovelace fue la primera en ver que si los números representaban notas o dibujos, una máquina podía crear sinfonías. Pero advirtió con enorme lucidez: 'La máquina analítica no tiene pretensiones de originar nada. Puede hacer cualquier cosa que sepamos ordenarle que realice'. Las máquinas amplifican nuestra imaginación, pero la chispa creadora y el propósito siempre nacen de los seres humanos."
+        },
+        {
+          "q": "¿Cómo viaja un mensaje de TikTok o WhatsApp desde tu teléfono hasta el otro lado del planeta en un abrir y cerrar de ojos?",
+          "a": "Tu teléfono convierte tus datos en ondas electromagnéticas hacia la antena más cercana. De ahí, se transforman en pulsos de luz láser que se sumergen en cables de fibra óptica del grosor de una manguera de jardín que cruzan los fondos oscuros del océano. Esos pulsos recorren 10.000 kilómetros rebotando en cristales casi a la velocidad de la luz para llegar en milisegundos a tu amigo."
+        },
+        {
+          "q": "¿Cómo funciona el candado de la criptografía asimétrica que protege tus fotos y contraseñas de miradas indiscretas?",
+          "a": "Imagina que le repartes a todo el mundo copias de un candado abierto con tu nombre (tu clave pública). Cualquiera puede meter una carta en un buzón y cerrarlo con tu candado; una vez hace 'clic', nadie en el mundo puede abrirlo, ¡ni siquiera quien lo cerró! Solo tú, que guardas la única llave secreta en tu bolsillo (clave privada), puedes desbloquear el mensaje."
+        },
+        {
+          "q": "¿Por qué las IA sufren 'alucinaciones' inventando mentiras con total seguridad y por qué eres tú quien debe tener la última palabra?",
+          "a": "El objetivo de una red neuronal es que la respuesta suene elegante, coherente y bien estructurada. Si el modelo no tiene la certeza de un dato histórico o científico concreto, priorizará la fluidez sobre la exactitud y se inventará la información que mejor 'rima' probabilísticamente. Por eso nunca debes fiarte a ciegas de una máquina: contrastar fuentes y dudar es tu mayor ventaja humana."
+        }
+      ]
+    },
+    {
+      "id": "g2-historia",
+      "title": "Historia, Filosofía y Ciudadanía: El Mapa de la Libertad",
+      "topic": "HISTORIA_HUMANIDADES",
+      "mentorRole": "Sócrates, Mary Beard y juristas constitucionales defensores de los derechos civiles",
+      "description": "El arte socrático de dudar, las grandes conquistas sociales que te permiten estudiar hoy en libertad y por qué la Constitución es el escudo del ciudadano común.",
+      "cards": [
+        {
+          "q": "¿Cómo te enseñaría Sócrates a desmontar una noticia falsa o una manipulación en internet sin perder la calma?",
+          "a": "Sócrates no discutía a gritos en el ágora de Atenas: hacía preguntas sencillas pero demoledoras ('¿Qué pruebas respaldan eso?', '¿Qué significa exactamente esa palabra que repites?', 'Si aplicamos esa idea a este otro caso, ¿qué pasaría?'). Al pedir razones con educación y curiosidad, las mentiras y las falacias se desmoronan por sí solas ante quien las inventó."
+        },
+        {
+          "q": "¿Por qué un jurista constitucional te diría que la Constitución es como el reglamento de un juego donde nadie puede hacer trampas?",
+          "a": "En un partido sin reglas, el más fuerte o el más bruto siempre abusaría de los demás. La Constitución no es un libro aburrido de leyes: es el pacto sagrado de la ciudadanía que le ata las manos a los poderosos, fijando que todos somos iguales, que nadie puede pisotear tu libertad de expresión y que los gobernantes están al servicio del pueblo y no al revés."
+        },
+        {
+          "q": "¿Qué nos enseña la Caverna de Platón sobre vivir atrapado en las modas y los algoritmos de las redes sociales?",
+          "a": "Platón imaginó prisioneros en una cueva oscura que creían que las sombras proyectadas en la pared eran la realidad entera. Hoy, los algoritmos te muestran solo lo que coincide con tus gustos para mantenerte pegado a la pantalla en tu propia cueva. El verdadero rebelde tiene el valor de apagar las sombras, salir al aire libre, escuchar ideas distintas y ver el mundo con sus propios ojos."
+        },
+        {
+          "q": "¿Por qué chicos y chicas de tu edad en el siglo XIX tuvieron que manifestarse para que hoy disfrutes del derecho a ir a clase?",
+          "a": "Con la llegada de las fábricas, los niños trabajaban 14 horas diarias en minas de carbón y talleres peligrosos sin ver la luz del sol. Fueron las luchas obreras, las huelgas y la valentía de miles de personas corrientes las que exigieron que la infancia era sagrada, logrando la prohibición del trabajo infantil, la jornada laboral digna y la escuela pública y gratuita."
+        },
+        {
+          "q": "¿Qué significa el grito de la Ilustración 'Sapere aude' y por qué pensar por ti mismo es tu mayor acto de rebeldía?",
+          "a": "El filósofo Immanuel Kant resumió la madurez humana en dos palabras latinas: 'atrévete a saber'. Significa tener la valentía de no dejar que otros (un líder, un grupo de amigos o una corriente de internet) decidan por ti lo que es bueno, justo o verdadero. Pensar con criterio propio da trabajo, pero es lo único que te convierte en una persona verdaderamente libre."
+        }
+      ]
+    },
+    {
+      "id": "g2-matematicas",
+      "title": "Matemáticas y el Universo: El Lenguaje Secreto del Cosmos",
+      "topic": "MATEMATICAS",
+      "mentorRole": "Albert Einstein, Carl Friedrich Gauss y Emmy Noether · Visionarios de la geometría y las simetrías",
+      "description": "De la curvatura del espacio-tiempo a las mareas lunares, la magia de los números primos y por qué las matemáticas son el visor para entender el universo.",
+      "cards": [
+        {
+          "q": "¿Cómo te explicaría Albert Einstein por qué el tiempo pasa más despacio si viajas en una nave espacial a toda velocidad?",
+          "a": "Einstein descubrió que la velocidad de la luz es el límite insuperable del universo. Para que la luz viaje siempre a la misma velocidad para todos los observadores, el espacio y el tiempo tienen que ser flexibles: si corres casi a la velocidad de la luz, el tiempo dentro de tu nave se estira y tus relojes caminan más lento respecto a quienes se quedaron en la Tierra. ¡El tiempo no es fijo, es relativo!"
+        },
+        {
+          "q": "¿Cómo resolvió Carl Friedrich Gauss la suma del 1 al 100 en dos segundos cuando tenía solo 9 años en la escuela?",
+          "a": "Su profesor quería tener a los niños callados sumando durante una hora. Gauss se dio cuenta de una simetría asombrosa: 1 + 100 = 101, 2 + 99 = 101, 3 + 98 = 101... ¡Había exactamente 50 pares que sumaban 101! Multiplicó 50 x 101 y gritó 5.050 al instante. Las matemáticas no van de hacer cálculos mecánicos pesados, sino de descubrir la belleza oculta de los patrones."
+        },
+        {
+          "q": "¿Cómo la misma fórmula matemática curva (la onda senoidal) explica tanto el sonido de tu guitarra como las mareas del océano?",
+          "a": "La naturaleza es profundamente económica y reutiliza sus mejores ideas. La función trigonométrica del seno modela lo que en física llamamos 'oscilaciones armónicas': la vibración de una cuerda musical en el aire, el subir y bajar rítmico del mar por la atracción de la Luna y la corriente eléctrica que ilumina tu habitación siguen exactamente el mismo dibujo ondulante."
+        },
+        {
+          "q": "¿Por qué los números primos gigantes son los guardianes silenciosos de tu dinero y tus compras seguras?",
+          "a": "Multiplicar dos números primos gigantescos le lleva a tu ordenador una milésima de segundo. Pero si te dan solo el número resultante y te piden que averigües cuáles eran los dos primos originales que lo formaron, los superordenadores tardarían siglos en calcularlo por pura fuerza bruta. Esa asimetría matemática es el escudo infranqueable de la seguridad informática mundial."
+        },
+        {
+          "q": "¿Cómo demostró Emmy Noether que detrás de cada ley física fundamental se esconde una simetría matemática perfecta?",
+          "a": "Noether (a quien Einstein consideraba la mujer más genial de la historia de las matemáticas) descubrió que la energía nunca se destruye porque las leyes del universo son idénticas hoy que mañana (simetría temporal), y que la cantidad de movimiento se conserva porque la física funciona igual aquí que en Andrómeda (simetría espacial). La belleza matemática sostiene la realidad."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "suggestions": [
+    {
+      "id": "viajes-001",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Albarracín (Teruel)",
+      "pitch": "Una villa medieval suspendida sobre la hoz del río Guadalaviar con murallas árabes que trepan por la cresta de la montaña. Sus casas de yeso rojizo y balcones de madera tallada son un remanso de silencio al atardecer."
+    },
+    {
+      "id": "viajes-002",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Ronda y los Pueblos Blancos (Málaga/Cádiz)",
+      "pitch": "Asomarse al Tajo de Ronda desde el Puente Nuevo con cien metros de cortado vertical bajo tus pies quita el aliento. Calles empedradas, palacios señoriales y la brisa de la serranía andaluza."
+    },
+    {
+      "id": "viajes-003",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Cabo de Gata (Almería)",
+      "pitch": "Calas volcánicas de aguas turquesas entre acantilados oscuros y palmeras enanas. Desde la playa de Mónsul hasta el arrecife de las Sirenas, la luz más pura y salvaje del Mediterráneo."
+    },
+    {
+      "id": "viajes-004",
+      "topic": "VIAJES",
+      "kind": "curiosidad",
+      "title": "El misterio constructivo de la Muralla de Ávila",
+      "followUp": false,
+      "pitch": "¿Sabías que la muralla románica mejor conservada de Europa se construyó reutilizando lápidas y piedras de templos romanos?",
+      "more": "Con dos kilómetros y medio de perímetro, ochenta y siete torreones y nueve puertas de sillería de granito, los alarifes de los siglos XI y XII empotraron en los cimientos cipos funerarios y aras romanas vettonas que aún pueden leerse talladas en la roca si te acercas a la puerta de San Vicente."
+    },
+    {
+      "id": "viajes-005",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "La Alpujarra granadina",
+      "pitch": "Pueblos colgados de las faldas meridionales de Sierra Nevada (Capileira, Bubión y Pampaneira) con arquitectura bereber de terrados planos de launa, chimeneas con sombrero y huertas escalonadas con acequias árabes vivas."
+    },
+    {
+      "id": "viajes-006",
+      "topic": "VIAJES",
+      "kind": "curiosidad",
+      "title": "Cusco y las piedras de doce ángulos sin argamasa",
+      "followUp": false,
+      "pitch": "En la calle Hatun Rumiyoc de Cusco, los bloques de diorita verde encajan tan perfectamente que no cabe una hoja de papel entre ellos.",
+      "more": "Los arquitectos incas tallaban los sillares mediante abrasión con arena y percutores de bronce, diseñando uniones machihembradas y juntas cóncavas y convexas capaces de oscilar milimétricamente durante los terremotos andinos y recolocarse por gravedad sin caerse."
+    },
+    {
+      "id": "viajes-007",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "San Juan de Gaztelugatxe (Vizcaya)",
+      "pitch": "Un peñón rocoso batido por el mar Cantábrico unido a la costa por un estrecho puente de piedra y doscientas treinta y siete escaleras. Tocar tres veces la campana de la ermita en la cima para pedir un deseo es tradición marinera centenaria."
+    },
+    {
+      "id": "viajes-008",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Valle del Jerte (Cáceres) en flor",
+      "pitch": "Más de un millón y medio de cerezos tiñen de blanco las laderas del valle durante apenas diez días entre marzo y abril. Una explosión primaveral de aroma y luz que merece vivirse a pie."
+    },
+    {
+      "id": "viajes-009",
+      "topic": "VIAJES",
+      "kind": "curiosidad",
+      "title": "El Salar de Uyuni y el efecto espejo infinito",
+      "followUp": false,
+      "pitch": "El mayor desierto continuo de sal del mundo se convierte en el mayor espejo natural de la Tierra durante la época de lluvias.",
+      "more": "Ubicado a 3.650 metros en Bolivia, diez mil kilómetros cuadrados de salitre perfectamente plano se cubren con unos centímetros de agua entre enero y marzo; el horizonte desaparece por completo y el cielo y las nubes se reflejan con nitidez cristalina absoluta."
+    },
+    {
+      "id": "viajes-010",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Cartagena de Indias (Colombia)",
+      "pitch": "El recinto amurallado colonial del Caribe por excelencia: casonas con balcones cuajados de buganvillas, plazas empedradas donde suena la cumbia al caer la tarde y el baluarte de San Felipe protegiendo la bahía."
+    },
+    {
+      "id": "viajes-011",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Las Médulas y el Valle del Silencio (El Bierzo, León)",
+      "pitch": "Montañas esculpidas por la minería de agua romana rodeadas de bosques de castaños y cerezos, con el monasterio mozárabe de Peñalba de Santiago escondido entre riscos."
+    },
+    {
+      "id": "viajes-012",
+      "topic": "VIAJES",
+      "kind": "curiosidad",
+      "title": "La calzada del Caminito del Rey en El Chorro",
+      "followUp": false,
+      "pitch": "¿Por qué se construyó una pasarela colgada a cien metros de altura sobre el desfiladero de los Gaitanes?",
+      "more": "La Sociedad Hidroeléctrica del Chorro la edificó entre 1901 y 1905 no con fines turísticos, sino para que los operarios de mantenimiento pudiesen transportar materiales y vigilar el canal de agua entre los saltos del Gaitanejo y El Chorro. El rey Alfonso XIII la recorrió en 1921 para inaugurar la presa conde de Guadalhorce, dándole su nombre popular."
+    },
+    {
+      "id": "viajes-013",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Santillana del Mar (Cantabria)",
+      "pitch": "La villa de las tres mentiras (ni es santa, ni llana, ni tiene mar) que conserva empedrados intactos del siglo XIV, palacios blasonados y la colegiata románica con claustro de capiteles historiados primorosos."
+    },
+    {
+      "id": "viajes-014",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "San Pedro de Atacama y el Valle de la Luna (Chile)",
+      "pitch": "Dunas de salitre, formaciones geológicas de arcilla y uno de los cielos nocturnos más nítidos del hemisferio sur. Ver ponerse el sol sobre la cordillera de la Sal es una experiencia casi extraterrestre."
+    },
+    {
+      "id": "viajes-015",
+      "topic": "VIAJES",
+      "kind": "curiosidad",
+      "title": "El Acueducto de Segovia: dos mil años sin cemento",
+      "followUp": false,
+      "pitch": "Los ciento sesenta y siete arcos de granito del acueducto se sostienen exclusivamente por el equilibrio de pesos.",
+      "more": "Construido en época de los emperadores Trajano o Adriano, los más de veinte mil sillares de piedra de Guadarrama están colocados a hueso (opus quadratum), sin argamasa ni mezcla alguna de unión; los romanos levantaron los arcos con cimbras de madera y pinzas mecánicas cuyos agujeros de agarre aún son visibles en los frentes de los sillares."
+    },
+    {
+      "id": "viajes-016",
+      "topic": "VIAJES",
+      "kind": "escapada",
+      "title": "Ribeira Sacra (Lugo/Ourense)",
+      "pitch": "Los cañones del río Sil con viñedos plantados en bancales vertiginosos que bajan en pendiente hasta el agua, enmarcados por la mayor concentración de monasterios románicos rurales de Europa."
+    }
+  ]
+}

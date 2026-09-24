@@ -609,13 +609,236 @@ export const VeyaGlobalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   };
 
   // Local-First Dynamic AI Response Generator
-  const generateVeyaResponse = (userText: string): { text: string; mood: AvatarMood } => {
+  const generateVeyaResponse = (userText: string): { text: string; mood: AvatarMood; interactivePayload?: any } => {
     const isUsted = partnerProfile.pronounTreatment === 'usted';
     const name = partnerProfile.userName || 'José';
     const role = partnerProfile.companionRole;
     const isConcise = voiceProfile.conciseness > 70;
     const isWarm = voiceProfile.warmth > 70;
     const lower = userText.toLowerCase();
+
+    // 0. Flagship: 3D Educational Simulator (Anatomy & Physics Render Viewport)
+    if (
+      lower.includes('simulador') ||
+      lower.includes('modelo 3d') ||
+      lower.includes('modelos 3d') ||
+      lower.includes('render') ||
+      lower.includes('viewport') ||
+      lower.includes('renderizado') ||
+      lower.includes('three.js') ||
+      lower.includes('filament')
+    ) {
+      return {
+        text: isUsted
+          ? `He abierto el Simulador Educativo 3D de VEYA, ${name}. Incluye modelos interactivos de anatomía (cráneo, corazón 4D, neurona) y física (campo de Lorentz, órbitas keplerianas, átomo de Bohr), con viewport preparado para conectar librerías como Three.js o Android SceneView.`
+          : `¡Aquí tienes el Simulador Educativo 3D, ${name}! He cargado el visor con modelos 3D de anatomía y física. Puedes rotar en 360°, activar el modo wireframe, despiece o rayos X, y revisar la guía de integración SDK.`,
+        mood: 'concentrado',
+        interactivePayload: {
+          template: 'educational_simulator_3d',
+          title: 'Simulador Educativo 3D VEYA',
+          subtitle: 'Modelos 3D interactivos de anatomía y física con placeholders de renderizado',
+          topic: 'SIMULADOR 3D',
+        },
+      };
+    }
+
+    // 1. Flagship: Astronomy, NASA's Eyes, Stellarium, ISS Tracker & Relativity
+    if (
+      lower.includes('nasa') ||
+      lower.includes('stellarium') ||
+      lower.includes('skyview') ||
+      lower.includes('planeta') ||
+      lower.includes('sistema solar') ||
+      lower.includes('marea') ||
+      lower.includes('luna') ||
+      lower.includes('iss') ||
+      lower.includes('espacio') ||
+      lower.includes('estación espacial') ||
+      lower.includes('estacion espacial') ||
+      lower.includes('astronom') ||
+      lower.includes('relatividad') ||
+      lower.includes('constelaci') ||
+      lower.includes('astrolog')
+    ) {
+      return {
+        text: isUsted
+          ? `He desplegado el Observatorio Espacial de VEYA (NASA's Eyes & Stellarium), ${name}. Dispone de simulación orbital 3D con datos keplerianos exactos, seguimiento sub-satelital de la ISS a 27.600 km/h, catálogo estelar con visión nocturna y física relativista de Einstein.`
+          : `¡Desplegando el Observatorio Espacial VEYA al estilo NASA's Eyes y Stellarium, ${name}! Puedes explorar las órbitas planetarias en 3D, seguir la ISS en directo, orientarte con la bóveda de constelaciones y probar la dilatación del tiempo de Einstein.`,
+        mood: 'concentrado',
+        interactivePayload: {
+          template: 'nasa_eyes_astronomy',
+          title: "NASA's Eyes & Stellarium VEYA",
+          subtitle: 'Efemérides orbitales 3D, telemetría ISS, constelaciones y relatividad',
+          topic: 'ASTRONOMIA',
+        },
+      };
+    }
+
+    // 2. Flagship: Biology, Anatomy 3D (Anatronica), Smithsonian & Dermatology
+    if (
+      lower.includes('anatronica') ||
+      lower.includes('smithsonian') ||
+      lower.includes('cuerpo humano') ||
+      lower.includes('órgano') ||
+      lower.includes('organo') ||
+      lower.includes('corazón') ||
+      lower.includes('corazon') ||
+      lower.includes('pulmón') ||
+      lower.includes('pulmon') ||
+      lower.includes('cerebro') ||
+      lower.includes('fósil') ||
+      lower.includes('fosil') ||
+      lower.includes('dinosaurio') ||
+      lower.includes('célula') ||
+      lower.includes('celula') ||
+      lower.includes('cáncer de piel') ||
+      lower.includes('cancer de piel') ||
+      lower.includes('melanoma') ||
+      lower.includes('dermatolog')
+    ) {
+      return {
+        text: isUsted
+          ? `He activado el Laboratorio de Anatomía y Biología (Anatronica & Smithsonian 3D), ${name}. Cuenta con simulación cardiovascular 4D en tiempo real con trazado ECG, especímenes de historia natural con rotación 360°, microscopía celular y evaluación diagnóstica ABCD de lesiones cutáneas.`
+          : `¡Aquí tienes el Laboratorio Biológico Anatronica y Smithsonian 3D, ${name}! Tienes el corazón 4D latiendo con su electro en tiempo real, el cerebro, el cráneo de T-Rex para rotar en 3D, la célula eucariota y la regla clínica ABCD de la piel.`,
+        mood: 'cercano',
+        interactivePayload: {
+          template: 'anatronica_biology',
+          title: 'Anatronica 3D & Smithsonian Lab',
+          subtitle: 'Anatomía humana 4D, cardiología interactiva, fósiles y dermatología',
+          topic: 'BIOLOGIA',
+        },
+      };
+    }
+
+    // 3. Flagship: Mathematics, GeoGebra Grapher & WolframAlpha Step-by-Step Solver
+    if (
+      lower.includes('geogebra') ||
+      lower.includes('wolfram') ||
+      lower.includes('graficador') ||
+      lower.includes('función') ||
+      lower.includes('funcion') ||
+      lower.includes('derivada') ||
+      lower.includes('integral') ||
+      lower.includes('quebrado') ||
+      lower.includes('fraccion') ||
+      lower.includes('fracción') ||
+      lower.includes('cuadrática') ||
+      lower.includes('cuadratica') ||
+      lower.includes('álgebra') ||
+      lower.includes('algebra')
+    ) {
+      return {
+        text: isUsted
+          ? `He abierto el Estudio Matemático y Computacional (GeoGebra & WolframAlpha), ${name}. Incluye el graficador dinámico con cálculo instantáneo de rectas tangentes f'(x) y áreas de Riemann, junto con el solucionador algebraico paso a paso para quebrados y ecuaciones cuadráticas.`
+          : `¡Abriendo el laboratorio matemático GeoGebra y WolframAlpha, ${name}! Puedes graficar parábolas y ondas con sus tangentes móviles e integrales, y ver el desglose paso a paso de quebrados con su MCM y ecuaciones con la fórmula general.`,
+        mood: 'concentrado',
+        interactivePayload: {
+          template: 'geogebra_wolfram',
+          title: 'GeoGebra Studio & Wolfram Solver',
+          subtitle: 'Graficador dinámico, derivadas/integrales y álgebra paso a paso',
+          topic: 'MATEMATICAS',
+        },
+      };
+    }
+
+    // 2. Concentric Layers (Earth & Atmosphere)
+    if (
+      lower.includes('corte') ||
+      lower.includes('capa') ||
+      lower.includes('tierra') ||
+      lower.includes('corteza') ||
+      lower.includes('manto') ||
+      lower.includes('núcleo') ||
+      lower.includes('nucleo') ||
+      lower.includes('atmósfera') ||
+      lower.includes('atmosfera')
+    ) {
+      return {
+        text: isUsted
+          ? `He preparado el corte por capas concéntricas, ${name}. Puede tocar cada anillo para inspeccionar espesores, temperaturas de hasta 5.400 °C en el núcleo interno y el escudo magnético generado por el núcleo externo líquido.`
+          : `¡Mira qué pasada, ${name}! Tienes en la pizarra el corte por capas de la Tierra y la atmósfera. Toca cada anillo concéntrico para ver presiones, temperaturas y su papel vital para protegernos.`,
+        mood: 'cercano',
+        interactivePayload: {
+          template: 'concentric_layers',
+          title: 'Corte por Capas: Tierra y Atmósfera',
+          subtitle: 'Anillos concéntricos táctiles e inspección termodinámica',
+          topic: 'GEOLOGIA',
+        },
+      };
+    }
+
+    // 3. Stepped Timeline (Star Life Cycle / Mitosis)
+    if (
+      lower.includes('estrella') ||
+      lower.includes('supernova') ||
+      lower.includes('enana blanca') ||
+      lower.includes('etapa') ||
+      lower.includes('mitosis') ||
+      lower.includes('ciclo')
+    ) {
+      return {
+        text: isUsted
+          ? `Cargando la línea temporal por pasos, ${name}. Puede avanzar etapa por etapa desde la nebulosa fría hasta la secuencia principal, la gigante roja y el colapso final en enana blanca o supernova.`
+          : `¡Listo, ${name}! Te he preparado la línea temporal interactiva del ciclo de vida estelar. Puedes usar el control de avance para ver la lucha entre la gravedad y la fusión nuclear.`,
+        mood: 'concentrado',
+        interactivePayload: {
+          template: 'stepped_timeline',
+          title: 'Línea Temporal: Ciclo de Vida Estelar',
+          subtitle: 'Secuencia interactiva de etapas estelares y estados visuales',
+          topic: 'ASTROFISICA',
+        },
+      };
+    }
+
+    // 4. Particle Simulator (Gases & Kinetic Theory)
+    if (
+      lower.includes('partícula') ||
+      lower.includes('particula') ||
+      lower.includes('gas') ||
+      lower.includes('gases') ||
+      lower.includes('presión') ||
+      lower.includes('presion') ||
+      lower.includes('cinética') ||
+      lower.includes('cinetica')
+    ) {
+      return {
+        text: isUsted
+          ? `Iniciando el simulador de partículas en tiempo real, ${name}. Modifique los controles de temperatura, número de moléculas y volumen para observar cómo varía la presión según la ley de los gases ideales.`
+          : `¡En marcha el simulador de física, ${name}! Tienes partículas elásticas rebotando en el contenedor. Sube la temperatura o aprieta el émbolo para ver cómo los choques disparan el manómetro de presión.`,
+        mood: 'animado',
+        interactivePayload: {
+          template: 'particle_simulator',
+          title: 'Simulador Cinético de Partículas',
+          subtitle: 'Termodinámica en tiempo real y Ley de los Gases Ideales',
+          topic: 'FISICA',
+        },
+      };
+    }
+
+    // 5. Probability & Galton Board
+    if (
+      lower.includes('probabilidad') ||
+      lower.includes('estadística') ||
+      lower.includes('estadistica') ||
+      lower.includes('galton') ||
+      lower.includes('gauss') ||
+      lower.includes('campana') ||
+      lower.includes('distribución') ||
+      lower.includes('distribucion')
+    ) {
+      return {
+        text: isUsted
+          ? `He preparado el tablero de probabilidad de Galton, ${name}. Al soltar las bolas a través de los clavos, comprobará cómo el azar individual converge matemáticamente en la campana de Gauss normal.`
+          : `¡Mira cómo se crea la Campana de Gauss en vivo, ${name}! Cada bola cae rebotando al 50/50 por los clavos, y aun así la acumulación final siempre forma una curva simétrica perfecta.`,
+        mood: 'concentrado',
+        interactivePayload: {
+          template: 'distribution_stats',
+          title: 'Distribución y Probabilidad: Tablero de Galton',
+          subtitle: 'Simulación estocástica en vivo y Teorema Central del Límite',
+          topic: 'MATEMATICAS',
+        },
+      };
+    }
 
     // Check if user is asking about memories or what VEYA knows
     if (
@@ -732,6 +955,7 @@ export const VeyaGlobalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         text: response.text,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         mood: response.mood,
+        interactivePayload: response.interactivePayload,
       };
       setMessages((prev) => [...prev, botMsg]);
     }, 700);

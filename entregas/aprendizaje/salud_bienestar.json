@@ -1,0 +1,25 @@
+{
+  "topic": "Salud y Bienestar",
+  "cards": [
+    {
+      "q": "¿Por qué la neurociencia demuestra que no eres perezoso por no tener sueño antes de las doce de la noche?",
+      "a": "Durante la pubertad, tu reloj biológico natural se retrasa cerca de dos horas: la melatonina (la hormona del descanso) empieza a segregarse mucho más tarde que en los adultos. Madrugar a las siete para clase te exige el mismo esfuerzo biológico que a un adulto despertarse a las cuatro y media de la madrugada."
+    },
+    {
+      "q": "¿Qué le ocurre al 'camión de la basura' de tu cerebro cuando te quedas despierto mirando la pantalla a oscuras?",
+      "a": "La luz azul del móvil le hace creer a tu cerebro que es pleno mediodía e impide que arranque el sistema glinfático, un fluido nocturno que limpia los residuos tóxicos que acumulan tus neuronas durante el día. Si no duermes bien, tu cerebro amanece 'sucio' y nublado."
+    },
+    {
+      "q": "¿Por qué Ramón y Cajal te aseguraría que mover tus músculos es el mejor abono para sacar mejores notas?",
+      "a": "Cajal demostró que el cerebro es plástico y maleable. Cuando haces deporte o calistenia, tus músculos liberan unas moléculas llamadas mioquinas que viajan a la cabeza y hacen brotar nuevas conexiones neuronales en el hipocampo, fijando tus recuerdos el doble de rápido."
+    },
+    {
+      "q": "¿Por qué se llama al intestino el 'segundo cerebro' y cómo lo que comes decide si estás feliz o de bajón?",
+      "a": "En tu tubo digestivo viven millones de neuronas que charlan a diario con tu mente a través del nervio vago. Además, más del 90% de la serotonina (el mensajero del buen humor y la calma) la fabrican tus bacterias buenas si las cuidas con fruta, verdura y comida real."
+    },
+    {
+      "q": "¿Cómo puedes frenar un ataque de nervios o taquicardia antes de un examen en solo 30 segundos?",
+      "a": "Aplica el 'suspiro fisiológico': toma aire dos veces seguidas por la nariz (una inhalación honda y otra corta encima) y suéltalo muy despacio por la boca. Repítelo tres veces y tus pulmones le ordenarán al corazón frenar las pulsaciones al instante."
+    }
+  ]
+}

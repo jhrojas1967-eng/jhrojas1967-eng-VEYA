@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { AvatarVisual } from './AvatarVisual';
-import { Send, Trash2, Mic, MicOff, Volume2, Sparkles, User, Info, Layers, Eye, EyeOff, ShieldCheck, ChevronDown, ChevronUp } from 'lucide-react';
-import { ChatMessage, AvatarState, AvatarMood } from '../types';
+import { Send, Trash2, Mic, MicOff, Volume2, Sparkles, User, Info, Layers, Eye, EyeOff, ShieldCheck, ChevronDown, ChevronUp, Compass } from 'lucide-react';
+import { ChatMessage, AvatarState, AvatarMood, BlackboardTemplateType } from '../types';
 import { useVeya } from '../context/VeyaGlobalContext';
 
-export const ScreenChat: React.FC = () => {
+interface ScreenChatProps {
+  onOpenBlackboard?: (template?: BlackboardTemplateType) => void;
+}
+
+export const ScreenChat: React.FC<ScreenChatProps> = ({ onOpenBlackboard }) => {
   const {
     partnerProfile,
     voiceProfile,
@@ -60,10 +64,15 @@ export const ScreenChat: React.FC = () => {
   };
 
   const promptChips = [
+    '🧊 Simulador Educativo 3D: Modelos y Render',
+    "🪐 NASA's Eyes: Sistema Solar, Mareas e ISS",
+    '🫀 Anatronica 3D: Corazón y Cuerpo Humano',
+    '📈 GeoGebra & Wolfram: Funciones y Quebrados',
+    '🦖 Smithsonian 3D: Fósiles y Célula Eucariota',
+    '⚡ Electricidad, Fontanería y Motor 4T',
+    '🩺 Salud: Piel y Regla ABCD Melanoma',
+    '⚖️ Derecho Cotidiano y Alquileres',
     '¿Qué sabes sobre mí?',
-    'Recomienda música para concentrarme',
-    'Estoy cansado de picar código',
-    '¿Cómo está configurada mi rutina?',
   ];
 
   return (
@@ -88,7 +97,19 @@ export const ScreenChat: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+          {/* Quick Blackboard Launch Button */}
+          {onOpenBlackboard && (
+            <button
+              onClick={() => onOpenBlackboard('orbits_astronomy')}
+              className="px-2 py-1 rounded-xl text-[10px] font-bold bg-cyan-50 dark:bg-cyan-950/70 border border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300 flex items-center gap-1 hover:bg-cyan-100 transition-colors"
+              title="Abrir Pizarra Interactiva de VEYA"
+            >
+              <Compass className="w-3 h-3 text-cyan-500" />
+              <span>Pizarra</span>
+            </button>
+          )}
+
           <button
             onClick={() => setShowBrokerContext(!showBrokerContext)}
             className={`px-2.5 py-1 rounded-xl text-[11px] font-bold flex items-center gap-1 transition-colors border ${
@@ -198,6 +219,26 @@ export const ScreenChat: React.FC = () => {
                   }`}
                 >
                   <p>{m.text}</p>
+
+                  {/* Interactive Blackboard Launch Card */}
+                  {m.interactivePayload && (
+                    <div className="mt-2.5 p-3 rounded-xl bg-gradient-to-br from-cyan-950/80 to-blue-950/80 border border-cyan-700/50 text-left shadow-md">
+                      <div className="flex items-center gap-1.5 text-cyan-300 text-[10px] font-bold uppercase tracking-wider mb-1">
+                        <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                        <span>{m.interactivePayload.title}</span>
+                      </div>
+                      <p className="text-[11px] text-slate-300 mb-2 leading-tight">
+                        {m.interactivePayload.subtitle}
+                      </p>
+                      <button
+                        onClick={() => onOpenBlackboard?.(m.interactivePayload?.template)}
+                        className="w-full py-1.5 px-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm"
+                      >
+                        <Compass className="w-3.5 h-3.5" />
+                        <span>Abrir Pizarra Interactiva</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1 px-1 font-mono">
                   {m.timestamp}

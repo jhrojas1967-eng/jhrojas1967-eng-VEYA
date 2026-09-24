@@ -1,0 +1,113 @@
+{
+  "subjectId": "fisica",
+  "subjectTitle": "Física y Cosmología para Jóvenes Científicos",
+  "category": "ciencias_naturales",
+  "mentorRole": "Albert Einstein, Richard Feynman y Carl Sagan · Pedagogía científica de asombro y rigor",
+  "targetAudience": "Adolescentes y estudiantes · De la experiencia cotidiana a las fronteras del universo",
+  "description": "Leyes fundamentales que rigen el movimiento, la energía, la luz, el electromagnetismo, la relatividad y la danza gravitatoria de los planetas, estrellas y mareas.",
+  "blocks": [
+    {
+      "id": "fis-b1",
+      "title": "Mecánica clásica y leyes de Newton",
+      "description": "Fuerzas, inercia, conservación del momento y gravitación universal.",
+      "cards": [
+        {
+          "q": "¿Qué enuncia la primera ley de Newton (principio de inercia)?",
+          "a": "Todo cuerpo persevera en su estado de reposo o de movimiento rectilíneo uniforme a menos que sea obligado a cambiar su estado por fuerzas netas aplicadas sobre él."
+        },
+        {
+          "q": "¿Por qué el peso de un objeto cambia en la Luna pero su masa permanece idéntica?",
+          "a": "Porque la masa es la cantidad intrínseca de materia que compone el cuerpo, mientras que el peso es la fuerza gravitatoria con la que el astro lo atrae (la gravedad lunar es aproximadamente un sexto de la terrestre)."
+        },
+        {
+          "q": "¿Qué significa que la energía mecánica se conserve en un sistema cerrado?",
+          "a": "Que en ausencia de fuerzas disipativas como el rozamiento del aire, la suma de la energía cinética (de movimiento) y la energía potencial (de posición) se mantiene estrictamente constante en todo instante."
+        },
+        {
+          "q": "¿Cuál es la tercera ley de Newton y por qué no se anulan sus fuerzas?",
+          "a": "A toda acción se opone una reacción igual y contraria; no se anulan mutuamente porque actúan siempre sobre dos cuerpos físicos distintos, nunca sobre el mismo objeto."
+        }
+      ]
+    },
+    {
+      "id": "fis-b2",
+      "title": "Termodinámica y flecha del tiempo",
+      "description": "Calor, trabajo, rendimiento térmico y el concepto de entropía.",
+      "cards": [
+        {
+          "q": "¿Cuál es la diferencia fundamental entre calor y temperatura?",
+          "a": "La temperatura es una medida de la energía cinética promedio de las partículas de un cuerpo, mientras que el calor es la energía térmica en tránsito de un cuerpo a mayor temperatura hacia otro a menor temperatura."
+        },
+        {
+          "q": "¿Qué establece el segundo principio de la termodinámica?",
+          "a": "Que en cualquier proceso espontáneo dentro de un sistema aislado, la entropía total siempre aumenta o permanece constante, definiendo la irreversibilidad y la dirección temporal de los sucesos físicos."
+        },
+        {
+          "q": "¿Por qué es teóricamente imposible construir un motor con un 100% de rendimiento térmico?",
+          "a": "Por el teorema de Carnot: cualquier máquina térmica cíclica necesita ceder inevitablemente una fracción de calor a un foco frío para completar su ciclo de trabajo."
+        }
+      ]
+    },
+    {
+      "id": "fis-b3",
+      "title": "Electromagnetismo y óptica ondulatoria",
+      "description": "Cargas, campos magnéticos, inducción electromagnética y la naturaleza de la luz.",
+      "cards": [
+        {
+          "q": "¿Qué descubrió Faraday con la ley de inducción electromagnética?",
+          "a": "Que la variación del flujo magnético que atraviesa un circuito conductor genera en él una fuerza electromotriz (corriente inducida), principio base de dinamos, alternadores y transformadores."
+        },
+        {
+          "q": "¿Qué es la dualidad onda-partícula de la luz?",
+          "a": "El comportamiento dual demostrado experimentalmente: en fenómenos de propagación (interferencia y difracción) la luz se comporta como onda; en intercambios energéticos (efecto fotoeléctrico) actúa como paquetes discretos de energía llamados fotones."
+        },
+        {
+          "q": "¿Por qué el cielo diurno se ve azul y en el ocaso se vuelve anaranjado?",
+          "a": "Por la dispersión de Rayleigh: las moléculas del aire dispersan las longitudes de onda cortas (azul/violeta) más que las largas. Al atardecer, la luz solar atraviesa mucho más espesor atmosférico, perdiendo el azul y dejando pasar los tonos rojizos directos."
+        }
+      ]
+    },
+    {
+      "id": "fis-b4",
+      "title": "Relatividad especial y física moderna (Explicada por Albert Einstein)",
+      "description": "El espacio-tiempo, el tiempo que se estira y la equivalencia masa-energía.",
+      "cards": [
+        {
+          "q": "¿Cómo le explicarías a un adolescente qué es la relatividad especial con el tren de Einstein?",
+          "a": "Imagina que vas en un tren que viaja casi a la velocidad de la luz y enciendes una linterna hacia adelante. Un amigo fuera del tren NO verá la luz salir al doble de velocidad, porque la luz siempre viaja a 300.000 km/s para TODOS. ¿Cómo es posible? Porque para que la velocidad sea constante, el tiempo dentro del tren tiene que ralentizarse y el tren encogerse respecto a tu amigo. ¡El tiempo no corre igual para quien viaja que para quien espera!"
+        },
+        {
+          "q": "¿Qué significa físicamente E = mc² para un menor o joven estudiante?",
+          "a": "Significa que la masa es energía congelada y concentradísima. La letra 'c' es la velocidad de la luz (300.000.000 metros por segundo), y al elevarla al cuadrado se convierte en un número colosal de 17 ceros. Por eso, desintegrar apenas un gramo de materia libera tanta energía como miles de toneladas de dinamita o el calor de una pequeña estrella."
+        },
+        {
+          "q": "¿En qué consiste el principio de incertidumbre de Heisenberg?",
+          "a": "En el mundo cuántico ultramicroscópico, no puedes medir a la vez y con total exactitud dónde está un electrón y a qué velocidad viaja: para 'ver' el electrón tienes que chocar un fotón contra él, y ese simple choque desvía su trayectoria, como intentar medir la posición de una bola de billar a oscuras golpeándola con otra."
+        }
+      ]
+    },
+    {
+      "id": "fis-b5",
+      "title": "Astrofísica de la Tierra y el Sistema Solar: Mareas, Rotación y Estrellas",
+      "description": "Por qué la Tierra gira, cómo la Luna mueve los mares y qué enciende el corazón de las estrellas.",
+      "cards": [
+        {
+          "q": "¿Cómo funcionan realmente las mareas marinas y por qué hay dos mareas altas al día?",
+          "a": "La gravedad de la Luna atrae con más fuerza el agua del lado de la Tierra que está más cerca de ella, creando una 'montaña' de agua (marea alta). Pero en el lado opuesto del planeta también hay otra marea alta a la vez: ¿por qué? Porque la Luna atrae a la Tierra sólida hacia sí con más fuerza que al agua lejana, dejando a ese océano 'rezagado'. Al girar la Tierra bajo esos dos abultamientos cada 24 horas, cada playa vive dos pleamares al día."
+        },
+        {
+          "q": "¿Por qué la Tierra no para de rotar sobre sí misma si nadie la empuja en el espacio?",
+          "a": "Por la conservación del momento angular. Hace 4.500 millones de años, la nube de gas y polvo que formó el Sistema Solar colapsó girando sobre sí misma (como una patinadora sobre hielo que recoge los brazos y gira cada vez más rápido). Al no haber aire ni rozamiento en el vacío del espacio, la Tierra sigue girando por pura inercia a unos 1.670 km/h en el ecuador desde entonces."
+        },
+        {
+          "q": "¿Qué enciende a las estrellas y por qué no colapsan bajo su propio peso inmenso?",
+          "a": "Una estrella es una batalla cósmica de equilibrio hidrostático. La gravedad intenta aplastarla hacia el centro con una fuerza descomunal. Pero en su núcleo la presión y el calor son tan brutales que los átomos de hidrógeno se fusionan formando helio, liberando radiación y calor que empujan hacia afuera. La estrella vive millones de años mientras ese empuje nuclear equilibre exactamente su propio peso."
+        },
+        {
+          "q": "¿Por qué los planetas del Sistema Solar giran casi todos en el mismo plano y en el mismo sentido?",
+          "a": "Porque todos nacieron del mismo disco protoplanetario plano que giraba alrededor del Sol recién nacido. Las colisiones entre partículas de gas y roca fueron cancelando los movimientos caóticos arriba y abajo hasta aplanar toda la materia en un disco liso, igual que una bola de masa de pizza que al girar en el aire se vuelve un disco plano."
+        }
+      ]
+    }
+  ]
+}

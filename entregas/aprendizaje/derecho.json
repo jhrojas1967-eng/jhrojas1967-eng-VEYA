@@ -1,0 +1,98 @@
+{
+  "subjectId": "derecho",
+  "subjectTitle": "Derecho, Constitución y Ciudadanía",
+  "category": "ciencias_juridicas",
+  "mentorRole": "Montesquieu, Cesare Beccaria y Clara Campoamor · Justicia y garantías ciudadanas",
+  "targetAudience": "Adolescentes y futuros ciudadanos · Cómo defender tus derechos y entender la ley",
+  "description": "Fundamentos del ordenamiento jurídico, la Constitución como pacto de convivencia, derechos fundamentales, garantías penales y herramientas legales útiles para la vida cotidiana.",
+  "blocks": [
+    {
+      "id": "der-b1",
+      "title": "La Constitución como regla de convivencia y derechos fundamentales",
+      "description": "Qué es una carta magna, por qué nadie está por encima de ella y qué derechos te protegen.",
+      "cards": [
+        {
+          "q": "¿Cómo le explicarías a un menor qué es la Constitución y por qué importa en su día a día?",
+          "a": "Es como el reglamento del juego de vivir juntos en sociedad. Ningún gobernante, policía o juez puede inventarse una norma que viole ese reglamento básico. Te garantiza que nadie puede meterse en tu casa sin permiso de un juez, que eres libre de pensar y opinar, y que todos somos iguales ante la ley sin importar origen, sexo o dinero."
+        },
+        {
+          "q": "¿Qué exige el principio de legalidad consagrado en el artículo 9.3 de la Constitución?",
+          "a": "Que todos los poderes públicos y ciudadanos están sometidos estrictamente a la Constitución y al resto del ordenamiento jurídico, prohibiendo la arbitrariedad de la administración."
+        },
+        {
+          "q": "¿En qué se diferencia una ley orgánica de una ley ordinaria en España?",
+          "a": "La ley orgánica regula materias especialmente protegidas (derechos fundamentales, libertades públicas, estatutos de autonomía y régimen electoral general) y exige mayoría absoluta del Congreso para su aprobación."
+        },
+        {
+          "q": "¿Qué es el 'recurso de amparo' ante el Tribunal Constitucional?",
+          "a": "La herramienta ciudadana de máxima protección: si cualquier juez o administración vulnera uno de tus derechos fundamentales protegidos (igualdad, intimidad, huelga, libertad de expresión) y se han agotado los tribunales ordinarios, puedes acudir directamente al Tribunal Constitucional para que restablezca tu derecho."
+        }
+      ]
+    },
+    {
+      "id": "der-b2",
+      "title": "Derecho civil y obligaciones contractuales en la vida real",
+      "description": "El consentimiento, compras online, condiciones generales y responsabilidad civil.",
+      "cards": [
+        {
+          "q": "¿Cuáles son los tres requisitos esenciales para que un contrato sea válido?",
+          "a": "Consentimiento libre de los contratantes (sin engaño ni coacción), objeto cierto que sea materia del contrato (lícito y posible) y causa de la obligación (la razón jurídica por la que se pacta), según el artículo 1.261 del Código Civil."
+        },
+        {
+          "q": "¿Qué es el 'derecho de desistimiento' de 14 días al comprar por internet?",
+          "a": "Una garantía legal para consumidores: al comprar online, tienes 14 días naturales desde que recibes el producto para devolverlo y recuperar tu dinero íntegro sin dar explicaciones ni pagar penalización, compensando que no pudiste ver el producto físicamente antes de comprarlo."
+        },
+        {
+          "q": "¿Qué diferencia existe entre responsabilidad civil contractual y extracontractual?",
+          "a": "La contractual surge del incumplimiento de un pacto preexistente; la extracontractual (artículo 1.902 del Código Civil) nace del daño causado a otro por acción u omisión en la que intervenga culpa o negligencia sin vínculo previo (ej. romper sin querer el cristal del vecino)."
+        },
+        {
+          "q": "¿Qué significa el aforismo jurídico 'pacta sunt servanda'?",
+          "a": "Los pactos están para cumplirse: lo convenido contractualmente tiene fuerza de ley entre las partes y debe cumplirse al tenor de las cláusulas libremente acordadas."
+        }
+      ]
+    },
+    {
+      "id": "der-b3",
+      "title": "Garantías penales y derechos procesales (La justicia frente al abuso)",
+      "description": "Presunción de inocencia, tutela judicial efectiva y límites al poder punitivo.",
+      "cards": [
+        {
+          "q": "¿Por qué es tan sagrado el principio de 'presunción de inocencia'?",
+          "a": "Porque es preferible que diez culpables queden libres antes de que un inocente sea condenado injustamente. La policía o el fiscal deben probar la culpa con pruebas sólidas; el acusado no tiene que demostrar su inocencia, se parte de que es inocente."
+        },
+        {
+          "q": "¿Qué establece el principio penal 'nullum crimen, nulla poena sine lege'?",
+          "a": "Que nadie puede ser condenado ni sancionado por acciones u omisiones que en el momento de producirse no constituyan delito o falta según la legislación penal vigente en ese momento."
+        },
+        {
+          "q": "¿Qué significa la 'doctrina del fruto del árbol envenenado'?",
+          "a": "Que cualquier prueba obtenida violando derechos fundamentales (como entrar a una vivienda o pinchar un móvil sin orden judicial) queda contaminada y es nula, y tampoco valen los descubrimientos derivados de ella."
+        },
+        {
+          "q": "¿Qué es el procedimiento de 'Habeas Corpus'?",
+          "a": "Un derecho ciudadano inmediato de origen medieval: si una persona considera que su detención policial es ilegal o supera los plazos máximos legales (72 horas), puede exigir comparecer de inmediato ante el juez de guardia para que decida si queda libre o continúa detenida."
+        }
+      ]
+    },
+    {
+      "id": "der-b4",
+      "title": "Derecho laboral y tu primer empleo",
+      "description": "Contrato de trabajo, nóminas, horas extras, periodos de prueba y despido.",
+      "cards": [
+        {
+          "q": "¿Qué debe comprobar un joven en su primer contrato y nómina de trabajo?",
+          "a": "Debe verificar la categoría profesional, la jornada laboral pactada (parcial o completa), el salario base y complementos según el convenio colectivo aplicable, y que la empresa lo haya dado de alta en la Seguridad Social desde el primer minuto de trabajo."
+        },
+        {
+          "q": "¿Qué diferencia existe entre un despido nulo y un despido improcedente?",
+          "a": "El nulo se declara por vulneración de derechos fundamentales (discriminación, represalia sindical, embarazo) y obliga a la readmisión inmediata con abono de salarios de tramitación; el improcedente permite a la empresa optar entre readmitir o pagar indemnización económica legal."
+        },
+        {
+          "q": "¿Cuál es la función de un convenio colectivo en la negociación laboral?",
+          "a": "Un acuerdo formal entre sindicatos y patronales que regula condiciones de trabajo (salarios mínimos del sector, festivos, turnos, descansos) y que vincula obligatoriamente a todas las empresas y trabajadores de ese sector económico."
+        }
+      ]
+    }
+  ]
+}

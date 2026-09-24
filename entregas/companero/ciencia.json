@@ -1,0 +1,138 @@
+{
+  "suggestions": [
+    {
+      "id": "ciencia-001",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "Las 'mariposas del alma' de Santiago Ramón y Cajal",
+      "followUp": false,
+      "pitch": "¿Sabías que el padre de la neurociencia moderna dibujaba a mano alzada las neuronas mirando por un microscopio monocular en su buhardilla?",
+      "more": "Cajal demostró la 'doctrina de la neurona': las células nerviosas son unidades individuales contiguas y no una red continua fusionada. Sus dibujos a tinta china eran tan precisos que los neurólogos actuales siguen utilizándolos como referencia anatómica fundamental."
+    },
+    {
+      "id": "ciencia-002",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "Mario Molina y la salvación de la capa de ozono",
+      "followUp": false,
+      "pitch": "Un químico mexicano descubrió en 1974 que los sprays comunes estaban destruyendo el escudo invisible de la Tierra.",
+      "more": "Junto a Sherwood Rowland, Mario Molina demostró que los clorofluorocarbonos (CFC) liberaban cloro libre en la estratosfera, descomponiendo catalíticamente miles de moléculas de ozono. Su tenacidad propició el Protocolo de Montreal de 1987, considerado el tratado ambiental más exitoso de la humanidad."
+    },
+    {
+      "id": "ciencia-003",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "La ADN polimerasa de Margarita Salas",
+      "followUp": false,
+      "pitch": "¿Sabías que la patente más rentable de la historia del CSIC español nació estudiando un virus que ataca a bacterias?",
+      "more": "La bioquímica asturiana Margarita Salas aisló la ADN polimerasa del bacteriófago phi29. Esta enzima permite amplificar millones de copias de ADN de muestras biológicas mínimas a temperatura ambiente constante, revolucionando la medicina forense, la arqueología y el diagnóstico genético."
+    },
+    {
+      "id": "ciencia-004",
+      "topic": "CIENCIA",
+      "kind": "libro",
+      "title": "El gen egoísta (Richard Dawkins)",
+      "pitch": "Una perspectiva transformadora sobre la evolución que sitúa el motor de la selección natural en los genes replicantes en lugar del individuo o la especie. Iluminador y pedagógico."
+    },
+    {
+      "id": "ciencia-005",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El ajedrecista mecánico de Torres Quevedo (1912)",
+      "followUp": false,
+      "pitch": "El primer autómata de la historia capaz de jugar un final de ajedrez sin intervención humana fue inventado por un ingeniero cántabro.",
+      "more": "Leonardo Torres Quevedo construyó en 1912 una máquina electromecánica que jugaba con torre y rey contra el rey del adversario. Detectaba jugadas ilegales encendiendo bombillas y daba jaque mate indefectiblemente, anticipándose seis décadas a la informática moderna."
+    },
+    {
+      "id": "ciencia-006",
+      "topic": "CIENCIA",
+      "kind": "libro",
+      "title": "Cosmos (Carl Sagan)",
+      "pitch": "El viaje divulgativo más cálido y humano por las escalas del universo, desde las estrellas lejanas hasta la fragilidad de nuestro pálido punto azul. Prosa que reconcilia con el asombro."
+    },
+    {
+      "id": "ciencia-007",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El descubrimiento del wolframio por los hermanos Elhúyar",
+      "followUp": false,
+      "pitch": "El único elemento químico de la tabla periódica descubierto y aislado en suelo español se obtuvo en Vergara (Guipúzcoa) en 1783.",
+      "more": "Los hermanos Juan José y Fausto de Elhúyar consiguieron aislar el tungsteno metálico puro mediante reducción con carbón en los laboratorios del Real Seminario Patriótico de Vergara. Hoy es insustituible por tener el punto de fusión más alto de todos los metales (3.422 °C)."
+    },
+    {
+      "id": "ciencia-008",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El vanadio: descubierto dos veces en México y Suecia",
+      "followUp": false,
+      "pitch": "Andrés Manuel del Río descubrió un nuevo metal en 1801 en una mina de Hidalgo (México) y lo llamó 'eritronio'.",
+      "more": "Químicos europeos convencieron a Del Río de que su muestra era sólo cromo impuro. Treinta años después, el químico sueco Nils Sefström redescubrió el mismo elemento y lo bautizó vanadio, confirmando con justicia póstuma el hallazgo del sabio hispano-mexicano."
+    },
+    {
+      "id": "ciencia-009",
+      "topic": "CIENCIA",
+      "kind": "libro",
+      "title": "Sapiens: De animales a dioses (Yuval Noah Harari)",
+      "pitch": "Un recorrido antropológico y evolutivo sobre cómo una especie insignificante de primates conquistó el planeta gracias a su capacidad de cooperar mediante ficciones compartidas."
+    },
+    {
+      "id": "ciencia-010",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "La primera radiografía de España (1896)",
+      "followUp": false,
+      "pitch": "Apenas dos meses después de que Röntgen publicara el hallazgo de los rayos X, un catedrático barcelonés los replicó con éxito.",
+      "more": "César Comas Llabería y Miquel A. Fargas lograron la primera placa radiográfica en enero de 1896 en la Universidad de Barcelona. Comas dedicó su vida a la radiología médica cuando aún no se conocían los efectos adversos de la radiación ionizante."
+    },
+    {
+      "id": "ciencia-011",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El observatorio del Roque de los Muchachos (La Palma)",
+      "followUp": false,
+      "pitch": "¿Por qué las cumbres de Canarias albergan uno de los mejores telescopios ópticos del mundo?",
+      "more": "La inversión térmica creada por los vientos alisios forma un mar de nubes a 1.200 metros que actúa como filtro natural contra la turbulencia. La ley de protección del cielo de 1988 regula la iluminación pública nocturna de la isla para asegurar cielos completamente oscuros y transparentes."
+    },
+    {
+      "id": "ciencia-012",
+      "topic": "CIENCIA",
+      "kind": "libro",
+      "title": "El orden del tiempo (Carlo Rovelli)",
+      "pitch": "Física teórica explicada con poesía: el tiempo no fluye igual en la montaña que en el llano, y en la escala fundamental de la realidad cuántica el tiempo sencillamente no existe."
+    },
+    {
+      "id": "ciencia-013",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El platino: el 'pequeño oro' despreciado",
+      "followUp": false,
+      "pitch": "Antonio de Ulloa describió formalmente el platino en 1748 tras encontrarlo en los lavaderos de oro del Chocó colombiano.",
+      "more": "Los mineros locales lo llamaban 'platina' despectivamente y lo arrojaban de vuelta a los ríos creyendo que era plata inmadura o un metal sin valor para fundir monedas. Hoy es uno de los catalizadores industriales más costosos y vitales del planeta."
+    },
+    {
+      "id": "ciencia-014",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "Los fósiles de Atapuerca y el Homo antecessor",
+      "followUp": false,
+      "pitch": "Una trinchera de ferrocarril abandonada en Burgos ocultaba el mayor yacimiento de homínidos fósiles de Eurasia.",
+      "more": "En la Sima de los Huesos y la Gran Dolina, el equipo codirigido por Arsuaga, Bermúdez de Castro y Carbonell identificó en 1994 una nueva especie humana de hace más de ochocientos mil años, reescribiendo el poblamiento del continente europeo."
+    },
+    {
+      "id": "ciencia-015",
+      "topic": "CIENCIA",
+      "kind": "libro",
+      "title": "Una breve historia de casi todo (Bill Bryson)",
+      "pitch": "El libro ideal para reconciliarse con la geología, la química y la astronomía: anécdotas extravagantes de científicos excéntricos y explicaciones cristalinas sin una sola fórmula árida."
+    },
+    {
+      "id": "ciencia-016",
+      "topic": "CIENCIA",
+      "kind": "curiosidad",
+      "title": "El submarino con propulsión eléctrica de Isaac Peral (1888)",
+      "followUp": false,
+      "pitch": "En el arsenal de La Carraca de San Fernando zarpó el primer submarino militar totalmente eléctrico y con tubo lanzatorpedos.",
+      "more": "Diseñado por el marino e inventor murciano Isaac Peral, contaba con acumuladores eléctricos, periscopio óptico y un aparato de profundidades automático. Navegó con éxito en inmersión durante horas ante comisiones militares antes de ser boicoteado por burocracias ministeriales."
+    }
+  ]
+}

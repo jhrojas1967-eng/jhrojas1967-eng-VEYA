@@ -1,0 +1,178 @@
+{
+  "suggestions": [
+    {
+      "id": "libros-001",
+      "topic": "LIBROS",
+      "kind": "libro",
+      "title": "El infinito en un junco (Irene Vallejo)",
+      "pitch": "Una aventura histórica fascinante sobre cómo nació el libro y cómo los lectores salvaron las palabras del olvido y el fuego. Prosa lírica, amena y llena de amor por la lectura."
+    },
+    {
+      "id": "libros-002",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Pedro Páramo (Juan Rulfo)",
+      "pitch": "Un hombre busca a su padre en un pueblo silencioso donde los susurros de los vivos y los muertos se confunden con el viento. Una obra maestra breve y magnética que fundó una era."
+    },
+    {
+      "id": "libros-003",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "El camino (Miguel Delibes)",
+      "pitch": "Un niño apodado 'el Mochuelo' pasa su última noche en la aldea antes de partir a la ciudad recordando sus travesuras y amigos. Ternura castellana y sabiduría popular inolvidables."
+    },
+    {
+      "id": "libros-004",
+      "topic": "LIBROS",
+      "kind": "cuento",
+      "title": "Ficciones (Jorge Luis Borges)",
+      "pitch": "Laberintos, bibliotecas infinitas, espejos y paradojas filosóficas narradas con la precisión de un orfebre del lenguaje. Cada cuento es un universo que cambia según lo releas."
+    },
+    {
+      "id": "libros-005",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Nuestra parte de noche (Mariana Enriquez)",
+      "pitch": "Un padre y su hijo cruzan Argentina en plena dictadura mientras huyen de una sociedad secreta que busca la inmortalidad a través de la oscuridad. Terror gótico y memoria política."
+    },
+    {
+      "id": "libros-006",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "El corazón helado (Almudena Grandes)",
+      "pitch": "La muerte de un patriarca desvela los secretos patrimoniales y morales que unieron a dos familias republicana y falangista durante décadas. Emotiva y exhaustiva."
+    },
+    {
+      "id": "libros-007",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Los detectives salvajes (Roberto Bolaño)",
+      "pitch": "La búsqueda apasionada de una poeta desaparecida en el desierto de Sonora a través de decenas de testimonios de poetas bohemios. Una carta de amor desgarrada a la juventud."
+    },
+    {
+      "id": "libros-008",
+      "topic": "LIBROS",
+      "kind": "libro",
+      "title": "La ridícula idea de no volver a verte (Rosa Montero)",
+      "pitch": "A partir del diario de duelo de Marie Curie tras perder a Pierre, la autora reflexiona sobre la pérdida, el amor y la superación personal con enorme honestidad."
+    },
+    {
+      "id": "libros-009",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Crónica de una muerte anunciada (Gabriel García Márquez)",
+      "pitch": "Todo un pueblo sabía que iban a matar a Santiago Nasar y nadie logró evitarlo. Un mecanismo narrativo prodigioso donde conocer el desenlace multiplica la intriga."
+    },
+    {
+      "id": "libros-010",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Corazón tan blanco (Javier Marías)",
+      "pitch": "La sombra de un suicidio pasado y el peso involuntario de los secretos que se escuchan sin querer. Estilo envolvente de frases largas que atrapa con elegancia filosófica."
+    },
+    {
+      "id": "libros-011",
+      "topic": "LIBROS",
+      "kind": "ensayo",
+      "title": "Las venas abiertas de América Latina (Eduardo Galeano)",
+      "pitch": "Crónica apasionada sobre cinco siglos de expolio de recursos naturales y trabajo humano en el continente. Prosa periodística vibrante que despierta la conciencia crítica."
+    },
+    {
+      "id": "libros-012",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Canto yo y la montaña baila (Irene Solà)",
+      "pitch": "Las nubes, los corzos, los fantasmas de la guerra y las brujas toman la palabra para contar la vida en un rincón de los Pirineos. Pura frescura sensorial y poética."
+    },
+    {
+      "id": "libros-013",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "El túnel (Ernesto Sabato)",
+      "pitch": "La confesión carcelaria del pintor Juan Pablo Castel sobre su obsesión posesiva y el asesinato de la única mujer que comprendió su arte. Breve, asfixiante y lúcida."
+    },
+    {
+      "id": "libros-014",
+      "topic": "LIBROS",
+      "kind": "poesía",
+      "title": "Romancero gitano (Federico García Lorca)",
+      "pitch": "La luna, el viento, las navajas de Albacete y el misterio andaluz fundidos en versos con un compás musical hipnótico. La cumbre de la emoción popular lírica."
+    },
+    {
+      "id": "libros-015",
+      "topic": "LIBROS",
+      "kind": "libro",
+      "title": "El olvido que seremos (Héctor Abad Faciolince)",
+      "pitch": "Homenaje íntimo y conmovedor de un hijo a su padre, un médico y activista de derechos humanos asesinado en Medellín. Un testimonio luminoso sobre la bondad frente a la barbarie."
+    },
+    {
+      "id": "libros-016",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "El principito (Antoine de Saint-Exupéry - Le Petit Prince)",
+      "pitch": "Un aviador perdido en el desierto conoce a un niño de rizos de oro venido de un asteroide lejano. Una parábola luminosa sobre la amistad, la domesticación afectiva y lo esencial invisible a los ojos."
+    },
+    {
+      "id": "libros-017",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Crimen y castigo (Fiódor Dostoyevski - Prestupléniye i nakazániye)",
+      "pitch": "El estudiante Raskólnikov asesina a una anciana usurera creyéndose superior a la moral común y queda atrapado en el laberinto de la culpa y la redención psicológica. Una cumbre literaria de la condición humana."
+    },
+    {
+      "id": "libros-018",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "1984 (George Orwell)",
+      "pitch": "Winston Smith desafía en secreto al Gran Hermano y a la Policía del Pensamiento en una sociedad vigilada donde la verdad se reescribe a diario. La advertencia política más lúcida sobre la manipulación del lenguaje."
+    },
+    {
+      "id": "libros-019",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Tokio blues / Norwegian Wood (Haruki Murakami)",
+      "pitch": "El paso doloroso de la adolescencia a la madurez universitaria en el Tokio de los años sesenta entre pérdidas afectivas, música de los Beatles y la búsqueda de identidad personal."
+    },
+    {
+      "id": "libros-020",
+      "topic": "LIBROS",
+      "kind": "ensayo",
+      "title": "El hombre en busca de sentido (Viktor Frankl - Ein Psychologe erlebt das Konzentrationslager)",
+      "pitch": "Un psiquiatra austríaco sobrevive a Auschwitz y demuestra que quien tiene un 'porqué' para vivir puede soportar casi cualquier 'cómo'. Una lección inextinguible de fortaleza psicológica."
+    },
+    {
+      "id": "libros-021",
+      "topic": "LIBROS",
+      "kind": "novela",
+      "title": "Siddhartha (Hermann Hesse)",
+      "pitch": "La búsqueda espiritual de un joven hindú que abandona la doctrina paterna y las comodidades para escuchar la voz del río, experimentando el amor, el dolor terrenal y la paz interior profunda."
+    },
+    {
+      "id": "libros-022",
+      "topic": "LIBROS",
+      "kind": "curiosidad",
+      "title": "El manuscrito escondido de Juan Rulfo",
+      "followUp": false,
+      "pitch": "¿Sabías que Juan Rulfo redujo Pedro Páramo a la mitad antes de publicarlo?",
+      "more": "El manuscrito inicial rondaba las trescientas páginas. Rulfo eliminó sistemáticamente todas las transiciones explicativas, descripciones accesorias y diálogos secundarios hasta dejar únicamente la condensación poética de apenas ciento veinte páginas que hoy conocemos."
+    },
+    {
+      "id": "libros-023",
+      "topic": "LIBROS",
+      "kind": "curiosidad",
+      "title": "Las acuarelas originales de El principito",
+      "followUp": false,
+      "pitch": "¿Sabías que Saint-Exupéry pintó él mismo las ilustraciones de El principito en un hotel de Nueva York?",
+      "more": "Exiliado en Estados Unidos durante la Segunda Guerra Mundial y sin experiencia formal como pintor, el aviador francés utilizó acuarelas infantiles baratas para plasmar al cordero, al zorro y a los baobabs tal y como los imaginaba en sus cartas personales."
+    },
+    {
+      "id": "libros-024",
+      "topic": "LIBROS",
+      "kind": "curiosidad",
+      "title": "La máquina de escribir de Cien años de soledad",
+      "followUp": false,
+      "pitch": "Para enviar el manuscrito a Buenos Aires, García Márquez y Mercedes Barcha no tenían dinero para pagar el franqueo postal completo.",
+      "more": "En la estafeta de correos de Ciudad de México en 1966 sólo pudieron pagar el envío de la primera mitad del libro. Sin darse cuenta, mandaron la segunda parte en lugar de la primera; el editor Paco Porrúa quedó tan fascinado con el final que les adelantó dinero para recibir el resto."
+    }
+  ]
+}

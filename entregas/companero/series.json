@@ -1,0 +1,171 @@
+{
+  "suggestions": [
+    {
+      "id": "series-001",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Crematorio",
+      "pitch": "Radiografía implacable de la especulación inmobiliaria y la corrupción en el Mediterráneo español. Pepe Sancho borda a un constructor despiadado con una lucidez escalofriante."
+    },
+    {
+      "id": "series-002",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Antidisturbios",
+      "pitch": "Un desahucio en Madrid sale mal y una inspectora de Asuntos Internos investiga a seis policías. Dirección enérgica con cámara al hombro que te mete de lleno en la furgoneta."
+    },
+    {
+      "id": "series-003",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Fariña",
+      "pitch": "El ascenso del contrabando de tabaco al narcotráfico a gran escala en las rías gallegas de los años ochenta. Rigor histórico, música ochentera gallega y ritmo trepidante."
+    },
+    {
+      "id": "series-004",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Los simuladores",
+      "pitch": "Cuatro socios resuelven problemas inverosímiles de la gente común mediante sofisticados operativos de engaño psicológico. Humor porteño brillante que se convirtió en obra de culto."
+    },
+    {
+      "id": "series-005",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "El ministerio del tiempo",
+      "pitch": "Una patrulla secreta viaja por puertas temporales para evitar que la historia de España cambie. Ingeniosa, didáctica y con cameos históricos llenos de cariño y respeto."
+    },
+    {
+      "id": "series-006",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Patria",
+      "pitch": "Dos familias rotas por el terrorismo de ETA en una localidad guipuzcoana a lo largo de tres décadas. Sobria, dolorosa y fundamental para entender las heridas cotidianas."
+    },
+    {
+      "id": "series-007",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Okupas",
+      "pitch": "Un joven de clase media y sus amigos resisten en una casona tomada de Buenos Aires durante la antesala de la crisis de 2001. Cruda, callejera y con una autenticidad irrepetible."
+    },
+    {
+      "id": "series-008",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Poquita fe",
+      "pitch": "Las pequeñas miserias e incomodidades del día a día de una pareja madrileña común contadas en píldoras de quince minutos. Un humor seco, tierno y reconocible al instante."
+    },
+    {
+      "id": "series-009",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "La Mesías",
+      "pitch": "El trauma infantil provocado por el fanatismo religioso de una madre y su eco en la adultez a través de un grupo de pop cristiano ficticio. Ambiciosa y conmovedora."
+    },
+    {
+      "id": "series-010",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Hierro",
+      "pitch": "Una jueza recién destinada a la isla de El Hierro debe esclarecer el asesinato de un joven cabrero el día de su boda. Un paisaje volcánico hipnótico y una Candela Peña soberbia."
+    },
+    {
+      "id": "series-011",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Noticia de un secuestro",
+      "pitch": "Adaptación minuciosa de la crónica de García Márquez sobre los secuestros ordenados por Pablo Escobar en los noventa para doblegar al Estado colombiano. Respetuosa y sin glamur narco."
+    },
+    {
+      "id": "series-012",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "El día de mañana",
+      "pitch": "Un joven ambicioso llega a la Barcelona de los años sesenta y se involucra en la brigada político-social y los círculos clandestinos. Recreación de época impecable."
+    },
+    {
+      "id": "series-013",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Veneno",
+      "pitch": "Biografía de Cristina Ortiz a través de los ojos de la periodista que escribió sus memorias. Celebración de la dignidad trans y rescate de la memoria oculta de los márgenes."
+    },
+    {
+      "id": "series-014",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Severance (Separación)",
+      "pitch": "Un procedimiento quirúrgico separa los recuerdos laborales de los personales en los empleados de una corporación enigmática. Una parábola inquietante y elegante sobre el trabajo moderno."
+    },
+    {
+      "id": "series-015",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Bronca (Beef)",
+      "pitch": "Un incidente menor de tráfico entre dos desconocidos en Los Ángeles desata una espiral de venganza obsesiva. Retrata la soledad urbana contemporánea con una intensidad punzante."
+    },
+    {
+      "id": "series-016",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Chernóbil (Chernobyl - Craig Mazin / Johan Renck)",
+      "pitch": "La anatomía minuciosa del desastre nuclear de 1986 y el heroísmo silencioso de los bomberos y científicos que arriesgaron sus vidas para contener la radiación frente a la mentira política burocrática."
+    },
+    {
+      "id": "series-017",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "The Wire / Bajo escucha (David Simon)",
+      "pitch": "La radiografía sociológica definitiva de Baltimore: la policía, los narcotraficantes, el puerto, las escuelas y los periódicos interconectados en un tapiz realista sin héroes de cartón piedra."
+    },
+    {
+      "id": "series-018",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Dark (Baran bo Odar & Jantje Friese)",
+      "pitch": "La desaparición de un niño en el pueblo alemán de Winden desvela un rompecabezas de viajes en el tiempo, árboles genealógicos cruzados y bucles cuánticos a lo largo de cuatro generaciones."
+    },
+    {
+      "id": "series-019",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Succession (Jesse Armstrong)",
+      "pitch": "La despiadada y tragicómica pugna entre cuatro hermanos multimillonarios por heredar el conglomerado de medios de su tiránico patriarca. Diálogos cortantes y venenosos sobre el poder."
+    },
+    {
+      "id": "series-020",
+      "topic": "SERIES",
+      "kind": "serie",
+      "title": "Gambito de dama (The Queen's Gambit - Scott Frank)",
+      "pitch": "Una huérfana prodigio del ajedrez en los años sesenta escala hasta la élite mundial mientras combate sus adicciones y demonios personales. Ritmo cinematográfico y rigor en cada tablero."
+    },
+    {
+      "id": "series-021",
+      "topic": "SERIES",
+      "kind": "curiosidad",
+      "title": "La música de Okupas y el rescate de Santiago Motorizado",
+      "followUp": false,
+      "pitch": "¿Sabías que Okupas tuvo que cambiar casi toda su banda sonora para su relanzamiento internacional veinte años después?",
+      "more": "Por problemas de derechos de autor de temas de rock clásico internacional, Bruno Stagnaro encargó a Santiago Motorizado más de 40 canciones y versiones nuevas. El resultado revitalizó la serie y mantuvo intacto el espíritu underground de la obra."
+    },
+    {
+      "id": "series-022",
+      "topic": "SERIES",
+      "kind": "curiosidad",
+      "title": "Los contadores Geiger reales de Chernóbil",
+      "followUp": false,
+      "pitch": "¿Cómo se recreó el sonido de la radiación en la serie Chernóbil?",
+      "more": "La compositora islandesa Hildur Guðnadóttir viajó a la central nuclear desactivada de Ignalina en Lituania (gemela de Chernóbil) y grabó resonancias de turbinas, puertas de acero pesado y chasquidos de dosímetros reales para crear la inquietante banda sonora sin utilizar instrumentos convencionales."
+    },
+    {
+      "id": "series-023",
+      "topic": "SERIES",
+      "kind": "curiosidad",
+      "title": "El rodaje en la Fariña real",
+      "followUp": false,
+      "pitch": "Varios exteriores de Fariña se rodaron en los mismos puertos y rías donde operaron los contrabandistas originales.",
+      "more": "El equipo contó con la colaboración silenciosa de vecinos de Noia, Outes y Vilagarcía de Arousa, muchos de los cuales participaron como figurantes para asegurar que la indumentaria y las expresiones gallegas de la época fuesen exactas."
+    }
+  ]
+}
